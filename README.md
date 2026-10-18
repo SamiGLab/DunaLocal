@@ -37,3 +37,9 @@ No lead-collection form, payment, tracking scripts, analytics, cookies, or clien
 - [Successful five-viewport Chrome test and screenshots](https://github.com/SamiGLab/DunaLocal/actions/runs/39110708259): 320, 360, 390, 768 and 1440 px. Screenshots are available as a workflow artifact.
 
 **Not completed:** finalized brand/domain, HU-native review, company/legal/tax approval, real contact channel, Cloudflare Pages deployment, any live sale or testimonial. All social assets are unpublished drafts.
+
+### Internal preview safety and diagnostics
+
+- Cloudflare Workers Static Assets serves `dist/` and supports a `_headers` file. The preview now has a restrictive CSP and a dedicated bilingual `404.html` fallback. A crawler noindex directive **does not** enforce privacy.
+- Live HTTP and DNS resolution of the workers.dev site must be checked from the owner's browser / Cloudflare Deployment logs: external requests from this assistant's environment were unsuccessful at the time of verification. Do not mark the Cloudflare production deployment as confirmed solely because GitHub CI succeeds.
+- After new commits, verify the Cloudflare deployment references the same commit SHA as `main`. A manual build event or dashboard setting might not track push automatically.

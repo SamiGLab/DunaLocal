@@ -3,7 +3,7 @@
 import { mkdirSync, rmSync, copyFileSync, existsSync, statSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 const out = "dist";
-const assets = ["index.html", "styles.css", "app.js", "robots.txt", "_headers"];
+const assets = ["index.html", "styles.css", "app.js", "robots.txt", "_headers", "404.html"];
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
 for (const asset of assets) {
