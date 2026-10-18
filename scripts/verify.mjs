@@ -41,10 +41,15 @@ test(html.includes('src="./brand/focus-app-icon.svg"'), "Lokmira concept icon mi
 test(html.includes('href="./brand/favicon.svg"'), "Lokmira favicon missing");
 test(html.includes("Lokmira") && !html.includes("LOCAL/OPS"), "Wrong preview brand");
 test(html.includes('class="landing-root"'), "Premium homepage skin not applied");
+test(!html.includes('class="preview"'),"Draft preview banner must not be visible");
+test(!html.includes("belső arculatterv")&&!html.includes("Belső előnézet"),"Draft brand text present on homepage");
+test(html.includes('data-i18n="contactAction"')&&html.includes('href="/hu/kapcsolat/"'),"Homepage contact CTA missing");
+test(!html.includes('data-i18n="navPilot"'),"Homepage navigation must match inner-page four-item menu");
+
 test(html.includes('href="./pages.css"'), "Premium homepage CSS link missing");
 test(html.includes('data-route="services"') && html.includes('data-route="about"'), "Multi-page homepage links missing");
 test(css.includes("@media(max-width:360px)"), "Mobile rules missing");
-test(js.includes("Local SEO & Google Ads Budapest") && js.includes("Helyi SEO és Google Ads Budapesten"), "Localized home titles missing");
+test(js.includes("Local SEO, Google Ads & Customer Growth Budapest") && js.includes("Helyi SEO, Google Ads és ügyfélszerzés Budapesten"), "Localized business homepage titles missing");
 const notfound = readFileSync("404.html", "utf8");
 test(notfound.includes("<title>404") && notfound.includes('href="/"'), "Missing 404 page");
 test(!notfound.includes('style="'), "Inline 404 styles blocked by CSP");
@@ -53,7 +58,7 @@ test(!/fetch\s*\(|XMLHttpRequest|localStorage|document\.cookie|gtag\s*\(/.test(j
 test(css.includes("@media(max-width:360px)"), "Small-screen rules missing");
 test(html.includes('data-i18n="skip"'), "Accessible skip link missing");
 test(!html.includes("149 000 Ft") && !html.includes("79 000 Ft"), "Unapproved numeric prices must not appear in public preview");
-test(html.includes('data-i18n="priceStatus"'), "Pending pricing status missing");
+test(html.includes('data-i18n="priceStatus"'), "Pilot roadmap status missing");
 test(js.includes('meta[property="og:title"]'), "Dynamic metadata missing");
 test(html.includes("id=\"services\"") && html.includes("service-panels"), "Service overview is missing");
 test(html.includes('data-i18n="pilotTitleA"') && html.includes('data-i18n="pilotTitleB"'), "Accessible two-line pilot heading missing");
@@ -75,6 +80,8 @@ for(const [huPath,enPath] of Object.entries(pairs)) {
    if(!existsSync(source)||!existsSync(built))continue;
    const src=readFileSync(source,"utf8"),dst=readFileSync(built,"utf8");
    test(src===dst,"Source/dist drift: "+route);
+   test(!src.includes("site-topline"),"Draft strip still displayed on "+route);
+   test(!/BELSŐ ELŐNÉZET|INTERNAL PREVIEW|WEBSITE DRAFT|Not a public offer/i.test(src),"Draft language in public presentation: "+route);
    test(!/AI-támogatott videó|AI-assisted video|tartalom-video|content-video|videóforgatókönyv/i.test(src),"Out-of-scope AI-video offer on "+route);
    test(src.includes('<html lang="'+lang+'"'),"Wrong page language: "+route);
    test(src.includes('name="robots" content="noindex,nofollow,noarchive"'),"Missing noindex: "+route);
