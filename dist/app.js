@@ -133,13 +133,14 @@ const buttons = [...document.querySelectorAll(".lang")];
 function setLanguage(lang) {
   if (!copy[lang]) return;
   document.documentElement.lang = lang;
-  document.title = lang === "hu" ? "Lokmira | Belső előnézet" : "Lokmira | Internal preview";
+  document.title = lang === "hu" ? "Lokmira | Helyi SEO és Google Ads Budapesten · Belső előnézet" : "Lokmira | Local SEO & Google Ads Budapest · Internal preview";
   const description = lang === "hu"
     ? "Lokmira belső előnézet: Google Cégprofil, helyi SEO, Google Ads, tartalom és mérhető megkeresések budapesti szolgáltatóknak."
     : "Internal preview: Lokmira local SEO, Google Ads, creative content and enquiry tracking for Budapest service businesses.";
   document.querySelector('meta[name="description"]').setAttribute("content", description);
   document.querySelector('meta[property="og:description"]').setAttribute("content", description);
   document.querySelector('meta[property="og:title"]').setAttribute("content", document.title);
+  document.querySelector('meta[property="og:locale"]').setAttribute("content", lang === "hu" ? "hu_HU" : "en_US");
   navigation.setAttribute("aria-label", lang === "hu" ? "Fő navigáció" : "Main navigation");
   document.querySelector(".logo").setAttribute("aria-label", lang === "hu" ? "Lokmira – lap teteje" : "Lokmira – back to top");
   for (const element of document.querySelectorAll("[data-i18n]")) {

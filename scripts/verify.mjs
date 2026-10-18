@@ -24,6 +24,8 @@ const gscTag = '<meta name="google-site-verification" content="km1EpHT5L_IUzBBj7
 test(html.includes(gscTag), "Google Search Console verification meta missing or changed");
 test(html.split('name="google-site-verification"').length === 2, "Duplicate Google Search Console verification meta");
 test(html.includes('name="robots" content="noindex,nofollow,noarchive"'), "Missing noindex meta");
+test(html.includes('<link rel="canonical" href="https://lokmira.com/">'), "Missing homepage self canonical");
+test(!html.includes("hreflang="), "No separate English root URL is available; do not invent homepage alternate");
 test(robot.includes("Disallow: /"), "Missing robots disallow");
 test(robot.includes("Sitemap: https://lokmira.com/sitemap.xml"), "Sitemap discovery entry missing");
 test(sitemap === builtSitemap, "Sitemap source and dist out of sync");
@@ -41,7 +43,7 @@ test(html.includes('class="landing-root"'), "Premium homepage skin not applied")
 test(html.includes('href="./pages.css"'), "Premium homepage CSS link missing");
 test(html.includes('data-route="services"') && html.includes('data-route="about"'), "Multi-page homepage links missing");
 test(css.includes("@media(max-width:360px)"), "Mobile rules missing");
-test(js.includes("Lokmira | Internal preview") && js.includes("Lokmira | Belső előnézet"), "Brand titles missing");
+test(js.includes("Local SEO & Google Ads Budapest") && js.includes("Helyi SEO és Google Ads Budapesten"), "Localized home titles missing");
 const notfound = readFileSync("404.html", "utf8");
 test(notfound.includes("<title>404") && notfound.includes('href="/"'), "Missing 404 page");
 test(!notfound.includes('style="'), "Inline 404 styles blocked by CSP");
@@ -76,6 +78,16 @@ for(const [huPath,enPath] of Object.entries(pairs)) {
    test(src.includes('name="robots" content="noindex,nofollow,noarchive"'),"Missing noindex: "+route);
    test(!/<form[\\s>]/i.test(src),"Unauthorized contact form: "+route);
    test(src.includes('name="google-site-verification"'),"Missing Google Search Console tag: "+route);
+   const expectedCanonical='<link rel="canonical" href="https://lokmira.com/'+route+'/">';
+   const alternateHu='<link rel="alternate" hreflang="hu" href="https://lokmira.com/'+huPath+'/">';
+   const alternateEn='<link rel="alternate" hreflang="en" href="https://lokmira.com/'+enPath+'/">';
+   test(src.includes(expectedCanonical),"Missing self-canonical: "+route);
+   test(src.includes(alternateHu) && src.includes(alternateEn),"Missing bidirectional hreflang: "+route);
+   test((src.match(/hreflang=/g)||[]).length===2,"Wrong number of language variants: "+route);
+   test(src.includes('property="og:url" content="https://lokmira.com/'+route+'/"'),"Wrong social URL: "+route);
+   test(src.includes('property="og:site_name" content="Lokmira"'),"Missing social brand: "+route);
+   const pageTitle=src.match(/<title>([^<]+)<\/title>/)?.[1]||"";
+   test(pageTitle.length>26 && pageTitle.includes("Lokmira"),"Weak SEO title: "+route);
    test(src.includes('href="/pages.css"'),"Dedicated page CSS not linked: "+route);
    test(sitemap.includes("<loc>https://lokmira.com/"+route+"/</loc>"),"Sitemap route missing: "+route);
  }
