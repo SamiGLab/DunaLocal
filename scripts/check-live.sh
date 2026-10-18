@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-base="https://dunalocal.samiayten-hu.workers.dev"
+base="${LOKMIRA_PREVIEW_ORIGIN:-https://dunalocal.samiayten-hu.workers.dev}"
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 get() {
