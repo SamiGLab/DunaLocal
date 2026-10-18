@@ -9,7 +9,7 @@ Open `index.html` in a browser or run `python3 -m http.server 8000` and visit `h
 ## Deployment plan (Cloudflare Pages)
 
 1. Connect GitHub repository `SamiGLab/DunaLocal` in Cloudflare Pages when the owner is ready.
-2. Framework preset: **None**; build command: **empty** (or `exit 0`); output directory: **`/`** / repository root. No package installation or build tool is needed.
+2. Framework preset: **None**; build command: **empty** (or `exit 0`); output directory: **`.`** (repository root, where `index.html` lives). No package installation or build tool is needed.
 3. Use the Cloudflare Pages **preview** environment until name, Hungarian copy, legal disclosures, actual business email, and deployment approval are completed.
 4. `robots.txt` and the `noindex` meta tag block indexing but **do not make a URL private**. A Cloudflare preview URL remains publicly accessible to anyone who knows it. Use access control if confidentiality is required.
 
