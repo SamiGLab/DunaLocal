@@ -1,3 +1,9 @@
+> **Uygulama güncellemesi — 18 Ekim 2026:** Yeni `lokmira` Worker oluşturuldu ve mevcut `SamiGLab/DunaLocal` deposunun `main` dalına bağlandı. Build: `node scripts/build.mjs`; deploy: `npx wrangler deploy --config wrangler.lokmira.jsonc`. İlk build `3ef7ff19-97b5-4e15-983e-739b119b854f` tamamlandı; `https://lokmira.samiayten-hu.workers.dev/` gerçek HTTP 200 ve canlı testte ana sayfa, 16 HU/EN sayfa, marka/ikonlar, noindex, CSP ve dahili dosya 404 kontrolleri geçti.
+>
+> Eski `dunalocal` Worker korundu. İki Worker aynı depodan, kendi adlarıyla eşleşen ayrı Wrangler yapılandırmalarıyla otomatik dağıtılır. Yeni Worker için varsayılan `wrangler.jsonc` dosyasını kullanmayın: o dosya eski Worker'a aittir. Yeni Worker'da branch preview builds kapalı; main production build açıktır. Live HTTP workflow artık iki hostu da matrisle doğrular.
+>
+> GitHub deposu **yeniden adlandırılmadı**. `lokmira.com` canlı HTTP isteğinde GitHub Pages'ten yanıt verdi; Cloudflare custom domain/DNS geçişi yapılmadı. Noindex ve kapalı iletişim korundu. Aşağıdaki hazırlık tablosu ve rename yönergeleri **tarihsel plandır**, güncel tamamlanma durumu olarak kullanılmamalıdır.
+
 # Lokmira — GitHub repo / Cloudflare Worker isim değişimi ve lokmira.com bağlantı devri
 **18 Ekim 2026 | Durum: uygulama hazırlığı yapıldı, hesap düzeyinde yeniden adlandırma tamamlanmadı**
 
