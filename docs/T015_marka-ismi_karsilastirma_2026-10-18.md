@@ -147,3 +147,53 @@ Resmi `.hu` kayıt sorgusu: https://www.domain.hu/domain-search/ ; `.com` kayıt
 **Durum:** T015 “kullanıcı adı tercihini ifade etti” = tamam; T015 “risk kontrolü tamamlandı / uygulanabilir marka kesinleştirildi” = **açık**.
 
 **Sıradaki adım:** Kullanıcıya somut çakışmayı bildir; daha ayırt edici alternatif seçimi için onay iste. Marka/alan adı/hesap oluşturma yok. Şirket kuruluşu, muhasebe, hukuk ve idari süreçler kapsam dışıdır.
+
+
+---
+
+## 18 Ekim 2026 — Duna kökü olmadan marka adayları / araştırma özeti
+
+**Kullanıcı talebi:** Artık `Duna` kökü şart değil. Önce adları araştır, ardından yalnızca erken çakışma elemesinden geçenleri sun. `DunaFlow` iptal edildi ve tekrar önerilmeyecek.
+
+### İş kapsamı
+Budapeşte ve Macaristan'da bağımsız yerel hizmet işletmelerine Google Business Profile, local SEO, Google Ads, içerik ve AI video, talep ve teklif takibi sunacak, ileride dikeyler arasında genişleyebilen bir pazarlama ajansı.
+
+### Ön eleme yöntemi ve kısıtları
+1. Çok sayıda kurgu ad için açık webde birebir adı ve “marketing / agency / brand / company” eşleşmelerini aradım; aynı isme sahip veya güçlü biçimde benzeyen mevcut markaları ayırdım.
+2. Wix GetSuggestedDomains ile `tlds=["com"]` kullanarak **birebir .com biçimi önerilip önerilmediğini** gözledim. Bu araç **alan adı öneri hizmetidir; registrar/RDAP resmi müsaitlik, satın alınabilirlik, tescil veya marka uygunluğu garantisi değildir**.
+3. Resmi `.hu` kayıt durumu, resmi EUIPO/HIPO marka sicil taraması ve LinkedIn/Instagram/Facebook handle sahipliği bu aşamada tek tek doğrulanamadı.
+4. Buradaki olumlu sonuç: **“geniş taramada belirgin aynı-ad ajans saptanmadı + birebir .com önerildi”**. Olumsuz durumlar: `dunaflow.com` gibi zaten faal adlar, birebir önerilmemesi. Arama sonucu olmaması eşleşme hiç yok demek değildir.
+
+### Webde kullanıldığı doğrulandığı için ELENEN adlar
+- **Visentra** — https://www.visentra.co.uk/ ve https://www.visentra.net/ pazarlama ajansları.
+- **Vistaro** — https://vistarodigitalsolution.com/ ve https://vistarostudios.com/ pazarlama/dijital servis.
+- **Veltrio** — https://veltrio.in/ ajans ve yazılım, https://veltrio.eu/ sistem geliştirici.
+- **Metriva** — https://somosmetriva.com/ performans/pazarlama ajansı.
+- **Rankora** — https://rankora.tech/ ve https://rankoradigital.com/ dijital pazarlama; https://getrankora.com/en local growth platformu.
+- **Lokentra** — https://lokentra.com/ AI/operasyon platformu.
+- **Lokvera** — https://www.lokvera.in/ eğitim/yetenek geliştirme platformu.
+- **Merkivo** — https://merkivo.net/ yazılım/AI hizmetleri.
+- **MapVanta** — https://rokshana.online/ MapVanta Studio, yerel SEO ve lead generation.
+- **Klarivio** — Polonya kayıtlı reklam ajansı faaliyeti olan işletme: https://monitorfirm.pb.pl/en/company/klarivio-mikolaj-korsak/owner/
+- **Lorvanta** — https://lorvantatrading.com/ kullanımda.
+
+### Duna içermeyen erken kısa liste
+
+| Aday | Birebir .com Wix önerisi | İletişim/marka fikri | Güç | Sınır |
+|---|---|---|---|---|
+| **Lokmira** | `lokmira.com` önerildi | Local + mira (görüş/görünürlük çağrışımı); zarif butik B2B | Telaffuzu kolay, hizmet büyümesine açık | Uydurma ad olduğundan ne yaptığını slogan anlatmalı |
+| **Lokvanta** | `lokvanta.com` önerildi | Local + advantage çağrışımı, ölçüm ve performans | B2B performans/teknoloji algısı | Biraz daha sert ve kurumsal sesleniş |
+| **Lokriva** | `lokriva.com` önerildi | Lokal + kısa ve hareketli ikinci hece | Akılda kalıcı, grafik kimliğe uygun | Çok benzer sesli `Lotriva` (https://lotriva.com/) başka sektörde var; kesin ayırt edicilik teyidi gerekiyor |
+| **Vireloka** | `vireloka.com` önerildi | Dijital ve lokal bağlantılı soyut bir marka | 'Lok' ile başlamadan, modern | Anlamı ve Macarca telaffuzu açıklama gerektirir |
+| **Helyvera** | `helyvera.com` önerildi | Macarca `hely` = yer; 'vera' doğruluk çağrışımı | Yerel dile yakın | `Melyvera` (https://melyvera.com/) başka sektörde kullanılıyor; fonetik yakınlık riski, düşük öncelik |
+
+**Stratejik değerlendirmem (kayıt uygunluğu puanı değil):** Lokmira > Lokvanta > Lokriva > Vireloka > Helyvera. İlk iki markayı logo/profil geliştirmesine geçmeden önce **gerçek domain + sosyal username + marka sicili** ile doğrulamak şart.
+
+### Sonraki doğrulama kapısı
+- Registrar/ICANN RDAP ile güncel `.com` durumunu belgelemek.
+- Macar .hu sicilinde birebir kayıt sorgusu: https://www.domain.hu/domain-search/
+- EUIPO/HIPO aynı ve benzer marka sorgusu.
+- LinkedIn/Instagram/Facebook birebir kullanıcı adlarını platformda kontrol.
+- Kullanıcının açık isim onayı.
+
+**Hiçbir aday marka ismi olarak kesin seçilmedi ve sitede/geçici logo/sosyal taslaklarda değişiklik yapılmadı.**
