@@ -1,4 +1,4 @@
-# DunaLocal — Budapest agency site (internal preview)
+> **PROJECT NAME UPDATE — 2026-10-18:** The owner selected **Lokmira** as the agency/site name for all next planning and design drafts. `DunaLocal` is the existing technical repository name and `LOCAL/OPS` remains the unpublished preview placeholder. **No `lokmira.com` ownership, `lokmira.hu` availability, trademark clearance, or public launch has been verified.** Active step-by-step scope, status and release gates: [Lokmira master roadmap](./docs/LOKMIRA_ana_yol_haritasi_2026-10-18.md) / [Google Drive roadmap](https://docs.google.com/document/d/1YncxE0AkLJ2Rx0HmLCvoKGQdmEo7ZGyKA1-ivDgHmGQ/edit). Existing earlier brand notes below are historical.\n\n# DunaLocal — Budapest agency site (internal preview)
 
 **Status: work in progress. Not a live or approved agency brand.** `DunaLocal` is the repository name; the final trade name has not been confirmed. The website uses a temporary LOCAL/OPS label.
 
