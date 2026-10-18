@@ -34,9 +34,10 @@ for(const width of widths){
     lang:document.documentElement.lang,
     robots:document.querySelector('meta[name="robots"]')?.content,
     services:document.querySelectorAll(".service-panels article").length,
-    nav:document.querySelector('a[data-route="services"]')?.getAttribute("href")
+    nav:document.querySelector('a[data-route="services"]')?.getAttribute("href"),
+    icons:[...document.querySelectorAll(".flow .ui-icon,.cards .ui-icon,.service-panels .ui-icon")].filter(el=>{const c=getComputedStyle(el);return (c.maskImage||c.webkitMaskImage||"").includes("/icons/")&&c.width!=="0px"}).length
   }));
-  check(hu.width<=1&&hu.lang==="hu"&&hu.robots==="noindex,nofollow,noarchive"&&hu.services===4&&hu.nav==="/hu/szolgaltatasok/"&&errors.length===0,"homepage HU "+width+" "+JSON.stringify(hu)+" "+errors);
+  check(hu.width<=1&&hu.lang==="hu"&&hu.robots==="noindex,nofollow,noarchive"&&hu.services===4&&hu.icons>=10&&hu.nav==="/hu/szolgaltatasok/"&&errors.length===0,"homepage HU "+width+" "+JSON.stringify(hu)+" "+errors);
   await page.locator('button[data-lang="en"]').click();
   const en=await page.evaluate(()=>({
     lang:document.documentElement.lang,title:document.title,
@@ -62,9 +63,10 @@ for(const [index,route] of routes.entries()){
    lang:document.documentElement.lang,overflow:Math.max(0,document.documentElement.scrollWidth-window.innerWidth),
    noindex:document.querySelector('meta[name="robots"]')?.content,
    title:document.title,cssLoaded:getComputedStyle(document.querySelector(".site-hero")).backgroundColor!=="rgba(0, 0, 0, 0)",
-   links:[...document.querySelectorAll('a[href]')].filter(a=>a.getAttribute("href")==="#").length
+   links:[...document.querySelectorAll('a[href]')].filter(a=>a.getAttribute("href")==="#").length,
+   pictograms:[...document.querySelectorAll(".site-visual-number .ui-icon")].filter(el=>{const c=getComputedStyle(el);return (c.maskImage||c.webkitMaskImage||"").includes("/icons/")&&c.width!=="0px"}).length
  }));
- check(response.status()===200&&state.lang===(route.startsWith("/hu/")?"hu":"en")&&state.overflow<=1&&state.noindex==="noindex,nofollow,noarchive"&&state.title.includes("Lokmira")&&state.cssLoaded&&state.links===0&&errors.length===0,"route "+route+" "+JSON.stringify(state)+" "+errors);
+ check(response.status()===200&&state.lang===(route.startsWith("/hu/")?"hu":"en")&&state.overflow<=1&&state.noindex==="noindex,nofollow,noarchive"&&state.title.includes("Lokmira")&&state.cssLoaded&&state.pictograms>=3&&state.links===0&&errors.length===0,"route "+route+" "+JSON.stringify(state)+" "+errors);
  if(index===0||index===8)await page.screenshot({path:"qa-screenshots/services-"+state.lang+"-"+width+".png",fullPage:true});
  if(width===390){const menu=page.locator(".site-toggle");await menu.click();check((await menu.getAttribute("aria-expanded"))==="true"&&await page.locator(".site-nav").isVisible(),"subpage mobile menu "+route);}
  console.log("PASS multi-page",route,"status",response.status(),"overflow",state.overflow);

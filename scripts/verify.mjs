@@ -91,6 +91,7 @@ for(const [huPath,enPath] of Object.entries(pairs)) {
    const pageTitle=src.match(/<title>([^<]+)<\/title>/)?.[1]||"";
    test(pageTitle.length>26 && pageTitle.includes("Lokmira"),"Weak SEO title: "+route);
    test(src.includes('href="/pages.css"'),"Dedicated page CSS not linked: "+route);
+   test((src.match(/class="site-visual-number" aria-hidden="true"/g)||[]).length>=3,"Missing unified Lucide step icons: "+route);
    test(sitemap.includes("<loc>https://lokmira.com/"+route+"/</loc>"),"Sitemap route missing: "+route);
  }
 }
