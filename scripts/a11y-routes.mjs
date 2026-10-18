@@ -21,9 +21,9 @@ await new Promise(resolve=>server.listen(0,"127.0.0.1",resolve));
 const origin="http://127.0.0.1:"+server.address().port;
 const routes=[
  "/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/",
- "/hu/helyi-seo/","/hu/google-ads/","/hu/tartalom-video/","/hu/meres/",
+ "/hu/helyi-seo/","/hu/google-ads/","/hu/kozossegi-media/","/hu/meres/",
  "/en/services/","/en/approach/","/en/about/","/en/contact/",
- "/en/local-seo/","/en/google-ads/","/en/content-video/","/en/measurement/"
+ "/en/local-seo/","/en/google-ads/","/en/social-media/","/en/measurement/"
 ];
 const cases=routes.map(route=>({route,width:390})).concat(
  ["/hu/szolgaltatasok/","/en/services/","/hu/kapcsolat/","/en/contact/"].map(route=>({route,width:1440}))

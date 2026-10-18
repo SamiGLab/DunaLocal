@@ -68,8 +68,8 @@ for (const [url,expectedFile] of newAssets) {
   } catch(e){issues.push("Premium asset "+url+": "+String(e));}
 }
 const siteRoutes=[
- "/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/","/hu/helyi-seo/","/hu/google-ads/","/hu/tartalom-video/","/hu/meres/",
- "/en/services/","/en/approach/","/en/about/","/en/contact/","/en/local-seo/","/en/google-ads/","/en/content-video/","/en/measurement/"
+ "/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/","/hu/helyi-seo/","/hu/google-ads/","/hu/kozossegi-media/","/hu/meres/",
+ "/en/services/","/en/approach/","/en/about/","/en/contact/","/en/local-seo/","/en/google-ads/","/en/social-media/","/en/measurement/"
 ];
 for(const url of siteRoutes){
  try{

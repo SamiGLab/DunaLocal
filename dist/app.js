@@ -37,7 +37,7 @@ const copy = {
     servicesEyebrow:"MIBEN SEGÍT A LOKMIRA?",servicesTitle:"Láthatóság, ami célt szolgál.",servicesTitle2:"Együtt működő csatornák.",servicesText:"A szolgáltatásokat az adott vállalkozás helyzetéhez igazítjuk. Nem minden elem része automatikusan az első pilotnak.",
     service1:"Google Cégprofil és helyi SEO",service1b:"A vállalkozás adatainak, helyi keresési megjelenésének és fontos weboldalainak áttekintése és javítási javaslatai.",
     service2:"Google Ads kampányok",service2b:"Egyértelmű keresési szándékokra épülő kampányok, átlátható költségkerettel és mérési tervvel.",
-    service3:"Tartalom és AI-támogatott videó",service3b:"Márkához illő vizuális tartalmak és videótervek, ellenőrzött termékállításokkal és emberi jóváhagyással.",
+    service3:"Közösségi média és tartalom",service3b:"Közösségi profilkezelés, tartalomnaptár és a valódi szolgáltatásaidra épülő következetes kommunikáció.",
     service4:"Érdeklődés- és ajánlatkövetés",service4b:"A keresést, megkeresést és ajánlatot összekötő egyszerű folyamat, a vállalkozásnál elérhető adatok alapján.",serviceMore:"Részletek ↗",storyLabel:"KIS LÉPÉSEK · TISZTA MÓDSZER",storyTitle:"Nem kérünk vak bizalmat.",storyText:"Még nem állítunk magunkról ellenőrizhetetlen eredményeket, és nem jelenítünk meg kitalált ügyfélreferenciákat. A Lokmira ajánlata az átlátható munkafolyamatra, a világos szerepekre és a követhető üzleti visszajelzésre épül.",storyAction:"Ismerd meg, hogyan gondolkodunk ↗",
     methodEyebrow:"AMIT MÁSKÉPP CSINÁLUNK",methodTitle:"Nem több kattintás.",methodTitle2:"Jobban követhető értékesítés.",
     methodText:"A kattintás önmagában nem üzleti eredmény. A folyamatot az első kereséstől az ajánlaton át a megrendelésig szeretnénk áttekinthetővé tenni.",
@@ -100,7 +100,7 @@ const copy = {
     servicesEyebrow:"HOW LOKMIRA HELPS",servicesTitle:"Make visibility useful.",servicesTitle2:"Connect the right channels.",servicesText:"Services are tailored to each business. The initial pilot does not automatically include every service listed below.",
     service1:"Google Business Profile & local SEO",service1b:"Review local search presence, business details and important website pages, then prioritise practical improvements.",
     service2:"Google Ads campaigns",service2b:"Campaigns built around relevant search intent, with transparent budgets and a clear measurement plan.",
-    service3:"Content & AI-assisted video",service3b:"Brand-aligned content and video concepts with checked product claims and human review.",
+    service3:"Social media & content",service3b:"Social profile management, editorial planning and consistent communication grounded in your actual services.",
     service4:"Enquiry & quote tracking",service4b:"A straightforward view of searches, enquiries and quotations using information the business already has.",serviceMore:"Learn more ↗",storyLabel:"CLEAR SCOPE · REAL EVIDENCE",storyTitle:"Trust should be earned.",storyText:"We will not publish unverifiable results or invented client testimonials. Lokmira is being built around transparent decisions, clearly defined responsibilities and business feedback that can actually be reviewed.",storyAction:"See what we stand for ↗",
     methodEyebrow:"WHAT WE DO DIFFERENTLY",methodTitle:"Not more clicks.",methodTitle2:"A clearer route to sales.",
     methodText:"A click alone is not a business outcome. We aim to make the path from initial search through enquiries and quotes to booked work easier to follow.",
@@ -148,8 +148,8 @@ function setLanguage(lang) {
     if (Object.prototype.hasOwnProperty.call(copy[lang], key)) element.textContent = copy[lang][key];
   }
   const routes = {
-    hu:{services:"/hu/szolgaltatasok/",approach:"/hu/modszer/",about:"/hu/rolunk/",contact:"/hu/kapcsolat/",seo:"/hu/helyi-seo/",ads:"/hu/google-ads/",creative:"/hu/tartalom-video/",measurement:"/hu/meres/"},
-    en:{services:"/en/services/",approach:"/en/approach/",about:"/en/about/",contact:"/en/contact/",seo:"/en/local-seo/",ads:"/en/google-ads/",creative:"/en/content-video/",measurement:"/en/measurement/"}
+    hu:{services:"/hu/szolgaltatasok/",approach:"/hu/modszer/",about:"/hu/rolunk/",contact:"/hu/kapcsolat/",seo:"/hu/helyi-seo/",ads:"/hu/google-ads/",social:"/hu/kozossegi-media/",measurement:"/hu/meres/"},
+    en:{services:"/en/services/",approach:"/en/approach/",about:"/en/about/",contact:"/en/contact/",seo:"/en/local-seo/",ads:"/en/google-ads/",social:"/en/social-media/",measurement:"/en/measurement/"}
   };
   for (const element of document.querySelectorAll("[data-route]")) {
     const route = element.dataset.route;

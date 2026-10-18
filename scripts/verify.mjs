@@ -26,6 +26,7 @@ test(html.split('name="google-site-verification"').length === 2, "Duplicate Goog
 test(html.includes('name="robots" content="noindex,nofollow,noarchive"'), "Missing noindex meta");
 test(html.includes('<link rel="canonical" href="https://lokmira.com/">'), "Missing homepage self canonical");
 test(!html.includes("hreflang="), "No separate English root URL is available; do not invent homepage alternate");
+test(!/AI-támogatott videó|AI-assisted video|tartalom-video|content-video/i.test(html+js+sitemap), "Unapproved AI-video positioning or old routes still public");
 test(robot.includes("Disallow: /"), "Missing robots disallow");
 test(robot.includes("Sitemap: https://lokmira.com/sitemap.xml"), "Sitemap discovery entry missing");
 test(sitemap === builtSitemap, "Sitemap source and dist out of sync");
@@ -64,7 +65,7 @@ const pairs = {
  "hu/szolgaltatasok":"en/services", "hu/modszer":"en/approach",
  "hu/rolunk":"en/about", "hu/kapcsolat":"en/contact",
  "hu/helyi-seo":"en/local-seo", "hu/google-ads":"en/google-ads",
- "hu/tartalom-video":"en/content-video", "hu/meres":"en/measurement"
+ "hu/kozossegi-media":"en/social-media", "hu/meres":"en/measurement"
 };
 for(const [huPath,enPath] of Object.entries(pairs)) {
  for(const [lang,route] of [["hu",huPath],["en",enPath]]) {
@@ -74,6 +75,7 @@ for(const [huPath,enPath] of Object.entries(pairs)) {
    if(!existsSync(source)||!existsSync(built))continue;
    const src=readFileSync(source,"utf8"),dst=readFileSync(built,"utf8");
    test(src===dst,"Source/dist drift: "+route);
+   test(!/AI-támogatott videó|AI-assisted video|tartalom-video|content-video|videóforgatókönyv/i.test(src),"Out-of-scope AI-video offer on "+route);
    test(src.includes('<html lang="'+lang+'"'),"Wrong page language: "+route);
    test(src.includes('name="robots" content="noindex,nofollow,noarchive"'),"Missing noindex: "+route);
    test(!/<form[\\s>]/i.test(src),"Unauthorized contact form: "+route);

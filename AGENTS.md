@@ -1,5 +1,8 @@
 # Lokmira — Codex project instructions
 
+> **Owner positioning correction (2026-10-18, highest priority):** Lokmira is a **local customer-acquisition and digital marketing agency**, not an AI/video-production studio. **DO NOT advertise AI video production, video shoots, AI-generated films or similar as a customer-facing service** in navigation, service descriptions, SEO titles, page slugs, promotional material, or pricing. AI is an optional internal work method / historical add-on idea, not the Lokmira website proposition. Core: Google Business Profile + local SEO, Google Ads, **social media management and content planning**, enquiry / quote tracking and reporting. Initial sales offers: **Local Presence**, **Customer Growth**, and custom **Growth Partner**. Client outcomes matter, not content quantity. Third service route is now `/hu/kozossegi-media/` ↔ `/en/social-media/`; former AI-video URLs were removed from preview and sitemap. Do not reintroduce them. Keep ventures completely separate.
+
+
 > **Status update 2026-10-18:** All **16 paired HU/EN inner pages already have reciprocal `hreflang` and self-canonical** tags, distinct descriptive SEO titles and OG language/URL metadata. The HU `/` home has a self-canonical; a separate indexable EN home is **not** yet available, so do not invent `/en/` alternate links. Four service pairs now contain explicitly **illustrative deliverable examples**, not approved packages. `scripts/verify.mjs` checks internal links/anchors and SEO parity; `scripts/a11y-routes.mjs` runs 20 extra WCAG scenarios. Active-contact CTA contrast was fixed. The remaining task is native Hungarian proofreading, user-approved logo/email/evidence, root localization architecture, domain/launch checks. See `docs/LOKMIRA_LAUNCH_CONTENT_EVIDENCE_GATE_2026-10-18.md`. Never undo these verified fixes.
 
 
@@ -21,7 +24,7 @@ Develop a **world-class, credible, bilingual Hungarian/English agency website** 
 - `app.js`: bilingual dictionary and client-only navigation; no tracking, storage or network calls.
 - `styles.css` + `pages.css`: responsive shared layout (including new editorial sections).
 - `pages.js`: local mobile menu script for subpages.
-- 16 individual static source pages: `hu/*/index.html` and `en/*/index.html` (8 pairs of services, methodology, about, contact, local SEO, Google Ads, content/video, measurement).
+- 16 individual static source pages: `hu/*/index.html` and `en/*/index.html` (8 pairs of services, methodology, about, contact, local SEO, Google Ads, social media and content management, measurement).
 - `brand/`: four current original SVG redraws, including favicon.
 - `sitemap.xml`: current root + 16 actual paths; keep accurate.
 - `robots.txt`, `_headers`: current noindex, Disallow:/, CSP and anti-tracking protections.

@@ -4,7 +4,7 @@ import { mkdirSync, rmSync, copyFileSync, existsSync, statSync, readdirSync } fr
 import { join } from "node:path";
 const out = "dist";
 const assets = ["index.html", "styles.css", "app.js", "pages.css", "pages.js", "robots.txt", "sitemap.xml", "_headers", "404.html"];
-const pageDirectories = ["hu/szolgaltatasok","en/services","hu/modszer","en/approach","hu/rolunk","en/about","hu/kapcsolat","en/contact","hu/helyi-seo","en/local-seo","hu/google-ads","en/google-ads","hu/tartalom-video","en/content-video","hu/meres","en/measurement"];
+const pageDirectories = ["hu/szolgaltatasok","en/services","hu/modszer","en/approach","hu/rolunk","en/about","hu/kapcsolat","en/contact","hu/helyi-seo","en/local-seo","hu/google-ads","en/google-ads","hu/kozossegi-media","en/social-media","hu/meres","en/measurement"];
 const brandAssets = ["focus-mark.svg", "focus-app-icon.svg", "focus-logo.svg", "favicon.svg"];
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
