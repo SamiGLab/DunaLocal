@@ -9,6 +9,6 @@ for path in paths:
     root = ElementTree.fromstring(xml)
     assert root.tag.endswith("svg"), f"{path}: not an SVG root"
     assert 'viewBox="0 0 1080 1350"' in xml, f"{path}: wrong portrait dimensions"
-    assert "<script" not in xml and "http://" not in xml, f"{path}: unexpected external content"
+    assert "<script" not in xml and "href=" not in xml and "url(" not in xml, f"{path}: unexpected external content"
     assert "MUNKANÉV" in xml or "KÖZZÉTÉTEL ELŐTTI" in xml or "ÁTMENETI" in xml, f"{path}: missing draft marker"
     print(f"PASS: {path} ({len(xml)} chars)")
