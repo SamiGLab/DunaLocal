@@ -9,8 +9,8 @@ get() {
   printf '%s: HTTP 200 (%s bytes)\n' "$route" "$(wc -c < "$tmp/$name.body")"
 }
 get "/" index
-grep -q "LOCAL/OPS" "$tmp/index.body"
-for name in app.js styles.css robots.txt; do
+grep -q "Lokmira" "$tmp/index.body"
+for name in app.js styles.css robots.txt brand/focus-mark.svg brand/focus-app-icon.svg brand/focus-logo.svg brand/favicon.svg; do
   get "/$name" "$name"
 done
 if cmp -s "dist/index.html" "$tmp/index.body"; then
