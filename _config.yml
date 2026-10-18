@@ -1,0 +1,17 @@
+# GitHub Pages / Jekyll isolation safeguard
+# Prevents internal documentation, scripts, draft assets, and config files
+# from being rendered or published if GitHub Pages branch deployment is active.
+exclude:
+  - AGENTS.md
+  - README.md
+  - wrangler.jsonc
+  - wrangler.lokmira.jsonc
+  - _headers
+  - dist
+  - docs
+  - scripts
+  - social
+  - design
+  - node_modules
+  - qa-screenshots
+  - qa-artifacts

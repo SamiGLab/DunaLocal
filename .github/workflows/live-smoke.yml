@@ -20,3 +20,14 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check real workers.dev website from GitHub
         run: node scripts/live-smoke.mjs
+  custom-domain:
+    runs-on: ubuntu-latest
+    env:
+      LOKMIRA_PREVIEW_ORIGIN: https://lokmira.com
+      LOKMIRA_ALLOW_GITHUB_PAGES_HEADERS: "1"
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify lokmira.com content parity and private-path 404 isolation
+        run: node scripts/live-smoke.mjs

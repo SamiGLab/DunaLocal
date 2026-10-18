@@ -31,5 +31,7 @@ else
 fi
 status="$(curl --connect-timeout 8 --max-time 20 -sS -o "$tmp/404.body" -w "%{http_code}" "$base/missing-page-verification-404")"
 echo "MISSING PAGE: HTTP $status"
-private="$(curl --connect-timeout 8 --max-time 20 -sS -o "$tmp/private.body" -w "%{http_code}" "$base/docs/launch-gates-and-status.md")"
-echo "INTERNAL DOCS: HTTP $private"
+for path in /docs/launch-gates-and-status.md /docs/launch-gates-and-status.html /AGENTS.html /scripts/build.mjs /wrangler.jsonc; do
+  private="$(curl --connect-timeout 8 --max-time 20 -sS -o "$tmp/private.body" -w "%{http_code}" "$base$path")"
+  echo "INTERNAL PATH $path: HTTP $private"
+done

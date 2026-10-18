@@ -41,9 +41,23 @@ if (!root.body.includes('<meta name="google-site-verification" content="km1EpHT5
 if (!root.body.includes('name="robots" content="noindex,nofollow,noarchive"')) issues.push("noindex meta missing");
 if (!root.body.includes('src="./app.js"')) issues.push("app.js reference missing");
 if (!root.body.includes('href="./styles.css"')) issues.push("styles.css reference missing");
+const serverHeader = root.headers.get("server") || "unknown";
+const allowLegacyPagesHeaders = process.env.LOKMIRA_ALLOW_GITHUB_PAGES_HEADERS === "1";
 const robotsHeader = root.headers.get("x-robots-tag") || "";
-if (!robotsHeader.includes("noindex")) issues.push("X-Robots-Tag response header missing");
-if (!(root.headers.get("content-security-policy") || "").includes("connect-src 'none'")) issues.push("Live CSP missing required restrictions");
+if (!robotsHeader.includes("noindex")) {
+  if (allowLegacyPagesHeaders) {
+    console.warn("WARN: X-Robots-Tag header missing on", origin, "(Server:", serverHeader, "- DNS still on GitHub Pages; HTML meta noindex is active)");
+  } else {
+    issues.push("X-Robots-Tag response header missing");
+  }
+}
+if (!(root.headers.get("content-security-policy") || "").includes("connect-src 'none'")) {
+  if (allowLegacyPagesHeaders) {
+    console.warn("WARN: CSP header missing on", origin, "(Server:", serverHeader, "- cut over lokmira.com DNS to Cloudflare Worker to enforce _headers)");
+  } else {
+    issues.push("Live CSP missing required restrictions");
+  }
+}
 for (const [path, marker] of [["/styles.css",".hero{"],["/app.js","const copy ="],["/robots.txt","Disallow: /"]]) {
   try {
     const r = await probe(path);
@@ -96,12 +110,27 @@ for (const name of ["focus-mark.svg", "focus-app-icon.svg", "focus-logo.svg", "f
     console.log("Brand vector", url, "status", r.status, "version matches", r.body === expected);
   } catch (e) { issues.push("Brand asset " + name + ": " + String(e)); }
 }
-for(const path of ["/docs/launch-gates-and-status.md", "/scripts/build.mjs", "/social/launch-kit.md"]) {
+const restrictedPaths = [
+  "/docs/launch-gates-and-status.md",
+  "/docs/launch-gates-and-status.html",
+  "/docs/LOKMIRA_ana_yol_haritasi_2026-10-18.html",
+  "/docs/T013_ilk_10_PPF_web_audit_kaynakli_2026-10-18.html",
+  "/AGENTS.md",
+  "/AGENTS.html",
+  "/scripts/build.mjs",
+  "/social/launch-kit.md",
+  "/social/launch-kit.html",
+  "/social/templates/lead-to-sale-card.svg",
+  "/design/brand-alternatives/concept-1-typographic-mark.svg",
+  "/wrangler.jsonc",
+  "/dist/index.html"
+];
+for(const path of restrictedPaths) {
   try {
     const r=await probe(path);
     if(r.status!==404) issues.push("Internal path did not return 404: "+path+" ("+r.status+")");
     console.log("Restricted",path,"status",r.status);
-  } catch(e){console.warn("Internal path check unavailable",path,String(e));}
+  } catch(e){issues.push("Internal path check failed "+path+": "+String(e));}
 }
 if(issues.length){issues.forEach(x=>console.error("FAIL",x));process.exit(1);}
-console.log("PASS: live release matches committed HTML/CSS/JS, noindex, CSP and private-path restrictions");
+console.log("PASS: live release on", origin, "(Server:", serverHeader + ") matches committed HTML/CSS/JS, noindex, and private-path 404 restrictions");

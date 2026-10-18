@@ -135,5 +135,14 @@ for(const path of allSourcePages){
   test(!/\b(?:info|hello|contact)@lokmira\.com\b/.test(page),"Unverified corporate email shown on "+path);
 }
 
+test(existsSync("_config.yml"), "Missing _config.yml GitHub Pages isolation config");
+test(!existsSync(".nojekyll"), ".nojekyll must not exist in root or GitHub Pages branch builds will expose internal folders");
+if (existsSync("_config.yml")) {
+  const jekyllConfig = readFileSync("_config.yml", "utf8");
+  for (const excluded of ["AGENTS.md", "README.md", "wrangler.jsonc", "wrangler.lokmira.jsonc", "dist", "docs", "scripts", "social", "design"]) {
+    test(jekyllConfig.includes("- " + excluded), "_config.yml missing exclusion for " + excluded);
+  }
+}
+
 if (failed) process.exit(1);
 console.log("Static QA passed:",keys.length,"unique keys in both languages, safe preview, SEO metadata, mobile rules.");

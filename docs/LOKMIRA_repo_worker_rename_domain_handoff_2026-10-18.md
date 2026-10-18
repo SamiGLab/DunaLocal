@@ -1,20 +1,20 @@
 > **Uygulama güncellemesi — 18 Ekim 2026:** Yeni `lokmira` Worker oluşturuldu ve mevcut `SamiGLab/DunaLocal` deposunun `main` dalına bağlandı. Build: `node scripts/build.mjs`; deploy: `npx wrangler deploy --config wrangler.lokmira.jsonc`. İlk build `3ef7ff19-97b5-4e15-983e-739b119b854f` tamamlandı; `https://lokmira.samiayten-hu.workers.dev/` gerçek HTTP 200 ve canlı testte ana sayfa, 16 HU/EN sayfa, marka/ikonlar, noindex, CSP ve dahili dosya 404 kontrolleri geçti.
 >
-> Eski `dunalocal` Worker korundu. İki Worker aynı depodan, kendi adlarıyla eşleşen ayrı Wrangler yapılandırmalarıyla otomatik dağıtılır. Yeni Worker için varsayılan `wrangler.jsonc` dosyasını kullanmayın: o dosya eski Worker'a aittir. Yeni Worker'da branch preview builds kapalı; main production build açıktır. Live HTTP workflow artık iki hostu da matrisle doğrular.
+> Eski `dunalocal` Worker korundu. İki Worker aynı depodan, kendi adlarıyla eşleşen ayrı Wrangler yapılandırmalarıyla otomatik dağıtılır. Yeni Worker için varsayılan `wrangler.jsonc` dosyasını kullanmayın: o dosya eski Worker'a aittir. Yeni Worker'da branch preview builds kapalı; main production build açıktır. Live HTTP workflow artık iki Worker hostunu ve `https://lokmira.com` özel alan adını doğrular.
 >
-> GitHub deposu **yeniden adlandırılmadı**. `lokmira.com` canlı HTTP isteğinde GitHub Pages'ten yanıt verdi; Cloudflare custom domain/DNS geçişi yapılmadı. Noindex ve kapalı iletişim korundu. Aşağıdaki hazırlık tablosu ve rename yönergeleri **tarihsel plandır**, güncel tamamlanma durumu olarak kullanılmamalıdır.
+> **Canlı DNS / HTTP Doğrulaması (18 Ekim 2026):** `lokmira.com` A kayıtları (`185.199.108.153`–`185.199.111.153`) ve `www.lokmira.com` CNAME kaydı (`samiglab.github.io`) şu anda **GitHub Pages (`Server: GitHub.com`)** üzerinden yanıt vermektedir. GitHub Pages'in kök dizindeki dahili klasörleri (`docs/`, `scripts/`, `social/`, `design/`, `AGENTS.md`, `wrangler*.jsonc`) Jekyll ile derleyip `lokmira.com` altında yayınlamasını engellemek için kök dizine `_config.yml` `exclude` izolasyonu eklendi ve `scripts/verify.mjs` ile `scripts/live-smoke.mjs` testlerine bağlandı. `_headers` güvenlik başlıklarının (`X-Robots-Tag`, `CSP`, `X-Frame-Options`) `lokmira.com` üzerinde aktif olması için DNS kayıtlarının Cloudflare (`lokmira` Worker custom domain) tarafına geçirilmesi ve GitHub Pages'in kapatılması gerekmektedir.
 
 # Lokmira — GitHub repo / Cloudflare Worker isim değişimi ve lokmira.com bağlantı devri
-**18 Ekim 2026 | Durum: uygulama hazırlığı yapıldı, hesap düzeyinde yeniden adlandırma tamamlanmadı**
+**18 Ekim 2026 | Durum: `lokmira` Worker canlıda doğrulandı, GitHub Pages `_config.yml` izolasyonu eklendi, DNS geçişi bekliyor**
 
 ## Talep ve hedefler
 
 | Kaynak | Mevcut | Hedef | Şu anda |
 |---|---|---|---|
 | GitHub repo | `SamiGLab/DunaLocal` | `SamiGLab/Lokmira` | **Bekliyor — GitHub Settings yönetim işlemi** |
-| Cloudflare Worker | `dunalocal` | `lokmira` | **Bekliyor — Cloudflare Worker yönetim işlemi** |
-| Workers.dev önizleme | `dunalocal.samiayten-hu.workers.dev` | `lokmira.samiayten-hu.workers.dev` | **Bekliyor — yeni host gerçekten yanıt vermeli** |
-| Özel domain | kullanıcı `lokmira.com` satın aldığını bildirdi | `lokmira.com` | **Bağlanmadı / kamuya yayın onayı yok** |
+| Cloudflare Worker | `dunalocal` + `lokmira` | `lokmira` (esas yayın kanalı) | **`lokmira` Worker canlıda aktif (`HTTP 200`, `_headers` ve `404` izole)** |
+| Workers.dev önizleme | `dunalocal.samiayten-hu.workers.dev` | `lokmira.samiayten-hu.workers.dev` | **Doğrulandı — her iki Worker canlıda çalışıyor** |
+| Özel domain (`lokmira.com`) | GitHub Pages (`185.199.108-111.153`) | Cloudflare Worker (`lokmira`) | **GitHub Pages'te canlı; `_config.yml` izolasyonu eklendi, Cloudflare DNS devri bekliyor** |
 
 ## Yapılan gerçek teknik hazırlıklar
 
