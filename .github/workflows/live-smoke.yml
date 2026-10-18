@@ -1,0 +1,14 @@
+name: Live Worker HTTP smoke
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  public-preview:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check real workers.dev website from GitHub
+        run: node scripts/live-smoke.mjs
