@@ -38,6 +38,30 @@ for(const width of widths){
     contactAction:document.querySelector('a[data-i18n="contactAction"]')?.getAttribute("href"),
     icons:[...document.querySelectorAll(".flow .ui-icon,.cards .ui-icon,.service-panels .ui-icon")].filter(el=>{const c=getComputedStyle(el);return (c.maskImage||c.webkitMaskImage||"").includes("/icons/")&&c.width!=="0px"}).length
   }));
+  const hero=await page.evaluate(()=>{
+    const section=document.querySelector("section.hero");
+    const diagram=document.querySelector("section.hero .diagram");
+    const headline=document.querySelector("#heroTitle");
+    const a=section.getBoundingClientRect(),b=diagram.getBoundingClientRect(),h=headline.getBoundingClientRect();
+    const mobile=innerWidth<=900;
+    return {
+      left:Math.round(a.left),right:Math.round(innerWidth-a.right),
+      width:Math.round(a.width),diagramWidth:Math.round(b.width),
+      headlineFont:parseFloat(getComputedStyle(headline).fontSize),
+      textWidth:Math.round(h.width),
+      diagramAfterHeading:mobile?b.top>=h.bottom-1:b.left>h.left,
+      diagramInside:b.left>=a.left-1&&b.right<=a.right+1,
+      darkBackground:getComputedStyle(section).backgroundImage.includes("gradient")
+    };
+  });
+  check(Math.abs(hero.left)<=1&&Math.abs(hero.right)<=1&&Math.abs(hero.width-width)<=1,
+    "Hero is not full-bleed "+width+" "+JSON.stringify(hero));
+  check(hero.diagramInside&&hero.diagramAfterHeading&&hero.darkBackground,
+    "Hero diagram or background broken "+width+" "+JSON.stringify(hero));
+  check(width<901?hero.headlineFont<=59:hero.headlineFont<=65,
+    "Headline excessively large "+width+" "+JSON.stringify(hero));
+  if(width>=1024)check(hero.diagramWidth>=350,
+    "Desktop process card too narrow "+width+" "+JSON.stringify(hero));
   check(hu.width<=1&&hu.lang==="hu"&&hu.robots==="noindex,nofollow,noarchive"&&hu.services===4&&hu.icons>=10&&hu.nav==="/hu/szolgaltatasok/"&&hu.contactAction==="/hu/kapcsolat/"&&errors.length===0,"homepage HU "+width+" "+JSON.stringify(hu)+" "+errors);
   await page.locator('button[data-lang="en"]').click();
   const en=await page.evaluate(()=>({
