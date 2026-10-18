@@ -18,6 +18,9 @@ for (const [lang, section] of [["HU",hu],["EN",en]]) {
     test(matcher.test(section), "Missing " + lang + " text key: " + key);
   }
 }
+const gscTag = '<meta name="google-site-verification" content="km1EpHT5L_IUzBBj709rZfeyxZ3zaUM86yIxYJ0nfJk" />';
+test(html.includes(gscTag), "Google Search Console verification meta missing or changed");
+test(html.split('name="google-site-verification"').length === 2, "Duplicate Google Search Console verification meta");
 test(html.includes('name="robots" content="noindex,nofollow,noarchive"'), "Missing noindex meta");
 test(robot.includes("Disallow: /"), "Missing robots disallow");
 test(headers.includes("X-Robots-Tag: noindex"), "Missing noindex header");
