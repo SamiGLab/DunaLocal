@@ -145,3 +145,13 @@
 /* Keep skip link off canvas until keyboard focus — same accessibility behaviour as homepage. */
 .site-page .skip{position:absolute;left:12px;top:-70px;z-index:60;background:#fff;color:#101820;padding:10px 14px;border-radius:8px}
 .site-page .skip:focus{top:12px}
+
+/* Tablet nav: four agency routes need a compact menu well before phone widths. */
+@media(max-width:900px){
+.landing-root .navbar{gap:12px}
+.landing-root .navigation{display:none;position:absolute;top:100%;left:0;right:0;margin:0;background:#f7f8f4;padding:18px 26px 22px;box-shadow:0 15px 32px #10182020;flex-direction:column;align-items:start;gap:8px;z-index:32}
+.landing-root .navigation.open{display:flex}
+.landing-root .navigation a{width:100%;padding:8px 0}
+.landing-root .menu{display:flex}
+.landing-root .language{margin-left:auto}
+}
