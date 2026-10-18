@@ -9,10 +9,13 @@
 - **T034–T036 (draft deliverables):** `social/launch-kit.md` with channel profiles, three HU/EN posts, editable design-template specification, plus `social/templates/lead-to-sale-card.svg`.
 - Previous artifact pack provided editable **T027–T031** sales drafts. Do not label them externally approved without legal/HU QA.
 
+## USER SCOPE UPDATE — 18 October 2026
+**T001/T002/T003/T004/T006 were canceled at the user's explicit instruction.** Company, accountant, tax, work/residence permit, legal contracts/GDPR and founder finance are owner-managed and not assistant tasks. Do not revisit them. T005 Hungarian language support is active. Contact forms remain disabled unless owner provides approved launch details.
+
 ## Hard dependencies: do not silently mark completed
 - **T015** agency name must be explicitly approved by the user. `DunaLocal` is the GitHub repo name only. `LOCAL/OPS` is a disposable internal site placeholder.
 - **T016 / T017** verify brand, company name, .hu/.com domains, social usernames; create final wordmark and favicon only AFTER T015.
-- **T001–T006** work rights, legal operating entity, taxes/invoicing, contract review, GDPR, consent, founder finances; licensed advisers needed where applicable.
+- **T001/T002/T003/T004/T006** CANCELED; excluded from assistant work and not marked complete.
 - **T005 / T020 / T033** identify Hungarian native-speaking sales/language reviewer; have site and sales scripts checked.
 - **T024** activate a REAL, authorized professional email only after domain and legal review; current site has **no live contact destination**.
 - **T026** no public publication until owner specifically approves. GitHub public repository does not equal published website.
@@ -29,21 +32,21 @@
 - Automated checks in `.github/workflows/ci.yml`.
 
 ### Publish-release checklist (NOT done)
-1. Approve brand and verify trademark/domain conflicts; decide legal entity identity.
+1. Approve brand and verify domain/trademark conflicts. Company administration is owner-managed.
 2. Replace every `LOCAL/OPS`, `BELSŐ ELŐNÉZET`, `INTERNAL PREVIEW`, `BELSŐ ÁRAZÁSI HIPOTÉZIS` and unapproved pricing mention with reviewed public content.
-3. Confirm price/VAT treatment, service promises and contract scope with accounting/legal specialists.
-4. Add legitimate business identification and GDPR-compliant legal pages (where legally necessary) following expert review.
+3. Use only the owner-approved final public offer; no tax, contract or accounting work.
+4. Integrate public business/legal notices only if supplied and approved by the owner.
 5. Approve and verify real contact email (and optional form only when privacy basis/processor/retention notices are in place).
 6. Native Hungarian proofreading and English editorial review.
 7. Approve brand graphics, favicon and social sharing image with correct final domain.
 8. Only then update robots/noindex for PUBLIC production. Set canonical URLs and correct HU/EN alternate strategy (single-page language toggle is not equivalent to two indexable locale URLs).
 9. Visual QA at 320, 360, 390, 768, 1440 px; keyboard, contrast, screen-reader basics, Lighthouse Core Web Vitals and broken links.
-10. Deliberate Cloudflare Pages setup and owner's publication approval. Do not confuse an accessible preview URL with private access; use Cloudflare Access if confidentiality matters.
+10. Cloudflare Workers preview already exists; request explicit owner's public launch approval. Do not confuse an accessible preview URL with private access; use Cloudflare Access if confidentiality matters.
 11. Verify Google Search Console/analytics only after applicable privacy controls are approved and configured.
 
 ## Workflow for the next iteration
 1. Collect user choice on T015 from grounded shortlist (never infer from repo title).
 2. Meanwhile, keep HU/EN prototype and social templates stable; iterate mobile/QA without touching public production.
 3. Finalize T027–T031 in the approved brand; get local-language review.
-4. Advance T001–T006 by preparing questions and contacting verified local experts **with permission**, not by asserting legal compliance.
+4. Skip canceled company tasks. Continue Hungarian editorial support, candidate auditing and marketing outputs.
 5. Preserve the separate Codex **40-candidate, 32-activity-matched, 8-pending** workbook; the original v9 with 30 entries is historical. Do not overwrite the newer workbook.
