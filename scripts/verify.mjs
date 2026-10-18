@@ -28,8 +28,8 @@ test(robot.includes("Disallow: /"), "Missing robots disallow");
 test(robot.includes("Sitemap: https://lokmira.com/sitemap.xml"), "Sitemap discovery entry missing");
 test(sitemap === builtSitemap, "Sitemap source and dist out of sync");
 test(sitemap.includes('<loc>https://lokmira.com/</loc>'), "Canonical homepage URL missing from sitemap");
-test((sitemap.match(/<url>/g) || []).length === 1, "Sitemap should list the single currently existing page");
-test(!/\/hu\/|\/en\/|workers\.dev/.test(sitemap), "Non-existent locale routes or preview host in sitemap");
+test((sitemap.match(/<url>/g) || []).length === 17, "Expected homepage and 16 localized agency pages in sitemap");
+test(!/workers\.dev/.test(sitemap), "Preview hostname leaked into planned production sitemap");
 test(headers.includes("X-Robots-Tag: noindex"), "Missing noindex header");
 test(headers.includes("Content-Security-Policy:"), "Missing CSP");
 test(headers.includes("frame-ancestors 'none'"), "Missing anti-framing CSP");
@@ -37,6 +37,10 @@ test(html.includes('src="./brand/focus-mark.svg"'), "Lokmira navbar mark missing
 test(html.includes('src="./brand/focus-app-icon.svg"'), "Lokmira concept icon missing");
 test(html.includes('href="./brand/favicon.svg"'), "Lokmira favicon missing");
 test(html.includes("Lokmira") && !html.includes("LOCAL/OPS"), "Wrong preview brand");
+test(html.includes('class="landing-root"'), "Premium homepage skin not applied");
+test(html.includes('href="./pages.css"'), "Premium homepage CSS link missing");
+test(html.includes('data-route="services"') && html.includes('data-route="about"'), "Multi-page homepage links missing");
+test(css.includes("@media(max-width:360px)"), "Mobile rules missing");
 test(js.includes("Lokmira | Internal preview") && js.includes("Lokmira | Belső előnézet"), "Brand titles missing");
 const notfound = readFileSync("404.html", "utf8");
 test(notfound.includes("<title>404") && notfound.includes('href="/"'), "Missing 404 page");
@@ -52,5 +56,32 @@ test(html.includes("id=\"services\"") && html.includes("service-panels"), "Servi
 test(html.includes('data-i18n="pilotTitleA"') && html.includes('data-i18n="pilotTitleB"'), "Accessible two-line pilot heading missing");
 test(html.includes('data-i18n="service4b"'), "Tracking service description missing");
 for (const id of ["main","services","method","pilot","questions","contact"]) test(html.includes('id="' + id + '"'), "Missing section: " + id);
+const {readdirSync, existsSync} = await import("node:fs");
+const {join} = await import("node:path");
+const pairs = {
+ "hu/szolgaltatasok":"en/services", "hu/modszer":"en/approach",
+ "hu/rolunk":"en/about", "hu/kapcsolat":"en/contact",
+ "hu/helyi-seo":"en/local-seo", "hu/google-ads":"en/google-ads",
+ "hu/tartalom-video":"en/content-video", "hu/meres":"en/measurement"
+};
+for(const [huPath,enPath] of Object.entries(pairs)) {
+ for(const [lang,route] of [["hu",huPath],["en",enPath]]) {
+   const source=join(route,"index.html");
+   const built=join("dist",route,"index.html");
+   test(existsSync(source)&&existsSync(built),"Missing localized page: "+route);
+   if(!existsSync(source)||!existsSync(built))continue;
+   const src=readFileSync(source,"utf8"),dst=readFileSync(built,"utf8");
+   test(src===dst,"Source/dist drift: "+route);
+   test(src.includes('<html lang="'+lang+'"'),"Wrong page language: "+route);
+   test(src.includes('name="robots" content="noindex,nofollow,noarchive"'),"Missing noindex: "+route);
+   test(!/<form[\\s>]/i.test(src),"Unauthorized contact form: "+route);
+   test(src.includes('name="google-site-verification"'),"Missing Google Search Console tag: "+route);
+   test(src.includes('href="/pages.css"'),"Dedicated page CSS not linked: "+route);
+   test(sitemap.includes("<loc>https://lokmira.com/"+route+"/</loc>"),"Sitemap route missing: "+route);
+ }
+}
+test(readFileSync("pages.css","utf8")===readFileSync("dist/pages.css","utf8"),"Premium CSS deploy drift");
+test(readFileSync("pages.js","utf8")===readFileSync("dist/pages.js","utf8"),"Premium JS deploy drift");
+test(readdirSync("dist/hu").length===8 && readdirSync("dist/en").length===8,"Unexpected locale directory count");
 if (failed) process.exit(1);
 console.log("Static QA passed:",keys.length,"unique keys in both languages, safe preview, SEO metadata, mobile rules.");
