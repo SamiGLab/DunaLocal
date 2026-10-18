@@ -15,6 +15,10 @@ jobs:
         run: node --check app.js
       - name: Build isolated Cloudflare Pages output
         run: node scripts/build.mjs
+      - name: Ensure committed deploy assets match sources
+        run: |
+          git diff --exit-code -- dist/
+          test -z "$(git ls-files --others --exclude-standard dist/)"
       - name: Check no private files are copied
         run: |
           test -f dist/index.html

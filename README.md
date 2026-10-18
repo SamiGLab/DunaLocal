@@ -6,12 +6,16 @@
 
 Open `index.html` in a browser or run `python3 -m http.server 8000` and visit `http://localhost:8000`.
 
-## Deployment plan (Cloudflare Pages)
+## Cloudflare Workers deployment (existing project)
 
-1. Connect GitHub repository `SamiGLab/DunaLocal` in Cloudflare Pages when the owner is ready.
-2. Framework preset: **None**; production branch **`main`**; root directory **repository root**; build command **`node scripts/build.mjs`**; output directory **`dist`**. No external dependencies are needed. The build deliberately excludes internal planning documents and social drafts.
-3. **Do not click Save and Deploy until you intend to create a publicly reachable `*.pages.dev` URL.** Git integration deploys the `main` branch to production. To use a separate preview branch, configure a different production branch and protect preview URLs appropriately. The current code is only an unfinished internal concept.
-4. `robots.txt`, `noindex`, and `X-Robots-Tag` discourage indexing but **do not make any URL private**. Cloudflare Access is required to restrict visitors; protecting Preview Deployments does not automatically protect the default production `*.pages.dev` URL.
+- GitHub repository: `SamiGLab/DunaLocal`; branch: `main`.
+- Cloudflare Worker: `dunalocal`, originally created by the project owner.
+- Expected publicly reachable preview: `https://dunalocal.samiayten-hu.workers.dev/` (the app URL is confirmed from the owner's Cloudflare screenshot; live HTTP response has not been independently verified).
+- Current Cloudflare dashboard settings: **Build command: None**, **Deploy command: `npx wrangler deploy`**. These can remain unchanged.
+- `wrangler.jsonc` sets the Worker name and `assets.directory` to `./dist`. The `dist/` folder is **intentionally committed** to Git so the existing no-build Workers workflow can upload only site files.
+- When changing `index.html`, `styles.css`, `app.js`, `robots.txt`, or `_headers`, also run `node scripts/build.mjs` and commit the resulting `dist/` changes. CI validates that deployed assets match their sources.
+- The internal planning documents, sales kits, test files and source scripts are **not** included in `dist/` and therefore are not distributed as site assets.
+- Public worker address does not mean public launch approval: the site is an **internal concept** with noindex, blocked robots, disabled contact and provisional pricing. Visitors who know the URL can still view it; Cloudflare Access is needed for true privacy.
 
 ## Restrictions
 
