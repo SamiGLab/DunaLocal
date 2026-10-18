@@ -1,7 +1,7 @@
 # LOKMIRA — Ana proje yol haritası ve teslimat kapıları
 **Sürüm:** V1 — 18 Ekim 2026  
 **Proje:** Budapeşte / Macaristan odaklı butik dijital pazarlama ajansı  
-**Marka:** **Lokmira**, kullanıcının bundan sonraki site/ajans planı için seçtiği isim. **Alan adı satın alındığı, marka hakkı temiz veya kamuya açık lansman onaylandığı anlamına gelmez.**
+**Marka:** **Lokmira**, kullanıcının seçtiği planlama adı. **Kullanıcı 18 Ekim 2026'da `lokmira.com` alan adını satın aldığını bildirdi.** Bu beyan kullanıcı kaydıdır; registrar/hesap DNS yetkisi bağımsız doğrulanmadı. Marka hakkı temizliği ve halka açık lansman onayı hâlâ bekliyor.
 **Mevcut teknik referans:** `SamiGLab/DunaLocal` GitHub deposu, Cloudflare `dunalocal.samiayten-hu.workers.dev` **noindex iç önizleme**. Bunlar geçmişin teknik kimliğidir; yeni ticari marka değildir.
 
 ## Değişmeyen çalışma kuralları
@@ -28,19 +28,19 @@
 |---|---|---|---|---|
 | **L00** | **Lokmira kararıyla yol haritasını eşitle** | **TAMAMLANDI — plan kaydı** | Bu belge GitHub'da, eş ana yol haritası Drive'da; eski Duna isimlerinin güncel marka olmadığının belirtilmesi | Yok |
 | **L01** | **Lokmira marka tasarım taslakları** | **SIRADAKİ / ONAY BEKLİYOR** | 2–3 logo yönü; yatay/dikey/kare SVG, mono ve açık/koyu örnekleri; favicon taslağı; tipografi ve renk kuralları; Drive'da karar seti | Taslak yapılabilir; tescil/alan adı riski devam eder; hiçbir final görsel yayımlanmaz |
-| **L02** | **Marka uygunluğu ve alan adı durumunu kapat** | **BEKLİYOR** | `lokmira.hu` için kullanıcıdan resmî kayıt sonucu; `lokmira.com` satın alma/sahiplik teyidi (varsa); temel mevcut marka benzerliği/handle kontrolünün açık raporu; kullanıcının final marka onayı | **Kullanıcı .hu'ya bakacak.** Hukuki tescil/işletme işleri alınmaz |
+| **L02** | **Marka uygunluğu ve alan adı durumunu kapat** | **BEKLİYOR** | `lokmira.hu` için kullanıcıdan resmî kayıt sonucu; `lokmira.com` kullanıcı satın alma beyanı kayda geçti; registrar/DNS erişimi henüz teyit edilmedi; temel mevcut marka benzerliği/handle kontrolünün açık raporu; kullanıcının final marka onayı | **Kullanıcı .hu'ya bakacak.** Hukuki tescil/işletme işleri alınmaz |
 | **L03** | **Lokmira web iç önizleme kimliği** | **BEKLİYOR** | `LOCAL/OPS` yalnız **iç önizlemede** Lokmira taslağına dönüştürülür; favicon, OG görsel, erişilebilir navbar, footer ve HU/EN meta; kaynak+`dist/` eş; CI geçer; `noindex` korunur | L01 tasarım onayı; marka teyidi gelmeden ticari açılış yok |
 | **L04** | **HU/EN teklif ve site mesajlarının revizyonu** | **BEKLİYOR** | Yerel görünürlük, Google Ads, içerik/AI video, talep takibi ve `Search → Enquiry → Quote → Job` net sunulur; 90 günlük pilot kapsamı ölçülebilir; Macarca native proofreading için düzeltilebilir kopya hazırlanır | L01; native kontrol yapılmadan dışa yayın yok |
 | **L05** | **Sosyal kimlik ve ilk 6 içerik paketi** | **BEKLİYOR** | LinkedIn/Facebook kapak-avatar, Instagram avatar; 3 eski post ve üç SVG yeniden kullanılarak toplam 6 gerçek post metni/görseli; HU/EN düzeltme notları ve ölçümler; kaynak+Drive kopyaları | L01/L04; hesap açma ve paylaşma ayrı onay |
 | **L06** | **Müşteri havuzunu eşitle ve niteliklendir** | **DOSYA BEKLİYOR** | Son 40 kayıtlı **ana** çalışma kitabı bulunur; 8 bekleyenin kaynakları doğrulanır; 10 mini denetim doğru kayıtla eşleşir; duplicate/iletişim bilgileri ayrıştırılır; hiçbir veri uydurulmaz | Güncel Excel dosyasının doğrulanabilir kopyası; v9 üzerine yazma |
 | **L07** | **Satış paketi ve ilk yazılı erişim** | **BEKLİYOR** | İyi bir ilk e-posta/mesaj HU; İngilizce görüşme gündemi, keşif soruları, 1 sayfa teklif/pilot; ilk 10 müşteri için kanıta dayalı kişiselleştirme | L04/L06; gönderim için **ayrı kullanıcı onayı** |
-| **L08** | **Gerçek profesyonel e-posta ve alan adı bağlantısı** | **BAĞIMLILIK BEKLİYOR** | Kullanıcının satın aldığı domain ve seçtiği mail sağlayıcısı için doğrulanmış DNS, `www`, `MX/SPF/DKIM/DMARC`; gelen e-posta testi; iki dilin URL şeması net | Domain kullanıcı tarafından alınacak; gerçek servis erişimi ve onay gerekir |
+| **L08** | **Gerçek profesyonel e-posta ve alan adı bağlantısı** | **ALAN ADI SATIN ALINDI / BAĞLANTI BEKLİYOR** | Kullanıcının satın aldığı domain ve seçtiği mail sağlayıcısı için doğrulanmış DNS, `www`, `MX/SPF/DKIM/DMARC`; gelen e-posta testi; iki dilin URL şeması net | Kullanıcı `lokmira.com` alan adını aldığını bildirdi; registrar/DNS erişimi, mail sağlayıcısı ve uygulama onayı gerekir |
 | **L09** | **Ticari yayına hazırlık** | **BEKLİYOR** | Son onaylı marka/iletişim; HU native metin kontrolü; gerçek ürün/hizmet bilgisi; tüm bağlantılar; mobil + a11y; `/hu/` ve `/en/` SEO; Google Search Console/analytics ihtiyacının değerlendirilmesi; kullanıcıdan gelen yayın metinlerinin teknik entegrasyonu | L02–L08; yayın sonrası otomatik veri toplama önceden açılmaz |
 | **L10** | **Halka açık yayını ayrı onayla** | **YAYIN İZNİ YOK** | Açık kullanıcı onayıyla alan adı yayını; `noindex` sadece doğru production ortamından kaldırılır; yönlendirmeler/HTTPS/kanonikler ve smoke test kanıtlanır | L09 + **açık yayın onayı** |
 | **L11** | **İlk müşteri deneyi ve değerlendirme** | **GERÇEK SONUÇ BEKLİYOR** | İzinli erişimler, gerçek keşif görüşmeleri, teklif ve pilot sonucu kaynakla kaydedilir; reklam tıklaması ve müşteriye dönüşüm ayrılır; Go/No-Go kararı gerçek veriyle verilir | L06–L10; müşteri iletişim kararı kullanıcıda |
 
 ## Kritik blokajlar
-- `lokmira.hu` kullanıcı tarafından kontrol edilecek; `lokmira.com` kullanıcı tarafından **müsait görüldü**, **satın alındığı doğrulanmadı**.
+- **18 Ekim 2026:** Kullanıcı **`lokmira.com` satın aldığını bildirdi**. Satın alma kullanıcı beyanıyla güncellendi; DNS/registrar hesabı yetkisi ve teknik yönlendirme henüz doğrulanmadı. `lokmira.hu` kullanıcı tarafından kontrol edilecek; zorunlu değil.
 - Marka benzerliği ve sosyal medya kullanıcı adlarının kesin uygunluğu **doğrulanmadı**; brand concept çalışmalarına engel değil, **yayına engel**.
 - Nihai Macarca editör kontrolü yok.
 - Gerçek iş e-postası yok.
