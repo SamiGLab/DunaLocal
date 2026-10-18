@@ -37,6 +37,8 @@ jobs:
       - name: Verify live Worker headers, URL and private-path isolation
         continue-on-error: true
         run: bash scripts/check-live.sh
+      - name: Verify financial scenario arithmetic
+        run: node scripts/finance_scenarios.mjs
       - name: Install browser test runner
         run: npm install --no-save --no-package-lock playwright@1.55.1
       - name: Browser QA at five viewport widths
