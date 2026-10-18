@@ -156,7 +156,9 @@ for(const path of allSourcePages){
     test(existsSync(target),"Internal link target missing "+href+" on "+path);
   }
   test(!/\b(?:info|hello|contact)@lokmira\.com\b/.test(page),"Unverified corporate email shown on "+path);
+  test(!page.includes("—") && !page.includes("–"),"Em/en-dash found on "+path);
 }
+test(!js.includes("—") && !js.includes("–"),"Em/en-dash found in app.js");
 test(readFileSync("hu/kapcsolat/index.html","utf8").includes("mailto:samigrowlab@gmail.com"),"Missing approved contact email on HU contact page");
 test(readFileSync("en/contact/index.html","utf8").includes("mailto:samigrowlab@gmail.com"),"Missing approved contact email on EN contact page");
 
