@@ -281,3 +281,10 @@
  .landing-root .flow li,.landing-root .service-panels article{transition:none}
  .landing-root .flow li:hover,.landing-root .service-panels article:hover{transform:none}
 }
+
+/* WCAG AA audit: accessible contrast for small and secondary audit/pilot copy. */
+.sample-copy p:not(.eyebrow){color:#4d6157}
+.audit-rows li small{color:#4d6255}
+.audit-note{color:#506456!important}
+.audit-sheet-header small{color:#45624f}
+.landing-root .pilot-timeline small{color:#4c6555}
