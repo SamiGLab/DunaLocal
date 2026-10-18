@@ -405,3 +405,7 @@
  .landing-root .language,.site-page .site-langs{width:82px;height:40px}
  .landing-root .language .lang,.site-page .site-langs a{min-width:35px;height:32px}
 }
+
+/* Navigation CTA uses the same four-item geometry on every route (no extra decorative arrow). */
+.site-page .site-nav .nav-cta.ui-link-icon::after{content:none;display:none}
+.site-page .site-nav .nav-cta,.landing-root .navigation .nav-main-action{transform:none}
