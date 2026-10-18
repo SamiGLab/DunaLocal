@@ -15,20 +15,21 @@
   <title>Lokmira | Belső előnézet</title>
   <link rel="icon" type="image/svg+xml" href="./brand/favicon.svg">
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./pages.css">
   <script src="./app.js" defer></script>
 </head>
-<body>
+<body class="landing-root">
   <a class="skip" href="#main" data-i18n="skip">Ugrás a tartalomra</a>
   <div class="preview" role="status"><span class="light"></span><span data-i18n="preview">BELSŐ ELŐNÉZET · LOKMIRA ARCULATTERV · NEM PUBLIKUS</span></div>
   <header class="header" id="top">
     <div class="shell navbar">
       <a class="logo" href="#top" aria-label="Lokmira - lap teteje"><img class="brand-symbol" src="./brand/focus-mark.svg" alt="" width="46" height="46"><span class="brand-wordmark">lokmira<small data-i18n="brandNote">belső arculatterv</small></span></a>
       <nav class="navigation" id="navigation" aria-label="Fő navigáció">
-        <a href="#services" data-i18n="navServices">Szolgáltatások</a>
-        <a href="#method" data-i18n="navMethod">Módszer</a>
+        <a data-route="services" href="/hu/szolgaltatasok/" data-i18n="navServices">Szolgáltatások</a>
+        <a data-route="approach" href="/hu/modszer/" data-i18n="navMethod">Módszerünk</a>
         <a href="#pilot" data-i18n="navPilot">90 napos pilot</a>
-        <a href="#questions" data-i18n="navQuestions">Kérdések</a>
-        <a href="#contact" data-i18n="navContact">Kapcsolat</a>
+        <a data-route="about" href="/hu/rolunk/" data-i18n="navAbout">Rólunk</a>
+        <a class="nav-main-action" data-route="contact" href="/hu/kapcsolat/" data-i18n="navContact">Kapcsolat · előkészület</a>
       </nav>
       <div class="language" aria-label="Language selector"><button class="lang active" data-lang="hu" aria-pressed="true">HU</button><span> / </span><button class="lang" data-lang="en" aria-pressed="false">EN</button></div>
       <button type="button" class="menu" aria-controls="navigation" aria-expanded="false" aria-label="Menü megnyitása"><span></span><span></span><span></span></button>
@@ -38,10 +39,10 @@
     <section class="hero shell" aria-labelledby="heroTitle">
       <div>
         <div class="brand-seal"><img src="./brand/focus-app-icon.svg" alt="" width="52" height="52"><span><strong>Lokmira</strong><small data-i18n="brandTagline">Helyi láthatóság. Mérhető megkeresések.</small></span></div>
-        <p class="eyebrow"><span class="line"></span><span data-i18n="eyebrow">Budapest · helyi szolgáltató vállalkozások</span></p>
-        <h1 id="heroTitle"><span data-i18n="heroLead">Legyen könnyebb rád találni.</span> <em data-i18n="heroEnd">Tudd, miből lesz valódi megkeresés.</em></h1>
+        <p class="eyebrow"><span class="line"></span><span data-i18n="eyebrow">BUDAPEST · DIGITÁLIS MARKETING ÉS HELYI NÖVEKEDÉS</span></p>
+        <h1 id="heroTitle"><span data-i18n="heroLead">Legyen a vállalkozásod megtalálható.</span> <em data-i18n="heroEnd">Az érdeklődés pedig követhető.</em></h1>
         <p class="intro" data-i18n="heroText">A Lokmira a helyi keresési jelenlétet, a Google Ads kampányokat, a tartalomkészítést és az érdeklődések nyomon követését kapcsolja össze. Budapesti szolgáltatóknak, világos célokkal és túlzó ígéretek nélkül.</p>
-        <div class="actions"><a class="button primary" href="#pilot"><span data-i18n="heroAction">Nézd meg a pilotot</span><span aria-hidden="true">↗</span></a><a class="button outline" href="#method" data-i18n="heroAction2">Hogyan működik?</a></div>
+        <div class="actions"><a class="button primary" data-route="services" href="/hu/szolgaltatasok/"><span data-i18n="heroAction">Fedezd fel a szolgáltatásokat</span><span aria-hidden="true">↗</span></a><a class="button outline" data-route="approach" href="/hu/modszer/" data-i18n="heroAction2">Hogyan dolgozunk?</a></div>
         <div class="tags"><span data-i18n="tag1">Helyi SEO és Cégprofil</span><span data-i18n="tag2">Google Ads és tartalom</span><span data-i18n="tag3">Követhető megkeresések</span></div>
       </div>
       <div class="diagram" aria-label="Illustrative enquiry-to-sale process">
@@ -62,12 +63,12 @@
     </div></section>
 
     <section id="services" class="shell section service-section" aria-labelledby="servicesTitle">
-      <div class="section-intro"><div><p class="eyebrow" data-i18n="servicesEyebrow">MIBEN SEGÍT A LOKMIRA?</p><h2 id="servicesTitle"><span data-i18n="servicesTitle">Több mint hirdetés.</span><br><em data-i18n="servicesTitle2">Összekapcsolt helyi jelenlét.</em></h2></div><p data-i18n="servicesText">A szolgáltatásokat az adott vállalkozás helyzetéhez igazítjuk. Nem minden elem része automatikusan az első pilotnak.</p></div>
+      <div class="section-intro"><div><p class="eyebrow" data-i18n="servicesEyebrow">MIBEN SEGÍT A LOKMIRA?</p><h2 id="servicesTitle"><span data-i18n="servicesTitle">Láthatóság, ami célt szolgál.</span><br><em data-i18n="servicesTitle2">Együtt működő csatornák.</em></h2></div><p data-i18n="servicesText">A szolgáltatásokat az adott vállalkozás helyzetéhez igazítjuk. Nem minden elem része automatikusan az első pilotnak.</p></div>
       <div class="service-panels">
-        <article><span class="service-no">01 / LOCAL</span><h3 data-i18n="service1">Google Cégprofil és helyi SEO</h3><p data-i18n="service1b">A vállalkozás adatainak, helyi keresési megjelenésének és fontos weboldalainak áttekintése és javítási javaslatai.</p></article>
-        <article><span class="service-no">02 / ADS</span><h3 data-i18n="service2">Google Ads kampányok</h3><p data-i18n="service2b">Egyértelmű keresési szándékokra épülő kampányok, átlátható költségkerettel és mérési tervvel.</p></article>
-        <article><span class="service-no">03 / CREATIVE</span><h3 data-i18n="service3">Tartalom és AI-támogatott videó</h3><p data-i18n="service3b">Márkához illő vizuális tartalmak és videótervek, ellenőrzött termékállításokkal és emberi jóváhagyással.</p></article>
-        <article><span class="service-no">04 / MEASUREMENT</span><h3 data-i18n="service4">Érdeklődés- és ajánlatkövetés</h3><p data-i18n="service4b">A keresést, megkeresést és ajánlatot összekötő egyszerű folyamat, a vállalkozásnál elérhető adatok alapján.</p></article>
+        <article><span class="service-no">01 / LOCAL</span><h3 data-i18n="service1">Google Cégprofil és helyi SEO</h3><p data-i18n="service1b">A vállalkozás adatainak, helyi keresési megjelenésének és fontos weboldalainak áttekintése és javítási javaslatai.</p><a data-route="seo" href="/hu/helyi-seo/" data-i18n="serviceMore">Részletek ↗</a></article>
+        <article><span class="service-no">02 / ADS</span><h3 data-i18n="service2">Google Ads kampányok</h3><p data-i18n="service2b">Egyértelmű keresési szándékokra épülő kampányok, átlátható költségkerettel és mérési tervvel.</p><a data-route="ads" href="/hu/google-ads/" data-i18n="serviceMore">Részletek ↗</a></article>
+        <article><span class="service-no">03 / CREATIVE</span><h3 data-i18n="service3">Tartalom és AI-támogatott videó</h3><p data-i18n="service3b">Márkához illő vizuális tartalmak és videótervek, ellenőrzött termékállításokkal és emberi jóváhagyással.</p><a data-route="creative" href="/hu/tartalom-video/" data-i18n="serviceMore">Részletek ↗</a></article>
+        <article><span class="service-no">04 / MEASUREMENT</span><h3 data-i18n="service4">Érdeklődés- és ajánlatkövetés</h3><p data-i18n="service4b">A keresést, megkeresést és ajánlatot összekötő egyszerű folyamat, a vállalkozásnál elérhető adatok alapján.</p><a data-route="measurement" href="/hu/meres/" data-i18n="serviceMore">Részletek ↗</a></article>
       </div>
     </section>
     <section id="method" class="shell section">
@@ -78,6 +79,7 @@
         <article><span class="card-no">03 / INSIGHT</span><div class="card-icon">▤</div><h3 data-i18n="card3">Hasznos riport</h3><p data-i18n="card3b">A valós értékesítési út követése, nem pusztán a kattintásoké.</p></article>
       </div>
     </section>
+    <section class="home-transition"><div class="shell"><p class="eyebrow" data-i18n="storyLabel">KIS LÉPÉSEK · TISZTA MÓDSZER</p><h2 data-i18n="storyTitle">Nem kérünk vak bizalmat.</h2><p data-i18n="storyText">Még nem állítunk magunkról ellenőrizhetetlen eredményeket, és nem jelenítünk meg kitalált ügyfélreferenciákat. A Lokmira ajánlata az átlátható munkafolyamatra, a világos szerepekre és a követhető üzleti visszajelzésre épül.</p><a data-route="about" href="/hu/rolunk/" data-i18n="storyAction">Ismerd meg, hogyan gondolkodunk ↗</a></div></section>
     <section id="pilot" class="pilot"><div class="shell pilot-grid">
       <div><p class="eyebrow" data-i18n="pilotLabel">ELSŐ PILOT · AUTÓVÉDELEM / PPF</p><h2><span data-i18n="pilotTitleA">90 nap.</span><br><span data-i18n="pilotTitleB">Világos keretek.</span></h2><p data-i18n="pilotText">Az első 90 napos pilot egy kiválasztott prémium autóvédelmi szolgáltatásra fókuszál. A tanulságokat később más helyi szolgáltatókra is alkalmazhatjuk. A pilot még tervezési fázisban van.</p><p class="callout" data-i18n="pilotWarning">A szolgáltatási kör, a díjazás és az indulás feltételei még egyeztetés alatt állnak.</p></div>
       <div class="price-card"><p class="eyebrow" data-i18n="priceLabel">BELSŐ ÁRAZÁSI HIPOTÉZIS</p><div class="price pending"><strong data-i18n="priceStatus">Egyeztetés alatt</strong><span data-i18n="priceUnit">90 napos tesztprogram</span></div><p class="setup" data-i18n="setup">A végleges feltételek jóváhagyásra várnak.</p><hr><ul><li data-i18n="feature1">Egy Google Search szolgáltatásvonal</li><li data-i18n="feature2">Érdeklődés–ajánlat–munka követés</li><li data-i18n="feature3">Korlátozott Google Cégprofil-javítás</li><li data-i18n="feature4">Alap mérés és havi riport</li></ul><p class="muted" data-i18n="priceNote">Hirdetési költés külön. Sem bevételi, sem ügyfélszám-garancia nincs.</p></div>
