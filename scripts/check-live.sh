@@ -11,7 +11,7 @@ get() {
 }
 get "/" index
 grep -q "Lokmira" "$tmp/index.body"
-for name in app.js styles.css robots.txt brand/focus-mark.svg brand/focus-app-icon.svg brand/focus-logo.svg brand/favicon.svg; do
+for name in app.js styles.css robots.txt sitemap.xml brand/focus-mark.svg brand/focus-app-icon.svg brand/focus-logo.svg brand/favicon.svg; do
   get "/$name" "$name"
 done
 if cmp -s "dist/index.html" "$tmp/index.body"; then
