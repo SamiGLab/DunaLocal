@@ -3,21 +3,26 @@
 const copy = {
   hu: {
     preview:"BELSŐ ELŐNÉZET · LOKMIRA ARCULATTERV · NEM PUBLIKUS",
-    brandNote:"belső arculatterv",brandTagline:"Helyi láthatóság. Mérhető megkeresések.",skip:"Ugrás a tartalomra",navMethod:"Módszer",navPilot:"90 napos pilot",navQuestions:"Kérdések",navContact:"Kapcsolat",
-    eyebrow:"Budapest · prémium autóvédelmi műhelyek",heroLead:"Ne állj meg az érdeklődőnél.",heroEnd:"Lásd, melyikből lesz munka.",
-    heroText:"Összekötjük a Google keresési kampányokat az ajánlatkéréssel és a megnyert munkával. Egy szűk fókuszú, 90 napos teszt — nem megfoghatatlan marketingígéret.",
-    heroAction:"Nézd meg a pilotot",heroAction2:"Hogyan működik?",tag1:"Egy szolgáltatásvonal",tag2:"Nyomon követhető ajánlatok",tag3:"Nincs eredménygarancia",
-    diagramTitle:"A műhely bevételi útvonala",demo:"KONCEPCIÓ · NEM VALÓS ADAT",flow1:"Keresés",flow2:"Érdeklődés",flow3:"Ajánlat",flow4:"Megrendelés",
+    brandNote:"belső arculatterv",brandTagline:"Helyi láthatóság. Mérhető megkeresések.",skip:"Ugrás a tartalomra",navServices:"Szolgáltatások",navMethod:"Módszer",navPilot:"90 napos pilot",navQuestions:"Kérdések",navContact:"Kapcsolat",
+    eyebrow:"Budapest · helyi szolgáltató vállalkozások",heroLead:"Legyen könnyebb rád találni.",heroEnd:"Tudd, miből lesz valódi megkeresés.",
+    heroText:"A Lokmira a helyi keresési jelenlétet, a Google Ads kampányokat, a tartalomkészítést és az érdeklődések nyomon követését kapcsolja össze. Budapesti szolgáltatóknak, világos célokkal és túlzó ígéretek nélkül.",
+    heroAction:"Nézd meg a pilotot",heroAction2:"Hogyan működik?",tag1:"Helyi SEO és Cégprofil",tag2:"Google Ads és tartalom",tag3:"Követhető megkeresések",
+    diagramTitle:"A megkeresés útja",demo:"KONCEPCIÓ · NEM VALÓS ADAT",flow1:"Keresés",flow2:"Érdeklődés",flow3:"Ajánlat",flow4:"Megrendelés",
     detail2:"Hívás / ajánlatkérés",detail3:"Összeg / dátum / állapot",detail4:"Megnyert vagy elveszített",diagramFoot:"Folyamatábra. Nem valós ügyféladat és nem eredményígéret.",
     highlight1:"Szűk fókusz",highlight1b:"Egy nagy értékű szolgáltatás",highlight2:"Közös mérés",highlight2b:"Keresés → ajánlat → munka",highlight3:"Valós visszajelzés",highlight3b:"Tények, nem becslések",
+    servicesEyebrow:"MIBEN SEGÍT A LOKMIRA?",servicesTitle:"Több, mint hirdetés.",servicesTitle2:"Összekapcsolt helyi jelenlét.",servicesText:"A szolgáltatásokat az adott vállalkozás helyzetéhez igazítjuk. Nem minden elem része automatikusan az első pilotnak.",
+    service1:"Google Cégprofil és helyi SEO",service1b:"A vállalkozás adatainak, helyi keresési megjelenésének és fontos weboldalainak áttekintése és javítási javaslatai.",
+    service2:"Google Ads kampányok",service2b:"Egyértelmű keresési szándékokra épülő kampányok, átlátható költségkerettel és mérési tervvel.",
+    service3:"Tartalom és AI-támogatott videó",service3b:"Márkához illő vizuális tartalmak és videótervek, ellenőrzött termékállításokkal és emberi jóváhagyással.",
+    service4:"Érdeklődés- és ajánlatkövetés",service4b:"A keresést, megkeresést és ajánlatot összekötő egyszerű folyamat, a vállalkozásnál elérhető adatok alapján.",
     methodEyebrow:"AMIT MÁSKÉPP CSINÁLUNK",methodTitle:"Nem több kattintás.",methodTitle2:"Jobban követhető értékesítés.",
-    methodText:"Egy kampány csak akkor értékes, ha a műhely látja, mi történik a kapcsolatfelvétel után.",
+    methodText:"A kattintás önmagában nem üzleti eredmény. A folyamatot az első kereséstől az ajánlaton át a megrendelésig szeretnénk áttekinthetővé tenni.",
     card1:"Keresési szándék",card1b:"Google Search kampány egy kiválasztott, nagy értékű szolgáltatásra.",
     card2:"Ajánlatkövetés",card2b:"Érdeklődések, elküldött ajánlatok és következő lépések áttekinthetően.",
     card3:"Hasznos riport",card3b:"A valós értékesítési út követése, nem pusztán a kattintásoké.",
-    pilotLabel:"ELSŐ AJÁNLAT · BELSŐ TERV",pilotTitle:"90 nap. Világos keretek.",
-    pilotText:"Egy kiválasztott ügyfélszerzési folyamat tesztelése. A feltüntetett ár csak belső tervezési feltételezés, nem kötelező érvényű ajánlat.",
-    pilotWarning:"Végleges árak, ÁFA, szerződés és jogi feltételek jóváhagyásra várnak.",
+    pilotLabel:"ELSŐ PILOT · AUTÓVÉDELEM / PPF",pilotTitleA:"90 nap.",pilotTitleB:"Világos keretek.",
+    pilotText:"Az első 90 napos pilot egy kiválasztott prémium autóvédelmi szolgáltatásra fókuszál. A tanulságokat később más helyi szolgáltatókra is alkalmazhatjuk. A pilot még tervezési fázisban van.",
+    pilotWarning:"A szolgáltatási kör, a díjazás és az indulás feltételei még egyeztetés alatt állnak.",
     priceLabel:"BELSŐ PILOT KONCEPCIÓ",priceStatus:"Egyeztetés alatt",priceUnit:"90 napos tesztprogram",setup:"A végleges feltételek jóváhagyásra várnak.",
     feature1:"Egy Google Search szolgáltatásvonal",feature2:"Érdeklődés–ajánlat–munka követés",
     feature3:"Korlátozott Google Cégprofil-javítás",feature4:"Alap mérés és havi riport",
@@ -25,33 +30,38 @@ const copy = {
     faqLabel:"GYAKORI KÉRDÉSEK",faqHeading:"Tisztázzuk előre.",
     q1:"Már van weboldalunk és ajánlatkérő űrlapunk. Miért kellene új?",
     a1:"Lehet, hogy nem kell. Először a meglévő rendszert vizsgáljuk meg, és csak bizonyított hiány esetén ajánlunk változtatást.",
-    q2:"Garantálható több PPF-megrendelés?",
+    q2:"Garantálható több új ügyfél?",
     a2:"Nem. A cél egy mérhető teszt, nem eladásszám-garancia. Az eredmény a kereslettől, kapacitástól és versenytől is függ.",
     q3:"A Google hirdetési költés benne van a díjban?",
     a3:"Nincs. A médiaköltés külön költség; a feltüntetett díj nem végleges kereskedelmi ajánlat.",
     contactLabel:"KÖVETKEZŐ LÉPÉS",contactTitle:"Először értsük meg a jelenlegi folyamatot.",
-    contactText:"Valós kapcsolatfelvétel csak a jóváhagyott márkanév, céges email és adatvédelmi megfelelés után indul.",
+    contactText:"A kapcsolatfelvételi lehetőségeket a céges e-mail beállítása és a nyilvános indulás jóváhagyása után kapcsoljuk be.",
     contactStatus:"Kapcsolatfelvétel: nem aktív · belső előnézet",
-    footNote:"— belső arculatterv",footText:"Koncepcióterv, nem bejegyzett márka vagy nyilvános ajánlat.",toTop:"↑ Tetejére"
+    footNote:"— belső arculatterv",footText:"Belső előnézet; nem végleges kereskedelmi ajánlat, és a kapcsolatfelvétel még nem aktív.",toTop:"↑ Tetejére"
   },
   en: {
     preview:"INTERNAL PREVIEW · LOKMIRA BRAND DRAFT · NOT PUBLIC",
-    brandNote:"internal brand draft",brandTagline:"Local visibility. Measurable enquiries.",skip:"Skip to content",navMethod:"Approach",navPilot:"90-day pilot",navQuestions:"Questions",navContact:"Contact",
-    eyebrow:"Budapest · premium vehicle protection workshops",heroLead:"Don't stop at the lead.",heroEnd:"See which enquiries become booked work.",
-    heroText:"We connect Google Search campaigns to enquiries, quotations and jobs won. One focused 90-day test — not vague marketing promises.",
-    heroAction:"Explore the pilot",heroAction2:"How it works",tag1:"One service line",tag2:"Traceable quotations",tag3:"No outcome guarantee",
-    diagramTitle:"Your workshop's sales journey",demo:"CONCEPT · NO REAL CUSTOMER DATA",flow1:"Search",flow2:"Enquiry",flow3:"Quote",flow4:"Booked job",
+    brandNote:"internal brand draft",brandTagline:"Local visibility. Measurable enquiries.",skip:"Skip to content",navServices:"Services",navMethod:"Approach",navPilot:"90-day pilot",navQuestions:"Questions",navContact:"Contact",
+    eyebrow:"Budapest · local service businesses",heroLead:"Get found locally.",heroEnd:"Know which enquiries become customers.",
+    heroText:"Lokmira connects local search visibility, Google Ads, content and enquiry tracking for service businesses in Budapest. Clear priorities, practical measurement and no inflated promises.",
+    heroAction:"Explore the pilot",heroAction2:"How it works",tag1:"Local SEO & Business Profile",tag2:"Google Ads & content",tag3:"Traceable enquiries",
+    diagramTitle:"The enquiry journey",demo:"CONCEPT · NO REAL CUSTOMER DATA",flow1:"Search",flow2:"Enquiry",flow3:"Quote",flow4:"Booked job",
     detail2:"Call / quote request",detail3:"Value / date / status",detail4:"Won or lost",diagramFoot:"Illustrative workflow. No actual client data or promised results.",
     highlight1:"Narrow focus",highlight1b:"One high-value service",highlight2:"Connected measurement",highlight2b:"Search → quote → job",
     highlight3:"Real feedback",highlight3b:"Facts, not assumptions",
+    servicesEyebrow:"HOW LOKMIRA HELPS",servicesTitle:"More than advertising.",servicesTitle2:"Connected local visibility.",servicesText:"Services are tailored to each business. The initial pilot does not automatically include every service listed below.",
+    service1:"Google Business Profile & local SEO",service1b:"Review local search presence, business details and important website pages, then prioritise practical improvements.",
+    service2:"Google Ads campaigns",service2b:"Campaigns built around relevant search intent, with transparent budgets and a clear measurement plan.",
+    service3:"Content & AI-assisted video",service3b:"Brand-aligned content and video concepts with checked product claims and human review.",
+    service4:"Enquiry & quote tracking",service4b:"A straightforward view of searches, enquiries and quotations using information the business already has.",
     methodEyebrow:"WHAT WE DO DIFFERENTLY",methodTitle:"Not more clicks.",methodTitle2:"A clearer route to sales.",
-    methodText:"A campaign only matters when the workshop can see what happens after the enquiry.",
+    methodText:"A click alone is not a business outcome. We aim to make the path from initial search through enquiries and quotes to booked work easier to follow.",
     card1:"Search intent",card1b:"A Google Search campaign focused on one selected high-value service.",
     card2:"Quote follow-up",card2b:"A clear view of enquiries, quotations sent and next steps.",
     card3:"Useful reporting",card3b:"Track the actual sales journey rather than clicks alone.",
-    pilotLabel:"INITIAL OFFER · INTERNAL CONCEPT",pilotTitle:"90 days. Clear boundaries.",
-    pilotText:"Test one focused customer acquisition workflow. Listed prices are internal assumptions, not a binding commercial offer.",
-    pilotWarning:"Final pricing, tax treatment, contracts and legal terms require approval.",
+    pilotLabel:"FIRST PILOT · VEHICLE PROTECTION / PPF",pilotTitleA:"90 days.",pilotTitleB:"Clear boundaries.",
+    pilotText:"The initial 90-day pilot focuses on one premium vehicle-protection service line. The learning may later be adapted to other local services. This programme is still a planning concept.",
+    pilotWarning:"Service scope, pricing and launch conditions are still under review.",
     priceLabel:"INTERNAL PILOT CONCEPT",priceStatus:"Pricing under review",priceUnit:"90-day test programme",setup:"Final terms are subject to approval.",
     feature1:"One Google Search service line",feature2:"Enquiry–quote–booked job tracking",
     feature3:"Limited Google Business Profile updates",feature4:"Basic measurement and monthly reporting",
@@ -59,14 +69,14 @@ const copy = {
     faqLabel:"COMMON QUESTIONS",faqHeading:"Let's clarify the essentials.",
     q1:"We already have a website and quote form. Do we need a new one?",
     a1:"Possibly not. We review the existing process first and recommend changes only when supported by evidence.",
-    q2:"Can you guarantee more PPF bookings?",
+    q2:"Can you guarantee more customers?",
     a2:"No. The goal is a measurable test, not a promise of sales. Outcomes depend on demand, capacity and competition.",
     q3:"Is Google ad spend included in the service fee?",
     a3:"No. Ad spend is billed separately. The displayed fee is not yet a finalized commercial offer.",
     contactLabel:"NEXT STEP",contactTitle:"Understand the existing process first.",
-    contactText:"Real contact channels will be enabled only after brand, company email and data privacy approval.",
+    contactText:"Contact channels will open after the business email is configured and the public launch is approved.",
     contactStatus:"Contact is not active · internal preview",
-    footNote:"— internal brand draft",footText:"Concept design, not a registered brand or a public offer.",toTop:"↑ Back to top"
+    footNote:"— internal brand draft",footText:"Internal preview; not a final commercial offer and no active contact channels.",toTop:"↑ Back to top"
   }
 };
 const menu = document.querySelector(".menu");
@@ -77,8 +87,8 @@ function setLanguage(lang) {
   document.documentElement.lang = lang;
   document.title = lang === "hu" ? "Lokmira | Belső előnézet" : "Lokmira | Internal preview";
   const description = lang === "hu"
-    ? "Belső előnézet: mérhető ügyfélszerzési folyamatok budapesti prémium autóvédelmi műhelyeknek."
-    : "Internal preview: measurable enquiries and quotes for premium vehicle protection workshops in Budapest.";
+    ? "Lokmira belső előnézet: Google Cégprofil, helyi SEO, Google Ads, tartalom és mérhető megkeresések budapesti szolgáltatóknak."
+    : "Internal preview: Lokmira local SEO, Google Ads, creative content and enquiry tracking for Budapest service businesses.";
   document.querySelector('meta[name="description"]').setAttribute("content", description);
   document.querySelector('meta[property="og:description"]').setAttribute("content", description);
   document.querySelector('meta[property="og:title"]').setAttribute("content", document.title);
