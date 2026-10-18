@@ -10,7 +10,7 @@ const copy = {
     diagramTitle:"A megkeresés útja",demo:"KONCEPCIÓ · NEM VALÓS ADAT",flow1:"Keresés",flow2:"Érdeklődés",flow3:"Ajánlat",flow4:"Megrendelés",
     detail2:"Hívás / ajánlatkérés",detail3:"Összeg / dátum / állapot",detail4:"Megnyert vagy elveszített",diagramFoot:"Folyamatábra. Nem valós ügyféladat és nem eredményígéret.",
     highlight1:"Szűk fókusz",highlight1b:"Egy nagy értékű szolgáltatás",highlight2:"Közös mérés",highlight2b:"Keresés → ajánlat → munka",highlight3:"Valós visszajelzés",highlight3b:"Tények, nem becslések",
-    servicesEyebrow:"MIBEN SEGÍT A LOKMIRA?",servicesTitle:"Több, mint hirdetés.",servicesTitle2:"Összekapcsolt helyi jelenlét.",servicesText:"A szolgáltatásokat az adott vállalkozás helyzetéhez igazítjuk. Nem minden elem része automatikusan az első pilotnak.",
+    servicesEyebrow:"MIBEN SEGÍT A LOKMIRA?",servicesTitle:"Több mint hirdetés.",servicesTitle2:"Összekapcsolt helyi jelenlét.",servicesText:"A szolgáltatásokat az adott vállalkozás helyzetéhez igazítjuk. Nem minden elem része automatikusan az első pilotnak.",
     service1:"Google Cégprofil és helyi SEO",service1b:"A vállalkozás adatainak, helyi keresési megjelenésének és fontos weboldalainak áttekintése és javítási javaslatai.",
     service2:"Google Ads kampányok",service2b:"Egyértelmű keresési szándékokra épülő kampányok, átlátható költségkerettel és mérési tervvel.",
     service3:"Tartalom és AI-támogatott videó",service3b:"Márkához illő vizuális tartalmak és videótervek, ellenőrzött termékállításokkal és emberi jóváhagyással.",
