@@ -61,7 +61,7 @@ const copy = {
     a3:"Nincs. A médiaköltés külön költség; a szolgáltatási díjat az együttműködés előtt külön rögzítjük.",
     contactLabel:"KÖVETKEZŐ LÉPÉS",contactTitle:"Először értsük meg a jelenlegi folyamatot.",
     contactText:"Helyi keresés, Google Ads és ügyfélmegkeresések: ismerd meg a szolgáltatásainkat és a közös munka első lépéseit.",
-    contactStatus:"",contactAction:"Kapcsolat",
+    contactAction:"Kapcsolat",
     footNote:"",footText:"Helyi láthatóság és követhető ügyfélmegkeresések Budapesten.",toTop:"Tetejére"
   },
   en: {
@@ -125,7 +125,7 @@ const copy = {
     a3:"No. Ad spend is billed separately. Service fees are agreed before work begins.",
     contactLabel:"NEXT STEP",contactTitle:"Understand the existing process first.",
     contactText:"Explore our services and a practical process for local visibility, enquiries and business feedback.",
-    contactStatus:"",contactAction:"Contact",
+    contactAction:"Contact",
     footNote:"",footText:"Local visibility and clearer customer enquiries in Budapest.",toTop:"Back to top"
   }
 };
