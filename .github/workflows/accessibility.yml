@@ -1,0 +1,23 @@
+name: Accessible Preview Audit
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  accessibility:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install browser and accessibility test dependencies
+        run: npm install --no-save --no-package-lock playwright@1.55.1 @axe-core/playwright@4.10.2
+      - name: Test WCAG A and AA in HU/EN, mobile and desktop
+        run: node scripts/a11y.mjs
+      - name: Attach accessibility results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wcag-a11y-results
+          path: qa-artifacts/*.json
+          if-no-files-found: warn
