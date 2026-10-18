@@ -6,6 +6,14 @@ on:
 jobs:
   public-preview:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        origin:
+          - https://lokmira.samiayten-hu.workers.dev
+          - https://dunalocal.samiayten-hu.workers.dev
+    env:
+      LOKMIRA_PREVIEW_ORIGIN: ${{ matrix.origin }}
     permissions:
       contents: read
     steps:
