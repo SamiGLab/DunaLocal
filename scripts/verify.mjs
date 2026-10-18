@@ -97,7 +97,7 @@ for(const [huPath,enPath] of Object.entries(pairs)) {
 test(readFileSync("pages.css","utf8")===readFileSync("dist/pages.css","utf8"),"Premium CSS deploy drift");
 test(readFileSync("pages.js","utf8")===readFileSync("dist/pages.js","utf8"),"Premium JS deploy drift");
 test(readdirSync("dist/hu").length===8 && readdirSync("dist/en").length===8,"Unexpected locale directory count");
-for(const name of ["search","phone-call","file-text","circle-check","arrow-up-right","arrow-right","chart-no-axes-combined","target","megaphone","clipboard-check","users","message-square-text","share-2","map-pin","workflow","chart-column-increasing","LICENSE"]){
+for(const name of ["search","phone-call","file-text","circle-check","arrow-up-right","arrow-right","chart-no-axes-combined","target","megaphone","clipboard-check","users","message-square-text","share-2","map-pin","workflow","chart-column-increasing","LICENSE"].map(n=>n==="LICENSE"?n:n+".svg")){
   const path="icons/"+name;
   test(existsSync(path)&&existsSync("dist/"+path),"Missing pinned Lucide asset: "+name);
   if(existsSync(path)&&existsSync("dist/"+path)){
