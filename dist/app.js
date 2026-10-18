@@ -2,8 +2,8 @@
 // Internal preview: no cookies, analytics, forms, tracking or network calls.
 const copy = {
   hu: {
-    preview:"BELSŐ ELŐNÉZET · MÁRKANÉV JÓVÁHAGYÁSRA VÁR · NE PUBLIKÁLD",
-    brandNote:"munkanév · koncepció",skip:"Ugrás a tartalomra",navMethod:"Módszer",navPilot:"90 napos pilot",navQuestions:"Kérdések",navContact:"Kapcsolat",
+    preview:"BELSŐ ELŐNÉZET · LOKMIRA ARCULATTERV · NEM PUBLIKUS",
+    brandNote:"belső arculatterv",brandTagline:"Helyi láthatóság. Mérhető megkeresések.",skip:"Ugrás a tartalomra",navMethod:"Módszer",navPilot:"90 napos pilot",navQuestions:"Kérdések",navContact:"Kapcsolat",
     eyebrow:"Budapest · prémium autóvédelmi műhelyek",heroLead:"Ne állj meg az érdeklődőnél.",heroEnd:"Lásd, melyikből lesz munka.",
     heroText:"Összekötjük a Google keresési kampányokat az ajánlatkéréssel és a megnyert munkával. Egy szűk fókuszú, 90 napos teszt — nem megfoghatatlan marketingígéret.",
     heroAction:"Nézd meg a pilotot",heroAction2:"Hogyan működik?",tag1:"Egy szolgáltatásvonal",tag2:"Nyomon követhető ajánlatok",tag3:"Nincs eredménygarancia",
@@ -32,11 +32,11 @@ const copy = {
     contactLabel:"KÖVETKEZŐ LÉPÉS",contactTitle:"Először értsük meg a jelenlegi folyamatot.",
     contactText:"Valós kapcsolatfelvétel csak a jóváhagyott márkanév, céges email és adatvédelmi megfelelés után indul.",
     contactStatus:"Kapcsolatfelvétel: nem aktív · belső előnézet",
-    footNote:"— ideiglenes munkanév",footText:"Koncepcióterv, nem bejegyzett márka vagy nyilvános ajánlat.",toTop:"↑ Tetejére"
+    footNote:"— belső arculatterv",footText:"Koncepcióterv, nem bejegyzett márka vagy nyilvános ajánlat.",toTop:"↑ Tetejére"
   },
   en: {
-    preview:"INTERNAL PREVIEW · BRAND NAME NOT APPROVED · DO NOT PUBLISH",
-    brandNote:"working label · concept",skip:"Skip to content",navMethod:"Approach",navPilot:"90-day pilot",navQuestions:"Questions",navContact:"Contact",
+    preview:"INTERNAL PREVIEW · LOKMIRA BRAND DRAFT · NOT PUBLIC",
+    brandNote:"internal brand draft",brandTagline:"Local visibility. Measurable enquiries.",skip:"Skip to content",navMethod:"Approach",navPilot:"90-day pilot",navQuestions:"Questions",navContact:"Contact",
     eyebrow:"Budapest · premium vehicle protection workshops",heroLead:"Don't stop at the lead.",heroEnd:"See which enquiries become booked work.",
     heroText:"We connect Google Search campaigns to enquiries, quotations and jobs won. One focused 90-day test — not vague marketing promises.",
     heroAction:"Explore the pilot",heroAction2:"How it works",tag1:"One service line",tag2:"Traceable quotations",tag3:"No outcome guarantee",
@@ -66,7 +66,7 @@ const copy = {
     contactLabel:"NEXT STEP",contactTitle:"Understand the existing process first.",
     contactText:"Real contact channels will be enabled only after brand, company email and data privacy approval.",
     contactStatus:"Contact is not active · internal preview",
-    footNote:"— temporary working label",footText:"Concept design, not a registered brand or a public offer.",toTop:"↑ Back to top"
+    footNote:"— internal brand draft",footText:"Concept design, not a registered brand or a public offer.",toTop:"↑ Back to top"
   }
 };
 const menu = document.querySelector(".menu");
@@ -75,7 +75,7 @@ const buttons = [...document.querySelectorAll(".lang")];
 function setLanguage(lang) {
   if (!copy[lang]) return;
   document.documentElement.lang = lang;
-  document.title = lang === "hu" ? "LOCAL/OPS | Belső koncepció" : "LOCAL/OPS | Internal concept";
+  document.title = lang === "hu" ? "Lokmira | Belső előnézet" : "Lokmira | Internal preview";
   const description = lang === "hu"
     ? "Belső előnézet: mérhető ügyfélszerzési folyamatok budapesti prémium autóvédelmi műhelyeknek."
     : "Internal preview: measurable enquiries and quotes for premium vehicle protection workshops in Budapest.";
@@ -83,6 +83,7 @@ function setLanguage(lang) {
   document.querySelector('meta[property="og:description"]').setAttribute("content", description);
   document.querySelector('meta[property="og:title"]').setAttribute("content", document.title);
   navigation.setAttribute("aria-label", lang === "hu" ? "Fő navigáció" : "Main navigation");
+  document.querySelector(".logo").setAttribute("aria-label", lang === "hu" ? "Lokmira – lap teteje" : "Lokmira – back to top");
   for (const element of document.querySelectorAll("[data-i18n]")) {
     const key = element.getAttribute("data-i18n");
     if (Object.prototype.hasOwnProperty.call(copy[lang], key)) element.textContent = copy[lang][key];
