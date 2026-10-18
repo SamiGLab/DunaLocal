@@ -1,15 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="title desc">
 <title id="title">Négy kérdés az ajánlatkezelésről – szerkeszthető sablon</title><desc id="desc">A social launch graphic about enquiry and quote visibility. Internal concept, not client evidence.</desc>
-<rect width="1080" height="1350" fill="#132e27"/><rect x="0" y="0" width="1080" height="17" fill="#117759"/>
+<rect width="1080" height="1350" fill="#101820"/><rect x="0" y="0" width="1080" height="17" fill="#236B50"/>
 <text x="85" y="125" fill="#acdbc0" font-family="Arial, sans-serif" font-size="27" font-weight="bold" letter-spacing="3">ELLENŐRZŐLISTA · BELSŐ KONCEPCIÓ</text>
 <text x="85" y="260" fill="#ffffff" font-family="Arial, sans-serif" font-size="72" font-weight="bold">Mi történik</text>
 <text x="85" y="340" fill="#ffffff" font-family="Arial, sans-serif" font-size="72" font-weight="bold">az ajánlat</text>
 <text x="85" y="420" fill="#86cfaa" font-family="Arial, sans-serif" font-size="72" font-weight="bold">elküldése után?</text>
 <g font-family="Arial, sans-serif" fill="#edf8f0">
-<rect x="80" y="520" width="920" height="124" rx="18" fill="#244d3c"/><text x="112" y="595" font-size="31" font-weight="bold">01</text><text x="193" y="596" font-size="30">Honnan jött az érdeklődés?</text>
-<rect x="80" y="670" width="920" height="124" rx="18" fill="#244d3c"/><text x="112" y="747" font-size="31" font-weight="bold">02</text><text x="193" y="747" font-size="30">Mikor érkezett válasz?</text>
-<rect x="80" y="820" width="920" height="124" rx="18" fill="#244d3c"/><text x="112" y="897" font-size="31" font-weight="bold">03</text><text x="193" y="897" font-size="30">Mikor ment ki az ajánlat?</text>
-<rect x="80" y="970" width="920" height="124" rx="18" fill="#296c4b"/><text x="112" y="1047" font-size="31" font-weight="bold">04</text><text x="193" y="1047" font-size="30">Megnyert vagy elveszített?</text>
+<rect x="80" y="520" width="920" height="124" rx="18" fill="#203039"/><text x="112" y="595" font-size="31" font-weight="bold">01</text><text x="193" y="596" font-size="30">Honnan jött az érdeklődés?</text>
+<rect x="80" y="670" width="920" height="124" rx="18" fill="#203039"/><text x="112" y="747" font-size="31" font-weight="bold">02</text><text x="193" y="747" font-size="30">Mikor érkezett válasz?</text>
+<rect x="80" y="820" width="920" height="124" rx="18" fill="#203039"/><text x="112" y="897" font-size="31" font-weight="bold">03</text><text x="193" y="897" font-size="30">Mikor ment ki az ajánlat?</text>
+<rect x="80" y="970" width="920" height="124" rx="18" fill="#285343"/><text x="112" y="1047" font-size="31" font-weight="bold">04</text><text x="193" y="1047" font-size="30">Megnyert vagy elveszített?</text>
 </g>
 <text x="85" y="1221" fill="#a4c7b1" font-family="Arial, sans-serif" font-size="26">LOCAL/OPS · ÁTMENETI MUNKANÉV</text>
 <text x="85" y="1275" fill="#a4c7b1" font-family="Arial, sans-serif" font-size="21">Nem valódi ügyféladat. Közzététel előtt ellenőrizendő.</text>
