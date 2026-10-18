@@ -18,7 +18,7 @@ const server=createServer((req,res)=>{
 });
 await new Promise(ok=>server.listen(0,"127.0.0.1",ok));
 const origin="http://127.0.0.1:"+server.address().port;
-const widths=[320,360,390,768,1440];
+const widths=[320,360,390,768,900,1024,1440];
 mkdirSync("qa-screenshots",{recursive:true});
 const browser=await chromium.launch({channel:"chrome",headless:true});
 let failures=0;
@@ -46,8 +46,40 @@ for(const width of widths){
     nav:document.querySelector('a[data-route="services"]')?.getAttribute("href"),
     service:document.querySelector('[data-i18n="service1"]')?.textContent
   }));
-  check(en.lang==="en"&&en.title.includes("Internal preview")&&en.lead.includes("Make your business")&&en.nav==="/en/services/"&&en.service.includes("Google Business Profile")&&en.description.includes("Internal preview"),"homepage EN "+width+" "+JSON.stringify(en));
-  if(width<=620){const menu=page.locator(".menu");await menu.click();check((await menu.getAttribute("aria-expanded"))==="true"&&await page.locator("#navigation").isVisible(),"homepage mobile menu open "+width);await menu.click();check((await menu.getAttribute("aria-expanded"))==="false","homepage mobile menu close "+width);}
+  check(en.lang==="en"&&en.title.includes("Customer Growth")&&en.lead.includes("Make your business")&&en.nav==="/en/services/"&&en.service.includes("Google Business Profile")&&en.description.includes("Budapest"),"homepage EN "+width+" "+JSON.stringify(en));
+  if(width<=900){const menu=page.locator(".menu");await menu.click();check((await menu.getAttribute("aria-expanded"))==="true"&&await page.locator("#navigation").isVisible(),"homepage mobile menu open "+width);await menu.click();check((await menu.getAttribute("aria-expanded"))==="false","homepage mobile menu close "+width);}
+  // Compare the exact same four navigation items in the root and inner-page design.
+  const headerMetrics=()=>page.evaluate(()=>{
+    const root=document.querySelector(".landing-root")!==null;
+    const header=document.querySelector(root?".navbar":".site-head-inner");
+    const nav=document.querySelector(root?".navigation":".site-nav");
+    const brand=document.querySelector(root?".logo":".site-brand");
+    const links=[...nav.querySelectorAll(":scope > a")];
+    return {
+      height:Math.round(header.getBoundingClientRect().height),
+      brandHeight:Math.round(brand.getBoundingClientRect().height),
+      labels:links.map(a=>a.textContent.trim()),
+      items:links.map(a=>({height:Math.round(a.getBoundingClientRect().height),width:Math.round(a.getBoundingClientRect().width),font:getComputedStyle(a).fontSize})),
+      navVisible:getComputedStyle(nav).display!=="none",
+      overflow:Math.max(0,document.documentElement.scrollWidth-innerWidth)
+    };
+  });
+  if(width<=900)await page.locator(".menu").click();
+  const rootMetrics=await headerMetrics();
+  await page.goto(origin+"/en/services/",{waitUntil:"load"});
+  if(width<=900)await page.locator(".site-toggle").click();
+  const childMetrics=await headerMetrics();
+  check(rootMetrics.height===childMetrics.height&&rootMetrics.brandHeight===childMetrics.brandHeight,"Header heights differ at "+width+" "+JSON.stringify({rootMetrics,childMetrics}));
+  check(rootMetrics.labels.join("|")===childMetrics.labels.join("|"),"Navigation labels/order differ at "+width+" "+JSON.stringify({rootMetrics,childMetrics}));
+  check(rootMetrics.items.length===4&&childMetrics.items.length===4,"Navigation count differs "+width);
+  for(let i=0;i<Math.min(rootMetrics.items.length,childMetrics.items.length);i++){
+    const a=rootMetrics.items[i],b=childMetrics.items[i];
+    check(Math.abs(a.height-b.height)<=1&&Math.abs(a.width-b.width)<=3&&a.font===b.font&&a.height>=44,
+      "Navigation link dimensions inconsistent "+width+" item "+i+" "+JSON.stringify({a,b}));
+  }
+  check(rootMetrics.navVisible&&childMetrics.navVisible&&rootMetrics.overflow<=1&&childMetrics.overflow<=1,
+    "Header visibility/overflow "+width+" "+JSON.stringify({rootMetrics,childMetrics}));
+  console.log("PASS shared header and four navigation controls",width,"px");
   console.log("PASS homepage",width,"px; HU/EN links and preview restrictions");
   await context.close();
 }
