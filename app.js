@@ -14,7 +14,7 @@ const copy = {
     problemTitle1:"Látható a céged.",
     problemTitle2:"De ez hoz megkeresést?",
     problemLead:"Sok helyi vállalkozásnak külön él a Google-profilja, a hirdetése és az ajánlatadása. Mi ezek között szeretnénk tisztább kapcsolatot teremteni.",
-    problemAction:"Így gondolkodunk a teljes folyamatról ↗",
+    problemAction:"Így gondolkodunk a teljes folyamatról",
     problem1:"Megtalálnak a megfelelő emberek?",
     problem1b:"Nem minden keresés értékes. Az számít, milyen szándékkal és milyen szolgáltatásra keresnek.",
     problem2:"Érthető, miben vagy jó?",
@@ -24,7 +24,7 @@ const copy = {
     sampleEyebrow:"ÍGY NÉZ KI EGY HASZNOS FELMÉRÉS",
     sampleTitle:"Nem száz adatpont. Három világos következő lépés.",
     sampleText:"Egy jó audit célja nem a hibák felsorolása, hanem az, hogy tudd, mivel érdemes kezdeni. Ez a minta a gondolkodásmódot mutatja, nem egy ügyfél projektjét.",
-    sampleAction:"Miért fontos a megkeresés mérése? ↗",
+    sampleAction:"Miért fontos a megkeresés mérése?",
     auditLabel:"SZEMLÉLTETŐ MINTA · NEM VALÓS ÜGYFÉL",
     auditQuestion:"Mire néznénk rá először?",
     audit1:"Helyi keresési jelenlét",
@@ -38,7 +38,7 @@ const copy = {
     service1:"Google Cégprofil és helyi SEO",service1b:"A vállalkozás adatainak, helyi keresési megjelenésének és fontos weboldalainak áttekintése és javítási javaslatai.",
     service2:"Google Ads kampányok",service2b:"Egyértelmű keresési szándékokra épülő kampányok, átlátható költségkerettel és mérési tervvel.",
     service3:"Közösségi média és tartalom",service3b:"Közösségi profilkezelés, tartalomnaptár és a valódi szolgáltatásaidra épülő következetes kommunikáció.",
-    service4:"Érdeklődés- és ajánlatkövetés",service4b:"A keresést, megkeresést és ajánlatot összekötő egyszerű folyamat, a vállalkozásnál elérhető adatok alapján.",serviceMore:"Részletek ↗",storyLabel:"KIS LÉPÉSEK · TISZTA MÓDSZER",storyTitle:"Nem kérünk vak bizalmat.",storyText:"Még nem állítunk magunkról ellenőrizhetetlen eredményeket, és nem jelenítünk meg kitalált ügyfélreferenciákat. A Lokmira ajánlata az átlátható munkafolyamatra, a világos szerepekre és a követhető üzleti visszajelzésre épül.",storyAction:"Ismerd meg, hogyan gondolkodunk ↗",
+    service4:"Érdeklődés- és ajánlatkövetés",service4b:"A keresést, megkeresést és ajánlatot összekötő egyszerű folyamat, a vállalkozásnál elérhető adatok alapján.",serviceMore:"Részletek",storyLabel:"KIS LÉPÉSEK · TISZTA MÓDSZER",storyTitle:"Nem kérünk vak bizalmat.",storyText:"Még nem állítunk magunkról ellenőrizhetetlen eredményeket, és nem jelenítünk meg kitalált ügyfélreferenciákat. A Lokmira ajánlata az átlátható munkafolyamatra, a világos szerepekre és a követhető üzleti visszajelzésre épül.",storyAction:"Ismerd meg, hogyan gondolkodunk",
     methodEyebrow:"AMIT MÁSKÉPP CSINÁLUNK",methodTitle:"Nem több kattintás.",methodTitle2:"Jobban követhető értékesítés.",
     methodText:"A kattintás önmagában nem üzleti eredmény. A folyamatot az első kereséstől az ajánlaton át a megrendelésig szeretnénk áttekinthetővé tenni.",
     card1:"Keresési szándék",card1b:"Google Search kampány egy kiválasztott, nagy értékű szolgáltatásra.",
@@ -61,7 +61,7 @@ const copy = {
     contactLabel:"KÖVETKEZŐ LÉPÉS",contactTitle:"Először értsük meg a jelenlegi folyamatot.",
     contactText:"A kapcsolatfelvételi lehetőségeket a céges e-mail beállítása és a nyilvános indulás jóváhagyása után kapcsoljuk be.",
     contactStatus:"Kapcsolatfelvétel: nem aktív · belső előnézet",
-    footNote:"— belső arculatterv",footText:"Belső előnézet; nem végleges kereskedelmi ajánlat, és a kapcsolatfelvétel még nem aktív.",toTop:"↑ Tetejére"
+    footNote:"— belső arculatterv",footText:"Belső előnézet; nem végleges kereskedelmi ajánlat, és a kapcsolatfelvétel még nem aktív.",toTop:"Tetejére"
   },
   en: {
     preview:"INTERNAL PREVIEW · LOKMIRA BRAND DRAFT · NOT PUBLIC",
@@ -77,7 +77,7 @@ const copy = {
     problemTitle1:"People can see you.",
     problemTitle2:"But are the right ones getting in touch?",
     problemLead:"For many local businesses, their Google profile, advertising and quote process operate separately. The aim is to connect them more clearly.",
-    problemAction:"Explore the whole customer journey ↗",
+    problemAction:"Explore the whole customer journey",
     problem1:"Are the right people finding you?",
     problem1b:"Not every search has the same value. Search intent and the service people need matter.",
     problem2:"Is your value easy to understand?",
@@ -87,7 +87,7 @@ const copy = {
     sampleEyebrow:"WHAT A USEFUL REVIEW CAN LOOK LIKE",
     sampleTitle:"Not a hundred metrics. Three useful next steps.",
     sampleText:"A useful audit is not just a list of problems. It should clarify what to prioritise. This example illustrates our approach, not actual client work.",
-    sampleAction:"Why track enquiries and quotations? ↗",
+    sampleAction:"Why track enquiries and quotations?",
     auditLabel:"ILLUSTRATIVE TEMPLATE · NOT CLIENT DATA",
     auditQuestion:"What would we review first?",
     audit1:"Local search presence",
@@ -101,7 +101,7 @@ const copy = {
     service1:"Google Business Profile & local SEO",service1b:"Review local search presence, business details and important website pages, then prioritise practical improvements.",
     service2:"Google Ads campaigns",service2b:"Campaigns built around relevant search intent, with transparent budgets and a clear measurement plan.",
     service3:"Social media & content",service3b:"Social profile management, editorial planning and consistent communication grounded in your actual services.",
-    service4:"Enquiry & quote tracking",service4b:"A straightforward view of searches, enquiries and quotations using information the business already has.",serviceMore:"Learn more ↗",storyLabel:"CLEAR SCOPE · REAL EVIDENCE",storyTitle:"Trust should be earned.",storyText:"We will not publish unverifiable results or invented client testimonials. Lokmira is being built around transparent decisions, clearly defined responsibilities and business feedback that can actually be reviewed.",storyAction:"See what we stand for ↗",
+    service4:"Enquiry & quote tracking",service4b:"A straightforward view of searches, enquiries and quotations using information the business already has.",serviceMore:"Learn more",storyLabel:"CLEAR SCOPE · REAL EVIDENCE",storyTitle:"Trust should be earned.",storyText:"We will not publish unverifiable results or invented client testimonials. Lokmira is being built around transparent decisions, clearly defined responsibilities and business feedback that can actually be reviewed.",storyAction:"See what we stand for",
     methodEyebrow:"WHAT WE DO DIFFERENTLY",methodTitle:"Not more clicks.",methodTitle2:"A clearer route to sales.",
     methodText:"A click alone is not a business outcome. We aim to make the path from initial search through enquiries and quotes to booked work easier to follow.",
     card1:"Search intent",card1b:"A Google Search campaign focused on one selected high-value service.",
@@ -124,7 +124,7 @@ const copy = {
     contactLabel:"NEXT STEP",contactTitle:"Understand the existing process first.",
     contactText:"Contact channels will open after the business email is configured and the public launch is approved.",
     contactStatus:"Contact is not active · internal preview",
-    footNote:"— internal brand draft",footText:"Internal preview; not a final commercial offer and no active contact channels.",toTop:"↑ Back to top"
+    footNote:"— internal brand draft",footText:"Internal preview; not a final commercial offer and no active contact channels.",toTop:"Back to top"
   }
 };
 const menu = document.querySelector(".menu");

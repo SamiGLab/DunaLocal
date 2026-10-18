@@ -295,3 +295,38 @@
 /* Active contact CTA must retain legible contrast on its dark button. */
 .site-page .site-nav .nav-cta[aria-current="page"]{color:#ffffff}
 .site-page .site-nav .nav-cta[aria-current="page"]:hover{color:#c0ed72}
+
+
+/* Locally vendored Lucide SVG icon system — consistent 24px/2px line geometry. */
+.ui-icon{display:inline-block;inline-size:22px;block-size:22px;min-inline-size:22px;flex-shrink:0;vertical-align:middle;background:currentColor;-webkit-mask-image:var(--ui-mask);mask-image:var(--ui-mask);-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;pointer-events:none}
+.icon-search{--ui-mask:url("/icons/search.svg")}
+.icon-phone-call{--ui-mask:url("/icons/phone-call.svg")}
+.icon-file-text{--ui-mask:url("/icons/file-text.svg")}
+.icon-circle-check{--ui-mask:url("/icons/circle-check.svg")}
+.icon-arrow-up-right{--ui-mask:url("/icons/arrow-up-right.svg")}
+.icon-arrow-right{--ui-mask:url("/icons/arrow-right.svg")}
+.icon-chart{--ui-mask:url("/icons/chart-no-axes-combined.svg")}
+.icon-target{--ui-mask:url("/icons/target.svg")}
+.icon-megaphone{--ui-mask:url("/icons/megaphone.svg")}
+.icon-clipboard-check{--ui-mask:url("/icons/clipboard-check.svg")}
+.icon-users{--ui-mask:url("/icons/users.svg")}
+.icon-message{--ui-mask:url("/icons/message-square-text.svg")}
+.icon-social{--ui-mask:url("/icons/share-2.svg")}
+.icon-map-pin{--ui-mask:url("/icons/map-pin.svg")}
+.icon-workflow{--ui-mask:url("/icons/workflow.svg")}
+.landing-root .flow .symbol{display:grid;place-items:center;color:#daf3d6}
+.landing-root .flow .symbol .ui-icon{inline-size:21px;block-size:21px}
+.landing-root .cards .card-icon{color:#246f50}
+.landing-root .cards .card-icon .ui-icon{inline-size:30px;block-size:30px;min-inline-size:30px}
+.landing-root .service-panels article{position:relative}
+.landing-root .service-panels article .service-lucide{position:absolute;right:30px;top:72px;inline-size:24px;block-size:24px;color:#286a50}
+.landing-root .service-panels article:after{content:"";display:block;width:20px;height:20px;position:absolute;top:24px;right:25px;background:#527b63;-webkit-mask:url("/icons/arrow-up-right.svg") center/contain no-repeat;mask:url("/icons/arrow-up-right.svg") center/contain no-repeat}
+.landing-root .problem-items article>span.ui-icon:last-child{inline-size:19px;block-size:19px;color:#a4de97;margin-top:5px}
+.landing-root .audit-symbol .ui-icon{inline-size:25px;block-size:25px}
+.landing-root .audit-arrow.ui-icon{inline-size:18px;block-size:18px}
+.landing-root .audit-sheet-header>span.ui-icon:last-child{inline-size:22px;block-size:22px;color:#58846b}
+.landing-root .hero .actions .ui-icon{inline-size:18px;block-size:18px;margin-inline-start:8px}
+.landing-root .service-panels article a,.landing-root .editorial-link,.landing-root .home-transition a,.landing-root .footer a[data-i18n="toTop"]{display:inline-flex;align-items:center;gap:7px}
+.landing-root .service-panels article a::after,.landing-root .editorial-link::after,.landing-root .home-transition a::after,.site-page a.ui-link-icon::after{content:"";display:inline-block;inline-size:17px;block-size:17px;flex-shrink:0;background:currentColor;-webkit-mask:url("/icons/arrow-up-right.svg") center/contain no-repeat;mask:url("/icons/arrow-up-right.svg") center/contain no-repeat}
+.landing-root .footer a[data-i18n="toTop"]::before{content:"";inline-size:16px;block-size:16px;background:currentColor;-webkit-mask:url("/icons/arrow-up-right.svg") center/contain no-repeat;mask:url("/icons/arrow-up-right.svg") center/contain no-repeat;transform:rotate(-45deg)}
+@media(max-width:620px){.landing-root .service-panels article .service-lucide{right:24px;top:65px}}
