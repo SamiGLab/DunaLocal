@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://lokmira.com/</loc>
-  </url>
+  <url><loc>https://lokmira.com/</loc></url>
+  <url><loc>https://lokmira.com/hu/szolgaltatasok/</loc></url>
+  <url><loc>https://lokmira.com/hu/modszer/</loc></url>
+  <url><loc>https://lokmira.com/hu/rolunk/</loc></url>
+  <url><loc>https://lokmira.com/hu/kapcsolat/</loc></url>
+  <url><loc>https://lokmira.com/hu/helyi-seo/</loc></url>
+  <url><loc>https://lokmira.com/hu/google-ads/</loc></url>
+  <url><loc>https://lokmira.com/hu/tartalom-video/</loc></url>
+  <url><loc>https://lokmira.com/hu/meres/</loc></url>
+  <url><loc>https://lokmira.com/en/services/</loc></url>
+  <url><loc>https://lokmira.com/en/approach/</loc></url>
+  <url><loc>https://lokmira.com/en/about/</loc></url>
+  <url><loc>https://lokmira.com/en/contact/</loc></url>
+  <url><loc>https://lokmira.com/en/local-seo/</loc></url>
+  <url><loc>https://lokmira.com/en/google-ads/</loc></url>
+  <url><loc>https://lokmira.com/en/content-video/</loc></url>
+  <url><loc>https://lokmira.com/en/measurement/</loc></url>
 </urlset>
