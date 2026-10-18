@@ -17,3 +17,14 @@ jobs:
         run: node scripts/verify.mjs
       - name: Validate editable SVG social graphics
         run: python3 scripts/verify_svgs.py
+      - name: Install browser test runner
+        run: npm install --no-save --no-package-lock playwright@1.55.1
+      - name: Browser QA at five viewport widths
+        run: node scripts/browser-smoke.mjs
+      - name: Upload visual QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-qa-screenshots
+          path: qa-screenshots/
+          if-no-files-found: ignore
