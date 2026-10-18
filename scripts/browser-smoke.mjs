@@ -104,6 +104,43 @@ for(const [index,route] of routes.entries()){
  console.log("PASS multi-page",route,"status",response.status(),"overflow",state.overflow);
  await ctx.close();
 }
+
+const routeVariants={
+ hu:["/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/","/hu/helyi-seo/","/hu/google-ads/","/hu/kozossegi-media/","/hu/meres/"],
+ en:["/en/services/","/en/approach/","/en/about/","/en/contact/","/en/local-seo/","/en/google-ads/","/en/social-media/","/en/measurement/"]
+};
+for(const width of [390,1440])for(const lang of ["hu","en"]){
+ const ctx=await browser.newContext({viewport:{width,height:900},reducedMotion:"reduce"});
+ const page=await ctx.newPage();
+ const scan=async(route)=>{
+  await page.goto(origin+route,{waitUntil:"load"});
+  const root=route.startsWith("/?")||route==="/";
+  if(width<=900)await page.locator(root?".menu":".site-toggle").click();
+  return page.evaluate(()=>{
+    const isHome=document.body.classList.contains("landing-root");
+    const el=document.querySelector(isHome?".navbar":".site-head-inner");
+    const nav=document.querySelector(isHome?".navigation":".site-nav");
+    const a=[...nav.querySelectorAll(":scope > a")];
+    const bounds=x=>({width:Math.round(x.getBoundingClientRect().width),height:Math.round(x.getBoundingClientRect().height),font:getComputedStyle(x).fontSize});
+    return {header:bounds(el),texts:a.map(x=>x.textContent.trim()),links:a.map(x=>x.getAttribute("href")),boxes:a.map(bounds),overflow:Math.max(0,document.documentElement.scrollWidth-innerWidth),shown:getComputedStyle(nav).display!=="none"};
+  });
+ };
+ const root=await scan(lang==="en"?"/?lang=en":"/");
+ for(const route of routeVariants[lang]){
+   const inner=await scan(route);
+   check(root.header.height===inner.header.height&&inner.shown&&inner.overflow<=1,
+     "Header height, overflow or menu visibility: "+lang+" "+width+" "+route+" "+JSON.stringify(inner));
+   check(root.texts.join("|")===inner.texts.join("|")&&inner.boxes.length===4,
+     "Navigation item text/order mismatch: "+lang+" "+width+" "+route+" "+JSON.stringify({root:root.texts,inner:inner.texts}));
+   for(let j=0;j<Math.min(4,inner.boxes.length);j++){
+     const a=root.boxes[j],b=inner.boxes[j];
+     check(a.font===b.font&&Math.abs(a.height-b.height)<=1&&Math.abs(a.width-b.width)<=3&&b.height>=44,
+       "Inconsistent navigation geometry: "+lang+" "+width+" "+route+" item "+j+" "+JSON.stringify({a,b}));
+   }
+ }
+ console.log("PASS nav parity all eight",lang,"routes at",width,"px");
+ await ctx.close();
+}
 await browser.close();
 await new Promise(ok=>server.close(ok));
 if(failures)process.exit(1);
