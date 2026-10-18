@@ -288,3 +288,6 @@
 .audit-note{color:#506456!important}
 .audit-sheet-header small{color:#45624f}
 .landing-root .pilot-timeline small{color:#4c6555}
+
+/* Visual QA 2026-10-18: mobile first fold should prioritise value and action over duplicate logo. */
+@media(max-width:620px){.landing-root .hero .brand-seal{display:none}.landing-root .hero .eyebrow{margin-top:0}.landing-root .hero{padding-top:49px}}
