@@ -25,6 +25,7 @@ test(headers.includes("Content-Security-Policy:"), "Missing CSP");
 test(headers.includes("frame-ancestors 'none'"), "Missing anti-framing CSP");
 const notfound = readFileSync("404.html", "utf8");
 test(notfound.includes("<title>404") && notfound.includes('href="/"'), "Missing 404 page");
+test(!notfound.includes('style="'), "Inline 404 styles blocked by CSP");
 test(!/<form[\s>]/i.test(html), "Preview must not collect enquiries");
 test(!/fetch\s*\(|XMLHttpRequest|localStorage|document\.cookie|gtag\s*\(/.test(js), "Unexpected network/tracking code");
 test(css.includes("@media(max-width:360px)"), "Small-screen rules missing");
