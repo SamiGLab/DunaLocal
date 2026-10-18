@@ -32,6 +32,8 @@ jobs:
         run: node scripts/verify.mjs
       - name: Validate editable SVG social graphics
         run: python3 scripts/verify_svgs.py
+      - name: Validate Lokmira brand vectors and deploy parity
+        run: python3 scripts/verify_brand_svgs.py
       - name: Verify Wrangler Worker deployment bundle (no upload)
         run: npx --yes wrangler@4 deploy --dry-run --outdir .wrangler-check
       - name: Verify live Worker headers, URL and private-path isolation
