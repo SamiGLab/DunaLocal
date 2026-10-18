@@ -1,4 +1,4 @@
-# Budapeşte ajansı — aktif yapılacaklar ve kapsam
+> **GÜNCEL İŞ PLANI — 18 Ekim 2026:** Kullanıcı bundan sonraki marka/site çalışmalarında **LOKMIRA** adını seçti. `lokmira.hu` sonucunu kendisi kontrol edecek; `lokmira.com` satın alındığı doğrulanmadı. Bu belgenin aşağısındaki eski DunaLocal sırası tarihsel arka plandır. **Aktif tek yürütme planı:** [Lokmira ana yol haritası](./LOKMIRA_ana_yol_haritasi_2026-10-18.md). **Sıradaki onaylı değil, onay bekleyen iş L01:** logo/marka taslakları. İdari/hukuki/muhasebe görevleri iptal durumda kalır.\n\n# Budapeşte ajansı — aktif yapılacaklar ve kapsam
 
 **Güncellendi:** 18 Ekim 2026. **Geçerli kullanıcı kararı:** Şirket idaresi kesinlikle bizim görevimiz değil.
 
