@@ -3,6 +3,8 @@ const html = readFileSync("index.html", "utf8");
 const js = readFileSync("app.js", "utf8");
 const css = readFileSync("styles.css", "utf8");
 const robot = readFileSync("robots.txt", "utf8");
+const sitemap = readFileSync("sitemap.xml", "utf8");
+const builtSitemap = readFileSync("dist/sitemap.xml", "utf8");
 const headers = readFileSync("_headers", "utf8");
 let failed = false;
 function test(condition, failure) {
@@ -23,6 +25,11 @@ test(html.includes(gscTag), "Google Search Console verification meta missing or 
 test(html.split('name="google-site-verification"').length === 2, "Duplicate Google Search Console verification meta");
 test(html.includes('name="robots" content="noindex,nofollow,noarchive"'), "Missing noindex meta");
 test(robot.includes("Disallow: /"), "Missing robots disallow");
+test(robot.includes("Sitemap: https://lokmira.com/sitemap.xml"), "Sitemap discovery entry missing");
+test(sitemap === builtSitemap, "Sitemap source and dist out of sync");
+test(sitemap.includes('<loc>https://lokmira.com/</loc>'), "Canonical homepage URL missing from sitemap");
+test((sitemap.match(/<url>/g) || []).length === 1, "Sitemap should list the single currently existing page");
+test(!/\/hu\/|\/en\/|workers\.dev/.test(sitemap), "Non-existent locale routes or preview host in sitemap");
 test(headers.includes("X-Robots-Tag: noindex"), "Missing noindex header");
 test(headers.includes("Content-Security-Policy:"), "Missing CSP");
 test(headers.includes("frame-ancestors 'none'"), "Missing anti-framing CSP");
