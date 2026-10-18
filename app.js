@@ -175,4 +175,5 @@ navigation.addEventListener("click", (event) => {
   menu.setAttribute("aria-expanded", "false");
   navigation.classList.remove("open");
 });
+document.addEventListener("keydown",(event)=>{if(event.key==="Escape"&&menu.getAttribute("aria-expanded")==="true"){menu.setAttribute("aria-expanded","false");navigation.classList.remove("open");menu.focus();}});
 setLanguage(new URLSearchParams(window.location.search).get("lang")==="en" ? "en" : "hu");
