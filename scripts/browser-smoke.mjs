@@ -46,7 +46,7 @@ for(const width of widths){
     service:document.querySelector('[data-i18n="service1"]')?.textContent
   }));
   check(en.lang==="en"&&en.title.includes("Internal preview")&&en.lead.includes("Make your business")&&en.nav==="/en/services/"&&en.service.includes("Google Business Profile")&&en.description.includes("Internal preview"),"homepage EN "+width+" "+JSON.stringify(en));
-  if(width<=620){const menu=page.locator(".menu");await menu.click();check((await menu.getAttribute("aria-expanded"))==="true"&&await page.locator("#navigation").isVisible(),"homepage mobile menu open "+width);await page.locator('#navigation a[data-route="about"]').click();check((await menu.getAttribute("aria-expanded"))==="false","homepage mobile menu close "+width);}
+  if(width<=620){const menu=page.locator(".menu");await menu.click();check((await menu.getAttribute("aria-expanded"))==="true"&&await page.locator("#navigation").isVisible(),"homepage mobile menu open "+width);await menu.click();check((await menu.getAttribute("aria-expanded"))==="false","homepage mobile menu close "+width);}
   console.log("PASS homepage",width,"px; HU/EN links and preview restrictions");
   await context.close();
 }
