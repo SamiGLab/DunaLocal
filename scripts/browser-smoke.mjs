@@ -5,7 +5,7 @@ import { mkdirSync } from "node:fs";
 const widths = [320,360,390,768,1440];
 const url = "file://" + resolve("index.html");
 mkdirSync("qa-screenshots",{recursive:true});
-const browser = await chromium.launch({ channel: "chrome", headless: true, args: ["--disable-web-security"] });
+const browser = await chromium.launch({ channel: "chrome", headless: true });
 let failures = 0;
 for (const width of widths) {
   const context = await browser.newContext({ viewport:{width,height:900}, deviceScaleFactor:1, reducedMotion:"reduce" });
