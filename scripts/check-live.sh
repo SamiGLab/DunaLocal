@@ -5,8 +5,9 @@ tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 get() {
   local route="$1" name="$2"
-  curl --connect-timeout 8 --max-time 25 -fsSL -D "$tmp/$name.headers" -o "$tmp/$name.body" "$base$route"
-  printf '%s: HTTP 200 (%s bytes)\n' "$route" "$(wc -c < "$tmp/$name.body")"
+  local safe="${name//\//_}"
+  curl --connect-timeout 8 --max-time 25 -fsSL -D "$tmp/$safe.headers" -o "$tmp/$safe.body" "$base$route"
+  printf '%s: HTTP 200 (%s bytes)\n' "$route" "$(wc -c < "$tmp/$safe.body")"
 }
 get "/" index
 grep -q "Lokmira" "$tmp/index.body"
