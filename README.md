@@ -7,10 +7,11 @@
 
 ## Current site v2 — competitor-informed, HU/EN multi-page preview
 
-**2026-10-18 implementation:** A comparative review of [six Budapest digital agencies](./docs/LOKMIRA_rekabet_analizi_ve_site_yeniden_tasarim_2026-10-18.md) informed a cleaner premium design and a **17-URL** site. Source+deployed `dist/` include the homepage, 8 Hungarian pages, and 8 English pages. Both share `pages.css` and a minimal no-tracking `pages.js`.
+**2026-10-18 implementation:** A comparative review of [six Budapest digital agencies](./docs/LOKMIRA_rekabet_analizi_ve_site_yeniden_tasarim_2026-10-18.md) informed a cleaner premium design and an **18-URL** site. Source+deployed `dist/` include the Hungarian homepage (`/`), the dedicated server-rendered English homepage (`/en/`), 8 Hungarian subpages, and 8 English subpages. Both share `pages.css` and a minimal no-tracking `pages.js`, with `scripts/build.mjs` synchronizing shared templates and generating `/en/index.html`.
 
 | Hungarian | English | Content |
 |---|---|---|
+| `/` | `/en/` | Bilingual agency homepages (reciprocal `hreflang` + self-canonical) |
 | `/hu/szolgaltatasok/` | `/en/services/` | Service overview |
 | `/hu/modszer/` | `/en/approach/` | How work would happen; proposed 90-day pilot |
 | `/hu/rolunk/` | `/en/about/` | Honest, pre-launch positioning |
@@ -20,7 +21,7 @@
 | `/hu/kozossegi-media/` | `/en/social-media/` | Social media management and content planning |
 | `/hu/meres/` | `/en/measurement/` | Enquiry and quote tracking |
 
-The `sitemap.xml` now maps only these **real** 17 routes. Google Search Console ownership on `lokmira.com` and public submission are **not** verified. The `noindex`, `Disallow: /`, no-active-contact and anti-tracking protections are intentionally intact.
+The `sitemap.xml` maps all **18** canonical routes. Google Search Console ownership on `lokmira.com` and public submission are **not** verified. The `noindex`, `Disallow: /`, `_config.yml` Jekyll isolation, no-active-contact and anti-tracking protections are intentionally intact.
 
 **Validated CI:** [quality and mobile](https://github.com/SamiGLab/DunaLocal/actions/runs/39148536615), [automated accessibility](https://github.com/SamiGLab/DunaLocal/actions/runs/39148536605), [real Worker HTTP](https://github.com/SamiGLab/DunaLocal/actions/runs/39148536611), [Cloudflare deploy](https://github.com/SamiGLab/DunaLocal/actions/runs/39148536555). Native-Hungarian copy QA, logo final approval, genuine portfolio evidence and live email remain pending.
 

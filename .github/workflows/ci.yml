@@ -25,6 +25,7 @@ jobs:
       - name: Check no private files are copied
         run: |
           test -f dist/index.html
+          test -f dist/en/index.html
           test -f dist/_headers
           test -f dist/robots.txt
           test -f dist/sitemap.xml

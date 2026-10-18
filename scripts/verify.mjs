@@ -25,13 +25,25 @@ test(html.includes(gscTag), "Google Search Console verification meta missing or 
 test(html.split('name="google-site-verification"').length === 2, "Duplicate Google Search Console verification meta");
 test(html.includes('name="robots" content="noindex,nofollow,noarchive"'), "Missing noindex meta");
 test(html.includes('<link rel="canonical" href="https://lokmira.com/">'), "Missing homepage self canonical");
-test(!html.includes("hreflang="), "No separate English root URL is available; do not invent homepage alternate");
-test(!/AI-támogatott videó|AI-assisted video|tartalom-video|content-video/i.test(html+js+sitemap), "Unapproved AI-video positioning or old routes still public");
+test(html.includes('<link rel="alternate" hreflang="hu" href="https://lokmira.com/">'), "Missing homepage hu hreflang");
+test(html.includes('<link rel="alternate" hreflang="en" href="https://lokmira.com/en/">'), "Missing homepage en hreflang");
+test(html.includes('<link rel="alternate" hreflang="x-default" href="https://lokmira.com/">'), "Missing homepage x-default hreflang");
+const enHome = readFileSync("en/index.html", "utf8");
+const builtEnHome = readFileSync("dist/en/index.html", "utf8");
+test(enHome === builtEnHome, "en/index.html source and dist out of sync");
+test(enHome.includes('<html lang="en">'), "Missing lang=en on en/index.html");
+test(enHome.includes(gscTag), "Missing GSC meta on en/index.html");
+test(enHome.includes('name="robots" content="noindex,nofollow,noarchive"'), "Missing noindex meta on en/index.html");
+test(enHome.includes('<link rel="canonical" href="https://lokmira.com/en/">'), "Missing self-canonical on en/index.html");
+test(enHome.includes('<link rel="alternate" hreflang="hu" href="https://lokmira.com/">') && enHome.includes('<link rel="alternate" hreflang="en" href="https://lokmira.com/en/">'), "Missing reciprocal hreflang on en/index.html");
+test(enHome.includes("<title>Lokmira | Local SEO, Google Ads & Customer Growth Budapest</title>"), "Missing English title on en/index.html");
+test(enHome.includes("Make your business easier to find.") && enHome.includes('href="/en/services/"') && enHome.includes('href="/en/contact/"'), "English pre-rendered copy/routes missing on en/index.html");
+test(!/AI-támogatott videó|AI-assisted video|tartalom-video|content-video/i.test(html+enHome+js+sitemap), "Unapproved AI-video positioning or old routes still public");
 test(robot.includes("Disallow: /"), "Missing robots disallow");
 test(robot.includes("Sitemap: https://lokmira.com/sitemap.xml"), "Sitemap discovery entry missing");
 test(sitemap === builtSitemap, "Sitemap source and dist out of sync");
-test(sitemap.includes('<loc>https://lokmira.com/</loc>'), "Canonical homepage URL missing from sitemap");
-test((sitemap.match(/<url>/g) || []).length === 17, "Expected homepage and 16 localized agency pages in sitemap");
+test(sitemap.includes('<loc>https://lokmira.com/</loc>') && sitemap.includes('<loc>https://lokmira.com/en/</loc>'), "Canonical HU/EN homepage URLs missing from sitemap");
+test((sitemap.match(/<url>/g) || []).length === 18, "Expected HU/EN homepages and 16 localized agency pages in sitemap (18 URLs)");
 test(!/workers\.dev/.test(sitemap), "Preview hostname leaked into planned production sitemap");
 test(headers.includes("X-Robots-Tag: noindex"), "Missing noindex header");
 test(headers.includes("Content-Security-Policy:"), "Missing CSP");
@@ -104,7 +116,18 @@ for(const [huPath,enPath] of Object.entries(pairs)) {
 }
 test(readFileSync("pages.css","utf8")===readFileSync("dist/pages.css","utf8"),"Premium CSS deploy drift");
 test(readFileSync("pages.js","utf8")===readFileSync("dist/pages.js","utf8"),"Premium JS deploy drift");
-test(readdirSync("dist/hu").length===8 && readdirSync("dist/en").length===8,"Unexpected locale directory count");
+test(readdirSync("dist/hu").length===8 && readdirSync("dist/en").length===9,"Unexpected locale directory count (expected 8 in dist/hu, 8 + index.html in dist/en)");
+const huFooters = new Set();
+const enFooters = new Set();
+for (const [huPath, enPath] of Object.entries(pairs)) {
+  const huSrc = readFileSync(join(huPath, "index.html"), "utf8");
+  const enSrc = readFileSync(join(enPath, "index.html"), "utf8");
+  huFooters.add(huSrc.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)?.[0] || "");
+  enFooters.add(enSrc.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)?.[0] || "");
+  test(!enSrc.includes('href="/?lang=en"'), "English subpage still uses query-string home link instead of /en/: " + enPath);
+}
+test(huFooters.size === 1 && !huFooters.has(""), "Hungarian subpage footer template drift detected");
+test(enFooters.size === 1 && !enFooters.has(""), "English subpage footer template drift detected");
 for(const name of ["search","phone-call","file-text","circle-check","arrow-up-right","arrow-right","chart-no-axes-combined","target","megaphone","clipboard-check","users","message-square-text","share-2","map-pin","workflow","chart-column-increasing","LICENSE"].map(n=>n==="LICENSE"?n:n+".svg")){
   const path="icons/"+name;
   test(existsSync(path)&&existsSync("dist/"+path),"Missing pinned Lucide asset: "+name);
@@ -117,7 +140,7 @@ for(const name of ["search","phone-call","file-text","circle-check","arrow-up-ri
 test(readFileSync("pages.css","utf8").includes("Lucide SVG icon system"),"Icon style system missing");
 
 
-const allSourcePages=["index.html",...Object.entries(pairs).flatMap(([hu,en])=>[join(hu,"index.html"),join(en,"index.html")])];
+const allSourcePages=["index.html","en/index.html",...Object.entries(pairs).flatMap(([hu,en])=>[join(hu,"index.html"),join(en,"index.html")])];
 for(const path of allSourcePages){
   const page=readFileSync(path,"utf8");
   const idSet=new Set([...page.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));

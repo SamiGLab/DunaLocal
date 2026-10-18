@@ -4,11 +4,11 @@
 Bu belge bir sözleşme, muhasebe, vergi, izin veya hukuki danışmanlık belgesi **değildir**. Yalnızca web ve içerik üretimi için doğrulanabilir kaynak envanteridir.
 
 ## A. Tamamlanmış site çalışmaları
-- Rakiplerden çıkarılan yapısal dersler V3 arayüze uygulandı; 17 sayfa (root + 8 Macarca + 8 İngilizce).
+- Rakiplerden çıkarılan yapısal dersler V3 arayüze uygulandı; 18 sayfa (`/` HU ana sayfa + `/en/` EN ana sayfa + 8 Macarca + 8 İngilizce alt sayfa).
 - Dört ayrı hizmetin her birinde, anlaşmanın kesin hizmet kapsamı sanılmayacak şekilde etiketlenmiş **örnek çalışma çıktıları** eklendi.
-- 16 alt sayfada Google Search Central tavsiyelerine uygun **self-canonical** ve her HU/EN çifti için **karşılıklı iki hreflang bağlantısı** var; açıklayıcı title, OG locale/URL ve marka alanları güçlendirildi.
-- Macarca kök ana sayfa `/` self-canonical oldu; İngilizce kök içerik hâlâ JS dil düğmesiyle aynı `/` URL'sinde olduğundan yanıltıcı `/en/` home hreflang **eklenmedi**.
-- Site içi bağlantı ve fragment kontrolü; aktif olmayan e-posta/gizli iletişim kontrolü; tüm 16 içerik sayfasında mobil erişilebilirlik ve 4 masaüstü rota kontrolü CI'ya eklendi.
+- Tüm 18 sayfada (`/` ↔ `/en/` ana sayfa çifti ve 16 alt sayfa çiftinde) Google Search Central tavsiyelerine uygun **self-canonical** ve **karşılıklı `hreflang` bağlantıları** var; açıklayıcı title, OG locale/URL ve marka alanları güçlendirildi.
+- `scripts/build.mjs` üzerinden `/en/index.html` sunucu taraflı İngilizce ana sayfası `index.html` + `app.js` kaynağından otomatik üretilir hale getirildi; 16 alt sayfanın ortak footer ve marka bağlantıları tek şablondan senkronize edildi.
+- Site içi bağlantı ve fragment kontrolü; `_config.yml` GitHub Pages dahili klasör izolasyonu; aktif olmayan e-posta/gizli iletişim kontrolü; içerik sayfalarında mobil ve masaüstü erişilebilirlik kontrolü CI'ya eklendi.
 - `noindex`, `robots.txt Disallow: /`, GSC meta, CSP, özel klasör kısıtları ve form/analytics yokluğu korundu.
 
 ## B. Doğrulama bekleyen somut kullanıcı girdileri

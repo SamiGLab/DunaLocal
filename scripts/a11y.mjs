@@ -6,7 +6,11 @@ import { writeFileSync, mkdirSync } from "node:fs";
 const source = "file://" + resolve("index.html");
 const widths = [390, 1440];
 const langs = ["hu", "en"];
-const browser = await chromium.launch({ channel:"chrome", headless:true });
+let browser;
+for (const opts of [{channel:"chrome",headless:true},{channel:"msedge",headless:true},{headless:true}]) {
+  try { browser = await chromium.launch(opts); break; } catch {}
+}
+if (!browser) throw new Error("No Chromium browser available for a11y.mjs");
 mkdirSync("qa-artifacts", { recursive:true });
 let errors = 0;
 for (const width of widths) {

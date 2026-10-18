@@ -18,8 +18,10 @@ const server=createServer((request,response)=>{
  } catch(error){response.writeHead(500).end(String(error));}
 });
 await new Promise(resolve=>server.listen(0,"127.0.0.1",resolve));
+server.unref();
 const origin="http://127.0.0.1:"+server.address().port;
 const routes=[
+ "/en/",
  "/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/",
  "/hu/helyi-seo/","/hu/google-ads/","/hu/kozossegi-media/","/hu/meres/",
  "/en/services/","/en/approach/","/en/about/","/en/contact/",
@@ -29,7 +31,11 @@ const cases=routes.map(route=>({route,width:390})).concat(
  ["/hu/szolgaltatasok/","/en/services/","/hu/kapcsolat/","/en/contact/"].map(route=>({route,width:1440}))
 );
 mkdirSync("qa-artifacts",{recursive:true});
-const browser=await chromium.launch({channel:"chrome",headless:true});
+let browser;
+for (const opts of [{channel:"chrome",headless:true},{channel:"msedge",headless:true},{headless:true}]) {
+  try { browser=await chromium.launch(opts); break; } catch {}
+}
+if (!browser) throw new Error("No Chromium browser available for a11y-routes.mjs");
 let failures=0;
 try {
  for (const {route,width} of cases){

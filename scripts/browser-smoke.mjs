@@ -17,10 +17,15 @@ const server=createServer((req,res)=>{
   } catch(e){res.writeHead(500).end(String(e));}
 });
 await new Promise(ok=>server.listen(0,"127.0.0.1",ok));
+server.unref();
 const origin="http://127.0.0.1:"+server.address().port;
 const widths=[320,360,390,768,900,1024,1440];
 mkdirSync("qa-screenshots",{recursive:true});
-const browser=await chromium.launch({channel:"chrome",headless:true});
+let browser;
+for (const opts of [{channel:"chrome",headless:true},{channel:"msedge",headless:true},{headless:true}]) {
+  try { browser=await chromium.launch(opts); break; } catch {}
+}
+if (!browser) throw new Error("No Chromium browser available for browser-smoke.mjs");
 let failures=0;
 function check(ok,message){if(!ok){console.error("FAIL",message);failures++}}
 for(const width of widths){
@@ -140,7 +145,7 @@ for(const width of [390,1440])for(const lang of ["hu","en"]){
  const page=await ctx.newPage();
  const scan=async(route)=>{
   await page.goto(origin+route,{waitUntil:"load"});
-  const root=route.startsWith("/?")||route==="/";
+  const root=route.startsWith("/?")||route==="/"||route==="/en/";
   if(width<=900)await page.locator(root?".menu":".site-toggle").click();
   return page.evaluate(()=>{
     const isHome=document.body.classList.contains("landing-root");
@@ -151,7 +156,7 @@ for(const width of [390,1440])for(const lang of ["hu","en"]){
     return {header:bounds(el),texts:a.map(x=>x.textContent.trim()),links:a.map(x=>x.getAttribute("href")),boxes:a.map(bounds),overflow:Math.max(0,document.documentElement.scrollWidth-innerWidth),shown:getComputedStyle(nav).display!=="none"};
   });
  };
- const root=await scan(lang==="en"?"/?lang=en":"/");
+ const root=await scan(lang==="en"?"/en/":"/");
  for(const route of routeVariants[lang]){
    const inner=await scan(route);
    check(root.header.height===inner.header.height&&inner.shown&&inner.overflow<=1,
@@ -170,4 +175,4 @@ for(const width of [390,1440])for(const lang of ["hu","en"]){
 await browser.close();
 await new Promise(ok=>server.close(ok));
 if(failures)process.exit(1);
-console.log("PASS Lokmira premium site browser QA: 5 homepage widths, 16 localized routes, nav/language and security meta");
+console.log("PASS Lokmira premium site browser QA: 5 homepage widths, /en/ root + 16 localized routes, nav/language and security meta");
