@@ -157,6 +157,8 @@ for(const path of allSourcePages){
   }
   test(!/\b(?:info|hello|contact)@lokmira\.com\b/.test(page),"Unverified corporate email shown on "+path);
 }
+test(readFileSync("hu/kapcsolat/index.html","utf8").includes("mailto:samigrowlab@gmail.com"),"Missing approved contact email on HU contact page");
+test(readFileSync("en/contact/index.html","utf8").includes("mailto:samigrowlab@gmail.com"),"Missing approved contact email on EN contact page");
 
 test(existsSync("_config.yml"), "Missing _config.yml GitHub Pages isolation config");
 test(!existsSync(".nojekyll"), ".nojekyll must not exist in root or GitHub Pages branch builds will expose internal folders");
