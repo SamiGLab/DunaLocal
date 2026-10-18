@@ -32,3 +32,16 @@ Bu SVG'ler yapay zekâ ile oluşturulmuş sunum görsellerinin **düzenlenebilir
 **Bir sonraki karar:** Konsept 2'yi nihai logo kimliği olarak mı kullanacağımız veya 1/3 alternatiflerinden hangisinin değiştirileceği. Ardından onaylı logonun web ve sosyal materyallerini finalize etmek.
 
 [GitHub ana yol haritası](./LOKMIRA_ana_yol_haritasi_2026-10-18.md)
+
+## Otomatik QA ve canlı dağıtım kanıtları — 18.10.2026
+
+**Doğrulanmış ilk tam Lokmira SVG dağıtımı (kod commit `1706973d2e`):**
+- [Preview quality checks — 39140780014](https://github.com/SamiGLab/DunaLocal/actions/runs/39140780014): **success** (kaynak/deploy eşitliği, SVG denetimi, 5 mobil/masaüstü viewport dahil).
+- [Accessible Preview Audit — 39140780006](https://github.com/SamiGLab/DunaLocal/actions/runs/39140780006): **success** (otomatik erişilebilirlik, tam manuel denetim değil).
+- [Live Worker HTTP smoke — 39140780030](https://github.com/SamiGLab/DunaLocal/actions/runs/39140780030): **success**. GitHub-hosted runner `https://dunalocal.samiayten-hu.workers.dev/` adresinde HTML/CSS/JS kaynak kod eşleşmesi, dört markalı SVG asset için **HTTP 200 + birebir sürüm eşitliği**, `robots.txt`, **noindex / CSP**, ve `docs/`, `scripts/`, `social/` kapalı yollarında **HTTP 404** raporladı.
+
+**Giderilen test sorunu:** İlk live-smoke testi hâlâ `<title>LOCAL/OPS` bekliyordu. Yeni HTML dosyası canlıda bulunmasına ve HTML/CSS/JS eşleşmesine rağmen eski kontrol hatalı bir başarısızlık üretmişti. `scripts/live-smoke.mjs` Lokmira ve tüm dört SVG kaynak eşitliğini kontrol edecek şekilde düzeltildi; sonraki koşum başarıyla tamamlandı.
+
+**Takip niteliğinde küçük düzeltme:** SVG referanslı `apple-touch-icon` kaldırıldı çünkü gerçek iOS ana ekran ikonu için uygun PNG export henüz üretilmedi. Bu dokümanın en son commit'inden sonraki CI sonuçları ayrıca ayrı koşumda doğrulanmalı.
+
+**Sınır:** `workers.dev` adresi internetten erişilebilir olsa bile yalnız **noindex iç önizlemedir**. `lokmira.com` özel domain, iş e-postası, sosyal profiller, final logo onayı veya ticari açılış oluşturulmadı.
