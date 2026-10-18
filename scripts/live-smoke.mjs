@@ -51,6 +51,14 @@ for (const [path, marker] of [["/styles.css",".hero{"],["/app.js","const copy ="
     console.log("Resource",path,"status",r.status,"length",r.body.length);
   } catch (e) {issues.push(path+" "+String(e));}
 }
+try {
+  const response = await probe("/sitemap.xml");
+  const expected = readFileSync("dist/sitemap.xml", "utf8");
+  if (response.status !== 200 || response.body !== expected || !response.body.includes("<loc>https://lokmira.com/</loc>")) issues.push("Sitemap not deployed or mismatched");
+  console.log("Sitemap /sitemap.xml", response.status, "matches GitHub", response.body === expected);
+  const robotsResponse = await probe("/robots.txt");
+  if (!robotsResponse.body.includes("Sitemap: https://lokmira.com/sitemap.xml")) issues.push("Robots sitemap declaration missing");
+} catch (e) { issues.push("Sitemap live check: " + String(e)); }
 for (const name of ["focus-mark.svg", "focus-app-icon.svg", "focus-logo.svg", "favicon.svg"]) {
   try {
     const url = "/brand/" + name;
