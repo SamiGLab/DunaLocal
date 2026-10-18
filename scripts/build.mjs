@@ -5,7 +5,7 @@ import { join } from "node:path";
 const out = "dist";
 const assets = ["index.html", "styles.css", "app.js", "pages.css", "pages.js", "robots.txt", "sitemap.xml", "_headers", "404.html"];
 const pageDirectories = ["hu/szolgaltatasok","en/services","hu/modszer","en/approach","hu/rolunk","en/about","hu/kapcsolat","en/contact","hu/helyi-seo","en/local-seo","hu/google-ads","en/google-ads","hu/kozossegi-media","en/social-media","hu/meres","en/measurement"];
-const iconAssets = ["search","phone-call","file-text","circle-check","arrow-up-right","arrow-right","chart-no-axes-combined","target","megaphone","clipboard-check","users","message-square-text","share-2","map-pin","workflow","chart-column-increasing","LICENSE"];
+const iconAssets = ["search","phone-call","file-text","circle-check","arrow-up-right","arrow-right","chart-no-axes-combined","target","megaphone","clipboard-check","users","message-square-text","share-2","map-pin","workflow","chart-column-increasing","LICENSE"].map(n=>n==="LICENSE"?n:n+".svg");
 const brandAssets = ["focus-mark.svg", "focus-app-icon.svg", "focus-logo.svg", "favicon.svg"];
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
