@@ -11,7 +11,7 @@ async function probe(path) {
   const response = await fetch(origin + path, {
     redirect:"follow",
     signal: AbortSignal.timeout(10000),
-    headers: {"User-Agent":"DunaLocal-GitHub-HTTP-Smoke/1.0"}
+    headers: {"User-Agent":"Lokmira-GitHub-HTTP-Smoke/1.0"}
   });
   const body = await response.text();
   return {status:response.status, body, headers:response.headers, url:response.url};
@@ -21,7 +21,7 @@ let lastError = "";
 for (let attempt = 1; attempt <= 6; attempt++) {
   try {
     const page = await probe("/");
-    const titleOK = page.body.includes("<title>LOCAL/OPS") && page.body.includes('data-i18n="heroLead"');
+    const titleOK = page.body.includes("<title>Lokmira") && page.body.includes('data-i18n="heroLead"') && page.body.includes('src="./brand/focus-mark.svg"');
     const css = await probe("/styles.css");
     const js = await probe("/app.js");
     const matchingRelease = page.body === expectedHome && css.body === expectedCss && js.body === expectedJs;
@@ -49,6 +49,15 @@ for (const [path, marker] of [["/styles.css",".hero{"],["/app.js","const copy ="
     if (r.status !== 200 || !r.body.includes(marker)) issues.push(path+" status/marker failed: "+r.status);
     console.log("Resource",path,"status",r.status,"length",r.body.length);
   } catch (e) {issues.push(path+" "+String(e));}
+}
+for (const name of ["focus-mark.svg", "focus-app-icon.svg", "focus-logo.svg", "favicon.svg"]) {
+  try {
+    const url = "/brand/" + name;
+    const r = await probe(url);
+    const expected = readFileSync("dist/brand/" + name, "utf8");
+    if (r.status !== 200 || r.body !== expected || !r.body.includes("<svg")) issues.push(url + " missing or out of sync");
+    console.log("Brand vector", url, "status", r.status, "version matches", r.body === expected);
+  } catch (e) { issues.push("Brand asset " + name + ": " + String(e)); }
 }
 for(const path of ["/docs/launch-gates-and-status.md", "/scripts/build.mjs", "/social/launch-kit.md"]) {
   try {
