@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 // HTTP smoke test for the real public Cloudflare Worker URL.
 // Runs on GitHub-hosted runner; local shell network access is not required.
 // The Worker is currently a noindex internal preview, not an approved public brand.
-const origin = "https://dunalocal.samiayten-hu.workers.dev";
+const origin = process.env.LOKMIRA_PREVIEW_ORIGIN || "https://dunalocal.samiayten-hu.workers.dev";
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const expectedHome = readFileSync("dist/index.html", "utf8");
 const expectedCss = readFileSync("dist/styles.css", "utf8");
