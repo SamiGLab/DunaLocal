@@ -28,9 +28,11 @@ for (const width of widths) {
     title:document.title,
     lead:document.querySelector('[data-i18n="heroLead"]')?.textContent,
     navigation:document.querySelector("#navigation")?.getAttribute("aria-label"),
-    description:document.querySelector('meta[name="description"]')?.getAttribute("content")
+    description:document.querySelector('meta[name="description"]')?.getAttribute("content"),
+    services:document.querySelectorAll(".service-panels article").length,
+    serviceHeading:document.querySelector('[data-i18n="service1"]')?.textContent
   }));
-  if(translated.lang!=="en" || !translated.title.includes("Internal") || !translated.lead.includes("Don't stop") || translated.navigation!=="Main navigation" || !translated.description.includes("Internal preview")) {
+  if(translated.lang!=="en" || !translated.title.includes("Internal") || !translated.lead.includes("Get found locally") || translated.navigation!=="Main navigation" || !translated.description.includes("Internal preview") || translated.services!==4 || !translated.serviceHeading.includes("Google Business Profile")) {
     console.error("Translation FAIL:",width,translated);failures++;
   }
   if(width<=620){
