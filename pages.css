@@ -291,3 +291,7 @@
 
 /* Visual QA 2026-10-18: mobile first fold should prioritise value and action over duplicate logo. */
 @media(max-width:620px){.landing-root .hero .brand-seal{display:none}.landing-root .hero .eyebrow{margin-top:0}.landing-root .hero{padding-top:49px}}
+
+/* Active contact CTA must retain legible contrast on its dark button. */
+.site-page .site-nav .nav-cta[aria-current="page"]{color:#ffffff}
+.site-page .site-nav .nav-cta[aria-current="page"]:hover{color:#c0ed72}
