@@ -337,3 +337,12 @@
 .site-page .tile .tile-pictogram{position:absolute;right:30px;top:30px;inline-size:23px;block-size:23px;color:#286c4e}
 .site-page .tile a.ui-link-icon,.site-page .nav-cta.ui-link-icon,.site-page .site-pill.ui-link-icon,.site-page .side-card a.ui-link-icon{display:inline-flex;align-items:center;gap:7px}
 @media(max-width:620px){.site-page .tile .tile-pictogram{right:24px;top:24px}}
+
+
+/* Shared editorial icon rhythm across 16 HU/EN service and agency pages. */
+.site-page .site-visual-number{background:#294f41;color:#d0f3b0}
+.site-page .site-visual-number .ui-icon{inline-size:20px;block-size:20px;min-inline-size:20px}
+.site-page .info-cards article{position:relative}
+.site-page .info-cards .info-pictogram{position:absolute;top:24px;right:25px;color:#28724f;inline-size:22px;block-size:22px}
+.site-page .info-cards .site-label{display:inline-block;max-width:calc(100% - 37px);padding-right:4px}
+@media(max-width:390px){.site-page .info-cards .info-pictogram{top:20px;right:20px;inline-size:20px;block-size:20px}}
