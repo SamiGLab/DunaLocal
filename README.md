@@ -23,3 +23,13 @@ No lead-collection form, payment, tracking scripts, analytics, cookies, or clien
 - T016–T020: domain, identity, local Hungarian proofreading.
 - T001–T006: work/fiscal model, GDPR, contracting and data privacy review.
 - T024–T026: real business email, accessibility/mobile QA, SEO and deliberate publication approval.
+
+## Current deliverables and evidence (18 October 2026)
+
+- [Bilingual HU/EN homepage source](./index.html) — internal concept with real Chrome responsive smoke test.
+- [Social launch kit — HU/EN copy](./social/launch-kit.md): LinkedIn/Facebook/Instagram profile drafts, three opening posts, creative specifications.
+- Editable social SVG graphics: [lead-to-sale](./social/templates/lead-to-sale-card.svg), [audit questions](./social/templates/audit-questions-card.svg), [90-day pilot](./social/templates/90-day-pilot-card.svg).
+- [Status and legal/brand/publication gates](./docs/launch-gates-and-status.md).
+- [Successful five-viewport Chrome test and screenshots](https://github.com/SamiGLab/DunaLocal/actions/runs/39110708259): 320, 360, 390, 768 and 1440 px. Screenshots are available as a workflow artifact.
+
+**Not completed:** finalized brand/domain, HU-native review, company/legal/tax approval, real contact channel, Cloudflare Pages deployment, any live sale or testimonial. All social assets are unpublished drafts.
