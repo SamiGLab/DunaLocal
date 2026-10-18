@@ -9,9 +9,9 @@ Open `index.html` in a browser or run `python3 -m http.server 8000` and visit `h
 ## Deployment plan (Cloudflare Pages)
 
 1. Connect GitHub repository `SamiGLab/DunaLocal` in Cloudflare Pages when the owner is ready.
-2. Framework preset: **None**; build command: **empty** (or `exit 0`); output directory: **`.`** (repository root, where `index.html` lives). No package installation or build tool is needed.
-3. Use the Cloudflare Pages **preview** environment until name, Hungarian copy, legal disclosures, actual business email, and deployment approval are completed.
-4. `robots.txt` and the `noindex` meta tag block indexing but **do not make a URL private**. A Cloudflare preview URL remains publicly accessible to anyone who knows it. Use access control if confidentiality is required.
+2. Framework preset: **None**; production branch **`main`**; root directory **repository root**; build command **`node scripts/build.mjs`**; output directory **`dist`**. No external dependencies are needed. The build deliberately excludes internal planning documents and social drafts.
+3. **Do not click Save and Deploy until you intend to create a publicly reachable `*.pages.dev` URL.** Git integration deploys the `main` branch to production. To use a separate preview branch, configure a different production branch and protect preview URLs appropriately. The current code is only an unfinished internal concept.
+4. `robots.txt`, `noindex`, and `X-Robots-Tag` discourage indexing but **do not make any URL private**. Cloudflare Access is required to restrict visitors; protecting Preview Deployments does not automatically protect the default production `*.pages.dev` URL.
 
 ## Restrictions
 
