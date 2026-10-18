@@ -32,3 +32,8 @@
 ## Dayanak
 - https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap (Google Search Central sitemap yönergeleri, güncelleme 08.07.2026)
 - https://www.sitemaps.org/protocol.html
+
+
+## 18.10.2026 — ÇOK SAYFALI SİTE GÜNCELLEMESİ (ÖNCEKİ TEK-URL DURUMUNU GEÇERSİZ KILAR)
+Rakip analizi sonrası Lokmira'nın statik site önizlemesi **16 yeni HU/EN sayfayla** genişletildi. Bu nedenle sitemap artık tek URL içermez; `https://lokmira.com/` ana sayfasıyla birlikte **17 gerçek URL** içerir. Güncel yollar: `/hu/szolgaltatasok/`, `/hu/modszer/`, `/hu/rolunk/`, `/hu/kapcsolat/`, `/hu/helyi-seo/`, `/hu/google-ads/`, `/hu/tartalom-video/`, `/hu/meres/`; İngilizce karşılıkları: `/en/services/`, `/en/approach/`, `/en/about/`, `/en/contact/`, `/en/local-seo/`, `/en/google-ads/`, `/en/content-video/`, `/en/measurement/`. Kaynak ve dist kopyaları birebir; gerçek Worker HTTP smoke testi geçti. Önceki **“tek sayfa/tek URL”** ifadesi tarihsel durum olarak kalır.
+`noindex`, `Disallow: /` ve iletişim kısıtları hâlâ etkin; alan adı GSC mülkünde doğrulanmadan/ayrı üretim lansman onayı olmadan sitemap Google'a resmen gönderildi veya indekslendi denemez. [Site v2 benchmark ve teslimat](./LOKMIRA_rekabet_analizi_ve_site_yeniden_tasarim_2026-10-18.md).
