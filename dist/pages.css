@@ -443,3 +443,67 @@
 .landing-root .contact-cta{display:flex;align-items:center;justify-content:flex-end;min-width:150px}
 .landing-root .contact-cta .contact-link{white-space:nowrap}
 @media(max-width:620px){.landing-root .contact-cta{justify-content:flex-start}}
+
+
+/* HERO REPAIR 2026-10-18: full-bleed section must not inherit the inner-page shell width.
+   Stable two-column proportions + legible copy instead of the oversized compressed banner. */
+.landing-root section.hero.shell{
+  box-sizing:border-box;
+  width:100%;
+  max-width:none;
+  margin:0;
+  display:grid;
+  grid-template-columns:minmax(0,1.12fr) minmax(360px,.88fr);
+  align-items:center;
+  column-gap:clamp(32px,4vw,66px);
+  min-height:620px;
+  padding:clamp(76px,7vw,105px) max(32px,calc((100vw - 1180px)/2)) clamp(82px,7vw,112px);
+  overflow:hidden;
+}
+.landing-root section.hero.shell>div:first-child{min-width:0;max-width:690px}
+.landing-root section.hero.shell h1{
+  max-width:750px;
+  font-size:clamp(46px,4.25vw,65px);
+  line-height:1.09;
+  letter-spacing:-.065em;
+  overflow-wrap:break-word;
+}
+.landing-root section.hero.shell .intro{font-size:clamp(15px,1.25vw,17px);line-height:1.72;max-width:610px}
+.landing-root section.hero.shell .diagram{
+  box-sizing:border-box;
+  width:min(100%,480px);
+  min-width:0;
+  justify-self:end;
+  margin:0;
+  padding:clamp(22px,2.4vw,32px);
+}
+.landing-root section.hero.shell .diagram-head{gap:14px}
+.landing-root section.hero.shell .diagram-head>b{min-width:0;overflow-wrap:normal}
+.landing-root section.hero.shell .diagram-head>span{flex-shrink:0;max-width:138px}
+.landing-root section.hero.shell .actions{gap:12px;flex-wrap:wrap}
+.landing-root section.hero.shell .actions .button{max-width:100%}
+@media(max-width:900px){
+  .landing-root section.hero.shell{
+    grid-template-columns:minmax(0,1fr);
+    row-gap:42px;
+    min-height:0;
+    padding:70px 28px 78px;
+  }
+  .landing-root section.hero.shell>div:first-child{max-width:760px}
+  .landing-root section.hero.shell h1{font-size:clamp(43px,6.7vw,59px);max-width:740px}
+  .landing-root section.hero.shell .diagram{width:100%;max-width:625px;justify-self:stretch}
+}
+@media(max-width:620px){
+  .landing-root section.hero.shell{padding:51px 18px 66px;row-gap:35px}
+  .landing-root section.hero.shell h1{font-size:clamp(36px,9.3vw,48px);letter-spacing:-.057em;line-height:1.08}
+  .landing-root section.hero.shell .intro{font-size:15px;line-height:1.72}
+  .landing-root section.hero.shell .actions .button{min-width:0}
+  .landing-root section.hero.shell .diagram{padding:22px;max-width:none}
+  .landing-root section.hero.shell .tags{gap:7px}
+}
+@media(max-width:360px){
+  .landing-root section.hero.shell{padding:42px 14px 58px}
+  .landing-root section.hero.shell h1{font-size:36px}
+  .landing-root section.hero.shell .diagram{padding:17px}
+  .landing-root section.hero.shell .diagram-head{flex-wrap:wrap}
+}
