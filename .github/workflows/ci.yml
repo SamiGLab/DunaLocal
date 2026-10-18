@@ -34,12 +34,9 @@ jobs:
         run: python3 scripts/verify_svgs.py
       - name: Verify Wrangler Worker deployment bundle (no upload)
         run: npx --yes wrangler@4 deploy --dry-run --outdir .wrangler-check
-      - name: Check worker public endpoint (diagnostic only)
+      - name: Verify live Worker headers, URL and private-path isolation
         continue-on-error: true
-        run: |
-          echo "Checking external Worker URL"
-          curl -fL --connect-timeout 8 --max-time 20 -sS -o /tmp/worker-home.html -w "HTTP %{http_code}; resolved IP %{remote_ip}; downloaded %{size_download} bytes\\n" https://dunalocal.samiayten-hu.workers.dev/
-          grep -q "LOCAL/OPS" /tmp/worker-home.html
+        run: bash scripts/check-live.sh
       - name: Install browser test runner
         run: npm install --no-save --no-package-lock playwright@1.55.1
       - name: Browser QA at five viewport widths
