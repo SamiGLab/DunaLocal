@@ -43,7 +43,7 @@ test(robot.includes("Disallow: /"), "Missing robots disallow");
 test(robot.includes("Sitemap: https://lokmira.com/sitemap.xml"), "Sitemap discovery entry missing");
 test(sitemap === builtSitemap, "Sitemap source and dist out of sync");
 test(sitemap.includes('<loc>https://lokmira.com/</loc>') && sitemap.includes('<loc>https://lokmira.com/en/</loc>'), "Canonical HU/EN homepage URLs missing from sitemap");
-test((sitemap.match(/<url>/g) || []).length === 18, "Expected HU/EN homepages and 16 localized agency pages in sitemap (18 URLs)");
+test((sitemap.match(/<url>/g) || []).length === 22, "Expected HU/EN homepages and 20 localized agency pages in sitemap (22 URLs)");
 test(!/workers\.dev/.test(sitemap), "Preview hostname leaked into planned production sitemap");
 test(headers.includes("X-Robots-Tag: noindex"), "Missing noindex header");
 test(headers.includes("Content-Security-Policy:"), "Missing CSP");
@@ -79,44 +79,45 @@ for (const id of ["main","services","method","pilot","questions","contact"]) tes
 const {readdirSync, existsSync} = await import("node:fs");
 const {join} = await import("node:path");
 const pairs = {
- "hu/szolgaltatasok":"en/services", "hu/modszer":"en/approach",
- "hu/rolunk":"en/about", "hu/kapcsolat":"en/contact",
- "hu/helyi-seo":"en/local-seo", "hu/google-ads":"en/google-ads",
- "hu/kozossegi-media":"en/social-media", "hu/meres":"en/measurement"
+  "hu/szolgaltatasok":"en/services", "hu/modszer":"en/approach",
+  "hu/rolunk":"en/about", "hu/kapcsolat":"en/contact",
+  "hu/helyi-seo":"en/local-seo", "hu/google-ads":"en/google-ads",
+  "hu/meta-hirdetesek":"en/meta-ads", "hu/erkezo-oldalak":"en/landing-pages",
+  "hu/kozossegi-media":"en/social-media", "hu/meres":"en/measurement"
 };
 for(const [huPath,enPath] of Object.entries(pairs)) {
- for(const [lang,route] of [["hu",huPath],["en",enPath]]) {
-   const source=join(route,"index.html");
-   const built=join("dist",route,"index.html");
-   test(existsSync(source)&&existsSync(built),"Missing localized page: "+route);
-   if(!existsSync(source)||!existsSync(built))continue;
-   const src=readFileSync(source,"utf8"),dst=readFileSync(built,"utf8");
-   test(src===dst,"Source/dist drift: "+route);
-   test(!src.includes("site-topline"),"Draft strip still displayed on "+route);
-   test(!/BELSŐ ELŐNÉZET|INTERNAL PREVIEW|WEBSITE DRAFT|Not a public offer/i.test(src),"Draft language in public presentation: "+route);
-   test(!/AI-támogatott videó|AI-assisted video|tartalom-video|content-video|videóforgatókönyv/i.test(src),"Out-of-scope AI-video offer on "+route);
-   test(src.includes('<html lang="'+lang+'"'),"Wrong page language: "+route);
-   test(src.includes('name="robots" content="noindex,nofollow,noarchive"'),"Missing noindex: "+route);
-   test(!/<form[\\s>]/i.test(src),"Unauthorized contact form: "+route);
-   test(src.includes('name="google-site-verification"'),"Missing Google Search Console tag: "+route);
-   const expectedCanonical='<link rel="canonical" href="https://lokmira.com/'+route+'/">';
-   const alternateHu='<link rel="alternate" hreflang="hu" href="https://lokmira.com/'+huPath+'/">';
-   const alternateEn='<link rel="alternate" hreflang="en" href="https://lokmira.com/'+enPath+'/">';
-   test(src.includes(expectedCanonical),"Missing self-canonical: "+route);
-   test(src.includes(alternateHu) && src.includes(alternateEn),"Missing bidirectional hreflang: "+route);
-   test((src.match(/hreflang=/g)||[]).length===2,"Wrong number of language variants: "+route);
-   test(src.includes('property="og:url" content="https://lokmira.com/'+route+'/"'),"Wrong social URL: "+route);
-   test(src.includes('property="og:site_name" content="Lokmira"'),"Missing social brand: "+route);
-   const pageTitle=src.match(/<title>([^<]+)<\/title>/)?.[1]||"";
-   test(pageTitle.length>26 && pageTitle.includes("Lokmira"),"Weak SEO title: "+route);
-   test(src.includes('href="/pages.css"'),"Dedicated page CSS not linked: "+route);
-   test((src.match(/class="site-visual-number" aria-hidden="true"/g)||[]).length>=3,"Missing unified Lucide step icons: "+route);
-   test(sitemap.includes("<loc>https://lokmira.com/"+route+"/</loc>"),"Sitemap route missing: "+route);
- }
+  for(const [lang,route] of [["hu",huPath],["en",enPath]]) {
+    const source=join(route,"index.html");
+    const built=join("dist",route,"index.html");
+    test(existsSync(source)&&existsSync(built),"Missing localized page: "+route);
+    if(!existsSync(source)||!existsSync(built))continue;
+    const src=readFileSync(source,"utf8"),dst=readFileSync(built,"utf8");
+    test(src===dst,"Source/dist drift: "+route);
+    test(!src.includes("site-topline"),"Draft strip still displayed on "+route);
+    test(!/BELSŐ ELŐNÉZET|INTERNAL PREVIEW|WEBSITE DRAFT|Not a public offer/i.test(src),"Draft language in public presentation: "+route);
+    test(!/AI-támogatott videó|AI-assisted video|tartalom-video|content-video|videóforgatókönyv/i.test(src),"Out-of-scope AI-video offer on "+route);
+    test(src.includes('<html lang="'+lang+'"'),"Wrong page language: "+route);
+    test(src.includes('name="robots" content="noindex,nofollow,noarchive"'),"Missing noindex: "+route);
+    test(!/<form[\s>]/i.test(src),"Unauthorized contact form: "+route);
+    test(src.includes('name="google-site-verification"'),"Missing Google Search Console tag: "+route);
+    const expectedCanonical='<link rel="canonical" href="https://lokmira.com/'+route+'/">';
+    const alternateHu='<link rel="alternate" hreflang="hu" href="https://lokmira.com/'+huPath+'/">';
+    const alternateEn='<link rel="alternate" hreflang="en" href="https://lokmira.com/'+enPath+'/">';
+    test(src.includes(expectedCanonical),"Missing self-canonical: "+route);
+    test(src.includes(alternateHu) && src.includes(alternateEn),"Missing bidirectional hreflang: "+route);
+    test((src.match(/hreflang=/g)||[]).length===2,"Wrong number of language variants: "+route);
+    test(src.includes('property="og:url" content="https://lokmira.com/'+route+'/"'),"Wrong social URL: "+route);
+    test(src.includes('property="og:site_name" content="Lokmira"'),"Missing social brand: "+route);
+    const pageTitle=src.match(/<title>([^<]+)<\/title>/)?.[1]||"";
+    test(pageTitle.length>26 && pageTitle.includes("Lokmira"),"Weak SEO title: "+route);
+    test(src.includes('href="/pages.css"'),"Dedicated page CSS not linked: "+route);
+    test((src.match(/class="site-visual-number" aria-hidden="true"/g)||[]).length>=3,"Missing unified Lucide step icons: "+route);
+    test(sitemap.includes("<loc>https://lokmira.com/"+route+"/</loc>"),"Sitemap route missing: "+route);
+  }
 }
 test(readFileSync("pages.css","utf8")===readFileSync("dist/pages.css","utf8"),"Premium CSS deploy drift");
 test(readFileSync("pages.js","utf8")===readFileSync("dist/pages.js","utf8"),"Premium JS deploy drift");
-test(readdirSync("dist/hu").length===8 && readdirSync("dist/en").length===9,"Unexpected locale directory count (expected 8 in dist/hu, 8 + index.html in dist/en)");
+test(readdirSync("dist/hu").length===10 && readdirSync("dist/en").length===11,"Unexpected locale directory count (expected 10 in dist/hu, 10 + index.html in dist/en)");
 const huFooters = new Set();
 const enFooters = new Set();
 for (const [huPath, enPath] of Object.entries(pairs)) {

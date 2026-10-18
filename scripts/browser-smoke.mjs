@@ -1,4 +1,10 @@
-import { chromium } from "playwright";
+import { pathToFileURL } from "node:url";
+let chromium;
+try {
+  ({ chromium } = await import("playwright"));
+} catch {
+  ({ chromium } = await import(pathToFileURL("C:/Users/merta/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs").href));
+}
 import { createServer } from "node:http";
 import { resolve, extname, sep, join } from "node:path";
 import { readFileSync, existsSync, statSync, mkdirSync } from "node:fs";
@@ -67,7 +73,7 @@ for(const width of widths){
     "Headline excessively large "+width+" "+JSON.stringify(hero));
   if(width>=1024)check(hero.diagramWidth>=350,
     "Desktop process card too narrow "+width+" "+JSON.stringify(hero));
-  check(hu.width<=1&&hu.lang==="hu"&&hu.robots==="noindex,nofollow,noarchive"&&hu.services===4&&hu.icons>=10&&hu.nav==="/hu/szolgaltatasok/"&&hu.contactAction==="/hu/kapcsolat/"&&errors.length===0,"homepage HU "+width+" "+JSON.stringify(hu)+" "+errors);
+  check(hu.width<=1&&hu.lang==="hu"&&hu.robots==="noindex,nofollow,noarchive"&&hu.services===6&&hu.icons>=10&&hu.nav==="/hu/szolgaltatasok/"&&hu.contactAction==="/hu/kapcsolat/"&&errors.length===0,"homepage HU "+width+" "+JSON.stringify(hu)+" "+errors);
   await page.locator('button[data-lang="en"]').click();
   const en=await page.evaluate(()=>({
     lang:document.documentElement.lang,title:document.title,
@@ -114,10 +120,14 @@ for(const width of widths){
   console.log("PASS homepage",width,"px; HU/EN links and preview restrictions");
   await context.close();
 }
-const routes=["/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/","/hu/helyi-seo/","/hu/google-ads/","/hu/kozossegi-media/","/hu/meres/",
-"/en/services/","/en/approach/","/en/about/","/en/contact/","/en/local-seo/","/en/google-ads/","/en/social-media/","/en/measurement/"];
+const routes=[
+  "/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/",
+  "/hu/helyi-seo/","/hu/google-ads/","/hu/meta-hirdetesek/","/hu/erkezo-oldalak/","/hu/kozossegi-media/","/hu/meres/",
+  "/en/services/","/en/approach/","/en/about/","/en/contact/",
+  "/en/local-seo/","/en/google-ads/","/en/meta-ads/","/en/landing-pages/","/en/social-media/","/en/measurement/"
+];
 for(const [index,route] of routes.entries()){
- const width=(index===0||index===8)?1440:390;
+ const width=(index===0||index===10)?1440:390;
  const ctx=await browser.newContext({viewport:{width,height:900},reducedMotion:"reduce"});
  const page=await ctx.newPage(),errors=[];
  page.on("pageerror",e=>errors.push(String(e)));
@@ -130,15 +140,21 @@ for(const [index,route] of routes.entries()){
    pictograms:[...document.querySelectorAll(".site-visual-number .ui-icon")].filter(el=>{const c=getComputedStyle(el);return (c.maskImage||c.webkitMaskImage||"").includes("/icons/")&&c.width!=="0px"}).length
  }));
  check(response.status()===200&&state.lang===(route.startsWith("/hu/")?"hu":"en")&&state.overflow<=1&&state.noindex==="noindex,nofollow,noarchive"&&state.title.includes("Lokmira")&&state.cssLoaded&&state.pictograms>=3&&state.links===0&&errors.length===0,"route "+route+" "+JSON.stringify(state)+" "+errors);
- if(index===0||index===8)await page.screenshot({path:"qa-screenshots/services-"+state.lang+"-"+width+".png",fullPage:true});
+ if(index===0||index===10)await page.screenshot({path:"qa-screenshots/services-"+state.lang+"-"+width+".png",fullPage:true});
  if(width===390){const menu=page.locator(".site-toggle");await menu.click();check((await menu.getAttribute("aria-expanded"))==="true"&&await page.locator(".site-nav").isVisible(),"subpage mobile menu "+route);}
  console.log("PASS multi-page",route,"status",response.status(),"overflow",state.overflow);
  await ctx.close();
 }
 
 const routeVariants={
- hu:["/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/","/hu/helyi-seo/","/hu/google-ads/","/hu/kozossegi-media/","/hu/meres/"],
- en:["/en/services/","/en/approach/","/en/about/","/en/contact/","/en/local-seo/","/en/google-ads/","/en/social-media/","/en/measurement/"]
+ hu:[
+   "/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/",
+   "/hu/helyi-seo/","/hu/google-ads/","/hu/meta-hirdetesek/","/hu/erkezo-oldalak/","/hu/kozossegi-media/","/hu/meres/"
+ ],
+ en:[
+   "/en/services/","/en/approach/","/en/about/","/en/contact/",
+   "/en/local-seo/","/en/google-ads/","/en/meta-ads/","/en/landing-pages/","/en/social-media/","/en/measurement/"
+ ]
 };
 for(const width of [390,1440])for(const lang of ["hu","en"]){
  const ctx=await browser.newContext({viewport:{width,height:900},reducedMotion:"reduce"});
@@ -169,10 +185,10 @@ for(const width of [390,1440])for(const lang of ["hu","en"]){
        "Inconsistent navigation geometry: "+lang+" "+width+" "+route+" item "+j+" "+JSON.stringify({a,b}));
    }
  }
- console.log("PASS nav parity all eight",lang,"routes at",width,"px");
+ console.log("PASS nav parity all ten",lang,"routes at",width,"px");
  await ctx.close();
 }
 await browser.close();
 await new Promise(ok=>server.close(ok));
 if(failures)process.exit(1);
-console.log("PASS Lokmira premium site browser QA: 5 homepage widths, /en/ root + 16 localized routes, nav/language and security meta");
+console.log("PASS Lokmira premium site browser QA: 5 homepage widths, /en/ root + 20 localized routes, nav/language and security meta");

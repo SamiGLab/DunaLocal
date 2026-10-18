@@ -23,9 +23,9 @@ const origin="http://127.0.0.1:"+server.address().port;
 const routes=[
  "/en/",
  "/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/",
- "/hu/helyi-seo/","/hu/google-ads/","/hu/kozossegi-media/","/hu/meres/",
+ "/hu/helyi-seo/","/hu/google-ads/","/hu/meta-hirdetesek/","/hu/erkezo-oldalak/","/hu/kozossegi-media/","/hu/meres/",
  "/en/services/","/en/approach/","/en/about/","/en/contact/",
- "/en/local-seo/","/en/google-ads/","/en/social-media/","/en/measurement/"
+ "/en/local-seo/","/en/google-ads/","/en/meta-ads/","/en/landing-pages/","/en/social-media/","/en/measurement/"
 ];
 const cases=routes.map(route=>({route,width:390})).concat(
  ["/hu/szolgaltatasok/","/en/services/","/hu/kapcsolat/","/en/contact/"].map(route=>({route,width:1440}))

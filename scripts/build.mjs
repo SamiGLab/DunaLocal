@@ -7,7 +7,18 @@ import vm from "node:vm";
 
 const out = "dist";
 const assets = ["index.html", "styles.css", "app.js", "pages.css", "pages.js", "robots.txt", "sitemap.xml", "_headers", "404.html"];
-const pageDirectories = ["hu/szolgaltatasok","en/services","hu/modszer","en/approach","hu/rolunk","en/about","hu/kapcsolat","en/contact","hu/helyi-seo","en/local-seo","hu/google-ads","en/google-ads","hu/kozossegi-media","en/social-media","hu/meres","en/measurement"];
+const pageDirectories = [
+  "hu/szolgaltatasok","en/services",
+  "hu/modszer","en/approach",
+  "hu/rolunk","en/about",
+  "hu/kapcsolat","en/contact",
+  "hu/helyi-seo","en/local-seo",
+  "hu/google-ads","en/google-ads",
+  "hu/meta-hirdetesek","en/meta-ads",
+  "hu/erkezo-oldalak","en/landing-pages",
+  "hu/kozossegi-media","en/social-media",
+  "hu/meres","en/measurement"
+];
 const iconAssets = ["search","phone-call","file-text","circle-check","arrow-up-right","arrow-right","chart-no-axes-combined","target","megaphone","clipboard-check","users","message-square-text","share-2","map-pin","workflow","chart-column-increasing","LICENSE"].map(n=>n==="LICENSE"?n:n+".svg");
 const brandAssets = ["focus-mark.svg", "focus-app-icon.svg", "focus-logo.svg", "favicon.svg"];
 
@@ -27,6 +38,8 @@ const enRoutes = {
   contact: "/en/contact/",
   seo: "/en/local-seo/",
   ads: "/en/google-ads/",
+  meta: "/en/meta-ads/",
+  landing: "/en/landing-pages/",
   social: "/en/social-media/",
   measurement: "/en/measurement/"
 };
@@ -69,10 +82,10 @@ if (existingEnHome !== enHome) {
   writeFileSync("en/index.html", enHome, "utf8");
 }
 
-// 2. Synchronize shared header brand links & canonical footers across all 16 subpages
+// 2. Synchronize shared header brand links & canonical footers across all localized subpages
 const sharedFooters = {
-  hu: '<footer class="site-footer"><div class="wrap site-footer-grid"><div><a class="site-brand" href="/"><img src="/brand/focus-mark.svg" alt="">lokmira</a><p>Helyi keresés, Google Ads és követhető ügyfélmegkeresések budapesti vállalkozásoknak.</p></div><div><h3>Szolgáltatások</h3><a href="/hu/helyi-seo/">Google Cégprofil és helyi SEO</a><a href="/hu/google-ads/">Google Ads és keresési kampányok</a><a href="/hu/kozossegi-media/">Közösségi média és tartalom</a><a href="/hu/meres/">Érdeklődés és ajánlatkövetés</a></div><div><h3>Lokmira</h3><a href="/hu/szolgaltatasok/">Szolgáltatások</a><a href="/hu/modszer/">Módszerünk</a><a href="/hu/rolunk/">Rólunk</a><a href="/hu/kapcsolat/">Kapcsolat</a></div></div><div class="wrap"><small>© Lokmira · Budapest · Helyi ügyfélszerzés</small></div></footer>',
-  en: '<footer class="site-footer"><div class="wrap site-footer-grid"><div><a class="site-brand" href="/en/"><img src="/brand/focus-mark.svg" alt="">lokmira</a><p>Local visibility, Google Ads and clearer customer enquiries for Budapest businesses.</p></div><div><h3>Services</h3><a href="/en/local-seo/">Google Business Profile &amp; local SEO</a><a href="/en/google-ads/">Google Ads &amp; search campaigns</a><a href="/en/social-media/">Social media &amp; content</a><a href="/en/measurement/">Enquiry &amp; quote tracking</a></div><div><h3>Lokmira</h3><a href="/en/services/">Services</a><a href="/en/approach/">Our approach</a><a href="/en/about/">About</a><a href="/en/contact/">Contact</a></div></div><div class="wrap"><small>© Lokmira · Budapest · Local customer growth</small></div></footer>'
+  hu: '<footer class="site-footer"><div class="wrap site-footer-grid"><div><a class="site-brand" href="/"><img src="/brand/focus-mark.svg" alt="">lokmira</a><p>Helyi keresés, Google Ads és követhető ügyfélmegkeresések budapesti vállalkozásoknak.</p></div><div><h3>Szolgáltatások</h3><a href="/hu/helyi-seo/">Google Cégprofil és helyi SEO</a><a href="/hu/google-ads/">Google Ads és keresési kampányok</a><a href="/hu/meta-hirdetesek/">Meta hirdetések és lead kampányok</a><a href="/hu/erkezo-oldalak/">Konverziós érkezőoldalak</a><a href="/hu/kozossegi-media/">Közösségi média és tartalom</a><a href="/hu/meres/">Érdeklődés és ajánlatkövetés</a></div><div><h3>Lokmira</h3><a href="/hu/szolgaltatasok/">Szolgáltatások</a><a href="/hu/modszer/">Módszerünk</a><a href="/hu/rolunk/">Rólunk</a><a href="/hu/kapcsolat/">Kapcsolat</a></div></div><div class="wrap"><small>© Lokmira · Budapest · Helyi ügyfélszerzés</small></div></footer>',
+  en: '<footer class="site-footer"><div class="wrap site-footer-grid"><div><a class="site-brand" href="/en/"><img src="/brand/focus-mark.svg" alt="">lokmira</a><p>Local visibility, Google Ads and clearer customer enquiries for Budapest businesses.</p></div><div><h3>Services</h3><a href="/en/local-seo/">Google Business Profile &amp; local SEO</a><a href="/en/google-ads/">Google Ads &amp; search campaigns</a><a href="/en/meta-ads/">Meta ads &amp; lead campaigns</a><a href="/en/landing-pages/">Conversion landing pages</a><a href="/en/social-media/">Social media &amp; content</a><a href="/en/measurement/">Enquiry &amp; quote tracking</a></div><div><h3>Lokmira</h3><a href="/en/services/">Services</a><a href="/en/approach/">Our approach</a><a href="/en/about/">About</a><a href="/en/contact/">Contact</a></div></div><div class="wrap"><small>© Lokmira · Budapest · Local customer growth</small></div></footer>'
 };
 
 for (const page of pageDirectories) {
