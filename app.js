@@ -2,14 +2,13 @@
 // No cookies, tracking, active forms or external runtime requests.
 const copy = {
   hu: {
-    uiExample:"Szemléltető minta",uiQuery:"Szolgáltatás a közelemben",uiSearchLabel:"Helyi keresési megjelenés",uiBusiness:"A vállalkozásod",uiResult:"Világos szolgáltatás. Releváns helyi információ.",uiProfile:"Szolgáltatások · elérhetőség · útvonal",uiQuote:"Ajánlatkérés",uiTracking:"Követhető következő lépés",uiRecorded:"Megkeresés → ajánlat → visszajelzés",miniLocal:"Adatok · szolgáltatások · helyszín",miniAd:"Hirdetés · keresési szándék",miniAds:"A kereséshez illő ajánlat",miniMeta:"Egy üzenet. Egy következő lépés.",miniLanding:"Világos ajánlat. Egyszerű döntés.",miniSocial:"Átgondolt tartalomnaptár",miniContent:"Téma → tartalom → megjelenés",miniTrack:"Forrás · állapot · következő lépés",miniFeedback:"Átlátható üzleti visszajelzés",
     preview:"LOKMIRA · HELYI ÜGYFÉLSZERZÉS",
     brandNote:"",brandTagline:"Helyi láthatóság. Mérhető megkeresések.",skip:"Ugrás a tartalomra",navServices:"Szolgáltatások",navMethod:"Módszerünk",navAbout:"Rólunk",navPilot:"90 napos pilot",navQuestions:"Kérdések",navContact:"Kapcsolat",
     eyebrow:"BUDAPEST · DIGITÁLIS MARKETING ÉS HELYI NÖVEKEDÉS",heroLead:"Legyen a vállalkozásod megtalálható.",heroEnd:"Az érdeklődés pedig követhető.",
     heroText:"A Lokmira a helyi keresési jelenlétet, a Google Ads kampányokat, a tartalomkészítést és az érdeklődések nyomon követését kapcsolja össze budapesti szolgáltató vállalkozásoknak.",
     heroAction:"Fedezd fel a szolgáltatásokat",heroAction2:"Hogyan dolgozunk?",tag1:"Helyi SEO és Cégprofil",tag2:"Google Ads és tartalom",tag3:"Követhető megkeresések",
     diagramTitle:"A megkeresés útja",demo:"KONCEPCIÓ · NEM VALÓS ADAT",flow1:"Keresés",flow2:"Érdeklődés",flow3:"Ajánlat",flow4:"Megrendelés",
-    detail2:"Hívás / ajánlatkérés",detail3:"Összeg / dátum / állapot",detail4:"Megnyert vagy elveszített",diagramFoot:"Szemléltető felületek. Nem valós keresési találatok, ügyféladatok vagy eredményígéretek.",
+    detail2:"Hívás / ajánlatkérés",detail3:"Összeg / dátum / állapot",detail4:"Megnyert vagy elveszített",diagramFoot:"Folyamatábra. Nem valós ügyféladat és nem eredményígéret.",
     highlight1:"Szűk fókusz",highlight1b:"Egy nagy értékű szolgáltatás",highlight2:"Közös mérés",highlight2b:"Keresés → ajánlat → munka",highlight3:"Valós visszajelzés",highlight3b:"Tényleges megkeresések alapján",
     problemEyebrow:"A HELYI JELENLÉT ÉS AZ ÉRTÉKESÍTÉS KAPCSOLATA",
     problemTitle1:"Látható a céged.",
@@ -68,14 +67,13 @@ const copy = {
     footNote:"",footText:"Helyi láthatóság és követhető ügyfélmegkeresések Budapesten.",toTop:"Tetejére"
   },
   en: {
-    uiExample:"Illustrative example",uiQuery:"Service near me",uiSearchLabel:"Local search appearance",uiBusiness:"Your business",uiResult:"A clear service. Relevant local information.",uiProfile:"Services · contact · directions",uiQuote:"Request a quote",uiTracking:"A clear next step",uiRecorded:"Enquiry → quote → feedback",miniLocal:"Details · services · location",miniAd:"Ad · search intent",miniAds:"An offer that matches the search",miniMeta:"One message. One next step.",miniLanding:"Clear offer. Simple decision.",miniSocial:"A considered content calendar",miniContent:"Topic → content → publication",miniTrack:"Source · status · next step",miniFeedback:"Clear business feedback",
     preview:"LOKMIRA · LOCAL CUSTOMER GROWTH",
     brandNote:"",brandTagline:"Local visibility. Measurable enquiries.",skip:"Skip to content",navServices:"Services",navMethod:"Our approach",navAbout:"About",navPilot:"90-day pilot",navQuestions:"Questions",navContact:"Contact",
     eyebrow:"BUDAPEST · LOCAL DIGITAL MARKETING",heroLead:"Make your business easier to find.",heroEnd:"Make every enquiry easier to understand.",
     heroText:"Lokmira connects local search visibility, Google Ads, content planning and enquiry tracking for service businesses in Budapest.",
     heroAction:"Explore the services",heroAction2:"Our approach",tag1:"Local SEO & Business Profile",tag2:"Google Ads & content",tag3:"Traceable enquiries",
     diagramTitle:"The enquiry journey",demo:"CONCEPT · NO REAL CUSTOMER DATA",flow1:"Search",flow2:"Enquiry",flow3:"Quote",flow4:"Booked job",
-    detail2:"Call / quote request",detail3:"Value / date / status",detail4:"Won or lost",diagramFoot:"Illustrative interfaces. No actual search results, client data or promised outcomes.",
+    detail2:"Call / quote request",detail3:"Value / date / status",detail4:"Won or lost",diagramFoot:"Illustrative workflow. No actual client data or promised results.",
     highlight1:"Narrow focus",highlight1b:"One high-value service",highlight2:"Connected measurement",highlight2b:"Search → quote → job",
     highlight3:"Real feedback",highlight3b:"Based on actual enquiries",
     problemEyebrow:"CONNECTING VISIBILITY TO ENQUIRIES",
