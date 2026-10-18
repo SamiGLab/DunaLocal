@@ -30,6 +30,8 @@ test(!/<form[\s>]/i.test(html), "Preview must not collect enquiries");
 test(!/fetch\s*\(|XMLHttpRequest|localStorage|document\.cookie|gtag\s*\(/.test(js), "Unexpected network/tracking code");
 test(css.includes("@media(max-width:360px)"), "Small-screen rules missing");
 test(html.includes('data-i18n="skip"'), "Accessible skip link missing");
+test(!html.includes("149 000 Ft") && !html.includes("79 000 Ft"), "Unapproved numeric prices must not appear in public preview");
+test(html.includes('data-i18n="priceStatus"'), "Pending pricing status missing");
 test(js.includes('meta[property="og:title"]'), "Dynamic metadata missing");
 for (const id of ["main","method","pilot","questions","contact"]) test(html.includes('id="' + id + '"'), "Missing section: " + id);
 if (failed) process.exit(1);

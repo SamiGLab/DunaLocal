@@ -5,3 +5,5 @@
 @media(max-width:360px){.shell{width:calc(100% - 24px)}.navbar{gap:5px}.logo{font-size:15px;gap:4px}.logo small{font-size:8px}.mark{width:28px;height:28px}.language{padding:3px}.lang{font-size:10px;padding:4px 5px}.menu{min-width:30px;width:30px;padding:2px}.menu span{width:19px}.diagram{padding:17px}.price strong{font-size:40px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
 .not-found-layout{min-height:75vh;display:flex;align-items:center;justify-content:center;padding:50px 0}.not-found-layout h1{font-size:clamp(38px,6vw,68px);letter-spacing:-.055em;line-height:1.1}.not-found-layout p:not(.eyebrow){line-height:1.8;color:var(--muted);max-width:600px}.not-found-layout .button{margin-top:20px}
+
+.price.pending strong{font-size:clamp(29px,3.7vw,45px);line-height:1.15;letter-spacing:-.045em}

@@ -1,11 +1,11 @@
 # Release gates and next tasks — Budapest agency
 
-**Last reviewed:** 2026-10-18. **Repository:** `SamiGLab/DunaLocal`. **Current state:** source code on GitHub, not deployed to hosting. The project is public source code; a published Pages URL has **not** been created here.
+**Last reviewed:** 2026-10-18. **Repository:** `SamiGLab/DunaLocal`. **Current state:** Cloudflare Workers Static Assets internal preview is online at https://dunalocal.samiayten-hu.workers.dev/ . HTTP 200 and static resources were confirmed from GitHub-hosted CI: https://github.com/SamiGLab/DunaLocal/actions/runs/39114246359 . This is not an approved final agency launch.
 
 ## Work that has actual repository deliverables
 - **T021 / T022 (draft):** HU/EN single-page concept and responsive UI are in `index.html`, `styles.css`, and `app.js`. Not locally proofread by a Hungarian specialist.
 - **T023 (development in progress):** functional static-site concept in GitHub main.
-- **T025 (staging implementation):** title, meta description, Open Graph text, language-dependent metadata, semantic sections, noindex header, robots.txt, browser responsive styles, automated checks. **Public SEO launch NOT complete**, because there is no approved name, final domain or public site.
+- **T025 (live-preview implementation):** title, meta description, Open Graph text, language-dependent metadata, semantic sections, noindex header, robots.txt, browser responsive styles, automated checks. **Public SEO launch NOT complete**, because there is no approved name, final domain or public site.
 - **T034–T036 (draft deliverables):** `social/launch-kit.md` with channel profiles, three HU/EN posts, editable design-template specification, plus `social/templates/lead-to-sale-card.svg`.
 - Previous artifact pack provided editable **T027–T031** sales drafts. Do not label them externally approved without legal/HU QA.
 
