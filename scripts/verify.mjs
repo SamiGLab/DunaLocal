@@ -4,19 +4,28 @@ const js = readFileSync("app.js", "utf8");
 const css = readFileSync("styles.css", "utf8");
 const robot = readFileSync("robots.txt", "utf8");
 const headers = readFileSync("_headers", "utf8");
-const keys = [...html.matchAll(/data-i18n="([^"]+)"/g)].map(m => m[1]);
-const required = [...new Set(keys)];
 let failed = false;
-for (const key of required) {
-  const re = new RegExp('(?:^|[,\\s])' + key.replace(/[.*+?^\x24{}()|[\]\\]/g, "\\$&") + '\\s*:','m');
-  if (!re.test(js)) { console.error("Missing translated key:", key); failed = true; }
+function test(condition, failure) {
+  if (!condition) { console.error(failure); failed = true; }
 }
-if (!html.includes('name="robots" content="noindex,nofollow,noarchive"')) {console.error("Missing noindex meta"); failed=true;}
-if (!robot.includes("Disallow: /")) {console.error("Missing robots disallow"); failed=true;}
-if (!headers.includes("X-Robots-Tag: noindex")) {console.error("Missing noindex header"); failed=true;}
-if (/<form[\s>]/i.test(html)) {console.error("Preview may not collect enquiries"); failed=true;}
-if (/fetch\s*\(|XMLHttpRequest|localStorage|document\.cookie|gtag\s*\(/.test(js)) {console.error("Unexpected network/tracking code"); failed=true;}
-if (!css.includes("@media(max-width:360px)")) {console.error("Small-screen rules missing"); failed=true;}
-for (const id of ["method","pilot","questions","contact"]) if (!html.includes('id="' + id + '"')) {console.error("Missing section:",id); failed=true;}
+const keys = [...new Set([...html.matchAll(/data-i18n="([^"]+)"/g)].map(m => m[1]))];
+const hu = js.split("hu: {")[1]?.split("  en: {")[0] ?? "";
+const en = js.split("en: {")[1]?.split("\n};")[0] ?? "";
+test(Boolean(hu && en), "Translations structure missing");
+for (const [lang, section] of [["HU",hu],["EN",en]]) {
+  for (const key of keys) {
+    const matcher = new RegExp("(?:^|[,\\s])" + key + "\\s*:", "m");
+    test(matcher.test(section), "Missing " + lang + " text key: " + key);
+  }
+}
+test(html.includes('name="robots" content="noindex,nofollow,noarchive"'), "Missing noindex meta");
+test(robot.includes("Disallow: /"), "Missing robots disallow");
+test(headers.includes("X-Robots-Tag: noindex"), "Missing noindex header");
+test(!/<form[\s>]/i.test(html), "Preview must not collect enquiries");
+test(!/fetch\s*\(|XMLHttpRequest|localStorage|document\.cookie|gtag\s*\(/.test(js), "Unexpected network/tracking code");
+test(css.includes("@media(max-width:360px)"), "Small-screen rules missing");
+test(html.includes('data-i18n="skip"'), "Accessible skip link missing");
+test(js.includes('meta[property="og:title"]'), "Dynamic metadata missing");
+for (const id of ["main","method","pilot","questions","contact"]) test(html.includes('id="' + id + '"'), "Missing section: " + id);
 if (failed) process.exit(1);
-console.log("Preview checks passed:",required.length,"text keys, noindex, no tracking, mobile CSS.");
+console.log("Static QA passed:",keys.length,"unique keys in both languages, safe preview, SEO metadata, mobile rules.");
