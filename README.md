@@ -25,7 +25,7 @@ No lead-collection form, payment, tracking scripts, analytics, cookies, or clien
 
 - T015: approve trade name; check Hungarian trademark, domain and company-name conflicts.
 - T016–T020: domain, identity, local Hungarian proofreading.
-- T001–T006: work/fiscal model, GDPR, contracting and data privacy review.
+- T001/T002/T003/T004/T006 **CANCELED by the owner**. Company, tax, permits, legal agreements and founder finance are not assistant responsibilities.
 - T024–T026: real business email, accessibility/mobile QA, SEO and deliberate publication approval.
 
 ## Current deliverables and evidence (18 October 2026)
@@ -36,10 +36,14 @@ No lead-collection form, payment, tracking scripts, analytics, cookies, or clien
 - [Status and legal/brand/publication gates](./docs/launch-gates-and-status.md).
 - [Successful five-viewport Chrome test and screenshots](https://github.com/SamiGLab/DunaLocal/actions/runs/39110708259): 320, 360, 390, 768 and 1440 px. Screenshots are available as a workflow artifact.
 
-**Not completed:** finalized brand/domain, HU-native review, company/legal/tax approval, real contact channel, final public launch approval, any live sale or testimonial. All social assets are unpublished drafts.
+**Not completed:** finalized brand/domain, HU-native review, real contact channel, final public launch approval, any live sale or testimonial. All social assets are unpublished drafts.
 
 ### Internal preview safety and diagnostics
 
 - Cloudflare Workers Static Assets serves `dist/` and supports a `_headers` file. The preview now has a restrictive CSP and a dedicated bilingual `404.html` fallback. A crawler noindex directive **does not** enforce privacy.
 - Live HTTP was independently verified from a GitHub-hosted runner: page HTTP 200, CSS/JS/robots 200, noindex and restricted internal URLs 404. Evidence: https://github.com/SamiGLab/DunaLocal/actions/runs/39114246359 . This is a publicly reachable INTERNAL PREVIEW, not an approved agency launch.
 - After new commits, verify the Cloudflare deployment references the same commit SHA as `main`. A manual build event or dashboard setting might not track push automatically.
+
+## Scope reset 18 October 2026
+
+The owner explicitly canceled company-admin work (T001/T002/T003/T004/T006). The assistant continues only with brand, web, Hungarian copy, marketing, candidate verification, sales kits and demos. Older company-related notes are historical and should never be treated as active tasks. [Current operational roadmap](./docs/operasyon-oncelikleri_2026-10-18.md).
