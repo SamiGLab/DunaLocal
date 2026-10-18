@@ -2,6 +2,9 @@
 
 **Status: Lokmira concept deployed to a noindex internal preview — public commercial launch not approved.** The connected GitHub repository is still technically named `DunaLocal` and the Cloudflare Worker is still named `dunalocal` until the owner completes repository/Worker settings changes. The website brand is Lokmira, but the final logo concept is not yet owner-approved. See [rename and domain handoff](./docs/LOKMIRA_repo_worker_rename_domain_handoff_2026-10-18.md).
 
+
+**Owner-approved positioning constraint (2026-10-18):** Lokmira sells local visibility and measurable qualified enquiries, **not AI-video production**. Core site: Google Business Profile/local SEO, Google Ads, social media management and content planning, enquiry / quote tracking. `/hu/kozossegi-media/` and `/en/social-media/` replace the removed AI-video pages; sitemap and CI tests follow the corrected routes. Site UI icons use **pinned Lucide SVG 1.59.0**, stored in `icons/` and copied locally to `dist/icons/`; see `icons/LICENSE` (ISC). No runtime CDN, analytics or cookies were added.
+
 ## Current site v2 — competitor-informed, HU/EN multi-page preview
 
 **2026-10-18 implementation:** A comparative review of [six Budapest digital agencies](./docs/LOKMIRA_rekabet_analizi_ve_site_yeniden_tasarim_2026-10-18.md) informed a cleaner premium design and a **17-URL** site. Source+deployed `dist/` include the homepage, 8 Hungarian pages, and 8 English pages. Both share `pages.css` and a minimal no-tracking `pages.js`.
@@ -14,7 +17,7 @@
 | `/hu/kapcsolat/` | `/en/contact/` | Contact status; no fake form/email |
 | `/hu/helyi-seo/` | `/en/local-seo/` | Google Business Profile / local SEO |
 | `/hu/google-ads/` | `/en/google-ads/` | Google Search campaigns |
-| `/hu/tartalom-video/` | `/en/content-video/` | Content and AI-assisted video |
+| `/hu/kozossegi-media/` | `/en/social-media/` | Social media management and content planning |
 | `/hu/meres/` | `/en/measurement/` | Enquiry and quote tracking |
 
 The `sitemap.xml` now maps only these **real** 17 routes. Google Search Console ownership on `lokmira.com` and public submission are **not** verified. The `noindex`, `Disallow: /`, no-active-contact and anti-tracking protections are intentionally intact.

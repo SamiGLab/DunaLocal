@@ -1,5 +1,8 @@
 # Lokmira — Premium Website V3 · Complete Codex Design/Implementation Brief
 
+> **Critical owner correction (18 Oct 2026):** Do **NOT** feature AI/video production as a Lokmira website service, headline, CTA, package or SEO keyword. Previous drafts accidentally marketed it; this is withdrawn. Core services: Google Business Profile/local SEO, Google Ads, social media management and content strategy, lead/enquiry-to-quote tracking/reporting. Routes: `/hu/kozossegi-media/` ↔ `/en/social-media/` replace retired AI-video paths. Two initial offer concepts: Local Presence and Customer Growth; Growth Partner is custom (not yet priced or launched). Icons: local **Lucide SVG pinned at 1.59.0 (ISC license)**, see `icons/` and `icons/LICENSE`; no CDN. Always keep `scripts/build.mjs`, `dist/` and sitemap consistent.
+
+
 > **Completed follow-up (2026-10-18):** Reciprocal HU/EN hreflang + self-canonical + descriptive per-page metadata are now implemented and CI-verified across 16 inner pages. Root is HU with JS English toggle and a self-canonical; do not pretend a separate `/en/` home is already present. Eight service-detail pages contain clearly marked *sample deliverables*. `scripts/a11y-routes.mjs` adds 16 mobile + 4 desktop Axe tests, and `scripts/verify.mjs` checks 17-page local link/anchor targets. See [release-evidence gate](./LOKMIRA_LAUNCH_CONTENT_EVIDENCE_GATE_2026-10-18.md). Next tasks are focused on verified real contact and brand inputs, native Hungarian edit and a deliberate indexable bilingual homepage architecture—not on repeating completed inner-page hreflang work.
 
 **Date:** 2026-10-18 · **Status:** In-progress noindex design preview · **Owner request:** competitor-informed high-end redesign and Codex handoff
