@@ -27,3 +27,16 @@
 - GitHub Actions'ta `actions/checkout@v4` ve `actions/upload-artifact@v4` için Node 20 deprecation uyarısı var; şu an başarısızlık yaratmıyor. Gelecek bakımda sürüm kontrolü yapılabilir.
 
 **Sonuç:** Adım 2.3'ün teknik yayın öncesi responsive ve canlı smoke QA'sı kapatıldı. Bir sonraki **Adım 3** marka adının kararlaştırılması ve onaylı adla logo + sosyal profil şablonlarının hazırlanmasıdır; marka adı varsayımla kesinleştirilmeyecek.
+
+## Final erişilebilirlik ve tekrar koşulan CI kanıtı
+
+QA raporu commitinden (`1c56f4cc...`) sonra üç GitHub Actions koşumu tekrar **success** ile tamamlandı:
+- [Accessible Preview Audit #39129122118](https://github.com/SamiGLab/DunaLocal/actions/runs/39129122118)
+- [Live Worker HTTP smoke #39129122084](https://github.com/SamiGLab/DunaLocal/actions/runs/39129122084)
+- [Preview quality checks #39129122034](https://github.com/SamiGLab/DunaLocal/actions/runs/39129122034)
+
+`axe-core` destekli otomatik WCAG A/AA kontrolleri **390px HU, 390px EN, 1440px HU, 1440px EN** senaryolarının her birinde **23 passing rule, 0 violations ve 0 JavaScript errors** raporladı. Bu bulgu tam manuel WCAG uygunluğu veya gerçek ekran okuyucu testi yapıldığı anlamına gelmez.
+
+[WCAG otomatik test çıktı ZIP'i — Google Drive](https://drive.google.com/file/d/1sEqoj5EL184wfi_CeJxB6kK51GZQuCeq/view) (ayrıca GitHub run artifact ID 12136704955).
+
+Bu belge yalnızca doğrulama kaydıdır; marka, alan adı, ticari iletişim ve canlıya açma onayları hâlâ ayrı karar kapılarıdır.
