@@ -47,3 +47,15 @@ Bu dosyalar GitHub'da mevcut olsa da **Codex ajanı ayrıca tetiklenmiş veya g�
 - [ ] Açık şirket/ürün/sonuç iddiaları önümüzdeki içerik kontrolünde yetkili kişi tarafından onaylanmalı.
 
 **Ticari yayın kriteri:** Kod güzel görünse bile iletişim ve gerçek marka bilgileri doğrulanmadan, kullanıcı ticari lansman onayı vermeden indeksleme açılmaz.
+
+## Sonraki QA sonucu — DOĞRULANDI (18.10.2026)
+
+**Tüm dört GitHub Actions iş akışı başarıyla tamamlandı** (kod commit `b9cedf1fa1`):
+- [Preview quality checks 39150594953](https://github.com/SamiGLab/DunaLocal/actions/runs/39150594953): **SUCCESS**. 117 benzersiz HU/EN metin anahtarı, tüm 16 yerelleştirilmiş sayfa `200`, beş genişlikte kök sayfa kontrolü (320/360/390/768/1440 px), yatay taşma 0.
+- [Accessible Preview Audit 39150594975](https://github.com/SamiGLab/DunaLocal/actions/runs/39150594975): **SUCCESS**. 390 HU/EN ve 1440 HU/EN kök senaryolarında her biri 25 geçen kural, **0 otomatik WCAG A/AA ihlali ve 0 JS hatası**. Bu sonuç tam manuel erişilebilirlik denetiminin yerine geçmez.
+- [Live Worker HTTP smoke 39150594952](https://github.com/SamiGLab/DunaLocal/actions/runs/39150594952): **SUCCESS**. Canlı Cloudflare önizlemesinde `/pages.css`, `/pages.js`, HTML/JS/CSS, 16 alt sayfa ve SVG dosyaları repo ile eşleşiyor; noindex, CSP ve iç özel dosyalara 404 korunuyor.
+- [Cloudflare pages build and deployment 39150595216](https://github.com/SamiGLab/DunaLocal/actions/runs/39150595216): **SUCCESS**.
+
+GitHub Actions üzerinden indirilen gerçek Chrome ekran görüntüleri tasarım açısından incelendi; ek olarak 620px altı için tekrarlanan hero logo mührü gizlendi ve bu sürümün testleri tekrar geçti.
+
+**Hâlâ açık:** canlı `lokmira.com` bağlantısı, gerçek kurumsal iletişim, final logo onayı, native Hungarian edit, gerçek müşteri referansları, manuel UX ve SEO i18n canonical/hreflang son kontrolü, ayrı ticari lansman izni. Codex direkt çalıştırılmadı; repo talimatları hazır.
