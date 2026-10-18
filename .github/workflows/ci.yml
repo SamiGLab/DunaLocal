@@ -24,6 +24,7 @@ jobs:
           test -f dist/index.html
           test -f dist/_headers
           test -f dist/robots.txt
+          test -f dist/sitemap.xml
           test -f dist/404.html
           test ! -e dist/docs
           test ! -e dist/social
