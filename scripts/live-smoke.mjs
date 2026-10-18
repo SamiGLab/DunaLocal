@@ -59,6 +59,27 @@ try {
   const robotsResponse = await probe("/robots.txt");
   if (!robotsResponse.body.includes("Sitemap: https://lokmira.com/sitemap.xml")) issues.push("Robots sitemap declaration missing");
 } catch (e) { issues.push("Sitemap live check: " + String(e)); }
+const newAssets=[["/pages.css","dist/pages.css"],["/pages.js","dist/pages.js"]];
+for (const [url,expectedFile] of newAssets) {
+  try {
+    const r=await probe(url),expected=readFileSync(expectedFile,"utf8");
+    if(r.status!==200||r.body!==expected) issues.push("Premium site asset failed: "+url);
+    console.log("Premium asset",url,r.status,"matches",r.body===expected);
+  } catch(e){issues.push("Premium asset "+url+": "+String(e));}
+}
+const siteRoutes=[
+ "/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/","/hu/helyi-seo/","/hu/google-ads/","/hu/tartalom-video/","/hu/meres/",
+ "/en/services/","/en/approach/","/en/about/","/en/contact/","/en/local-seo/","/en/google-ads/","/en/content-video/","/en/measurement/"
+];
+for(const url of siteRoutes){
+ try{
+   const result=await probe(url);
+   const file="dist"+url+"index.html";
+   const expected=readFileSync(file,"utf8");
+   if(result.status!==200||result.body!==expected||!result.body.includes('noindex,nofollow,noarchive'))issues.push("Locale page status/content mismatch: "+url);
+   console.log("Localized page",url,result.status,"repo matched",result.body===expected);
+ }catch(e){issues.push("Locale page "+url+": "+String(e));}
+}
 for (const name of ["focus-mark.svg", "focus-app-icon.svg", "focus-logo.svg", "favicon.svg"]) {
   try {
     const url = "/brand/" + name;
