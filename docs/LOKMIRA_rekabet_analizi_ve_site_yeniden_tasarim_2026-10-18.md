@@ -61,3 +61,8 @@ Teknik bileşenler: `pages.css`, `pages.js`, `scripts/build.mjs` ve 16 HTML sayf
 5. Macarca edit ve GSC/dns ile ticari yayın **ayrı onayla**.
 
 **Kaynaklar:** [Marketing21](https://marketing21.hu/), [Premium Studio](https://premiumstudio.hu/), [Growww Digital](https://www.growwwdigital.com/hu/), [INTREN](https://intren.hu/), [Budapest Marketing](https://budapestmarketing.com/), [Brand Hírnök](https://brandhirnok.hu/en/).
+
+
+## SON QA KAPANIŞI — 18.10.2026
+**GitHub kod sürümü `7d1dacd76e`:** [Preview quality checks 39148536615](https://github.com/SamiGLab/DunaLocal/actions/runs/39148536615) **success**, [Accessible Preview Audit 39148536605](https://github.com/SamiGLab/DunaLocal/actions/runs/39148536605) **success**, [Live Worker HTTP smoke 39148536611](https://github.com/SamiGLab/DunaLocal/actions/runs/39148536611) **success**, [pages build and deployment 39148536555](https://github.com/SamiGLab/DunaLocal/actions/runs/39148536555) **success**.
+Kalite günlüğü: 90 HU/EN i18n anahtarı, kök URL için 320/360/390/768/1440px responsive test, **16 yerelleştirilmiş sayfanın hepsi HTTP 200 / taşma 0**, noindex kontrolleri. İlk incelemede 768px'de 31px taşma tespit edildi, menü 900px altında hamburger yapısına geçince düzeldi. Kontroller otomatik olup estetik insan tasarım onayının yerine geçmez.
