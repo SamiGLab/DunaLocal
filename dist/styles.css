@@ -7,3 +7,22 @@
 .not-found-layout{min-height:75vh;display:flex;align-items:center;justify-content:center;padding:50px 0}.not-found-layout h1{font-size:clamp(38px,6vw,68px);letter-spacing:-.055em;line-height:1.1}.not-found-layout p:not(.eyebrow){line-height:1.8;color:var(--muted);max-width:600px}.not-found-layout .button{margin-top:20px}
 
 .price.pending strong{font-size:clamp(29px,3.7vw,45px);line-height:1.15;letter-spacing:-.045em}
+
+/* Visual refinement V1 — internal preview; provisional brand unchanged (2026-10-18). */
+:root{--bg:#f6f7f4;--ink:#101820;--muted:#566773;--teal:#236b50;--dark:#101820;--line:#dbe2de;--pale:#eaf1eb;--paper:#ffffff}
+.header{background:rgba(246,247,244,.97)}
+.hero h1{letter-spacing:-.061em}
+.hero h1 em,.section-intro h2 em{color:#236b50}
+.button.primary{background:#101820;color:#fff;transition:background .18s ease,transform .18s ease}
+.button.primary:hover{background:#264333}
+.diagram{background:#101820;border-color:#33464a;box-shadow:0 25px 65px #10182024;transform:none}
+.flow li{background:#203039;border-color:#384c51}
+.flow li.won{background:#285343;border-color:#6d9f83}
+.symbol{background:#345e50}
+.highlights{background:#e9efea}
+.cards article{box-shadow:0 10px 32px #10182009}
+.pilot{background:#eef2ed}
+.contact{background:#101820}
+.footer{background:#0b1319}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #a6d449;outline-offset:4px}
+@media(prefers-reduced-motion:reduce){.button.primary{transition:none}}
