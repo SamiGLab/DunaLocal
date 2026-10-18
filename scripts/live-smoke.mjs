@@ -37,6 +37,7 @@ for (let attempt = 1; attempt <= 6; attempt++) {
 }
 if (!root) {console.error("FAIL live homepage:",lastError);process.exit(1);}
 let issues = [];
+if (!root.body.includes('<meta name="google-site-verification" content="km1EpHT5L_IUzBBj709rZfeyxZ3zaUM86yIxYJ0nfJk" />')) issues.push("Google Search Console verification meta missing from live Worker");
 if (!root.body.includes('name="robots" content="noindex,nofollow,noarchive"')) issues.push("noindex meta missing");
 if (!root.body.includes('src="./app.js"')) issues.push("app.js reference missing");
 if (!root.body.includes('href="./styles.css"')) issues.push("styles.css reference missing");
