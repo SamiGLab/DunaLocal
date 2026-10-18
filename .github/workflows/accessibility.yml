@@ -14,6 +14,8 @@ jobs:
         run: npm install --no-save --no-package-lock playwright@1.55.1 @axe-core/playwright@4.10.2
       - name: Test WCAG A and AA in HU/EN, mobile and desktop
         run: node scripts/a11y.mjs
+      - name: Audit localized pages (16 mobile and 4 desktop)
+        run: node scripts/a11y-routes.mjs
       - name: Attach accessibility results
         if: always()
         uses: actions/upload-artifact@v4
