@@ -3,7 +3,7 @@
 const copy = {
   hu: {
     preview:"BELSŐ ELŐNÉZET · MÁRKANÉV JÓVÁHAGYÁSRA VÁR · NE PUBLIKÁLD",
-    brandNote:"munkanév · koncepció",navMethod:"Módszer",navPilot:"90 napos pilot",navQuestions:"Kérdések",navContact:"Kapcsolat",
+    brandNote:"munkanév · koncepció",skip:"Ugrás a tartalomra",navMethod:"Módszer",navPilot:"90 napos pilot",navQuestions:"Kérdések",navContact:"Kapcsolat",
     eyebrow:"Budapest · prémium autóvédelmi műhelyek",heroLead:"Ne állj meg az érdeklődőnél.",heroEnd:"Lásd, melyikből lesz munka.",
     heroText:"Összekötjük a Google keresési kampányokat az ajánlatkéréssel és a megnyert munkával. Egy szűk fókuszú, 90 napos teszt — nem megfoghatatlan marketingígéret.",
     heroAction:"Nézd meg a pilotot",heroAction2:"Hogyan működik?",tag1:"Egy szolgáltatásvonal",tag2:"Nyomon követhető ajánlatok",tag3:"Nincs eredménygarancia",
@@ -36,7 +36,7 @@ const copy = {
   },
   en: {
     preview:"INTERNAL PREVIEW · BRAND NAME NOT APPROVED · DO NOT PUBLISH",
-    brandNote:"working label · concept",navMethod:"Approach",navPilot:"90-day pilot",navQuestions:"Questions",navContact:"Contact",
+    brandNote:"working label · concept",skip:"Skip to content",navMethod:"Approach",navPilot:"90-day pilot",navQuestions:"Questions",navContact:"Contact",
     eyebrow:"Budapest · premium vehicle protection workshops",heroLead:"Don't stop at the lead.",heroEnd:"See which enquiries become booked work.",
     heroText:"We connect Google Search campaigns to enquiries, quotations and jobs won. One focused 90-day test — not vague marketing promises.",
     heroAction:"Explore the pilot",heroAction2:"How it works",tag1:"One service line",tag2:"Traceable quotations",tag3:"No outcome guarantee",
@@ -76,6 +76,13 @@ function setLanguage(lang) {
   if (!copy[lang]) return;
   document.documentElement.lang = lang;
   document.title = lang === "hu" ? "LOCAL/OPS | Belső koncepció" : "LOCAL/OPS | Internal concept";
+  const description = lang === "hu"
+    ? "Belső előnézet: mérhető ügyfélszerzési folyamatok budapesti prémium autóvédelmi műhelyeknek."
+    : "Internal preview: measurable enquiries and quotes for premium vehicle protection workshops in Budapest.";
+  document.querySelector('meta[name="description"]').setAttribute("content", description);
+  document.querySelector('meta[property="og:description"]').setAttribute("content", description);
+  document.querySelector('meta[property="og:title"]').setAttribute("content", document.title);
+  navigation.setAttribute("aria-label", lang === "hu" ? "Fő navigáció" : "Main navigation");
   for (const element of document.querySelectorAll("[data-i18n]")) {
     const key = element.getAttribute("data-i18n");
     if (Object.prototype.hasOwnProperty.call(copy[lang], key)) element.textContent = copy[lang][key];
