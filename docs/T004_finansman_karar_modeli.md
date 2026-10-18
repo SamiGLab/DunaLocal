@@ -1,3 +1,9 @@
+# KULLANICI KARARI — İPTAL / ARŞİV (18 Ekim 2026)
+
+Bu dosyadaki **şirket kuruluşu, izin, muhasebe, vergi, şirket finansmanı ve hukuki işler kullanıcının talimatıyla iptal edilmiştir**. Asistanın aktif görev listesinde değildir, tamamlanmış da sayılmaz. Yalnız eski proje arşivi olarak tutulmuştur; gelecekte bu işleri yeniden gündeme getirme.
+
+---
+
 # T004 · Kurucu geçimi ve ajans finansmanı — şeffaf karar modeli
 **Durum:** Parametrik iç senaryo / bütçe görüşmesi için taslak. Gerçek nakit rezervi bilinmiyor. 18 Ekim 2026.
 

@@ -1,3 +1,9 @@
+# KAPSAM NOTU (18 Ekim 2026)
+
+**T006 hukuk/sözleşme şirket işleri kullanıcı kararıyla İPTAL.** Aşağıdaki şirketle ilgili bölüm yalnız tarihsel. **T029** müşteriye sorulacak keşif soruları ve süreç doğrulaması pazarlama görevimiz olarak aktiftir.
+
+---
+
 # T006 / T029 · Veri yönetişimi ve ilk keşif görüşmesi protokolü
 **Durum:** Yasal inceleme ve gerçek müşteri testi için iç kontrol listesi. Müşteri verisi toplanmadı, e-posta/telefon gönderilmedi.
 

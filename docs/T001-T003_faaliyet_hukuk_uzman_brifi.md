@@ -1,3 +1,9 @@
+# KULLANICI KARARI — İPTAL / ARŞİV (18 Ekim 2026)
+
+Bu dosyadaki **şirket kuruluşu, izin, muhasebe, vergi, şirket finansmanı ve hukuki işler kullanıcının talimatıyla iptal edilmiştir**. Asistanın aktif görev listesinde değildir, tamamlanmış da sayılmaz. Yalnız eski proje arşivi olarak tutulmuştur; gelecekte bu işleri yeniden gündeme getirme.
+
+---
+
 # T001–T003 · Faaliyet modeli, hukuk ve faturalama karar dosyası
 **Durum:** Uzman görüşmesine hazır soru/kanıt paketi. Şirket/faaliyet/çalışma hakkı **kararı değildir**. 18 Ekim 2026.
 

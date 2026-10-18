@@ -32,3 +32,6 @@ Kullanıcının Macaristan'da mevcut şirketi, muhasebecisi, oturma ve şirketin
 **Tarihli satış kapıları:** 30 Ekim Macarca görüşme desteği; 13 Kasım ≥15 kanıtlı ön uygun + ≥3 nitelikli gerçek keşif; 17 Aralık ≥10 nitelikli görüşme + ≥2 ciddi ödeme sinyali; 16 Ocak 2027 en az 1 tahsil edilmiş pilot veya Go/No-Go/Pivot.
 
 Bu GitHub belgesi Excel dosyasını otomatik düzenlemez. İptallerin güncel ana Excel'e ayrıca geçirilmesi gerekir.
+
+## T013 yeni teslimat (18 Ekim)
+[10 kaynaklı PPF web/satış mini auditi](./T013_ilk_10_PPF_web_audit_kaynakli_2026-10-18.md) hazırlandı. **10 özgün kaynaklı taslak**, 10 tam uygunluk puanı veya 10 gerçek görüşme anlamına gelmez. Güncel 40 adaylı ana Excel bulunmadan T013 tamamen kapatılmaz.

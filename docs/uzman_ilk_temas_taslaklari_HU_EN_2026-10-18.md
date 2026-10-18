@@ -1,3 +1,9 @@
+# KAPSAM NOTU (18 Ekim 2026)
+
+**Yalnız Macarca dil/tercüme hizmeti için taslaklar aktiftir. Şirket hukuk/muhasebe ilk temas taslakları iptal edilmiş arşivdir.** Hiçbir dış mesaj gönderilmedi.
+
+---
+
 # Sadece taslak — henüz gönderilmedi (18 Ekim 2026)
 Bu metinler bir marka adı, şirket kaydı, faturalama onayı veya sözleşme kurulmuş olduğunu **iddia etmez**. Yazılı gönderim yalnız kullanıcının onayı ve yerel B2B iletişim kurallarının değerlendirilmesi sonrası yapılır.
 

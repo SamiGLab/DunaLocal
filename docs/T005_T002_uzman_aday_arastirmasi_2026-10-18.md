@@ -1,3 +1,9 @@
+# KAPSAM NOTU (18 Ekim 2026)
+
+**Bu eski dosyanın T005 Macarca metin/tercüme adayları aktiftir. T002 hukuk, muhasebe ve şirket açma uzmanları ile irtibat işi kullanıcı kararıyla İPTALDİR.** İkinci bölüm takip edilmeyecek.
+
+---
+
 # Budapeşte ajansı — T005 / T002 somut uzman aday araştırması
 **Araştırma tarihi:** 18 Ekim 2026
 **Durum:** Resmî işletme sayfaları ve kamuya açık hizmet tanıtımları incelendi. Bu çalışma bağımsız lisans, fiyat, müsaitlik, dil seviyesi ve yetkinlik teyidi değildir. **İletişim kurulmadı; teklif alınmadı; kişi görevlendirilmedi.** İsim onayı ve faaliyet modeli henüz yok.

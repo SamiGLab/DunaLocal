@@ -47,3 +47,6 @@ No lead-collection form, payment, tracking scripts, analytics, cookies, or clien
 ## Scope reset 18 October 2026
 
 The owner explicitly canceled company-admin work (T001/T002/T003/T004/T006). The assistant continues only with brand, web, Hungarian copy, marketing, candidate verification, sales kits and demos. Older company-related notes are historical and should never be treated as active tasks. [Current operational roadmap](./docs/operasyon-oncelikleri_2026-10-18.md).
+
+### Marketing research deliverables
+- [T013: 10 distinct evidence-backed PPF prospect web audits](./docs/T013_ilk_10_PPF_web_audit_kaynakli_2026-10-18.md). These are **public-source research notes**, not claims of known marketing failures or proof of 10 qualified buyers. No outreach was performed.
