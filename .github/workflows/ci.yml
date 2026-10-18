@@ -15,3 +15,5 @@ jobs:
         run: node --check app.js
       - name: Verify content and preview safeguards
         run: node scripts/verify.mjs
+      - name: Validate editable SVG social graphics
+        run: python3 scripts/verify_svgs.py
