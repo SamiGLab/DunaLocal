@@ -346,3 +346,62 @@
 .site-page .info-cards .info-pictogram{position:absolute;top:24px;right:25px;color:#28724f;inline-size:22px;block-size:22px}
 .site-page .info-cards .site-label{display:inline-block;max-width:calc(100% - 37px);padding-right:4px}
 @media(max-width:390px){.site-page .info-cards .info-pictogram{top:20px;right:20px;inline-size:20px;block-size:20px}}
+
+
+/* Lokmira UI v4: single navigation and button geometry across root + 16 routes.
+   Keep typography, active/hover states, hit targets and mobile breakpoint stable. */
+:root{--lm-header-height:76px;--lm-action-height:50px;--lm-nav-font:13px;--lm-action-radius:999px}
+.landing-root .shell,.site-page .wrap{width:min(1180px,calc(100% - 56px));margin-inline:auto}
+.landing-root .header,.site-page .site-head{top:0;background:rgba(247,248,244,.97);border-bottom:1px solid #dae2dc;box-shadow:0 6px 26px #12251f08}
+.landing-root .navbar,.site-page .site-head-inner{height:var(--lm-header-height);min-height:var(--lm-header-height);gap:22px}
+.landing-root .logo,.site-page .site-brand{gap:10px;font-size:24px;font-weight:850;line-height:1;letter-spacing:-.055em}
+.landing-root .logo .brand-symbol,.site-page .site-brand img{width:40px;height:40px;object-fit:contain;flex-shrink:0}
+.landing-root .logo .brand-wordmark{font-size:24px}
+.landing-root .navigation,.site-page .site-nav{display:flex;align-items:center;gap:10px;margin-left:auto;font-size:var(--lm-nav-font);font-weight:720}
+.landing-root .navigation>a:not(.nav-main-action),.site-page .site-nav>a:not(.nav-cta){display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 10px;font-size:var(--lm-nav-font);font-weight:720;line-height:1.2;color:#455b50;border-radius:9px;white-space:nowrap}
+.landing-root .navigation>a:hover:not(.nav-main-action),.site-page .site-nav>a:hover:not(.nav-cta){background:#edf3ed;color:#155b3d}
+.landing-root .navigation>a[aria-current="page"],.site-page .site-nav>a[aria-current="page"]:not(.nav-cta){color:#155b3d;background:#e5eee5}
+.landing-root .navigation a.nav-main-action,.site-page .site-nav a.nav-cta{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:130px;border:1px solid #101820;border-radius:999px;padding:10px 18px;background:#101820;color:#fff;font-size:var(--lm-nav-font);font-weight:800;line-height:1.2;white-space:nowrap}
+.landing-root .navigation a.nav-main-action:hover,.site-page .site-nav a.nav-cta:hover,.site-page .site-nav a.nav-cta[aria-current="page"]{background:#244f3d;border-color:#244f3d;color:#fff}
+.landing-root .navigation a.nav-main-action:focus-visible,.site-page .site-nav a.nav-cta:focus-visible{outline:3px solid #b1e472;outline-offset:3px}
+.landing-root .language,.site-page .site-langs{display:flex;align-items:center;justify-content:center;gap:2px;box-sizing:border-box;width:92px;height:42px;flex-shrink:0;margin-left:0;padding:4px;border-radius:999px;background:#e6ede6}
+.landing-root .language>span{display:none}
+.landing-root .language .lang,.site-page .site-langs a{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;min-width:39px;height:34px;padding:0 8px;border:0;border-radius:999px;font-size:12px;font-weight:800;line-height:1}
+.landing-root .language .lang.active,.site-page .site-langs a[aria-current="page"]{background:#fff;color:#17462e;box-shadow:0 1px 5px #1735291b}
+.landing-root .menu,.site-page .site-toggle{box-sizing:border-box;width:44px;height:44px;min-width:44px;min-height:44px;flex-shrink:0;cursor:pointer}
+.landing-root .button,.site-page .site-pill,.landing-root .contact-link{box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:var(--lm-action-height);padding:12px 22px;border-radius:var(--lm-action-radius);font-size:13px;font-weight:800;line-height:1.25;text-align:center;text-decoration:none}
+.landing-root .button.primary,.landing-root .contact-link,.site-page .site-pill{background:#c0ed72;color:#17281b;border:1px solid #c0ed72}
+.landing-root .button.outline,.site-page .site-pill.secondary{background:transparent;color:white;border:1px solid #93b3a0}
+.landing-root .contact-link:hover,.site-page .site-pill:hover,.landing-root .button.primary:hover{background:#d1f79c;color:#17281b}
+.landing-root .contact{scroll-margin-top:var(--lm-header-height)}
+.landing-root .contact .contact-link{flex-shrink:0}
+@media(max-width:1020px){
+ .landing-root .navigation,.site-page .site-nav{gap:5px}
+ .landing-root .navbar,.site-page .site-head-inner{gap:12px}
+ .landing-root .navigation>a:not(.nav-main-action),.site-page .site-nav>a:not(.nav-cta){padding-inline:7px}
+}
+@media(max-width:900px){
+ .landing-root .navbar,.site-page .site-head-inner{height:70px;min-height:70px;gap:10px}
+ .landing-root .logo,.site-page .site-brand,.landing-root .logo .brand-wordmark{font-size:22px}
+ .landing-root .logo .brand-symbol,.site-page .site-brand img{width:36px;height:36px}
+ .landing-root .language,.site-page .site-langs{margin-left:auto}
+ .landing-root .menu,.site-page .site-toggle{display:flex}
+ .landing-root .navigation,.site-page .site-nav{display:none;position:absolute;top:100%;left:0;right:0;z-index:32;background:#f7f8f4;border-bottom:1px solid #d9e1dd;box-shadow:0 18px 30px #10182022;padding:16px max(18px,calc((100% - 1180px)/2)) 20px;flex-direction:column;align-items:stretch;gap:5px}
+ .landing-root .navigation.open,.site-page .site-nav.is-open{display:flex}
+ .landing-root .navigation>a:not(.nav-main-action),.site-page .site-nav>a:not(.nav-cta){justify-content:flex-start;width:100%;min-height:46px;padding:12px 14px!important;font-size:14px!important}
+ .landing-root .navigation a.nav-main-action,.site-page .site-nav a.nav-cta{width:100%;min-height:48px;max-width:none;margin-top:6px;padding:13px 16px;background:#101820;color:#fff}
+}
+@media(max-width:620px){
+ .landing-root .shell,.site-page .wrap{width:calc(100% - 34px)}
+ .landing-root .hero{padding-left:17px;padding-right:17px}
+ .landing-root .navbar,.site-page .site-head-inner{height:70px;min-height:70px}
+ .landing-root .navigation a.nav-main-action{background:#101820;color:#fff}
+ .landing-root .button,.site-page .site-pill{min-height:50px}
+}
+@media(max-width:360px){
+ .landing-root .shell,.site-page .wrap{width:calc(100% - 24px)}
+ .landing-root .logo .brand-symbol,.site-page .site-brand img{width:32px;height:32px}
+ .landing-root .logo,.site-page .site-brand,.landing-root .logo .brand-wordmark{font-size:20px}
+ .landing-root .language,.site-page .site-langs{width:82px;height:40px}
+ .landing-root .language .lang,.site-page .site-langs a{min-width:35px;height:32px}
+}
