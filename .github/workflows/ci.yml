@@ -13,6 +13,16 @@ jobs:
       - uses: actions/checkout@v4
       - name: Check JavaScript syntax
         run: node --check app.js
+      - name: Build isolated Cloudflare Pages output
+        run: node scripts/build.mjs
+      - name: Check no private files are copied
+        run: |
+          test -f dist/index.html
+          test -f dist/_headers
+          test -f dist/robots.txt
+          test ! -e dist/docs
+          test ! -e dist/social
+          test ! -e dist/scripts
       - name: Verify content and preview safeguards
         run: node scripts/verify.mjs
       - name: Validate editable SVG social graphics
