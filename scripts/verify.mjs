@@ -95,5 +95,24 @@ for(const [huPath,enPath] of Object.entries(pairs)) {
 test(readFileSync("pages.css","utf8")===readFileSync("dist/pages.css","utf8"),"Premium CSS deploy drift");
 test(readFileSync("pages.js","utf8")===readFileSync("dist/pages.js","utf8"),"Premium JS deploy drift");
 test(readdirSync("dist/hu").length===8 && readdirSync("dist/en").length===8,"Unexpected locale directory count");
+
+const allSourcePages=["index.html",...Object.entries(pairs).flatMap(([hu,en])=>[join(hu,"index.html"),join(en,"index.html")])];
+for(const path of allSourcePages){
+  const page=readFileSync(path,"utf8");
+  const idSet=new Set([...page.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]));
+  const links=[...page.matchAll(/<a\b[^>]*\bhref="([^"]+)"/g)].map(m=>m[1]);
+  test(links.length>0,"Page has no useful links: "+path);
+  for(const href of links){
+    if(/^https?:\/\//.test(href)||href.startsWith("mailto:")||href.startsWith("tel:"))continue;
+    if(href==="#"||href.startsWith("javascript:")){test(false,"Dead/unsafe link "+href+" on "+path);continue;}
+    if(href.startsWith("#")){test(idSet.has(href.slice(1)),"Broken in-page anchor "+href+" on "+path);continue;}
+    const withoutHash=href.split("#")[0].split("?")[0];
+    const local=withoutHash.startsWith("/")?withoutHash.slice(1):withoutHash.replace(/^\.\//,"");
+    const target=local===""?"index.html":local.endsWith("/")?join(local,"index.html"):local;
+    test(existsSync(target),"Internal link target missing "+href+" on "+path);
+  }
+  test(!/\b(?:info|hello|contact)@lokmira\.com\b/.test(page),"Unverified corporate email shown on "+path);
+}
+
 if (failed) process.exit(1);
 console.log("Static QA passed:",keys.length,"unique keys in both languages, safe preview, SEO metadata, mobile rules.");
