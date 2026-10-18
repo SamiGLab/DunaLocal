@@ -1,5 +1,8 @@
 # Lokmira — Codex project instructions
 
+> **Status update 2026-10-18:** All **16 paired HU/EN inner pages already have reciprocal `hreflang` and self-canonical** tags, distinct descriptive SEO titles and OG language/URL metadata. The HU `/` home has a self-canonical; a separate indexable EN home is **not** yet available, so do not invent `/en/` alternate links. Four service pairs now contain explicitly **illustrative deliverable examples**, not approved packages. `scripts/verify.mjs` checks internal links/anchors and SEO parity; `scripts/a11y-routes.mjs` runs 20 extra WCAG scenarios. Active-contact CTA contrast was fixed. The remaining task is native Hungarian proofreading, user-approved logo/email/evidence, root localization architecture, domain/launch checks. See `docs/LOKMIRA_LAUNCH_CONTENT_EVIDENCE_GATE_2026-10-18.md`. Never undo these verified fixes.
+
+
 This repository belongs to **Lokmira**, an independent Budapest-focused digital-marketing agency project. The connected GitHub repository/Cloudflare Worker may still be technically named `DunaLocal`; **do not** infer that renaming the UI/brand changes the underlying repository or Worker names. The owner owns `lokmira.com` according to their statement; DNS connection and public launch are separate and unverified until tested.
 
 ## Mission
