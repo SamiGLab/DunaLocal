@@ -121,3 +121,29 @@ Bunlar İngilizce çalışma sloganlarıdır; Macarca birebir çeviri otomatik o
 Resmi `.hu` kayıt sorgusu: https://www.domain.hu/domain-search/ ; `.com` kayıt firması; sosyal handle uygunluğu platformda; HIPO marka sicilindeki benzerlikler ayrıca incelenecek. **Hiçbir seçenek boş / tescile elverişli ilan edilmedi**. Kamuya açık genel arama yalnızca öne çıkan mevcut markaları tespit etti. Bu belge hukuki uygunluk garantisi içermez.
 
 **Karar kapısı:** Kullanıcıdan 2–3 favori seçeneği öğren, sadece onların gerçek domain + handle ve marka benzerliği kontrollerini derinleştir. Final marka adı onayı alınana kadar repo adı DunaLocal, geçici site adı LOCAL/OPS ve sosyal taslaklar değişmez. Şirket idaresi/hukuk/muhasebe kapsam dışıdır.
+
+
+---
+
+## 18 Ekim 2026 — Kullanıcı DunaFlow'u seçti; gerçek alan adı/marka çakışması tespit edildi
+
+**Kullanıcı tercihi:** `DunaFlow`. Önceki dört finalist arasından açıkça seçilmiştir. Ancak fiili marka/alan adı uygulaması **BLOKE — çakışma nedeniyle yeniden karar gerekiyor**.
+
+### Kesin olarak doğrulanan açık kaynak olguları
+
+1. **https://dunaflow.hu/** faal. Site kendisini **Duna-Flow Kft.** olarak tanıtıyor; 2026'da kurulmuş Macaristan merkezli endüstriyel mühendislik, otomasyon, enstrümantasyon, teknik ölçüm faaliyetleri yürütüyor. Kaynak: https://dunaflow.hu/home/ . İkincil şirket kaydı: https://www.companywall.hu/v%C3%A1llalat/duna-flow-kft/MMkpZ0rR .
+2. **https://dunaflow.com/** da mevcut ve kullanımda. İçeriği Portekizce; n8n otomasyon, AI ajanları, dijital pazarlama ve lead generation / CRM hizmetleri anlatıyor. Kaynak: https://dunaflow.com/mentoria-11-n8n/ . **Bizim potansiyel AI/pazarlama hizmetleriyle kısmi doğrudan faaliyet yakınlığı bulunuyor.**
+3. Bu iki URL'nin faal olması **tam adla iki ana .hu/.com alan adının pratik olarak boş olmadığını kanıtlar**. Hak sahipliği ve marka korumasının kapsamı hakkında bir hukuki sonuç çıkarılmamıştır. Google arama veya sosyal medyada görünmeme müsaitlik kanıtı değildir.
+4. Instagram, Facebook, LinkedIn kullanıcı adlarının tam müsaitliği ve resmi marka sicili (HIPO) henüz doğrulanmadı.
+
+### Stratejik değerlendirme
+
+- **DunaFlow** kulağa ve konumlandırmaya uygun, fakat özellikle aynı Macar pazarındaki `Duna-Flow` ibaresi ve `.com` adresinde AI/dijital pazarlama yakınlığı nedeniyle **karışma/alan adı kaybı riski YÜKSEK**.
+- **Tavsiye:** DunaFlow'u kalıcı web logosuna, sosyal profil marka adına veya ticari lansmana aktarma. Mevcut `LOCAL/OPS` iç önizlemesi ve GitHub `SamiGLab/DunaLocal` deposu **değiştirilmedi**.
+- Yeni isim kararı için `DunaSignal` veya `DunaLocal` alternatifleriyle devam edilebilir, ancak onların da domain/handle/marka benzerliği ayrıca teyit edilmeli. Kullanıcı “flow/süreç” hissini özellikle istiyorsa **yeni ve daha özgün ikinci kelime** tasarlanmalı; `DunaFlow Studio` gibi eki yalnızca çakışmayı çözdüğü varsayılmamalı.
+
+### Gating
+
+**Durum:** T015 “kullanıcı adı tercihini ifade etti” = tamam; T015 “risk kontrolü tamamlandı / uygulanabilir marka kesinleştirildi” = **açık**.
+
+**Sıradaki adım:** Kullanıcıya somut çakışmayı bildir; daha ayırt edici alternatif seçimi için onay iste. Marka/alan adı/hesap oluşturma yok. Şirket kuruluşu, muhasebe, hukuk ve idari süreçler kapsam dışıdır.
