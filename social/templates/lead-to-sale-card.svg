@@ -1,31 +1,31 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350" viewBox="0 0 1080 1350" role="img" aria-labelledby="title desc">
 <title id="title">Keresésből megrendelés – belső közösségi média sablon</title>
 <desc id="desc">Editable illustrative social graphic showing four steps from Google Search to an order. Internal draft, no customer data.</desc>
-<rect width="1080" height="1350" fill="#f3f5f1"/>
-<rect width="1080" height="20" fill="#117759"/>
-<text x="85" y="125" font-size="29" font-weight="700" fill="#117759" font-family="Arial, sans-serif" letter-spacing="4">BELSŐ KONCEPCIÓ · NEM ÜGYFÉLEREDMÉNY</text>
-<text x="85" y="240" font-size="78" font-weight="800" fill="#14231f" font-family="Arial, sans-serif" letter-spacing="-4">A kattintás</text>
-<text x="85" y="328" font-size="78" font-weight="800" fill="#14231f" font-family="Arial, sans-serif" letter-spacing="-4">még nem</text>
-<text x="85" y="416" font-size="78" font-weight="800" fill="#117759" font-family="Arial, sans-serif" letter-spacing="-4">megrendelés.</text>
-<text x="85" y="485" font-size="31" fill="#60736a" font-family="Arial, sans-serif">Tedd követhetővé az ajánlat útját.</text>
-<rect x="70" y="565" width="940" height="610" rx="36" fill="#132e27"/>
+<rect width="1080" height="1350" fill="#F6F7F4"/>
+<rect width="1080" height="20" fill="#236B50"/>
+<text x="85" y="125" font-size="29" font-weight="700" fill="#236B50" font-family="Arial, sans-serif" letter-spacing="4">BELSŐ KONCEPCIÓ · NEM ÜGYFÉLEREDMÉNY</text>
+<text x="85" y="240" font-size="78" font-weight="800" fill="#101820" font-family="Arial, sans-serif" letter-spacing="-4">A kattintás</text>
+<text x="85" y="328" font-size="78" font-weight="800" fill="#101820" font-family="Arial, sans-serif" letter-spacing="-4">még nem</text>
+<text x="85" y="416" font-size="78" font-weight="800" fill="#236B50" font-family="Arial, sans-serif" letter-spacing="-4">megrendelés.</text>
+<text x="85" y="485" font-size="31" fill="#566773" font-family="Arial, sans-serif">Tedd követhetővé az ajánlat útját.</text>
+<rect x="70" y="565" width="940" height="610" rx="36" fill="#101820"/>
 <g font-family="Arial, sans-serif">
-  <rect x="110" y="610" width="860" height="112" rx="15" fill="#264c3e"/>
+  <rect x="110" y="610" width="860" height="112" rx="15" fill="#203039"/>
   <text x="149" y="678" font-size="34" font-weight="700" fill="#edf9ee">01 · Google keresés</text>
   <text x="900" y="675" font-size="39" text-anchor="end" fill="#a6cfb6">↗</text>
   <path d="M540 723 V754" stroke="#7bad90" stroke-width="5" stroke-linecap="round"/>
-  <rect x="110" y="761" width="860" height="112" rx="15" fill="#264c3e"/>
+  <rect x="110" y="761" width="860" height="112" rx="15" fill="#203039"/>
   <text x="149" y="828" font-size="34" font-weight="700" fill="#edf9ee">02 · Érdeklődés</text>
   <text x="900" y="826" font-size="39" text-anchor="end" fill="#a6cfb6">↳</text>
   <path d="M540 873 V904" stroke="#7bad90" stroke-width="5" stroke-linecap="round"/>
-  <rect x="110" y="911" width="860" height="112" rx="15" fill="#264c3e"/>
+  <rect x="110" y="911" width="860" height="112" rx="15" fill="#203039"/>
   <text x="149" y="977" font-size="34" font-weight="700" fill="#edf9ee">03 · Ajánlat</text>
   <text x="900" y="975" font-size="39" text-anchor="end" fill="#a6cfb6">≋</text>
   <path d="M540 1023 V1054" stroke="#7bad90" stroke-width="5" stroke-linecap="round"/>
-  <rect x="110" y="1060" width="860" height="89" rx="15" fill="#297c57"/>
+  <rect x="110" y="1060" width="860" height="89" rx="15" fill="#285343"/>
   <text x="149" y="1117" font-size="33" font-weight="700" fill="#ffffff">04 · Megrendelés / elveszítve</text>
 </g>
 <path d="M70 1240 H1010" stroke="#bed6c3" stroke-width="3"/>
-<text x="85" y="1298" font-size="26" font-family="Arial, sans-serif" font-weight="600" fill="#486f57">LOCAL/OPS · MUNKANÉV</text>
+<text x="85" y="1298" font-size="26" font-family="Arial, sans-serif" font-weight="600" fill="#566773">LOCAL/OPS · MUNKANÉV</text>
 <text x="995" y="1298" font-size="22" font-family="Arial, sans-serif" text-anchor="end" fill="#6e897a">JÓVÁHAGYÁS ELŐTT</text>
 </svg>
