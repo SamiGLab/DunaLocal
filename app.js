@@ -3,18 +3,18 @@
 const copy = {
   hu: {
     preview:"BELSŐ ELŐNÉZET · LOKMIRA ARCULATTERV · NEM PUBLIKUS",
-    brandNote:"belső arculatterv",brandTagline:"Helyi láthatóság. Mérhető megkeresések.",skip:"Ugrás a tartalomra",navServices:"Szolgáltatások",navMethod:"Módszer",navPilot:"90 napos pilot",navQuestions:"Kérdések",navContact:"Kapcsolat",
-    eyebrow:"Budapest · helyi szolgáltató vállalkozások",heroLead:"Legyen könnyebb rád találni.",heroEnd:"Tudd, miből lesz valódi megkeresés.",
+    brandNote:"belső arculatterv",brandTagline:"Helyi láthatóság. Mérhető megkeresések.",skip:"Ugrás a tartalomra",navServices:"Szolgáltatások",navMethod:"Módszerünk",navAbout:"Rólunk",navPilot:"90 napos pilot",navQuestions:"Kérdések",navContact:"Kapcsolat · előkészület",
+    eyebrow:"BUDAPEST · DIGITÁLIS MARKETING ÉS HELYI NÖVEKEDÉS",heroLead:"Legyen a vállalkozásod megtalálható.",heroEnd:"Az érdeklődés pedig követhető.",
     heroText:"A Lokmira a helyi keresési jelenlétet, a Google Ads kampányokat, a tartalomkészítést és az érdeklődések nyomon követését kapcsolja össze. Budapesti szolgáltatóknak, világos célokkal és túlzó ígéretek nélkül.",
-    heroAction:"Nézd meg a pilotot",heroAction2:"Hogyan működik?",tag1:"Helyi SEO és Cégprofil",tag2:"Google Ads és tartalom",tag3:"Követhető megkeresések",
+    heroAction:"Fedezd fel a szolgáltatásokat",heroAction2:"Hogyan dolgozunk?",tag1:"Helyi SEO és Cégprofil",tag2:"Google Ads és tartalom",tag3:"Követhető megkeresések",
     diagramTitle:"A megkeresés útja",demo:"KONCEPCIÓ · NEM VALÓS ADAT",flow1:"Keresés",flow2:"Érdeklődés",flow3:"Ajánlat",flow4:"Megrendelés",
     detail2:"Hívás / ajánlatkérés",detail3:"Összeg / dátum / állapot",detail4:"Megnyert vagy elveszített",diagramFoot:"Folyamatábra. Nem valós ügyféladat és nem eredményígéret.",
     highlight1:"Szűk fókusz",highlight1b:"Egy nagy értékű szolgáltatás",highlight2:"Közös mérés",highlight2b:"Keresés → ajánlat → munka",highlight3:"Valós visszajelzés",highlight3b:"Tények, nem becslések",
-    servicesEyebrow:"MIBEN SEGÍT A LOKMIRA?",servicesTitle:"Több mint hirdetés.",servicesTitle2:"Összekapcsolt helyi jelenlét.",servicesText:"A szolgáltatásokat az adott vállalkozás helyzetéhez igazítjuk. Nem minden elem része automatikusan az első pilotnak.",
+    servicesEyebrow:"MIBEN SEGÍT A LOKMIRA?",servicesTitle:"Láthatóság, ami célt szolgál.",servicesTitle2:"Együtt működő csatornák.",servicesText:"A szolgáltatásokat az adott vállalkozás helyzetéhez igazítjuk. Nem minden elem része automatikusan az első pilotnak.",
     service1:"Google Cégprofil és helyi SEO",service1b:"A vállalkozás adatainak, helyi keresési megjelenésének és fontos weboldalainak áttekintése és javítási javaslatai.",
     service2:"Google Ads kampányok",service2b:"Egyértelmű keresési szándékokra épülő kampányok, átlátható költségkerettel és mérési tervvel.",
     service3:"Tartalom és AI-támogatott videó",service3b:"Márkához illő vizuális tartalmak és videótervek, ellenőrzött termékállításokkal és emberi jóváhagyással.",
-    service4:"Érdeklődés- és ajánlatkövetés",service4b:"A keresést, megkeresést és ajánlatot összekötő egyszerű folyamat, a vállalkozásnál elérhető adatok alapján.",
+    service4:"Érdeklődés- és ajánlatkövetés",service4b:"A keresést, megkeresést és ajánlatot összekötő egyszerű folyamat, a vállalkozásnál elérhető adatok alapján.",serviceMore:"Részletek ↗",storyLabel:"KIS LÉPÉSEK · TISZTA MÓDSZER",storyTitle:"Nem kérünk vak bizalmat.",storyText:"Még nem állítunk magunkról ellenőrizhetetlen eredményeket, és nem jelenítünk meg kitalált ügyfélreferenciákat. A Lokmira ajánlata az átlátható munkafolyamatra, a világos szerepekre és a követhető üzleti visszajelzésre épül.",storyAction:"Ismerd meg, hogyan gondolkodunk ↗",
     methodEyebrow:"AMIT MÁSKÉPP CSINÁLUNK",methodTitle:"Nem több kattintás.",methodTitle2:"Jobban követhető értékesítés.",
     methodText:"A kattintás önmagában nem üzleti eredmény. A folyamatot az első kereséstől az ajánlaton át a megrendelésig szeretnénk áttekinthetővé tenni.",
     card1:"Keresési szándék",card1b:"Google Search kampány egy kiválasztott, nagy értékű szolgáltatásra.",
@@ -41,19 +41,19 @@ const copy = {
   },
   en: {
     preview:"INTERNAL PREVIEW · LOKMIRA BRAND DRAFT · NOT PUBLIC",
-    brandNote:"internal brand draft",brandTagline:"Local visibility. Measurable enquiries.",skip:"Skip to content",navServices:"Services",navMethod:"Approach",navPilot:"90-day pilot",navQuestions:"Questions",navContact:"Contact",
-    eyebrow:"Budapest · local service businesses",heroLead:"Get found locally.",heroEnd:"Know which enquiries become customers.",
+    brandNote:"internal brand draft",brandTagline:"Local visibility. Measurable enquiries.",skip:"Skip to content",navServices:"Services",navMethod:"Our approach",navAbout:"About",navPilot:"90-day pilot",navQuestions:"Questions",navContact:"Contact · coming soon",
+    eyebrow:"BUDAPEST · LOCAL DIGITAL MARKETING",heroLead:"Make your business easier to find.",heroEnd:"Make every enquiry easier to understand.",
     heroText:"Lokmira connects local search visibility, Google Ads, content and enquiry tracking for service businesses in Budapest. Clear priorities, practical measurement and no inflated promises.",
-    heroAction:"Explore the pilot",heroAction2:"How it works",tag1:"Local SEO & Business Profile",tag2:"Google Ads & content",tag3:"Traceable enquiries",
+    heroAction:"Explore the services",heroAction2:"Our approach",tag1:"Local SEO & Business Profile",tag2:"Google Ads & content",tag3:"Traceable enquiries",
     diagramTitle:"The enquiry journey",demo:"CONCEPT · NO REAL CUSTOMER DATA",flow1:"Search",flow2:"Enquiry",flow3:"Quote",flow4:"Booked job",
     detail2:"Call / quote request",detail3:"Value / date / status",detail4:"Won or lost",diagramFoot:"Illustrative workflow. No actual client data or promised results.",
     highlight1:"Narrow focus",highlight1b:"One high-value service",highlight2:"Connected measurement",highlight2b:"Search → quote → job",
     highlight3:"Real feedback",highlight3b:"Facts, not assumptions",
-    servicesEyebrow:"HOW LOKMIRA HELPS",servicesTitle:"More than advertising.",servicesTitle2:"Connected local visibility.",servicesText:"Services are tailored to each business. The initial pilot does not automatically include every service listed below.",
+    servicesEyebrow:"HOW LOKMIRA HELPS",servicesTitle:"Make visibility useful.",servicesTitle2:"Connect the right channels.",servicesText:"Services are tailored to each business. The initial pilot does not automatically include every service listed below.",
     service1:"Google Business Profile & local SEO",service1b:"Review local search presence, business details and important website pages, then prioritise practical improvements.",
     service2:"Google Ads campaigns",service2b:"Campaigns built around relevant search intent, with transparent budgets and a clear measurement plan.",
     service3:"Content & AI-assisted video",service3b:"Brand-aligned content and video concepts with checked product claims and human review.",
-    service4:"Enquiry & quote tracking",service4b:"A straightforward view of searches, enquiries and quotations using information the business already has.",
+    service4:"Enquiry & quote tracking",service4b:"A straightforward view of searches, enquiries and quotations using information the business already has.",serviceMore:"Learn more ↗",storyLabel:"CLEAR SCOPE · REAL EVIDENCE",storyTitle:"Trust should be earned.",storyText:"We will not publish unverifiable results or invented client testimonials. Lokmira is being built around transparent decisions, clearly defined responsibilities and business feedback that can actually be reviewed.",storyAction:"See what we stand for ↗",
     methodEyebrow:"WHAT WE DO DIFFERENTLY",methodTitle:"Not more clicks.",methodTitle2:"A clearer route to sales.",
     methodText:"A click alone is not a business outcome. We aim to make the path from initial search through enquiries and quotes to booked work easier to follow.",
     card1:"Search intent",card1b:"A Google Search campaign focused on one selected high-value service.",
@@ -97,6 +97,14 @@ function setLanguage(lang) {
   for (const element of document.querySelectorAll("[data-i18n]")) {
     const key = element.getAttribute("data-i18n");
     if (Object.prototype.hasOwnProperty.call(copy[lang], key)) element.textContent = copy[lang][key];
+  }
+  const routes = {
+    hu:{services:"/hu/szolgaltatasok/",approach:"/hu/modszer/",about:"/hu/rolunk/",contact:"/hu/kapcsolat/",seo:"/hu/helyi-seo/",ads:"/hu/google-ads/",creative:"/hu/tartalom-video/",measurement:"/hu/meres/"},
+    en:{services:"/en/services/",approach:"/en/approach/",about:"/en/about/",contact:"/en/contact/",seo:"/en/local-seo/",ads:"/en/google-ads/",creative:"/en/content-video/",measurement:"/en/measurement/"}
+  };
+  for (const element of document.querySelectorAll("[data-route]")) {
+    const route = element.dataset.route;
+    if (Object.prototype.hasOwnProperty.call(routes[lang],route)) element.setAttribute("href",routes[lang][route]);
   }
   for (const button of buttons) {
     const selected = button.dataset.lang === lang;
