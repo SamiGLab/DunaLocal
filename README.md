@@ -1,6 +1,25 @@
-> **PROJECT NAME UPDATE — 2026-10-18:** The owner selected **Lokmira** as the agency/site name for all next planning and design drafts. `DunaLocal` is the existing technical repository name and `LOCAL/OPS` remains the unpublished preview placeholder. **Owner confirmed purchasing `lokmira.com` on 2026-10-18; registrar/DNS control has not been independently tested. `lokmira.hu` availability, trademark clearance and public launch remain unverified/unapproved.** Active step-by-step scope, status and release gates: [Lokmira master roadmap](./docs/LOKMIRA_ana_yol_haritasi_2026-10-18.md) / [Google Drive roadmap](https://docs.google.com/document/d/1YncxE0AkLJ2Rx0HmLCvoKGQdmEo7ZGyKA1-ivDgHmGQ/edit). Existing earlier brand notes below are historical.\n\n**PREVIEW BRAND IMPLEMENTATION:** Lokmira Focus / Discovery concept 2 is integrated as a **provisional, not owner-finalized** logo system in index/app/styles and dist. See [L03 technical and safety report](./docs/L03_lokmira_site_kimligi_2026-10-18.md). The site remains noindex, with contact disabled, and `lokmira.com` DNS/launch is not connected. Alternative concept 1/3 marks remain in source-only `design/brand-alternatives/`.\n\n# Lokmira — Budapest digital marketing agency site (internal preview)
+> **PROJECT NAME UPDATE — 2026-10-18:** The owner selected **Lokmira** as the agency/site name for all next planning and design drafts. `DunaLocal` is still the technical GitHub repository and Cloudflare Worker name; the website itself displays **Lokmira** and now has a bilingual multi-page internal preview. **Owner confirmed purchasing `lokmira.com` on 2026-10-18; registrar/DNS control has not been independently tested. `lokmira.hu` availability, trademark clearance and public launch remain unverified/unapproved.** Active step-by-step scope, status and release gates: [Lokmira master roadmap](./docs/LOKMIRA_ana_yol_haritasi_2026-10-18.md) / [Google Drive roadmap](https://docs.google.com/document/d/1YncxE0AkLJ2Rx0HmLCvoKGQdmEo7ZGyKA1-ivDgHmGQ/edit). Existing earlier brand notes below are historical.\n\n**PREVIEW BRAND IMPLEMENTATION:** Lokmira Focus / Discovery concept 2 is integrated as a **provisional, not owner-finalized** logo system in index/app/styles and dist. See [L03 technical and safety report](./docs/L03_lokmira_site_kimligi_2026-10-18.md). The site remains noindex, with contact disabled, and `lokmira.com` DNS/launch is not connected. Alternative concept 1/3 marks remain in source-only `design/brand-alternatives/`.\n\n# Lokmira — Budapest digital marketing agency site (internal preview)
 
 **Status: Lokmira concept deployed to a noindex internal preview — public commercial launch not approved.** The connected GitHub repository is still technically named `DunaLocal` and the Cloudflare Worker is still named `dunalocal` until the owner completes repository/Worker settings changes. The website brand is Lokmira, but the final logo concept is not yet owner-approved. See [rename and domain handoff](./docs/LOKMIRA_repo_worker_rename_domain_handoff_2026-10-18.md).
+
+## Current site v2 — competitor-informed, HU/EN multi-page preview
+
+**2026-10-18 implementation:** A comparative review of [six Budapest digital agencies](./docs/LOKMIRA_rekabet_analizi_ve_site_yeniden_tasarim_2026-10-18.md) informed a cleaner premium design and a **17-URL** site. Source+deployed `dist/` include the homepage, 8 Hungarian pages, and 8 English pages. Both share `pages.css` and a minimal no-tracking `pages.js`.
+
+| Hungarian | English | Content |
+|---|---|---|
+| `/hu/szolgaltatasok/` | `/en/services/` | Service overview |
+| `/hu/modszer/` | `/en/approach/` | How work would happen; proposed 90-day pilot |
+| `/hu/rolunk/` | `/en/about/` | Honest, pre-launch positioning |
+| `/hu/kapcsolat/` | `/en/contact/` | Contact status; no fake form/email |
+| `/hu/helyi-seo/` | `/en/local-seo/` | Google Business Profile / local SEO |
+| `/hu/google-ads/` | `/en/google-ads/` | Google Search campaigns |
+| `/hu/tartalom-video/` | `/en/content-video/` | Content and AI-assisted video |
+| `/hu/meres/` | `/en/measurement/` | Enquiry and quote tracking |
+
+The `sitemap.xml` now maps only these **real** 17 routes. Google Search Console ownership on `lokmira.com` and public submission are **not** verified. The `noindex`, `Disallow: /`, no-active-contact and anti-tracking protections are intentionally intact.
+
+**Validated CI:** [quality and mobile](https://github.com/SamiGLab/DunaLocal/actions/runs/39148536615), [automated accessibility](https://github.com/SamiGLab/DunaLocal/actions/runs/39148536605), [real Worker HTTP](https://github.com/SamiGLab/DunaLocal/actions/runs/39148536611), [Cloudflare deploy](https://github.com/SamiGLab/DunaLocal/actions/runs/39148536555). Native-Hungarian copy QA, logo final approval, genuine portfolio evidence and live email remain pending.
 
 ## Local preview
 
@@ -10,7 +29,7 @@ Open `index.html` in a browser or run `python3 -m http.server 8000` and visit `h
 
 - GitHub repository: `SamiGLab/DunaLocal`; branch: `main`.
 - Cloudflare Worker: `dunalocal`, originally created by the project owner.
-- Expected publicly reachable preview: `https://dunalocal.samiayten-hu.workers.dev/` (the app URL is confirmed from the owner's Cloudflare screenshot; live HTTP response has not been independently verified).
+- Verified internal preview: `https://dunalocal.samiayten-hu.workers.dev/` (real Cloudflare HTTP and 16 localized subpages independently checked through GitHub Actions; still **noindex**, not approved commercial launch).
 - Current Cloudflare dashboard settings: **Build command: None**, **Deploy command: `npx wrangler deploy`**. These can remain unchanged.
 - `wrangler.jsonc` sets the Worker name and `assets.directory` to `./dist`. The `dist/` folder is **intentionally committed** to Git so the existing no-build Workers workflow can upload only site files.
 - When changing `index.html`, `styles.css`, `app.js`, `robots.txt`, or `_headers`, also run `node scripts/build.mjs` and commit the resulting `dist/` changes. CI validates that deployed assets match their sources.
