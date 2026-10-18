@@ -1,4 +1,7 @@
 # Lokmira — Premium Website V3 · Complete Codex Design/Implementation Brief
+
+> **Completed follow-up (2026-10-18):** Reciprocal HU/EN hreflang + self-canonical + descriptive per-page metadata are now implemented and CI-verified across 16 inner pages. Root is HU with JS English toggle and a self-canonical; do not pretend a separate `/en/` home is already present. Eight service-detail pages contain clearly marked *sample deliverables*. `scripts/a11y-routes.mjs` adds 16 mobile + 4 desktop Axe tests, and `scripts/verify.mjs` checks 17-page local link/anchor targets. See [release-evidence gate](./LOKMIRA_LAUNCH_CONTENT_EVIDENCE_GATE_2026-10-18.md). Next tasks are focused on verified real contact and brand inputs, native Hungarian edit and a deliberate indexable bilingual homepage architecture—not on repeating completed inner-page hreflang work.
+
 **Date:** 2026-10-18 · **Status:** In-progress noindex design preview · **Owner request:** competitor-informed high-end redesign and Codex handoff
 
 ## Intent and benchmark conclusions
