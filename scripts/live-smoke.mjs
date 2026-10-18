@@ -80,6 +80,13 @@ for(const url of siteRoutes){
    console.log("Localized page",url,result.status,"repo matched",result.body===expected);
  }catch(e){issues.push("Locale page "+url+": "+String(e));}
 }
+for(const name of ["search.svg","megaphone.svg","users.svg","chart-no-axes-combined.svg","arrow-up-right.svg"]){
+  try{
+    const route="/icons/"+name,r=await probe(route),expected=readFileSync("dist/icons/"+name,"utf8");
+    if(r.status!==200||r.body!==expected||!r.body.includes("<svg"))issues.push("Missing or mismatched icon "+route);
+    console.log("Lucide icon",route,"HTTP",r.status,"matches",r.body===expected);
+  }catch(error){issues.push("Icon verification failed "+name+": "+String(error));}
+}
 for (const name of ["focus-mark.svg", "focus-app-icon.svg", "focus-logo.svg", "favicon.svg"]) {
   try {
     const url = "/brand/" + name;

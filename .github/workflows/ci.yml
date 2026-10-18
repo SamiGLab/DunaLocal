@@ -29,6 +29,11 @@ jobs:
           test -f dist/robots.txt
           test -f dist/sitemap.xml
           test -f dist/pages.css
+          test -f dist/icons/search.svg
+          test -f dist/icons/megaphone.svg
+          test -f dist/icons/users.svg
+          test -f dist/icons/chart-no-axes-combined.svg
+          test -f dist/icons/LICENSE
           test -f dist/pages.js
           test -f dist/hu/szolgaltatasok/index.html
           test -f dist/en/services/index.html

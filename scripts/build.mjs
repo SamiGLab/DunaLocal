@@ -5,6 +5,7 @@ import { join } from "node:path";
 const out = "dist";
 const assets = ["index.html", "styles.css", "app.js", "pages.css", "pages.js", "robots.txt", "sitemap.xml", "_headers", "404.html"];
 const pageDirectories = ["hu/szolgaltatasok","en/services","hu/modszer","en/approach","hu/rolunk","en/about","hu/kapcsolat","en/contact","hu/helyi-seo","en/local-seo","hu/google-ads","en/google-ads","hu/kozossegi-media","en/social-media","hu/meres","en/measurement"];
+const iconAssets = ["search","phone-call","file-text","circle-check","arrow-up-right","arrow-right","chart-no-axes-combined","target","megaphone","clipboard-check","users","message-square-text","share-2","map-pin","workflow","chart-column-increasing","LICENSE"];
 const brandAssets = ["focus-mark.svg", "focus-app-icon.svg", "focus-logo.svg", "favicon.svg"];
 rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
@@ -24,6 +25,14 @@ for (const asset of brandAssets) {
   }
   copyFileSync(source, join(out, "brand", asset));
 }
+mkdirSync(join(out,"icons"),{recursive:true});
+for(const asset of iconAssets){
+  const source=join("icons",asset);
+  if(!existsSync(source)||!statSync(source).isFile()){console.error("Missing pinned icon asset:",source);process.exit(1);}
+  copyFileSync(source,join(out,"icons",asset));
+}
+const iconActual=readdirSync(join(out,"icons")).sort();
+if(iconActual.join("|")!==[...iconAssets].sort().join("|")){console.error("Icon deploy bundle mismatch",iconActual);process.exit(1);}
 const brandActual = readdirSync(join(out, "brand")).sort();
 if (brandActual.join("|") !== [...brandAssets].sort().join("|")) {
   console.error("Unexpected public brand bundle", brandActual);
@@ -48,7 +57,7 @@ for (const lang of ["hu", "en"]) {
   }
 }
 const actual = readdirSync(out).sort();
-const expected = [...assets, "brand", "hu", "en"].sort();
+const expected = [...assets, "brand", "icons", "hu", "en"].sort();
 if (actual.join("|") !== expected.join("|")) {
   console.error("Unexpected build output", actual);
   process.exit(1);
