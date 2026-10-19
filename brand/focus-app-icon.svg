@@ -1,1 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 100 100" role="img" aria-labelledby="title"><title id="title">Lokmira app icon</title><rect width="100" height="100" rx="22" fill="#101820"/><path fill="#FFFFFF" d="M14 38h17v34h39v16H14Z"/><path fill="#36B47C" d="M37 14A49 49 0 0 1 86 63H70A33 33 0 0 0 37 30Z"/><circle cx="47" cy="54" r="10" fill="#36B47C"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="192" height="192" role="img" aria-label="Lokmira app icon">
+  <title>Lokmira app icon</title>
+  <rect width="100" height="100" rx="22" fill="#001833"/>
+  <!-- White Pin with inner hole -->
+  <path fill="#ffffff" fill-rule="evenodd" d="M 50 82 L 29.58 56.09 A 26 26 0 1 1 70.42 56.09 Z M 50 27 A 13 13 0 1 0 50 53 A 13 13 0 1 0 50 27 Z"/>
+  <!-- Dark Separator Halo -->
+  <path d="M 14 69 C 22 64, 26 61, 32 60 C 42 58, 50 56, 58 53 C 68 50, 75 40, 83 31" stroke="#001833" stroke-width="7.5" stroke-linecap="round" fill="none"/>
+  <circle cx="14" cy="69" r="7.5" fill="#001833"/>
+  <circle cx="32" cy="60" r="8.5" fill="#001833"/>
+  <circle cx="58" cy="53" r="9.5" fill="#001833"/>
+  <circle cx="83" cy="31" r="10.5" fill="#001833"/>
+  <!-- Green Growth Curve -->
+  <path d="M 14 69 C 22 64, 26 61, 32 60 C 42 58, 50 56, 58 53 C 68 50, 75 40, 83 31" stroke="#38b000" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <!-- 4 Green Nodes -->
+  <circle cx="14" cy="69" r="5.5" fill="#38b000"/>
+  <circle cx="32" cy="60" r="6.5" fill="#38b000"/>
+  <circle cx="58" cy="53" r="7.5" fill="#38b000"/>
+  <circle cx="83" cy="31" r="8.5" fill="#38b000"/>
+</svg>

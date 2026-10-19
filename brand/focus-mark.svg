@@ -1,1 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" role="img" aria-labelledby="title desc"><title id="title">Lokmira Focus Discovery symbol</title><desc id="desc">A navy corner, green focus point and green discovery arc.</desc><path fill="#101820" d="M10 35h18v37h40v18H10Z"/><path fill="#236B50" d="M36 10A54 54 0 0 1 90 64H73A37 37 0 0 0 36 27Z"/><circle cx="46" cy="54" r="11" fill="#236B50"/></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" role="img" aria-label="Lokmira">
+  <title>Lokmira</title>
+  <!-- Navy Pin with inner hole -->
+  <path fill="#002147" fill-rule="evenodd" d="M 50 84 L 29.58 58.09 A 26 26 0 1 1 70.42 58.09 Z M 50 29 A 13 13 0 1 0 50 55 A 13 13 0 1 0 50 29 Z"/>
+  <!-- White Separator Halo -->
+  <path d="M 14 71 C 22 66, 26 63, 32 62 C 42 60, 50 58, 58 55 C 68 52, 75 42, 83 33" stroke="#ffffff" stroke-width="7.5" stroke-linecap="round" fill="none"/>
+  <circle cx="14" cy="71" r="7.5" fill="#ffffff"/>
+  <circle cx="32" cy="62" r="8.5" fill="#ffffff"/>
+  <circle cx="58" cy="55" r="9.5" fill="#ffffff"/>
+  <circle cx="83" cy="33" r="10.5" fill="#ffffff"/>
+  <!-- Green Growth Curve -->
+  <path d="M 14 71 C 22 66, 26 63, 32 62 C 42 60, 50 58, 58 55 C 68 52, 75 42, 83 33" stroke="#38b000" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <!-- 4 Green Nodes -->
+  <circle cx="14" cy="71" r="5.5" fill="#38b000"/>
+  <circle cx="32" cy="62" r="6.5" fill="#38b000"/>
+  <circle cx="58" cy="55" r="7.5" fill="#38b000"/>
+  <circle cx="83" cy="33" r="8.5" fill="#38b000"/>
+</svg>

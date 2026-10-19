@@ -1,1 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="205" viewBox="0 0 900 205" role="img" aria-labelledby="title desc"><title id="title">Lokmira logo</title><desc id="desc">Focus and discovery icon beside Lokmira and the English working tagline.</desc><path fill="#101820" d="M13 54h27v55h60v26H13Z"/><path fill="#236B50" d="M52 16a81 81 0 0 1 81 81h-26a55 55 0 0 0-55-55Z"/><circle cx="67" cy="82" r="17" fill="#236B50"/><text x="159" y="116" font-size="112" font-weight="800" font-family="Inter, Arial, sans-serif" letter-spacing="-5.5" fill="#101820">lokmira</text><text x="165" y="169" font-size="24" font-weight="450" font-family="Inter, Arial, sans-serif" letter-spacing="1.9" fill="#566773">Local visibility. Measurable enquiries.</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 205" width="900" height="205" role="img" aria-label="Lokmira logo">
+  <title>Lokmira logo</title>
+  <g transform="translate(15, 10) scale(1.85)">
+    <!-- Navy Pin with inner hole -->
+    <path fill="#002147" fill-rule="evenodd" d="M 50 84 L 29.58 58.09 A 26 26 0 1 1 70.42 58.09 Z M 50 29 A 13 13 0 1 0 50 55 A 13 13 0 1 0 50 29 Z"/>
+    <!-- White Separator Halo -->
+    <path d="M 14 71 C 22 66, 26 63, 32 62 C 42 60, 50 58, 58 55 C 68 52, 75 42, 83 33" stroke="#ffffff" stroke-width="7.5" stroke-linecap="round" fill="none"/>
+    <circle cx="14" cy="71" r="7.5" fill="#ffffff"/>
+    <circle cx="32" cy="62" r="8.5" fill="#ffffff"/>
+    <circle cx="58" cy="55" r="9.5" fill="#ffffff"/>
+    <circle cx="83" cy="33" r="10.5" fill="#ffffff"/>
+    <!-- Green Growth Curve -->
+    <path d="M 14 71 C 22 66, 26 63, 32 62 C 42 60, 50 58, 58 55 C 68 52, 75 42, 83 33" stroke="#38b000" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+    <!-- 4 Green Nodes -->
+    <circle cx="14" cy="71" r="5.5" fill="#38b000"/>
+    <circle cx="32" cy="62" r="6.5" fill="#38b000"/>
+    <circle cx="58" cy="55" r="7.5" fill="#38b000"/>
+    <circle cx="83" cy="33" r="8.5" fill="#38b000"/>
+  </g>
+  <text x="210" y="118" font-size="115" font-weight="800" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" letter-spacing="-3">
+    <tspan fill="#002147">Lok</tspan><tspan fill="#38b000">mira</tspan>
+  </text>
+  <text x="214" y="165" font-size="25" font-weight="500" font-family="Inter, -apple-system, BlinkMacSystemFont, Arial, sans-serif" letter-spacing="0.5" fill="#52654e">Local visibility. Real enquiries.</text>
+</svg>

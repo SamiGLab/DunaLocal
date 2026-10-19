@@ -5,7 +5,7 @@ import { mkdirSync, rmSync, copyFileSync, existsSync, statSync, readdirSync, rea
 import { join } from "node:path";
 
 const out = "dist";
-const assets = ["index.html", "landing.css", "landing.js", "styles.css", "app.js", "pages.css", "pages.js", "robots.txt", "sitemap.xml", "_headers", "404.html"];
+const assets = ["index.html", "landing.css", "landing.js", "styles.css", "app.js", "pages.css", "pages.js", "robots.txt", "sitemap.xml", "_headers", "404.html", "favicon.ico"];
 const pageDirectories = [
   "hu/szolgaltatasok","en/services",
   "hu/modszer","en/approach",
