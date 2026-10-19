@@ -10,7 +10,7 @@ import { resolve, extname, sep, join } from "node:path";
 import { readFileSync, existsSync, statSync, mkdirSync } from "node:fs";
 
 const dir=resolve("dist");
-const mime={".html":"text/html; charset=utf-8",".css":"text/css; charset=utf-8",".js":"text/javascript; charset=utf-8",".svg":"image/svg+xml",".xml":"application/xml; charset=utf-8",".txt":"text/plain; charset=utf-8"};
+const mime={".html":"text/html; charset=utf-8",".css":"text/css; charset=utf-8",".js":"text/javascript; charset=utf-8",".svg":"image/svg+xml",".xml":"application/xml; charset=utf-8",".txt":"text/plain; charset=utf-8",".webp":"image/webp",".png":"image/png"};
 const server=createServer((req,res)=>{
   try {
     const pathname=decodeURIComponent(new URL(req.url,"http://local").pathname);
@@ -39,6 +39,11 @@ for(const width of widths){
   const page=await context.newPage(),errors=[];
   page.on("pageerror",e=>errors.push(String(e)));
   await page.goto(origin+"/",{waitUntil:"load"});
+  await page.evaluate(async ()=>{
+    window.scrollTo(0, document.body.scrollHeight);
+    await new Promise(r=>setTimeout(r,100));
+    window.scrollTo(0, 0);
+  });
   await page.screenshot({path:"qa-screenshots/home-"+width+".png",fullPage:true});
   const hu=await page.evaluate(()=>({
     width:Math.max(0,document.documentElement.scrollWidth-window.innerWidth),

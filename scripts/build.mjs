@@ -72,12 +72,19 @@ enHome = enHome
   .replaceAll('alt="Budapesti vállalkozásokra szabva"', 'alt="Tailored for Budapest businesses"')
   .replaceAll('alt="Helyi keresési és ajánlatkérési folyamat Budapesten"', 'alt="Local search and enquiry process in Budapest"')
   .replaceAll('alt="Google Cégprofil és helyi SEO előnézet"', 'alt="Google Business Profile and local SEO preview"')
+  .replaceAll('alt="Helyi SEO és keresőoptimalizálás előnézet"', 'alt="Local SEO and search ranking preview"')
   .replaceAll('alt="Google Ads kampány előnézet"', 'alt="Google Ads campaign preview"')
   .replaceAll('alt="Meta hirdetés és lead kampány előnézet"', 'alt="Meta ads and lead campaign preview"')
   .replaceAll('alt="Konverziós érkezőoldal előnézet"', 'alt="Conversion landing page preview"')
   .replaceAll('alt="Közösségi média és tartalom előnézet"', 'alt="Social media and content preview"')
   .replaceAll('alt="Érdeklődés és ajánlatkövetés előnézet"', 'alt="Enquiry and quote tracking preview"')
   .replaceAll('alt="Előtte és Utána működési összehasonlítás a Lokmira rendszerével"', 'alt="Before and after operational comparison with the Lokmira system"')
+  .replaceAll('aria-label="Google Cégprofil - Lokmira Budapest"', 'aria-label="Google Business Profile - Lokmira Budapest"')
+  .replaceAll('aria-label="Helyi SEO és keresőoptimalizálás - Lokmira Budapest"', 'aria-label="Local SEO and search ranking - Lokmira Budapest"')
+  .replaceAll('aria-label="Google Ads kampányok - Lokmira Budapest"', 'aria-label="Google Ads campaigns - Lokmira Budapest"')
+  .replaceAll('aria-label="Meta hirdetések és lead kampányok - Lokmira Budapest"', 'aria-label="Meta ads and lead campaigns - Lokmira Budapest"')
+  .replaceAll('aria-label="Konverziós érkezőoldalak - Lokmira Budapest"', 'aria-label="Conversion landing pages - Lokmira Budapest"')
+  .replaceAll('aria-label="Érdeklődés- és ajánlatkövetés - Lokmira Budapest"', 'aria-label="Enquiry and quote tracking - Lokmira Budapest"')
   .replace('aria-label="Lokmira garanciák és értékek"', 'aria-label="Lokmira commitments and values"');
 
 enHome = enHome.replace(/(<([a-z0-9]+)\b[^>]*\bdata-route="([^"]+)"[^>]*>)/gi, (full, tag, _name, routeKey) => {
