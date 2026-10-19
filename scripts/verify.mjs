@@ -26,6 +26,9 @@ test(robot.includes('Disallow: /')&&headers.includes('X-Robots-Tag: noindex'),'I
 test(headers.includes("frame-ancestors 'none'")&&headers.includes('Content-Security-Policy:'),'Security headers changed');
 test(sitemap===builtSitemap&&(sitemap.match(/<url>/g)||[]).length===22,'Sitemap changed unexpectedly');
 test(!/fetch\s*\(|XMLHttpRequest|localStorage|document\.cookie|gtag\s*\(/.test(js),'Unexpected network or tracking code');
+// The approved icon library must also cover the redesigned homepage.
+for(const source of [html,readFileSync('en/index.html','utf8'),js])test(!/[◎↗↝≋✓→↓↑]/u.test(source),'Text glyph used instead of repository icon');
+for(const name of ['map-pin','megaphone','workflow','chart-column-increasing','target','clipboard-check','chart-no-axes-combined','arrow-right','arrow-up-right'])test(css.includes('/icons/'+name+'.svg'),'Missing homepage Lucide icon mapping: '+name);
 const {readdirSync, existsSync} = await import("node:fs");
 const {join} = await import("node:path");
 const pairs = {

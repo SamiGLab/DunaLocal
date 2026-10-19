@@ -96,3 +96,23 @@
 .comparison-cell p{color:#5c6853}.comparison-after p{color:#4b6044}.comparison-columns p{color:#5d6b52}.footer-bottom{color:#58684d}.comparison-mobile-label{color:#596b4d}
 
 .languages button{color:#59664f}.before-pill{color:#59634f}.about-mark span{color:#526747}.about-layout p:not(.eyebrow){color:#52654e}.contact-layout p:not(.eyebrow),.contact-action small{color:#4b623e}.footer-top p{color:#58684e}
+
+/* Reuse the repository's pinned Lucide SVGs; never substitute text glyphs for UI icons. */
+.landing-icon{display:inline-block;width:20px;height:20px;flex-shrink:0;background-color:currentColor;-webkit-mask:var(--landing-icon) center/contain no-repeat;mask:var(--landing-icon) center/contain no-repeat;vertical-align:middle}
+.landing-icon.icon-arrow-right{--landing-icon:url("/icons/arrow-right.svg")}
+.landing-icon.icon-arrow-up-right{--landing-icon:url("/icons/arrow-up-right.svg")}
+.landing-icon.icon-chart-column-increasing{--landing-icon:url("/icons/chart-column-increasing.svg")}
+.landing-icon.icon-chart-no-axes-combined{--landing-icon:url("/icons/chart-no-axes-combined.svg")}
+.landing-icon.icon-clipboard-check{--landing-icon:url("/icons/clipboard-check.svg")}
+.landing-icon.icon-map-pin{--landing-icon:url("/icons/map-pin.svg")}
+.landing-icon.icon-megaphone{--landing-icon:url("/icons/megaphone.svg")}
+.landing-icon.icon-target{--landing-icon:url("/icons/target.svg")}
+.landing-icon.icon-workflow{--landing-icon:url("/icons/workflow.svg")}
+.landing-icon.icon-down{transform:rotate(90deg)}
+.landing-icon.icon-up{transform:rotate(-90deg)}
+.comparison-cell-icon .landing-icon{width:19px;height:19px}
+.comparison-connector .landing-icon{width:16px;height:16px}
+.principle-row>.landing-icon{width:15px;height:15px;color:#6d8b55}
+.text-link>.landing-icon{width:17px;height:17px}
+summary:after,details[open] summary:after{content:"";width:18px;height:18px;flex-shrink:0;background:currentColor;-webkit-mask:url("/icons/arrow-right.svg") center/contain no-repeat;mask:url("/icons/arrow-right.svg") center/contain no-repeat;transform:rotate(90deg);color:#597249}
+details[open] summary:after{transform:rotate(-90deg)}
