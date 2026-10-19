@@ -1,9 +1,17 @@
-import { chromium } from "playwright";
-import AxeBuilder from "@axe-core/playwright";
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url);
+const {chromium}=require('playwright');
+const AxeBuilder=require('@axe-core/playwright').default;
 import { resolve } from "node:path";
 import { writeFileSync, mkdirSync } from "node:fs";
 
-const source = "file://" + resolve("index.html");
+import {createServer} from 'node:http';
+import {readFileSync,existsSync,statSync} from 'node:fs';
+import {extname,join,sep} from 'node:path';
+const root=resolve('dist');const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.svg':'image/svg+xml','.webp':'image/webp'};
+const server=createServer((req,res)=>{let f=resolve(root,'.'+new URL(req.url,'http://local').pathname);if(!f.startsWith(root+sep)&&f!==root){res.writeHead(403).end();return}if(existsSync(f)&&statSync(f).isDirectory())f=join(f,'index.html');if(!existsSync(f)){res.writeHead(404).end();return}res.writeHead(200,{'Content-Type':mime[extname(f)]||'application/octet-stream'});res.end(readFileSync(f));});
+await new Promise(ok=>server.listen(0,'127.0.0.1',ok));server.unref();const source='http://127.0.0.1:'+server.address().port;
+
 const widths = [390, 1440];
 const langs = ["hu", "en"];
 let browser;
@@ -23,8 +31,7 @@ for (const width of widths) {
     const page = await context.newPage();
     const pageErrors = [];
     page.on("pageerror", (e) => pageErrors.push(e.message));
-    await page.goto(source, { waitUntil:"load" });
-    if (lang === "en") await page.locator('button[data-lang="en"]').click();
+    await page.goto(source+(lang==="en"?"/en/":"/"), { waitUntil:"load" });
     const result = await new AxeBuilder({ page })
       .withTags(["wcag2a","wcag2aa","wcag21a","wcag21aa"])
       .analyze();
@@ -48,6 +55,7 @@ for (const width of widths) {
   }
 }
 await browser.close();
+await new Promise(ok=>server.close(ok));
 if (errors) {
   console.error(`Accessibility checks failed in ${errors} viewport-language combinations. Review uploaded JSON artifacts.`);
   process.exit(1);

@@ -1,5 +1,7 @@
-import { chromium } from "playwright";
-import AxeBuilder from "@axe-core/playwright";
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url);
+const {chromium}=require('playwright');
+const AxeBuilder=require('@axe-core/playwright').default;
 import { createServer } from "node:http";
 import { resolve, extname, join, sep } from "node:path";
 import { existsSync, statSync, readFileSync, mkdirSync, writeFileSync } from "node:fs";

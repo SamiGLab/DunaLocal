@@ -15,3 +15,5 @@ exclude:
   - node_modules
   - qa-screenshots
   - qa-artifacts
+
+  - home

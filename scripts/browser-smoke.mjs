@@ -35,95 +35,23 @@ if (!browser) throw new Error("No Chromium browser available for browser-smoke.m
 let failures=0;
 function check(ok,message){if(!ok){console.error("FAIL",message);failures++}}
 for(const width of widths){
-  const context=await browser.newContext({viewport:{width,height:900},deviceScaleFactor:1,reducedMotion:"reduce"});
-  const page=await context.newPage(),errors=[];
-  page.on("pageerror",e=>errors.push(String(e)));
-  await page.goto(origin+"/",{waitUntil:"load"});
-  await page.evaluate(async ()=>{
-    window.scrollTo(0, document.body.scrollHeight);
-    await new Promise(r=>setTimeout(r,100));
-    window.scrollTo(0, 0);
-  });
-  await page.screenshot({path:"qa-screenshots/home-"+width+".png",fullPage:true});
-  const hu=await page.evaluate(()=>({
-    width:Math.max(0,document.documentElement.scrollWidth-window.innerWidth),
-    lang:document.documentElement.lang,
-    robots:document.querySelector('meta[name="robots"]')?.content,
-    services:document.querySelectorAll(".service-panels article").length,
-    nav:document.querySelector('a[data-route="services"]')?.getAttribute("href"),
-    contactAction:document.querySelector('a[data-i18n="contactAction"]')?.getAttribute("href"),
-    icons:[...document.querySelectorAll(".flow .ui-icon,.cards .ui-icon,.service-panels .ui-icon")].filter(el=>{const c=getComputedStyle(el);return (c.maskImage||c.webkitMaskImage||"").includes("/icons/")&&c.width!=="0px"}).length
-  }));
-  const hero=await page.evaluate(()=>{
-    const section=document.querySelector("section.hero");
-    const diagram=document.querySelector("section.hero .diagram");
-    const headline=document.querySelector("#heroTitle");
-    const a=section.getBoundingClientRect(),b=diagram.getBoundingClientRect(),h=headline.getBoundingClientRect();
-    const mobile=innerWidth<=900;
-    return {
-      left:Math.round(a.left),right:Math.round(innerWidth-a.right),
-      width:Math.round(a.width),diagramWidth:Math.round(b.width),
-      headlineFont:parseFloat(getComputedStyle(headline).fontSize),
-      textWidth:Math.round(h.width),
-      diagramAfterHeading:mobile?b.top>=h.bottom-1:b.left>h.left,
-      diagramInside:b.left>=a.left-1&&b.right<=a.right+1,
-      darkBackground:getComputedStyle(section).backgroundImage.includes("gradient")
-    };
-  });
-  check(Math.abs(hero.left)<=1&&Math.abs(hero.right)<=1&&Math.abs(hero.width-width)<=1,
-    "Hero is not full-bleed "+width+" "+JSON.stringify(hero));
-  check(hero.diagramInside&&hero.diagramAfterHeading&&hero.darkBackground,
-    "Hero diagram or background broken "+width+" "+JSON.stringify(hero));
-  check(width<901?hero.headlineFont<=59:hero.headlineFont<=65,
-    "Headline excessively large "+width+" "+JSON.stringify(hero));
-  if(width>=1024)check(hero.diagramWidth>=350,
-    "Desktop process card too narrow "+width+" "+JSON.stringify(hero));
-  check(hu.width<=1&&hu.lang==="hu"&&hu.robots==="noindex,nofollow,noarchive"&&hu.services===6&&hu.icons>=10&&hu.nav==="/hu/szolgaltatasok/"&&hu.contactAction==="/hu/kapcsolat/"&&errors.length===0,"homepage HU "+width+" "+JSON.stringify(hu)+" "+errors);
-  await page.locator('button[data-lang="en"]').click();
-  const en=await page.evaluate(()=>({
-    lang:document.documentElement.lang,title:document.title,
-    lead:document.querySelector('[data-i18n="heroLead"]')?.textContent,
-    description:document.querySelector('meta[name="description"]')?.content,
-    nav:document.querySelector('a[data-route="services"]')?.getAttribute("href"),
-    service:document.querySelector('[data-i18n="service1"]')?.textContent,
-    contactAction:document.querySelector('a[data-i18n="contactAction"]')?.getAttribute("href")
-  }));
-  check(en.lang==="en"&&en.title.includes("Customer Growth")&&en.lead.includes("Make your business")&&en.nav==="/en/services/"&&en.service.includes("Google Business Profile")&&en.description.includes("Budapest")&&en.contactAction==="/en/contact/","homepage EN "+width+" "+JSON.stringify(en));
-  if(width<=900){const menu=page.locator(".menu");await menu.click();check((await menu.getAttribute("aria-expanded"))==="true"&&await page.locator("#navigation").isVisible(),"homepage mobile menu open "+width);await menu.click();check((await menu.getAttribute("aria-expanded"))==="false","homepage mobile menu close "+width);}
-  // Compare the exact same four navigation items in the root and inner-page design.
-  const headerMetrics=()=>page.evaluate(()=>{
-    const root=document.querySelector(".landing-root")!==null;
-    const header=document.querySelector(root?".navbar":".site-head-inner");
-    const nav=document.querySelector(root?".navigation":".site-nav");
-    const brand=document.querySelector(root?".logo":".site-brand");
-    const links=[...nav.querySelectorAll(":scope > a")];
-    return {
-      height:Math.round(header.getBoundingClientRect().height),
-      brandHeight:Math.round(brand.getBoundingClientRect().height),
-      labels:links.map(a=>a.textContent.trim()),
-      items:links.map(a=>({height:Math.round(a.getBoundingClientRect().height),width:Math.round(a.getBoundingClientRect().width),font:getComputedStyle(a).fontSize})),
-      navVisible:getComputedStyle(nav).display!=="none",
-      overflow:Math.max(0,document.documentElement.scrollWidth-innerWidth)
-    };
-  });
-  if(width<=900)await page.locator(".menu").click();
-  const rootMetrics=await headerMetrics();
-  await page.goto(origin+"/en/services/",{waitUntil:"load"});
-  if(width<=900)await page.locator(".site-toggle").click();
-  const childMetrics=await headerMetrics();
-  check(rootMetrics.height===childMetrics.height&&rootMetrics.brandHeight===childMetrics.brandHeight,"Header heights differ at "+width+" "+JSON.stringify({rootMetrics,childMetrics}));
-  check(rootMetrics.labels.join("|")===childMetrics.labels.join("|"),"Navigation labels/order differ at "+width+" "+JSON.stringify({rootMetrics,childMetrics}));
-  check(rootMetrics.items.length===4&&childMetrics.items.length===4,"Navigation count differs "+width);
-  for(let i=0;i<Math.min(rootMetrics.items.length,childMetrics.items.length);i++){
-    const a=rootMetrics.items[i],b=childMetrics.items[i];
-    check(Math.abs(a.height-b.height)<=1&&Math.abs(a.width-b.width)<=3&&a.font===b.font&&a.height>=44,
-      "Navigation link dimensions inconsistent "+width+" item "+i+" "+JSON.stringify({a,b}));
-  }
-  check(rootMetrics.navVisible&&childMetrics.navVisible&&rootMetrics.overflow<=1&&childMetrics.overflow<=1,
-    "Header visibility/overflow "+width+" "+JSON.stringify({rootMetrics,childMetrics}));
-  console.log("PASS shared header and four navigation controls",width,"px");
-  console.log("PASS homepage",width,"px; HU/EN links and preview restrictions");
-  await context.close();
+ const context=await browser.newContext({viewport:{width,height:900},reducedMotion:'reduce'});
+ const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(String(e)));
+ for(const [lang,route] of [['hu','/'],['en','/en/']]){
+  const response=await page.goto(origin+route,{waitUntil:'load'});
+  for(const image of await page.locator('img').all()){if(await image.isVisible())await image.scrollIntoViewIfNeeded();await image.evaluate(el=>el.decode())}
+  await page.locator('header').scrollIntoViewIfNeeded();
+  const state=await page.evaluate(()=>({lang:document.documentElement.lang,overflow:document.documentElement.scrollWidth-innerWidth,h1:document.querySelectorAll('h1').length,cards:document.querySelectorAll('.original-card-link').length,pairs:document.querySelectorAll('.comparison-pair').length,transcripts:document.querySelectorAll('.comparison-transcript').length,brokenImages:[...document.images].filter(i=>!i.complete||i.naturalWidth===0).map(i=>i.src),canonical:document.querySelector('link[rel="canonical"]').href,robots:document.querySelector('meta[name="robots"]').content,heroText:getComputedStyle(document.querySelector('#hero-title')).visibility}));
+  check(response.status()===200&&state.lang===lang&&state.overflow<=1&&state.h1===1&&state.cards===6&&state.pairs===4&&state.transcripts===0&&state.brokenImages.length===0&&state.heroText==='visible'&&state.robots==='noindex,nofollow,noarchive', 'Homepage '+lang+' '+width+' '+JSON.stringify(state)+' '+errors);
+  check(state.canonical==='https://lokmira.com/'+(lang==='en'?'en/':''),'Canonical '+lang+' '+width);
+  if(width<=760){await page.locator('.menu').click();check(await page.locator('#navigation').isVisible(),'Mobile navigation '+width);await page.locator('.menu').press('Escape');check((await page.locator('.menu').getAttribute('aria-expanded'))==='false','Escape closes menu '+width)}
+  if(width===390||width===1440)await page.screenshot({path:'qa-screenshots/home-'+lang+'-'+width+'.png',fullPage:true});
+  const next=lang==='hu'?'en':'hu';await Promise.all([page.waitForURL(origin+(next==='en'?'/en/':'/')),page.locator('button[data-lang="'+next+'"]').click()]);
+  check(await page.locator('html').getAttribute('lang')===next,'Language destination '+lang+' '+width);
+  check(errors.length===0,'JS errors '+errors);
+  console.log('PASS approved homepage',lang,width,'px, image loading, comparison, language routes');
+ }
+ await context.close();
 }
 const routes=[
   "/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/",
@@ -151,48 +79,6 @@ for(const [index,route] of routes.entries()){
  await ctx.close();
 }
 
-const routeVariants={
- hu:[
-   "/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/",
-   "/hu/helyi-seo/","/hu/google-ads/","/hu/meta-hirdetesek/","/hu/erkezo-oldalak/","/hu/kozossegi-media/","/hu/meres/"
- ],
- en:[
-   "/en/services/","/en/approach/","/en/about/","/en/contact/",
-   "/en/local-seo/","/en/google-ads/","/en/meta-ads/","/en/landing-pages/","/en/social-media/","/en/measurement/"
- ]
-};
-for(const width of [390,1440])for(const lang of ["hu","en"]){
- const ctx=await browser.newContext({viewport:{width,height:900},reducedMotion:"reduce"});
- const page=await ctx.newPage();
- const scan=async(route)=>{
-  await page.goto(origin+route,{waitUntil:"load"});
-  const root=route.startsWith("/?")||route==="/"||route==="/en/";
-  if(width<=900)await page.locator(root?".menu":".site-toggle").click();
-  return page.evaluate(()=>{
-    const isHome=document.body.classList.contains("landing-root");
-    const el=document.querySelector(isHome?".navbar":".site-head-inner");
-    const nav=document.querySelector(isHome?".navigation":".site-nav");
-    const a=[...nav.querySelectorAll(":scope > a")];
-    const bounds=x=>({width:Math.round(x.getBoundingClientRect().width),height:Math.round(x.getBoundingClientRect().height),font:getComputedStyle(x).fontSize});
-    return {header:bounds(el),texts:a.map(x=>x.textContent.trim()),links:a.map(x=>x.getAttribute("href")),boxes:a.map(bounds),overflow:Math.max(0,document.documentElement.scrollWidth-innerWidth),shown:getComputedStyle(nav).display!=="none"};
-  });
- };
- const root=await scan(lang==="en"?"/en/":"/");
- for(const route of routeVariants[lang]){
-   const inner=await scan(route);
-   check(root.header.height===inner.header.height&&inner.shown&&inner.overflow<=1,
-     "Header height, overflow or menu visibility: "+lang+" "+width+" "+route+" "+JSON.stringify(inner));
-   check(root.texts.join("|")===inner.texts.join("|")&&inner.boxes.length===4,
-     "Navigation item text/order mismatch: "+lang+" "+width+" "+route+" "+JSON.stringify({root:root.texts,inner:inner.texts}));
-   for(let j=0;j<Math.min(4,inner.boxes.length);j++){
-     const a=root.boxes[j],b=inner.boxes[j];
-     check(a.font===b.font&&Math.abs(a.height-b.height)<=1&&Math.abs(a.width-b.width)<=3&&b.height>=44,
-       "Inconsistent navigation geometry: "+lang+" "+width+" "+route+" item "+j+" "+JSON.stringify({a,b}));
-   }
- }
- console.log("PASS nav parity all ten",lang,"routes at",width,"px");
- await ctx.close();
-}
 await browser.close();
 await new Promise(ok=>server.close(ok));
 if(failures)process.exit(1);

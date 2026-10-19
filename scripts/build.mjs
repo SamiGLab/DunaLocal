@@ -3,10 +3,9 @@
 // and synchronizes shared header/footer templates across all 16 localized subpages.
 import { mkdirSync, rmSync, copyFileSync, existsSync, statSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import vm from "node:vm";
 
 const out = "dist";
-const assets = ["index.html", "styles.css", "app.js", "pages.css", "pages.js", "robots.txt", "sitemap.xml", "_headers", "404.html"];
+const assets = ["index.html", "landing.css", "landing.js", "styles.css", "app.js", "pages.css", "pages.js", "robots.txt", "sitemap.xml", "_headers", "404.html"];
 const pageDirectories = [
   "hu/szolgaltatasok","en/services",
   "hu/modszer","en/approach",
@@ -22,85 +21,11 @@ const pageDirectories = [
 const iconAssets = ["search","phone-call","file-text","circle-check","arrow-up-right","arrow-right","chart-no-axes-combined","target","megaphone","clipboard-check","users","message-square-text","share-2","map-pin","workflow","chart-column-increasing","LICENSE"].map(n=>n==="LICENSE"?n:n+".svg");
 const brandAssets = ["focus-mark.svg", "focus-app-icon.svg", "focus-logo.svg", "favicon.svg"];
 
-// 1. Extract bilingual dictionary from app.js and generate server-rendered en/index.html
-const appJs = readFileSync("app.js", "utf8");
-const copyMatch = appJs.match(/const copy = (\{[\s\S]*?\n\});/);
-if (!copyMatch) {
-  console.error("Failed to extract copy dictionary from app.js");
-  process.exit(1);
-}
-const copyDict = vm.runInNewContext("(" + copyMatch[1] + ")");
-const enCopy = copyDict.en;
-const enRoutes = {
-  services: "/en/services/",
-  approach: "/en/approach/",
-  about: "/en/about/",
-  contact: "/en/contact/",
-  seo: "/en/local-seo/",
-  ads: "/en/google-ads/",
-  meta: "/en/meta-ads/",
-  landing: "/en/landing-pages/",
-  social: "/en/social-media/",
-  measurement: "/en/measurement/"
-};
-const escapeHtml = (str) => String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
-let enHome = readFileSync("index.html", "utf8");
-enHome = enHome
-  .replace('<html lang="hu">', '<html lang="en">')
-  .replace('<meta property="og:url" content="https://lokmira.com/">', '<meta property="og:url" content="https://lokmira.com/en/">')
-  .replace('<meta property="og:locale" content="hu_HU">', '<meta property="og:locale" content="en_US">')
-  .replace('<meta property="og:locale:alternate" content="en_US">', '<meta property="og:locale:alternate" content="hu_HU">')
-  .replace('<meta property="og:title" content="Lokmira | Helyi SEO, Google Ads és ügyfélszerzés Budapesten">', '<meta property="og:title" content="Lokmira | Local SEO, Google Ads & Customer Growth Budapest">')
-  .replace('<meta property="og:description" content="Helyi SEO, Google Cégprofil, Google Ads, közösségi média és követhető ügyfélmegkeresések budapesti vállalkozásoknak.">', '<meta property="og:description" content="Local SEO, Google Ads, social media and measurable customer enquiries for Budapest service businesses.">')
-  .replace('<meta name="description" content="Helyi SEO, Google Cégprofil, Google Ads, közösségi média és követhető ügyfélmegkeresések budapesti vállalkozásoknak.">', '<meta name="description" content="Local SEO, Google Ads, social media and measurable customer enquiries for Budapest service businesses.">')
-  .replace('<title>Lokmira | Helyi SEO, Google Ads és ügyfélszerzés Budapesten</title>', '<title>Lokmira | Local SEO, Google Ads & Customer Growth Budapest</title>')
-  .replace('<link rel="canonical" href="https://lokmira.com/">', '<link rel="canonical" href="https://lokmira.com/en/">')
-  .replaceAll('href="./brand/favicon.svg"', 'href="/brand/favicon.svg"')
-  .replaceAll('href="./styles.css"', 'href="/styles.css"')
-  .replaceAll('href="./pages.css"', 'href="/pages.css"')
-  .replaceAll('src="./app.js"', 'src="/app.js"')
-  .replaceAll('src="./brand/focus-mark.svg"', 'src="/brand/focus-mark.svg"')
-  .replaceAll('src="./brand/focus-app-icon.svg"', 'src="/brand/focus-app-icon.svg"')
-  .replace('aria-label="Lokmira - lap teteje"', 'aria-label="Lokmira - back to top"')
-  .replace('aria-label="Fő navigáció"', 'aria-label="Main navigation"')
-  .replace('<button class="lang active" data-lang="hu" aria-pressed="true">HU</button><span> / </span><button class="lang" data-lang="en" aria-pressed="false">EN</button>', '<button class="lang" data-lang="hu" aria-pressed="false">HU</button><span> / </span><button class="lang active" data-lang="en" aria-pressed="true">EN</button>')
-  .replaceAll('-hu.webp', '-en.webp')
-  .replaceAll('-hu.png', '-en.png')
-  .replaceAll('alt="Több helyi ügyfél"', 'alt="More local customers"')
-  .replaceAll('alt="Mérhető eredmények"', 'alt="Measurable results"')
-  .replaceAll('alt="Budapesti vállalkozásokra szabva"', 'alt="Tailored for Budapest businesses"')
-  .replaceAll('alt="Helyi keresési és ajánlatkérési folyamat Budapesten"', 'alt="Local search and enquiry process in Budapest"')
-  .replaceAll('alt="Google Cégprofil és helyi SEO előnézet"', 'alt="Google Business Profile and local SEO preview"')
-  .replaceAll('alt="Helyi SEO és keresőoptimalizálás előnézet"', 'alt="Local SEO and search ranking preview"')
-  .replaceAll('alt="Google Ads kampány előnézet"', 'alt="Google Ads campaign preview"')
-  .replaceAll('alt="Meta hirdetés és lead kampány előnézet"', 'alt="Meta ads and lead campaign preview"')
-  .replaceAll('alt="Konverziós érkezőoldal előnézet"', 'alt="Conversion landing page preview"')
-  .replaceAll('alt="Közösségi média és tartalom előnézet"', 'alt="Social media and content preview"')
-  .replaceAll('alt="Érdeklődés és ajánlatkövetés előnézet"', 'alt="Enquiry and quote tracking preview"')
-  .replaceAll('alt="Előtte és Utána működési összehasonlítás a Lokmira rendszerével"', 'alt="Before and after operational comparison with the Lokmira system"')
-  .replaceAll('aria-label="Google Cégprofil - Lokmira Budapest"', 'aria-label="Google Business Profile - Lokmira Budapest"')
-  .replaceAll('aria-label="Helyi SEO és keresőoptimalizálás - Lokmira Budapest"', 'aria-label="Local SEO and search ranking - Lokmira Budapest"')
-  .replaceAll('aria-label="Google Ads kampányok - Lokmira Budapest"', 'aria-label="Google Ads campaigns - Lokmira Budapest"')
-  .replaceAll('aria-label="Meta hirdetések és lead kampányok - Lokmira Budapest"', 'aria-label="Meta ads and lead campaigns - Lokmira Budapest"')
-  .replaceAll('aria-label="Konverziós érkezőoldalak - Lokmira Budapest"', 'aria-label="Conversion landing pages - Lokmira Budapest"')
-  .replaceAll('aria-label="Érdeklődés- és ajánlatkövetés - Lokmira Budapest"', 'aria-label="Enquiry and quote tracking - Lokmira Budapest"')
-  .replace('aria-label="Lokmira garanciák és értékek"', 'aria-label="Lokmira commitments and values"');
-
-enHome = enHome.replace(/(<([a-z0-9]+)\b[^>]*\bdata-route="([^"]+)"[^>]*>)/gi, (full, tag, _name, routeKey) => {
-  if (!enRoutes[routeKey]) return full;
-  return tag.replace(/\bhref="[^"]*"/, 'href="' + enRoutes[routeKey] + '"');
-});
-enHome = enHome.replace(/(<([a-z0-9]+)\b[^>]*\bdata-i18n="([^"]+)"[^>]*>)([\s\S]*?)(<\/\2>)/gi, (full, openTag, tagName, key, _inner, closeTag) => {
-  if (!Object.prototype.hasOwnProperty.call(enCopy, key)) return full;
-  return openTag + escapeHtml(enCopy[key]) + closeTag;
-});
-
-mkdirSync("en", { recursive: true });
-const existingEnHome = existsSync("en/index.html") ? readFileSync("en/index.html", "utf8") : "";
-if (existingEnHome !== enHome) {
-  writeFileSync("en/index.html", enHome, "utf8");
-}
+// 1. Mirror the approved server-rendered English homepage.
+// HU is index.html; EN is maintained in home/en.html so both work without JavaScript.
+const enHome=readFileSync("home/en.html","utf8");
+mkdirSync("en",{recursive:true});
+if(!existsSync("en/index.html")||readFileSync("en/index.html","utf8")!==enHome){writeFileSync("en/index.html",enHome,"utf8")}
 
 // 2. Synchronize shared header brand links & canonical footers across all localized subpages
 const sharedFooters = {

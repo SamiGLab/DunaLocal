@@ -5,8 +5,8 @@ import { readFileSync } from "node:fs";
 const origin = process.env.LOKMIRA_PREVIEW_ORIGIN || "https://dunalocal.samiayten-hu.workers.dev";
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const expectedHome = readFileSync("dist/index.html", "utf8");
-const expectedCss = readFileSync("dist/styles.css", "utf8");
-const expectedJs = readFileSync("dist/app.js", "utf8");
+const expectedCss = readFileSync("dist/landing.css", "utf8");
+const expectedJs = readFileSync("dist/landing.js", "utf8");
 async function probe(path) {
   const response = await fetch(origin + path, {
     redirect:"follow",
@@ -21,9 +21,9 @@ let lastError = "";
 for (let attempt = 1; attempt <= 6; attempt++) {
   try {
     const page = await probe("/");
-    const titleOK = page.body.includes("<title>Lokmira") && page.body.includes('data-i18n="heroLead"') && page.body.includes('src="./brand/focus-mark.svg"');
-    const css = await probe("/styles.css");
-    const js = await probe("/app.js");
+    const titleOK = page.body.includes("<title>Lokmira") && page.body.includes('id="hero-title"') && page.body.includes('src="/brand/focus-mark.svg"');
+    const css = await probe("/landing.css");
+    const js = await probe("/landing.js");
     const matchingRelease = page.body === expectedHome && css.body === expectedCss && js.body === expectedJs;
     if (page.status === 200 && titleOK && matchingRelease) {
       root = page;
@@ -39,8 +39,8 @@ if (!root) {console.error("FAIL live homepage:",lastError);process.exit(1);}
 let issues = [];
 if (!root.body.includes('<meta name="google-site-verification" content="km1EpHT5L_IUzBBj709rZfeyxZ3zaUM86yIxYJ0nfJk" />')) issues.push("Google Search Console verification meta missing from live Worker");
 if (!root.body.includes('name="robots" content="noindex,nofollow,noarchive"')) issues.push("noindex meta missing");
-if (!root.body.includes('src="./app.js"')) issues.push("app.js reference missing");
-if (!root.body.includes('href="./styles.css"')) issues.push("styles.css reference missing");
+if (!root.body.includes('src="/landing.js"')) issues.push("app.js reference missing");
+if (!root.body.includes('href="/landing.css"')) issues.push("styles.css reference missing");
 const serverHeader = root.headers.get("server") || "unknown";
 const allowLegacyPagesHeaders = process.env.LOKMIRA_ALLOW_GITHUB_PAGES_HEADERS === "1";
 const robotsHeader = root.headers.get("x-robots-tag") || "";
@@ -58,7 +58,7 @@ if (!(root.headers.get("content-security-policy") || "").includes("connect-src '
     issues.push("Live CSP missing required restrictions");
   }
 }
-for (const [path, marker] of [["/styles.css",".hero{"],["/app.js","const copy ="],["/robots.txt","Disallow: /"]]) {
+for (const [path, marker] of [["/landing.css",".hero"],["/landing.js","const copy="],["/robots.txt","Disallow: /"]]) {
   try {
     const r = await probe(path);
     if (r.status !== 200 || !r.body.includes(marker)) issues.push(path+" status/marker failed: "+r.status);
