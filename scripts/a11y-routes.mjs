@@ -29,9 +29,7 @@ const routes=[
  "/en/services/","/en/approach/","/en/about/","/en/contact/",
  "/en/local-seo/","/en/google-ads/","/en/meta-ads/","/en/landing-pages/","/en/social-media/","/en/measurement/"
 ];
-const cases=routes.map(route=>({route,width:390})).concat(
- ["/hu/szolgaltatasok/","/en/services/","/hu/kapcsolat/","/en/contact/","/hu/helyi-seo/","/en/local-seo/"].map(route=>({route,width:1440}))
-);
+const cases=routes.flatMap(route=>[390,1440].map(width=>({route,width})));
 mkdirSync("qa-artifacts",{recursive:true});
 let browser;
 for (const opts of [{channel:"chrome",headless:true},{channel:"msedge",headless:true},{headless:true}]) {

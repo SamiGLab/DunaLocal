@@ -70,16 +70,20 @@ for(const [index,route] of routes.entries()){
    noindex:document.querySelector('meta[name="robots"]')?.content,
    title:document.title,cssLoaded:getComputedStyle(document.querySelector(".site-hero")).backgroundColor!=="rgba(0, 0, 0, 0)",
    links:[...document.querySelectorAll('a[href]')].filter(a=>a.getAttribute("href")==="#").length,
-   pictograms:[...document.querySelectorAll(".site-visual-number .ui-icon, .info-pictogram")].filter(el=>{const c=getComputedStyle(el);return (c.maskImage||c.webkitMaskImage||"").includes("/icons/")&&c.width!=="0px"}).length
+   pictograms:[...document.querySelectorAll("main .ui-icon")].filter(el=>{const c=getComputedStyle(el);return (c.maskImage||c.webkitMaskImage||"").includes("/icons/")&&c.width!=="0px"}).length
  }));
  check(response.status()===200&&state.lang===(route.startsWith("/hu/")?"hu":"en")&&state.overflow<=1&&state.noindex==="noindex,nofollow,noarchive"&&state.title.includes("Lokmira")&&state.cssLoaded&&state.pictograms>=3&&state.links===0&&errors.length===0,"route "+route+" "+JSON.stringify(state)+" "+errors);
- if(route.includes('helyi-seo')||route.includes('local-seo')){
-   const art=page.locator('.service-hero-art img');await art.evaluate(el=>el.decode());
-   check(await page.locator('.service-hero').evaluate(el=>getComputedStyle(el).backgroundColor==='rgb(250, 251, 247)'), 'Local SEO must use light hero: '+route);
-   check(await art.evaluate(el=>el.naturalWidth>0),'Local SEO hero artwork missing: '+route);
+ {
+   const art=page.locator('.service-hero-art img');if(await art.count())await art.evaluate(el=>el.decode());
+   check(await page.locator('.service-hero').evaluate(el=>getComputedStyle(el).backgroundColor==='rgb(250, 251, 247)'), 'Detail page must use light hero: '+route);
+   if(await art.count())check(await art.evaluate(el=>el.naturalWidth>0),'Service hero artwork missing: '+route);
+   for(const testWidth of [320,768,1024,1440]){
+    await page.setViewportSize({width:testWidth,height:1000});
+    check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),'Responsive subpage overflow: '+route+' '+testWidth);
+   }
    await page.setViewportSize({width:1440,height:1000});
-   await page.goto(origin+route,{waitUntil:'load'});await page.locator('.service-hero-art img').evaluate(el=>el.decode());
-   await page.screenshot({path:'qa-screenshots/local-seo-'+state.lang+'-1440.png',fullPage:false});
+   await page.goto(origin+route,{waitUntil:'load'});if(await art.count())await art.evaluate(el=>el.decode());
+   await page.screenshot({path:'qa-screenshots/'+route.split('/').filter(Boolean).join('-')+'-1440.png',fullPage:false});
    await page.setViewportSize({width,height:900});
  }
  if(index===0||index===10)await page.screenshot({path:"qa-screenshots/services-"+state.lang+"-"+width+".png",fullPage:true});

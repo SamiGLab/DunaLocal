@@ -64,7 +64,7 @@ for(const [huPath,enPath] of Object.entries(pairs)) {
     const pageTitle=src.match(/<title>([^<]+)<\/title>/)?.[1]||"";
     test(pageTitle.length>26 && pageTitle.includes("Lokmira"),"Weak SEO title: "+route);
     test(src.includes('href="/pages.css"'),"Dedicated page CSS not linked: "+route);
-    test(src.includes('class="service-hero-art"')||(src.match(/class="site-visual-number" aria-hidden="true"/g)||[]).length>=3,"Missing unified Lucide step icons: "+route);
+    test(src.includes('class="editorial-panel"')||src.includes('class="service-hero-art"')||(src.match(/class="site-visual-number" aria-hidden="true"/g)||[]).length>=3,"Missing unified Lucide step icons: "+route);
     test(sitemap.includes("<loc>https://lokmira.com/"+route+"/</loc>"),"Sitemap route missing: "+route);
   }
 }
@@ -133,8 +133,23 @@ for(const [lang,homePath,footers] of [['hu','index.html',huFooters],['en','en/in
  test(footers.has(home.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)?.[0]),'Homepage/footer mismatch: '+lang);
  for(const route of Object.values(pairs).concat(Object.keys(pairs)).filter(p=>p.startsWith(lang+'/'))){
   const page=readFileSync(route+'/index.html','utf8');
-  test(page.includes('/shared-chrome.css?v=20261019-chrome'),'Missing shared chrome: '+route);
+  test(page.includes('/shared-chrome.css?v=20261020-all-pages'),'Missing shared chrome: '+route);
  }
 }
 test(readFileSync('shared-chrome.css','utf8')===readFileSync('dist/shared-chrome.css','utf8'),'Shared chrome source/dist drift');
+if(failed)process.exit(1);
+
+for(const route of Object.values(pairs).concat(Object.keys(pairs))){
+ const page=readFileSync(route+'/index.html','utf8');
+ test(page.includes('class="site-hero service-hero'),'Old dark hero retained: '+route);
+ test(!/90[- ]day|90 napos|\bPPF\b|90-Day/i.test(page),'Obsolete positioning: '+route);
+ test((page.match(/<h1\b/g)||[]).length===1,'Expected one H1: '+route);
+}
+if(failed)process.exit(1);
+
+for(const route of Object.values(pairs).concat(Object.keys(pairs))){
+ const source=readFileSync(route+'/index.html','utf8');
+ const iconCss=readFileSync('pages.css','utf8');
+ for(const name of [...source.matchAll(/class="ui-icon (icon-[a-z-]+)"/g)].map(m=>m[1]))test(iconCss.includes('.'+name+'{'),'Missing detail icon mapping: '+route+' '+name);
+}
 if(failed)process.exit(1);
