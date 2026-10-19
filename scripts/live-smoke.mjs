@@ -39,8 +39,8 @@ if (!root) {console.error("FAIL live homepage:",lastError);process.exit(1);}
 let issues = [];
 if (!root.body.includes('<meta name="google-site-verification" content="km1EpHT5L_IUzBBj709rZfeyxZ3zaUM86yIxYJ0nfJk" />')) issues.push("Google Search Console verification meta missing from live Worker");
 if (!root.body.includes('name="robots" content="noindex,nofollow,noarchive"')) issues.push("noindex meta missing");
-if (!root.body.includes('src="/landing.js"')) issues.push("app.js reference missing");
-if (!root.body.includes('href="/landing.css"')) issues.push("styles.css reference missing");
+if (!/src="\/landing\.js(?:\?[^"]*)?"/.test(root.body)) issues.push("landing.js reference missing");
+if (!/href="\/landing\.css(?:\?[^"]*)?"/.test(root.body)) issues.push("landing.css reference missing");
 const serverHeader = root.headers.get("server") || "unknown";
 const allowLegacyPagesHeaders = process.env.LOKMIRA_ALLOW_GITHUB_PAGES_HEADERS === "1";
 const robotsHeader = root.headers.get("x-robots-tag") || "";
