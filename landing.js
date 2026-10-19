@@ -21,7 +21,7 @@ const routes={hu:{seo:'hu/helyi-seo/',ads:'hu/google-ads/',meta:'hu/meta-hirdete
 const comparison={hu:[['Szétszórt online jelenlét','Összehangolt helyi jelenlét'],['Általános hirdetési üzenetek','Az ajánlathoz illő kommunikáció'],['Elvesző megkeresések','Áttekinthető megkeresési folyamat'],['Nehezen értelmezhető adatok','Üzleti visszajelzésre épülő döntések']],en:[['A disconnected online presence','A coordinated local presence'],['Generic advertising messages','Messaging that fits your offer'],['Enquiries that slip through the gaps','A clearer customer enquiry process'],['Data without enough context','Decisions informed by business feedback']]};
 const requestedLang=new URLSearchParams(location.search).get('lang');
 let lang=requestedLang==='hu'||requestedLang==='en'?requestedLang:(location.pathname.includes('/en/')?'en':'hu');
-const assetRoot=new URL('images/',document.querySelector('script[src$="landing.js"]').src).href;
+const assetRoot=new URL('images/',document.querySelector('script[src*="landing.js"]').src).href;
 const uiIcon=(name)=>`<span class="landing-icon icon-${name}" aria-hidden="true"></span>`;
 const originalServices=['GoogleBusinessProfile','LocalSEO','GoogleAds','MetaAds','LandingPages','MeasurementAndLeadTracking'];
 function originalPicture(name,alt,cls='') {return `<picture class="${cls}"><source srcset="${assetRoot+name}.webp" type="image/webp"><img src="${assetRoot+name}.webp" alt="${alt}" width="1448" height="1086" loading="lazy" decoding="async"></picture>`;}
