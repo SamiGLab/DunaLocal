@@ -18,7 +18,7 @@ for(const [lang,path] of [['hu','index.html'],['en','en/index.html']]){
  test(!page.includes('Read the comparison as text')&&!page.includes('comparison-transcript'),'Duplicate comparison UI restored: '+lang);
  test(!/<form[\s>]/i.test(page),'Unexpected active form: '+lang);
  test(!page.includes('127.0.0.1')&&!page.includes('file://'),'Local preview path leaked: '+lang);
- test(page.includes('href="/landing.css?v=20261019-badges"')&&page.includes('src="/landing.js?v=20261019-badges"'),'Missing isolated homepage assets: '+lang);
+ test(page.includes('href="/landing.css?v=20261019-badges-balanced"')&&page.includes('src="/landing.js?v=20261019-badges-balanced"'),'Missing isolated homepage assets: '+lang);
 }
 test(readFileSync('landing.js','utf8')===readFileSync('dist/landing.js','utf8'),'Landing JS deploy drift');
 test(readFileSync('landing.css','utf8')===readFileSync('dist/landing.css','utf8'),'Landing CSS deploy drift');
