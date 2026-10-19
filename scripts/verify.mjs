@@ -64,7 +64,7 @@ for(const [huPath,enPath] of Object.entries(pairs)) {
     const pageTitle=src.match(/<title>([^<]+)<\/title>/)?.[1]||"";
     test(pageTitle.length>26 && pageTitle.includes("Lokmira"),"Weak SEO title: "+route);
     test(src.includes('href="/pages.css"'),"Dedicated page CSS not linked: "+route);
-    test((src.match(/class="site-visual-number" aria-hidden="true"/g)||[]).length>=3,"Missing unified Lucide step icons: "+route);
+    test(src.includes('class="service-hero-art"')||(src.match(/class="site-visual-number" aria-hidden="true"/g)||[]).length>=3,"Missing unified Lucide step icons: "+route);
     test(sitemap.includes("<loc>https://lokmira.com/"+route+"/</loc>"),"Sitemap route missing: "+route);
   }
 }
@@ -127,3 +127,14 @@ if (existsSync("_config.yml")) {
 
 if (failed) process.exit(1);
 console.log("Static QA passed:",keys.length,"unique keys in both languages, safe preview, SEO metadata, mobile rules.");
+
+for(const [lang,homePath,footers] of [['hu','index.html',huFooters],['en','en/index.html',enFooters]]){
+ const home=readFileSync(homePath,'utf8');
+ test(footers.has(home.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)?.[0]),'Homepage/footer mismatch: '+lang);
+ for(const route of Object.values(pairs).concat(Object.keys(pairs)).filter(p=>p.startsWith(lang+'/'))){
+  const page=readFileSync(route+'/index.html','utf8');
+  test(page.includes('/shared-chrome.css?v=20261019-chrome'),'Missing shared chrome: '+route);
+ }
+}
+test(readFileSync('shared-chrome.css','utf8')===readFileSync('dist/shared-chrome.css','utf8'),'Shared chrome source/dist drift');
+if(failed)process.exit(1);

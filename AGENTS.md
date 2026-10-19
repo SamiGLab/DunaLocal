@@ -1,3 +1,5 @@
+> **Shared navigation/footer update, 2026-10-19:** `shared-chrome.css` owns the common light header/footer and the approved Local SEO service hero example (HU/EN). `scripts/build.mjs` generates subpage headers and all localized footers, including homepage footers. Keep home and detail footer markup identical per language. Other detail hero designs remain pending review; do not imply they were redesigned.
+
 > **Approved homepage redesign, 2026-10-19:** The owner approved publishing the reviewed design. HU source is `index.html`; EN source is `home/en.html`, mirrored to `en/index.html` by `scripts/build.mjs`. Homepage-only assets are `landing.css` and `landing.js`. The old shared styles, scripts and 20 inner pages are preserved. The homepage uses owner-supplied service artwork, real HTML hero copy, subtle artwork shadows, and four HTML Before/After pairs. Do not restore removed caption/action rows or comparison transcript UI. Search indexing remains unchanged (noindex); publishing this design is not authorization to enable indexing, add trackers or collect data. See `docs/LOKMIRA_APPROVED_REDESIGN_2026-10-19.md`.
 
 # Lokmira — Codex project instructions

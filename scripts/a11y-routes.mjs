@@ -30,7 +30,7 @@ const routes=[
  "/en/local-seo/","/en/google-ads/","/en/meta-ads/","/en/landing-pages/","/en/social-media/","/en/measurement/"
 ];
 const cases=routes.map(route=>({route,width:390})).concat(
- ["/hu/szolgaltatasok/","/en/services/","/hu/kapcsolat/","/en/contact/"].map(route=>({route,width:1440}))
+ ["/hu/szolgaltatasok/","/en/services/","/hu/kapcsolat/","/en/contact/","/hu/helyi-seo/","/en/local-seo/"].map(route=>({route,width:1440}))
 );
 mkdirSync("qa-artifacts",{recursive:true});
 let browser;
