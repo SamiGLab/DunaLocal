@@ -141,3 +141,40 @@ details[open] summary:after{transform:rotate(-90deg)}
 .text-hero .hero-actions .text-link>.landing-icon{width:20px;height:20px}
 @media(max-width:1100px){.text-hero .hero-notes{grid-template-columns:repeat(2,minmax(0,1fr));max-width:320px;gap:14px 16px}.text-hero .hero-notes img{height:30px}}
 @media(max-width:440px){.text-hero .hero-notes{margin-top:28px;gap:14px 12px}.text-hero .hero-notes img{height:28px;max-width:100%}}
+
+/* Connected 3-pillar marketing pipeline: 'A jó marketing összeér' */
+.principles.section-principles{border-top:1px solid #dce4d8;border-bottom:1px solid #dce4d8;background:#f2f6ee;padding:64px 0}
+.principles-header{text-align:center;max-width:680px;margin:0 auto 40px}
+.principles-header .eyebrow{font-size:11px;letter-spacing:1.5px;font-weight:700;color:#496e42;text-transform:uppercase;margin:0 0 10px}
+.principles-header h2{font-size:36px;letter-spacing:-1.3px;font-weight:600;color:var(--ink);margin:0 0 12px;line-height:1.2}
+.principles-lead{font-size:14px;line-height:1.7;color:#52654e;margin:0}
+.principles-pipeline{display:flex;align-items:stretch;justify-content:space-between;gap:16px;position:relative}
+.principle-card{flex:1;min-width:0;background:#ffffff;border:1px solid #d9e3d3;border-radius:16px;padding:28px 24px;display:flex;flex-direction:column;box-shadow:0 4px 18px rgba(16,43,35,0.04);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.principle-card:hover{transform:translateY(-2px);border-color:#a4be88;box-shadow:0 10px 24px rgba(16,43,35,0.08)}
+.principle-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:12px}
+.principle-badge{display:inline-flex;align-items:center;font-size:10px;font-weight:700;letter-spacing:1.2px;padding:4px 10px;border-radius:20px;background:#eaf1e2;color:#375628;border:1px solid #d4e2c9;white-space:nowrap}
+.principle-icon-wrapper{width:44px;height:44px;border-radius:12px;background:#eff5ea;border:1px solid #dbe6d4;display:flex;align-items:center;justify-content:center;color:#2e5927;flex-shrink:0}
+.principle-icon-wrapper .landing-icon{width:22px;height:22px}
+.principle-card h3{font-size:19px;font-weight:600;color:var(--ink);margin:0 0 10px;letter-spacing:-.4px;line-height:1.3}
+.principle-card p{font-size:13px;line-height:1.65;color:#52654e;margin:0}
+.principle-connector{display:flex;align-items:center;justify-content:center;flex-shrink:0;align-self:center;color:#6d8b55;width:28px}
+.principle-connector .landing-icon{width:20px;height:20px}
+
+@media(max-width:960px){
+  .principles.section-principles{padding:48px 0}
+  .principles-header{margin-bottom:32px}
+  .principles-header h2{font-size:30px}
+  .principles-lead{font-size:13px}
+  .principles-pipeline{flex-direction:column;align-items:stretch;gap:12px}
+  .principle-connector{width:100%;height:22px;transform:rotate(90deg);margin:2px 0}
+  .principle-card{padding:22px 20px}
+}
+@media(max-width:440px){
+  .principles.section-principles{padding:40px 0}
+  .principles-header h2{font-size:26px}
+  .principle-card h3{font-size:18px}
+  .principle-card p{font-size:12px}
+  .principle-card-top{margin-bottom:14px}
+  .principle-icon-wrapper{width:38px;height:38px}
+  .principle-icon-wrapper .landing-icon{width:18px;height:18px}
+}
