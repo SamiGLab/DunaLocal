@@ -42,7 +42,7 @@ for(const width of widths){
   for(const image of await page.locator('img').all()){if(await image.isVisible())await image.scrollIntoViewIfNeeded();await image.evaluate(el=>el.decode())}
   await page.locator('header').scrollIntoViewIfNeeded();
   const state=await page.evaluate(()=>({lang:document.documentElement.lang,overflow:document.documentElement.scrollWidth-innerWidth,h1:document.querySelectorAll('h1').length,cards:document.querySelectorAll('.original-card-link').length,pairs:document.querySelectorAll('.comparison-pair').length,transcripts:document.querySelectorAll('.comparison-transcript').length,brokenImages:[...document.images].filter(i=>!i.complete||i.naturalWidth===0).map(i=>i.src),canonical:document.querySelector('link[rel="canonical"]').href,robots:document.querySelector('meta[name="robots"]').content,heroText:getComputedStyle(document.querySelector('#hero-title')).visibility}));
-  check(response.status()===200&&state.lang===lang&&state.overflow<=1&&state.h1===1&&state.cards===6&&state.pairs===4&&state.transcripts===0&&state.brokenImages.length===0&&state.heroText==='visible'&&state.robots==='noindex,nofollow,noarchive', 'Homepage '+lang+' '+width+' '+JSON.stringify(state)+' '+errors);
+  check(response.status()===200&&state.lang===lang&&state.overflow<=1&&state.h1===1&&state.cards===6&&state.pairs===4&&state.transcripts===0&&state.brokenImages.length===0&&state.heroText==='visible'&&state.robots==='index,follow', 'Homepage '+lang+' '+width+' '+JSON.stringify(state)+' '+errors);
   check(state.canonical==='https://lokmira.com/'+(lang==='en'?'en/':''),'Canonical '+lang+' '+width);
   if(width<=760){await page.locator('.menu').click();check(await page.locator('#navigation').isVisible(),'Mobile navigation '+width);await page.locator('.menu').press('Escape');check((await page.locator('.menu').getAttribute('aria-expanded'))==='false','Escape closes menu '+width)}
   if(width===390||width===1440)await page.screenshot({path:'qa-screenshots/home-'+lang+'-'+width+'.png',fullPage:true});
@@ -67,12 +67,12 @@ for(const [index,route] of routes.entries()){
  const response=await page.goto(origin+route,{waitUntil:"load"});
  const state=await page.evaluate(()=>({
    lang:document.documentElement.lang,overflow:Math.max(0,document.documentElement.scrollWidth-window.innerWidth),
-   noindex:document.querySelector('meta[name="robots"]')?.content,
+   robots:document.querySelector('meta[name="robots"]')?.content,
    title:document.title,cssLoaded:getComputedStyle(document.querySelector(".site-hero")).backgroundColor!=="rgba(0, 0, 0, 0)",
    links:[...document.querySelectorAll('a[href]')].filter(a=>a.getAttribute("href")==="#").length,
    pictograms:[...document.querySelectorAll("main .ui-icon")].filter(el=>{const c=getComputedStyle(el);return (c.maskImage||c.webkitMaskImage||"").includes("/icons/")&&c.width!=="0px"}).length
  }));
- check(response.status()===200&&state.lang===(route.startsWith("/hu/")?"hu":"en")&&state.overflow<=1&&state.noindex==="noindex,nofollow,noarchive"&&state.title.includes("Lokmira")&&state.cssLoaded&&state.pictograms>=3&&state.links===0&&errors.length===0,"route "+route+" "+JSON.stringify(state)+" "+errors);
+ check(response.status()===200&&state.lang===(route.startsWith("/hu/")?"hu":"en")&&state.overflow<=1&&state.robots==="index,follow"&&state.title.includes("Lokmira")&&state.cssLoaded&&state.pictograms>=3&&state.links===0&&errors.length===0,"route "+route+" "+JSON.stringify(state)+" "+errors);
  {
    const art=page.locator('.service-hero-art img');if(await art.count())await art.evaluate(el=>el.decode());
    check(await page.locator('.service-hero').evaluate(el=>getComputedStyle(el).backgroundColor==='rgb(250, 251, 247)'), 'Detail page must use light hero: '+route);

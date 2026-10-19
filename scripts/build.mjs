@@ -3,6 +3,7 @@
 // and synchronizes shared header/footer templates across all 16 localized subpages.
 import { mkdirSync, rmSync, copyFileSync, existsSync, statSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import {withStructuredData} from "./structured-data.mjs";
 
 const out = "dist";
 const assets = ["index.html", "landing.css", "landing.js", "shared-chrome.css", "styles.css", "app.js", "pages.css", "pages.js", "robots.txt", "sitemap.xml", "_headers", "404.html", "favicon.ico"];
@@ -21,6 +22,11 @@ const pageDirectories = [
 const iconAssets = ["search","phone-call","file-text","circle-check","arrow-up-right","arrow-right","chart-no-axes-combined","target","megaphone","clipboard-check","users","message-square-text","share-2","map-pin","workflow","chart-column-increasing","LICENSE"].map(n=>n==="LICENSE"?n:n+".svg");
 const brandAssets = ["focus-mark.svg", "focus-app-icon.svg", "focus-logo.svg", "favicon.svg"];
 
+// Keep entity data in server-rendered HTML; it does not depend on client JavaScript.
+for(const path of ['index.html','home/en.html',...pageDirectories.map(p=>join(p,'index.html'))]){
+ const original=readFileSync(path,'utf8'),updated=withStructuredData(original);
+ if(updated!==original)writeFileSync(path,updated,'utf8');
+}
 // 2. Synchronize shared header brand links & canonical footers across all localized subpages
 const sharedFooters = {
   hu: '<footer class="site-footer"><div class="wrap site-footer-grid"><div><a class="site-brand" href="/"><img src="/brand/focus-mark.svg" alt="">lokmira<span class="chrome-dot">.</span></a><p>Helyi keresés, Google Ads és követhető ügyfélmegkeresések budapesti vállalkozásoknak.</p></div><div><h3>Szolgáltatások</h3><a href="/hu/helyi-seo/">Google Cégprofil és helyi SEO</a><a href="/hu/google-ads/">Google Ads és keresési kampányok</a><a href="/hu/meta-hirdetesek/">Meta hirdetések és lead kampányok</a><a href="/hu/erkezo-oldalak/">Konverziós érkezőoldalak</a><a href="/hu/kozossegi-media/">Közösségi média és tartalom</a><a href="/hu/meres/">Érdeklődés és ajánlatkövetés</a></div><div><h3>Lokmira</h3><a href="/hu/szolgaltatasok/">Szolgáltatások</a><a href="/hu/modszer/">Módszerünk</a><a href="/hu/rolunk/">Rólunk</a><a href="/hu/kapcsolat/">Kapcsolat</a></div></div><div class="wrap"><small>© 2026 Lokmira · Budapest · Helyi ügyfélszerzés</small></div></footer>',

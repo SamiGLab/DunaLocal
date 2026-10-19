@@ -20,9 +20,9 @@ else
   echo "LIVE VERSION: Different from this commit (Cloudflare may still be deploying)"
 fi
 if grep -qi "^x-robots-tag:.*noindex" "$tmp/index.headers"; then
-  echo "ROBOTS HEADER: Present"
+  echo "ROBOTS HEADER: noindex present (expected on workers.dev previews only)"
 else
-  echo "ROBOTS HEADER: Missing on live domain"
+  echo "ROBOTS HEADER: No noindex response header"
 fi
 if grep -qi "^content-security-policy:" "$tmp/index.headers"; then
   echo "CSP HEADER: Present"

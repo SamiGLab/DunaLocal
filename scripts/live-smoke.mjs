@@ -1,8 +1,9 @@
 import { readFileSync } from "node:fs";
 // HTTP smoke test for the real public Cloudflare Worker URL.
 // Runs on GitHub-hosted runner; local shell network access is not required.
-// The Worker is currently a noindex internal preview, not an approved public brand.
+// Production is indexable by owner approval; workers.dev previews remain noindex via host-specific headers.
 const origin = process.env.LOKMIRA_PREVIEW_ORIGIN || "https://dunalocal.samiayten-hu.workers.dev";
+const previewHost = new URL(origin).hostname.endsWith(".workers.dev");
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 const expectedHome = readFileSync("dist/index.html", "utf8");
 const expectedCss = readFileSync("dist/landing.css", "utf8");
@@ -18,7 +19,7 @@ async function probe(path) {
 }
 let root;
 let lastError = "";
-for (let attempt = 1; attempt <= 6; attempt++) {
+for (let attempt = 1; attempt <= 12; attempt++) {
   try {
     const page = await probe("/");
     const titleOK = page.body.includes("<title>Lokmira") && page.body.includes('id="hero-title"') && page.body.includes('src="/brand/focus-mark.svg"');
@@ -33,24 +34,19 @@ for (let attempt = 1; attempt <= 6; attempt++) {
     lastError = "Home status " + page.status + ", expected HTML markers present: " + titleOK + ", live assets match GitHub: " + matchingRelease + ", snippet: " + page.body.slice(0,150).replace(/\s+/g," ");
   } catch (e) {lastError = String(e);}
   console.warn("Live check not ready, attempt", attempt, lastError);
-  if (attempt < 6) await wait(12000);
+  if (attempt < 12) await wait(12000);
 }
 if (!root) {console.error("FAIL live homepage:",lastError);process.exit(1);}
 let issues = [];
 if (!root.body.includes('<meta name="google-site-verification" content="km1EpHT5L_IUzBBj709rZfeyxZ3zaUM86yIxYJ0nfJk" />')) issues.push("Google Search Console verification meta missing from live Worker");
-if (!root.body.includes('name="robots" content="noindex,nofollow,noarchive"')) issues.push("noindex meta missing");
+if (!root.body.includes('name="robots" content="index,follow"')) issues.push("Production index/follow meta missing");
 if (!/src="\/landing\.js(?:\?[^"]*)?"/.test(root.body)) issues.push("landing.js reference missing");
 if (!/href="\/landing\.css(?:\?[^"]*)?"/.test(root.body)) issues.push("landing.css reference missing");
 const serverHeader = root.headers.get("server") || "unknown";
 const allowLegacyPagesHeaders = process.env.LOKMIRA_ALLOW_GITHUB_PAGES_HEADERS === "1";
 const robotsHeader = root.headers.get("x-robots-tag") || "";
-if (!robotsHeader.includes("noindex")) {
-  if (allowLegacyPagesHeaders) {
-    console.warn("WARN: X-Robots-Tag header missing on", origin, "(Server:", serverHeader, "- DNS still on GitHub Pages; HTML meta noindex is active)");
-  } else {
-    issues.push("X-Robots-Tag response header missing");
-  }
-}
+if(previewHost && !robotsHeader.includes('noindex'))issues.push('Preview host noindex header missing');
+if(!previewHost && /noindex|nofollow|none/i.test(robotsHeader))issues.push('Production indexing blocked by X-Robots-Tag');
 if (!(root.headers.get("content-security-policy") || "").includes("connect-src 'none'")) {
   if (allowLegacyPagesHeaders) {
     console.warn("WARN: CSP header missing on", origin, "(Server:", serverHeader, "- cut over lokmira.com DNS to Cloudflare Worker to enforce _headers)");
@@ -58,7 +54,7 @@ if (!(root.headers.get("content-security-policy") || "").includes("connect-src '
     issues.push("Live CSP missing required restrictions");
   }
 }
-for (const [path, marker] of [["/landing.css",".hero"],["/landing.js","const copy="],["/robots.txt","Disallow: /"]]) {
+for (const [path, marker] of [["/landing.css",".hero"],["/landing.js","const copy="],["/robots.txt","Allow: /"]]) {
   try {
     const r = await probe(path);
     if (r.status !== 200 || !r.body.includes(marker)) issues.push(path+" status/marker failed: "+r.status);
@@ -71,6 +67,7 @@ try {
   if (response.status !== 200 || response.body !== expected || !response.body.includes("<loc>https://lokmira.com/</loc>")) issues.push("Sitemap not deployed or mismatched");
   console.log("Sitemap /sitemap.xml", response.status, "matches GitHub", response.body === expected);
   const robotsResponse = await probe("/robots.txt");
+  if (/^Disallow:\s*\/\s*$/m.test(robotsResponse.body)) issues.push("Production robots.txt blocks crawling");
   if (!robotsResponse.body.includes("Sitemap: https://lokmira.com/sitemap.xml")) issues.push("Robots sitemap declaration missing");
 } catch (e) { issues.push("Sitemap live check: " + String(e)); }
 const newAssets=[["/pages.css","dist/pages.css"],["/pages.js","dist/pages.js"]];
@@ -81,17 +78,13 @@ for (const [url,expectedFile] of newAssets) {
     console.log("Premium asset",url,r.status,"matches",r.body===expected);
   } catch(e){issues.push("Premium asset "+url+": "+String(e));}
 }
-const siteRoutes=[
- "/en/",
- "/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/","/hu/helyi-seo/","/hu/google-ads/","/hu/kozossegi-media/","/hu/meres/",
- "/en/services/","/en/approach/","/en/about/","/en/contact/","/en/local-seo/","/en/google-ads/","/en/social-media/","/en/measurement/"
-];
+const siteRoutes=[...readFileSync('dist/sitemap.xml','utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>new URL(m[1]).pathname).filter(path=>path!=='/');
 for(const url of siteRoutes){
  try{
    const result=await probe(url);
    const file="dist"+url+"index.html";
    const expected=readFileSync(file,"utf8");
-   if(result.status!==200||result.body!==expected||!result.body.includes('noindex,nofollow,noarchive'))issues.push("Locale page status/content mismatch: "+url);
+   if(result.status!==200||result.body!==expected||!result.body.includes('name="robots" content="index,follow"')||(!previewHost && /noindex|nofollow|none/i.test(result.headers.get('x-robots-tag')||'')))issues.push("Locale page status/content mismatch: "+url);
    console.log("Localized page",url,result.status,"repo matched",result.body===expected);
  }catch(e){issues.push("Locale page "+url+": "+String(e));}
 }
@@ -134,4 +127,4 @@ for(const path of restrictedPaths) {
   } catch(e){issues.push("Internal path check failed "+path+": "+String(e));}
 }
 if(issues.length){issues.forEach(x=>console.error("FAIL",x));process.exit(1);}
-console.log("PASS: live release on", origin, "(Server:", serverHeader + ") matches committed HTML/CSS/JS, noindex, and private-path 404 restrictions");
+console.log("PASS: live release on", origin, "(Server:", serverHeader + ") matches committed HTML/CSS/JS, production indexing/preview isolation, and private-path 404 restrictions");

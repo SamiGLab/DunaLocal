@@ -1,4 +1,11 @@
 User-agent: *
-Disallow: /
+Allow: /
+
+# Search discovery (not a promise of inclusion or ranking).
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
 
 Sitemap: https://lokmira.com/sitemap.xml

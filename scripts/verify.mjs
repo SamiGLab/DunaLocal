@@ -9,7 +9,7 @@ for(const [lang,path] of [['hu','index.html'],['en','en/index.html']]){
  test(page===readFileSync('dist/'+path,'utf8'),'Source/dist homepage drift: '+lang);
  test(page.includes('<html lang="'+lang+'"'),'Wrong homepage language: '+lang);
  test(page.includes(gscTag),'GSC verification lost: '+lang);
- test(page.includes('name="robots" content="noindex,nofollow,noarchive"'),'Indexing policy changed: '+lang);
+ test(page.includes('name="robots" content="index,follow"'),'Indexing policy changed: '+lang);
  test(page.includes('rel="canonical" href="https://lokmira.com/'+(lang==='en'?'en/':'')+'"'),'Wrong canonical: '+lang);
  test(page.includes('hreflang="hu" href="https://lokmira.com/"')&&page.includes('hreflang="en" href="https://lokmira.com/en/"'),'Missing language alternates: '+lang);
  test((page.match(/<h1\b/g)||[]).length===1,'Expected one readable H1: '+lang);
@@ -22,7 +22,10 @@ for(const [lang,path] of [['hu','index.html'],['en','en/index.html']]){
 }
 test(readFileSync('landing.js','utf8')===readFileSync('dist/landing.js','utf8'),'Landing JS deploy drift');
 test(readFileSync('landing.css','utf8')===readFileSync('dist/landing.css','utf8'),'Landing CSS deploy drift');
-test(robot.includes('Disallow: /')&&headers.includes('X-Robots-Tag: noindex'),'Indexing safeguards changed');
+test(/^Allow: \/$/m.test(robot)&&!/^Disallow:\s*\/\s*$/m.test(robot),'Production crawling must be allowed');
+test(!headers.split(/\nhttps:\/\//)[0].includes('X-Robots-Tag: noindex'),'Global noindex must not block production');
+for(const host of ['lokmira.samiayten-hu.workers.dev','dunalocal.samiayten-hu.workers.dev'])test(headers.replace(/\r\n/g,'\n').includes('https://'+host+'/*\n  X-Robots-Tag: noindex'),'Preview host must stay excluded: '+host);
+test(readFileSync('404.html','utf8').includes('name="robots" content="noindex,nofollow,noarchive"'),'404 should remain excluded');
 test(headers.includes("frame-ancestors 'none'")&&headers.includes('Content-Security-Policy:'),'Security headers changed');
 test(sitemap===builtSitemap&&(sitemap.match(/<url>/g)||[]).length===22,'Sitemap changed unexpectedly');
 test(!/fetch\s*\(|XMLHttpRequest|localStorage|document\.cookie|gtag\s*\(/.test(js),'Unexpected network or tracking code');
@@ -50,7 +53,7 @@ for(const [huPath,enPath] of Object.entries(pairs)) {
     test(!/BELSŐ ELŐNÉZET|INTERNAL PREVIEW|WEBSITE DRAFT|Not a public offer/i.test(src),"Draft language in public presentation: "+route);
     test(!/AI-támogatott videó|AI-assisted video|tartalom-video|content-video|videóforgatókönyv/i.test(src),"Out-of-scope AI-video offer on "+route);
     test(src.includes('<html lang="'+lang+'"'),"Wrong page language: "+route);
-    test(src.includes('name="robots" content="noindex,nofollow,noarchive"'),"Missing noindex: "+route);
+    test(src.includes('name="robots" content="index,follow"'),"Missing production indexing directive: "+route);
     test(!/<form[\s>]/i.test(src),"Unauthorized contact form: "+route);
     test(src.includes('name="google-site-verification"'),"Missing Google Search Console tag: "+route);
     const expectedCanonical='<link rel="canonical" href="https://lokmira.com/'+route+'/">';
@@ -152,4 +155,18 @@ for(const route of Object.values(pairs).concat(Object.keys(pairs))){
  const iconCss=readFileSync('pages.css','utf8');
  for(const name of [...source.matchAll(/class="ui-icon (icon-[a-z-]+)"/g)].map(m=>m[1]))test(iconCss.includes('.'+name+'{'),'Missing detail icon mapping: '+route+' '+name);
 }
+if(failed)process.exit(1);
+
+for(const path of allSourcePages){
+ const source=readFileSync(path,'utf8'),blocks=[...source.matchAll(/<script type="application\/ld\+json" id="lokmira-structured-data">([\s\S]*?)<\/script>/g)];
+ test(blocks.length===1,'Expected one structured data graph: '+path);
+ try{
+  const graph=JSON.parse(blocks[0][1]);
+  const canonical=source.match(/rel="canonical" href="([^"]+)"/)[1],language=source.match(/<html lang="([^"]+)"/)[1];
+  const page=graph['@graph'].find(node=>node['@id']===canonical+'#webpage');
+  test(graph['@context']==='https://schema.org'&&page?.url===canonical&&page?.inLanguage===language,'Structured data must match page canonical/language: '+path);
+  test(!/aggregateRating|reviewRating|priceCurrency|streetAddress/.test(blocks[0][1]),'Unverified business data in schema: '+path);
+ }catch(error){test(false,'Invalid JSON-LD: '+path+' '+error.message)}
+}
+for(const bot of ['OAI-SearchBot','PerplexityBot'])test(robot.includes('User-agent: '+bot+'\nAllow: /')||robot.includes('User-agent: '+bot+'\r\nAllow: /'),'AI search bot must be allowed: '+bot);
 if(failed)process.exit(1);

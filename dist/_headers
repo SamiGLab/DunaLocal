@@ -1,7 +1,16 @@
 /*
-  X-Robots-Tag: noindex, nofollow, noarchive
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
   Content-Security-Policy: default-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; img-src 'self' data:; style-src 'self'; script-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'
+
+# Preview hosts remain excluded; the production canonical host is indexable.
+https://lokmira.samiayten-hu.workers.dev/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+https://dunalocal.samiayten-hu.workers.dev/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/404.html
+  X-Robots-Tag: noindex, nofollow, noarchive
