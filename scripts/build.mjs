@@ -64,8 +64,21 @@ enHome = enHome
   .replaceAll('src="./brand/focus-app-icon.svg"', 'src="/brand/focus-app-icon.svg"')
   .replace('aria-label="Lokmira - lap teteje"', 'aria-label="Lokmira - back to top"')
   .replace('aria-label="Fő navigáció"', 'aria-label="Main navigation"')
-  .replace('aria-label="Menü megnyitása"', 'aria-label="Open navigation menu"')
-  .replace('<button class="lang active" data-lang="hu" aria-pressed="true">HU</button><span> / </span><button class="lang" data-lang="en" aria-pressed="false">EN</button>', '<button class="lang" data-lang="hu" aria-pressed="false">HU</button><span> / </span><button class="lang active" data-lang="en" aria-pressed="true">EN</button>');
+  .replace('<button class="lang active" data-lang="hu" aria-pressed="true">HU</button><span> / </span><button class="lang" data-lang="en" aria-pressed="false">EN</button>', '<button class="lang" data-lang="hu" aria-pressed="false">HU</button><span> / </span><button class="lang active" data-lang="en" aria-pressed="true">EN</button>')
+  .replaceAll('-hu.webp', '-en.webp')
+  .replaceAll('-hu.png', '-en.png')
+  .replaceAll('alt="Több helyi ügyfél"', 'alt="More local customers"')
+  .replaceAll('alt="Mérhető eredmények"', 'alt="Measurable results"')
+  .replaceAll('alt="Budapesti vállalkozásokra szabva"', 'alt="Tailored for Budapest businesses"')
+  .replaceAll('alt="Helyi keresési és ajánlatkérési folyamat Budapesten"', 'alt="Local search and enquiry process in Budapest"')
+  .replaceAll('alt="Google Cégprofil és helyi SEO előnézet"', 'alt="Google Business Profile and local SEO preview"')
+  .replaceAll('alt="Google Ads kampány előnézet"', 'alt="Google Ads campaign preview"')
+  .replaceAll('alt="Meta hirdetés és lead kampány előnézet"', 'alt="Meta ads and lead campaign preview"')
+  .replaceAll('alt="Konverziós érkezőoldal előnézet"', 'alt="Conversion landing page preview"')
+  .replaceAll('alt="Közösségi média és tartalom előnézet"', 'alt="Social media and content preview"')
+  .replaceAll('alt="Érdeklődés és ajánlatkövetés előnézet"', 'alt="Enquiry and quote tracking preview"')
+  .replaceAll('alt="Előtte és Utána működési összehasonlítás a Lokmira rendszerével"', 'alt="Before and after operational comparison with the Lokmira system"')
+  .replace('aria-label="Lokmira garanciák és értékek"', 'aria-label="Lokmira commitments and values"');
 
 enHome = enHome.replace(/(<([a-z0-9]+)\b[^>]*\bdata-route="([^"]+)"[^>]*>)/gi, (full, tag, _name, routeKey) => {
   if (!enRoutes[routeKey]) return full;
@@ -136,6 +149,12 @@ if (brandActual.join("|") !== [...brandAssets].sort().join("|")) {
   console.error("Unexpected public brand bundle", brandActual);
   process.exit(1);
 }
+mkdirSync(join(out, "images"), { recursive: true });
+if (existsSync("images")) {
+  for (const file of readdirSync("images")) {
+    copyFileSync(join("images", file), join(out, "images", file));
+  }
+}
 for (const page of pageDirectories) {
   const source = join(page, "index.html");
   const target = join(out, page);
@@ -154,7 +173,7 @@ for (const lang of ["hu", "en"]) {
   }
 }
 const actual = readdirSync(out).sort();
-const expected = [...assets, "brand", "icons", "hu", "en"].sort();
+const expected = [...assets, "brand", "icons", "images", "hu", "en"].sort();
 if (actual.join("|") !== expected.join("|")) {
   console.error("Unexpected build output", actual);
   process.exit(1);

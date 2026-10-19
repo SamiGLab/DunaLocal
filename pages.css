@@ -143,6 +143,19 @@
 @media(max-width:790px){.landing-root .hero{grid-template-columns:1fr;padding:70px 24px}.landing-root .service-panels{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.landing-root .hero{padding:60px 18px}.landing-root .hero h1{font-size:clamp(43px,9vw,57px)}.landing-root .service-panels{grid-template-columns:1fr}.landing-root .service-panels article{min-height:auto}.landing-root .navigation .nav-main-action{background:transparent;color:#1a392c;padding:7px 0}}
 
+.landing-root .hero-badges{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:24px}
+.landing-root .hero-badge{display:inline-flex;align-items:center}
+.landing-root .hero-badge img{max-height:38px;width:auto;height:auto;display:block;border-radius:999px;box-shadow:0 4px 14px #00000014}
+.landing-root .diagram-preview{margin-bottom:24px;border-radius:18px;overflow:hidden;border:1px solid #ffffff1c;background:#10222b;box-shadow:0 12px 35px #050d1460}
+.landing-root .diagram-preview img{width:100%;height:auto;display:block}
+.landing-root .service-card-media{margin-bottom:18px;border-radius:14px;overflow:hidden;border:1px solid #d5ded7;background:#fff;box-shadow:0 6px 20px #152e220a}
+.landing-root .service-card-media img{width:100%;height:auto;display:block;transition:transform .25s ease}
+.landing-root .service-panels article:hover .service-card-media img{transform:scale(1.02)}
+.landing-root .before-after-section{padding:100px 0;background:#f5f8f5;border-top:1px solid var(--line)}
+.landing-root .before-after-card{max-width:1080px;margin:36px auto 0;border-radius:22px;overflow:hidden;box-shadow:0 24px 70px #152e2216;border:1px solid #d0dcd4;background:#fff}
+.landing-root .before-after-card img{width:100%;height:auto;display:block}
+@media(max-width:620px){.landing-root .hero-badge img{max-height:32px}.landing-root .before-after-section{padding:70px 0}}
+
 /* Keep skip link off canvas until keyboard focus — same accessibility behaviour as homepage. */
 .site-page .skip{position:absolute;left:12px;top:-70px;z-index:60;background:#fff;color:#101820;padding:10px 14px;border-radius:8px}
 .site-page .skip:focus{top:12px}

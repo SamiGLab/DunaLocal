@@ -38,7 +38,7 @@
         <a class="nav-main-action" data-route="contact" href="/en/contact/" data-i18n="navContact">Contact</a>
       </nav>
       <div class="language" aria-label="Language selector"><button class="lang" data-lang="hu" aria-pressed="false">HU</button><span> / </span><button class="lang active" data-lang="en" aria-pressed="true">EN</button></div>
-      <button type="button" class="menu" aria-controls="navigation" aria-expanded="false" aria-label="Open navigation menu"><span></span><span></span><span></span></button>
+      <button type="button" class="menu" aria-controls="navigation" aria-expanded="false" aria-label="Menü megnyitása"><span></span><span></span><span></span></button>
     </div>
   </header>
   <main id="main">
@@ -49,9 +49,15 @@
         <h1 id="heroTitle"><span data-i18n="heroLead">Make your business easier to find.</span> <em data-i18n="heroEnd">Make every enquiry easier to understand.</em></h1>
         <p class="intro" data-i18n="heroText">Lokmira connects local search visibility, Google Ads, content planning and enquiry tracking for service businesses in Budapest.</p>
         <div class="actions"><a class="button primary" data-route="services" href="/en/services/"><span data-i18n="heroAction">Explore the services</span><span class="ui-icon icon-arrow-up-right" aria-hidden="true"></span></a><a class="button outline" data-route="approach" href="/en/approach/" data-i18n="heroAction2">Our approach</a></div>
+        <div class="hero-badges" aria-label="Lokmira commitments and values">
+          <span class="hero-badge"><img src="/images/badge-customers-en.webp" alt="More local customers" width="144" height="40" loading="eager"></span>
+          <span class="hero-badge"><img src="/images/badge-results-en.webp" alt="Measurable results" width="138" height="40" loading="eager"></span>
+          <span class="hero-badge"><img src="/images/badge-budapest-en.webp" alt="Tailored for Budapest businesses" width="180" height="40" loading="eager"></span>
+        </div>
         <div class="tags"><span data-i18n="tag1">Local SEO &amp; Business Profile</span><span data-i18n="tag2">Google Ads &amp; content</span><span data-i18n="tag3">Traceable enquiries</span></div>
       </div>
       <div class="diagram" aria-label="Illustrative enquiry-to-sale process">
+        <div class="diagram-preview"><img src="/images/hero-visual-en.webp" alt="Local search and enquiry process in Budapest" width="480" height="470" loading="eager"></div>
         <div class="diagram-head"><b data-i18n="diagramTitle">The enquiry journey</b><span data-i18n="demo">CONCEPT · NO REAL CUSTOMER DATA</span></div>
         <ol class="flow">
           <li><span class="symbol"><span class="ui-icon icon-search" aria-hidden="true"></span></span><div><b data-i18n="flow1">Search</b><small>Google Search</small></div><span>01</span></li>
@@ -85,12 +91,24 @@
     <section id="services" class="shell section service-section" aria-labelledby="servicesTitle">
       <div class="section-intro"><div><p class="eyebrow" data-i18n="servicesEyebrow">HOW LOKMIRA HELPS</p><h2 id="servicesTitle"><span data-i18n="servicesTitle">Make visibility useful.</span><br><em data-i18n="servicesTitle2">Connect the right channels.</em></h2></div><p data-i18n="servicesText">Services are tailored to each business. The initial pilot does not automatically include every service listed below.</p></div>
       <div class="service-panels">
-        <article><span class="service-no">01 / LOCAL</span><span class="ui-icon service-lucide icon-map-pin" aria-hidden="true"></span><h3 data-i18n="service1">Google Business Profile &amp; local SEO</h3><p data-i18n="service1b">Review local search presence, business details and service pages, then implement practical improvements.</p><a data-route="seo" href="/en/local-seo/" data-i18n="serviceMore">Learn more</a></article>
-        <article><span class="service-no">02 / SEARCH ADS</span><span class="ui-icon service-lucide icon-target" aria-hidden="true"></span><h3 data-i18n="service2">Google Ads campaigns</h3><p data-i18n="service2b">Search campaigns built around high-intent keywords, with transparent budgets and conversion tracking.</p><a data-route="ads" href="/en/google-ads/" data-i18n="serviceMore">Learn more</a></article>
-        <article><span class="service-no">03 / META ADS</span><span class="ui-icon service-lucide icon-megaphone" aria-hidden="true"></span><h3 data-i18n="service3">Meta ads &amp; lead campaigns</h3><p data-i18n="service3b">Targeted Facebook and Instagram campaigns, lead generation forms and local reach for ideal clients.</p><a data-route="meta" href="/en/meta-ads/" data-i18n="serviceMore">Learn more</a></article>
-        <article><span class="service-no">04 / LANDING</span><span class="ui-icon service-lucide icon-file-text" aria-hidden="true"></span><h3 data-i18n="service4">Conversion landing pages</h3><p data-i18n="service4b">Fast, mobile-optimised landing pages designed for quotation requests and direct phone calls.</p><a data-route="landing" href="/en/landing-pages/" data-i18n="serviceMore">Learn more</a></article>
-        <article><span class="service-no">05 / SOCIAL</span><span class="ui-icon service-lucide icon-users" aria-hidden="true"></span><h3 data-i18n="service5">Social media &amp; content</h3><p data-i18n="service5b">Editorial calendar, profile management and consistent communication grounded in your real services.</p><a data-route="social" href="/en/social-media/" data-i18n="serviceMore">Learn more</a></article>
-        <article><span class="service-no">06 / MEASUREMENT</span><span class="ui-icon service-lucide icon-chart" aria-hidden="true"></span><h3 data-i18n="service6">Enquiry &amp; quote tracking</h3><p data-i18n="service6b">A straightforward view of searches, enquiries and quotations using information the business already has.</p><a data-route="measurement" href="/en/measurement/" data-i18n="serviceMore">Learn more</a></article>
+        <article><span class="service-no">01 / LOCAL</span><div class="service-card-media"><img src="/images/service-01-gbp-en.webp" alt="Google Business Profile and local SEO preview" width="724" height="543" loading="lazy"></div><span class="ui-icon service-lucide icon-map-pin" aria-hidden="true"></span><h3 data-i18n="service1">Google Business Profile &amp; local SEO</h3><p data-i18n="service1b">Review local search presence, business details and service pages, then implement practical improvements.</p><a data-route="seo" href="/en/local-seo/" data-i18n="serviceMore">Learn more</a></article>
+        <article><span class="service-no">02 / SEARCH ADS</span><div class="service-card-media"><img src="/images/service-03-ads-en.webp" alt="Google Ads campaign preview" width="724" height="543" loading="lazy"></div><span class="ui-icon service-lucide icon-target" aria-hidden="true"></span><h3 data-i18n="service2">Google Ads campaigns</h3><p data-i18n="service2b">Search campaigns built around high-intent keywords, with transparent budgets and conversion tracking.</p><a data-route="ads" href="/en/google-ads/" data-i18n="serviceMore">Learn more</a></article>
+        <article><span class="service-no">03 / META ADS</span><div class="service-card-media"><img src="/images/service-04-meta-en.webp" alt="Meta ads and lead campaign preview" width="724" height="543" loading="lazy"></div><span class="ui-icon service-lucide icon-megaphone" aria-hidden="true"></span><h3 data-i18n="service3">Meta ads &amp; lead campaigns</h3><p data-i18n="service3b">Targeted Facebook and Instagram campaigns, lead generation forms and local reach for ideal clients.</p><a data-route="meta" href="/en/meta-ads/" data-i18n="serviceMore">Learn more</a></article>
+        <article><span class="service-no">04 / LANDING</span><div class="service-card-media"><img src="/images/service-05-landing-en.webp" alt="Conversion landing page preview" width="724" height="543" loading="lazy"></div><span class="ui-icon service-lucide icon-file-text" aria-hidden="true"></span><h3 data-i18n="service4">Conversion landing pages</h3><p data-i18n="service4b">Fast, mobile-optimised landing pages designed for quotation requests and direct phone calls.</p><a data-route="landing" href="/en/landing-pages/" data-i18n="serviceMore">Learn more</a></article>
+        <article><span class="service-no">05 / SOCIAL</span><div class="service-card-media"><img src="/images/service-02-seo-en.webp" alt="Social media and content preview" width="724" height="543" loading="lazy"></div><span class="ui-icon service-lucide icon-users" aria-hidden="true"></span><h3 data-i18n="service5">Social media &amp; content</h3><p data-i18n="service5b">Editorial calendar, profile management and consistent communication grounded in your real services.</p><a data-route="social" href="/en/social-media/" data-i18n="serviceMore">Learn more</a></article>
+        <article><span class="service-no">06 / MEASUREMENT</span><div class="service-card-media"><img src="/images/service-06-measurement-en.webp" alt="Enquiry and quote tracking preview" width="724" height="543" loading="lazy"></div><span class="ui-icon service-lucide icon-chart" aria-hidden="true"></span><h3 data-i18n="service6">Enquiry &amp; quote tracking</h3><p data-i18n="service6b">A straightforward view of searches, enquiries and quotations using information the business already has.</p><a data-route="measurement" href="/en/measurement/" data-i18n="serviceMore">Learn more</a></article>
+      </div>
+    </section>
+    <section id="before-after" class="shell section before-after-section" aria-labelledby="beforeAfterHeading">
+      <div class="section-intro">
+        <div>
+          <p class="eyebrow" data-i18n="beforeAfterEyebrow">BEFORE / AFTER · CLEAR PIPELINE</p>
+          <h2 id="beforeAfterHeading"><span data-i18n="beforeAfterTitle">Not empty promises,</span><br><em data-i18n="beforeAfterTitle2">we build results from clearer operations.</em></h2>
+        </div>
+        <p data-i18n="beforeAfterLead">This is not an exaggerated success story. Rather, it reflects the operational clarity we target together: higher visibility, better quality enquiries and measurable decisions.</p>
+      </div>
+      <div class="before-after-card">
+        <img src="/images/before-after-en.webp" alt="Before and after operational comparison with the Lokmira system" width="1448" height="1086" loading="lazy">
       </div>
     </section>
     <section class="packages" id="packages" aria-labelledby="packageTitle">

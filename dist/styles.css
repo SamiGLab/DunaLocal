@@ -55,3 +55,17 @@ button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #a6
 .service-panels p{font-size:13px;line-height:1.75;color:#566773;margin:0}
 @media(max-width:1060px){.service-panels{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.service-section{scroll-margin-top:92px}.service-panels{grid-template-columns:1fr}.service-panels article{padding:22px}.service-panels .service-no{margin-bottom:14px}}
+
+/* Visual asset enhancements: hero badges, diagram preview, card media, before-after */
+.hero-badges{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:24px}
+.hero-badge{display:inline-flex;align-items:center}
+.hero-badge img{max-height:38px;width:auto;height:auto;display:block;border-radius:999px;box-shadow:0 4px 14px #00000014}
+.diagram-preview{margin-bottom:24px;border-radius:18px;overflow:hidden;border:1px solid #ffffff1c;background:#10222b;box-shadow:0 12px 35px #050d1460}
+.diagram-preview img{width:100%;height:auto;display:block}
+.service-card-media{margin-bottom:18px;border-radius:14px;overflow:hidden;border:1px solid #d5ded7;background:#fff;box-shadow:0 6px 20px #152e220a}
+.service-card-media img{width:100%;height:auto;display:block;transition:transform .25s ease}
+.service-panels article:hover .service-card-media img{transform:scale(1.02)}
+.before-after-section{padding:100px 0;background:#f5f8f5;border-top:1px solid var(--line)}
+.before-after-card{max-width:1080px;margin:36px auto 0;border-radius:22px;overflow:hidden;box-shadow:0 24px 70px #152e2216;border:1px solid #d0dcd4;background:#fff}
+.before-after-card img{width:100%;height:auto;display:block}
+@media(max-width:620px){.hero-badge img{max-height:32px}.before-after-section{padding:70px 0}}
