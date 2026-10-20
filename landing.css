@@ -178,3 +178,13 @@ details[open] summary:after{transform:rotate(-90deg)}
   .principle-icon-wrapper{width:38px;height:38px}
   .principle-icon-wrapper .landing-icon{width:18px;height:18px}
 }
+
+/* Crisp hero badges: live text and the same pinned Lucide SVG system at every density. */
+.landing-icon.icon-users{--landing-icon:url("/icons/users.svg")}
+.text-hero .hero-notes .hero-badge{display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;gap:7px;min-width:0;min-height:28px}
+.hero-badge>.landing-icon{width:24px;height:24px;color:#236b50}
+.hero-badge-label{display:block;font-family:Arial,Helvetica,sans-serif;font-size:11px;font-weight:500;line-height:14px;letter-spacing:-.15px;color:#435449}
+.hero-badge-label>span{display:block}
+@media(max-width:440px){.text-hero .hero-notes .hero-badge{grid-template-columns:22px minmax(0,1fr);gap:6px}.hero-badge>.landing-icon{width:22px;height:22px}.hero-badge-label{font-size:10px;line-height:13px}}
+
+@media(min-width:1101px){.text-hero .hero-notes{grid-template-columns:.9fr .85fr 1.25fr}}

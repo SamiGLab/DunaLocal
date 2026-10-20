@@ -18,7 +18,7 @@ for(const [lang,path] of [['hu','index.html'],['en','en/index.html']]){
  test(!page.includes('Read the comparison as text')&&!page.includes('comparison-transcript'),'Duplicate comparison UI restored: '+lang);
  test(!/<form[\s>]/i.test(page),'Unexpected active form: '+lang);
  test(!page.includes('127.0.0.1')&&!page.includes('file://'),'Local preview path leaked: '+lang);
- test(page.includes('href="/landing.css?v=20261019-hero-final"')&&page.includes('src="/landing.js?v=20261019-hero-final"'),'Missing isolated homepage assets: '+lang);
+ test(page.includes('href="/landing.css?v=20261020-crisp-badges"')&&page.includes('src="/landing.js?v=20261020-crisp-badges"'),'Missing isolated homepage assets: '+lang);
 }
 test(readFileSync('landing.js','utf8')===readFileSync('dist/landing.js','utf8'),'Landing JS deploy drift');
 test(readFileSync('landing.css','utf8')===readFileSync('dist/landing.css','utf8'),'Landing CSS deploy drift');
@@ -169,4 +169,12 @@ for(const path of allSourcePages){
  }catch(error){test(false,'Invalid JSON-LD: '+path+' '+error.message)}
 }
 for(const bot of ['OAI-SearchBot','PerplexityBot'])test(robot.includes('User-agent: '+bot+'\nAllow: /')||robot.includes('User-agent: '+bot+'\r\nAllow: /'),'AI search bot must be allowed: '+bot);
+if(failed)process.exit(1);
+
+for(const homePath of ['index.html','en/index.html']){
+ const home=readFileSync(homePath,'utf8');
+ test((home.match(/class="hero-badge" role="listitem"/g)||[]).length===3,'Expected three crisp text/SVG hero badges: '+homePath);
+ test(!home.includes('Lokmira_Badge_'),'Raster badge restored: '+homePath);
+}
+test(css.includes('/icons/users.svg'),'Missing repository users icon');
 if(failed)process.exit(1);
