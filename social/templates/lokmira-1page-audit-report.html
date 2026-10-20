@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <title>Lokmira - 1 Oldalas Helyi Elemzési Jelentés Sablon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 12mm 15mm;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f8fafc;
+      color: #0f172a;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+    .page-a4 {
+      width: 210mm;
+      min-height: 297mm;
+      background: #ffffff;
+      padding: 16mm 18mm;
+      border: 1px solid #e2e8f0;
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #0f172a;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .brand-logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+    }
+    .brand-tag {
+      font-size: 11px;
+      color: #64748b;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+    .report-meta {
+      text-align: right;
+      font-size: 11px;
+      color: #475569;
+      line-height: 1.4;
+    }
+    .client-box {
+      background: #f1f5f9;
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .client-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .client-sub {
+      font-size: 11px;
+      color: #64748b;
+    }
+    .status-badge {
+      font-size: 11px;
+      font-weight: 700;
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    h2.section-title {
+      font-size: 15px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #0f172a;
+      margin-bottom: 12px;
+      border-left: 4px solid #0ea5e9;
+      padding-left: 8px;
+    }
+    .findings-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .finding-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 12px 14px;
+      background: #ffffff;
+    }
+    .finding-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .finding-num {
+      font-size: 11px;
+      font-weight: 800;
+      color: #0ea5e9;
+      background: #e0f2fe;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-right: 6px;
+    }
+    .finding-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .finding-impact {
+      font-size: 10px;
+      font-weight: 700;
+      color: #b45309;
+      background: #fef3c7;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .finding-desc {
+      font-size: 11px;
+      color: #334155;
+      line-height: 1.5;
+    }
+    .solution-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+    }
+    .solution-box h3 {
+      font-size: 13px;
+      font-weight: 800;
+      color: #166534;
+      margin-bottom: 6px;
+    }
+    .solution-box p {
+      font-size: 11px;
+      color: #15803d;
+      line-height: 1.5;
+    }
+    .cta-box {
+      background: #0f172a;
+      color: #ffffff;
+      border-radius: 6px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cta-left h4 {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .cta-left p {
+      font-size: 10px;
+      color: #94a3b8;
+    }
+    .cta-contact {
+      text-align: right;
+      font-size: 11px;
+      color: #38bdf8;
+      font-weight: 700;
+    }
+    .footer {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 9px;
+      color: #94a3b8;
+      margin-top: 14px;
+    }
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+      .page-a4 {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        width: 100%;
+        min-height: auto;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+    .editor-panel {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #1e293b;
+      color: white;
+      padding: 14px;
+      border-radius: 8px;
+      max-width: 280px;
+      font-size: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .editor-panel input {
+      width: 100%;
+      padding: 4px 6px;
+      margin: 4px 0 10px;
+      border: 1px solid #475569;
+      border-radius: 4px;
+      background: #0f172a;
+      color: white;
+    }
+    .editor-panel button {
+      background: #0ea5e9;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="editor-panel no-print">
+    <h3 style="margin-bottom: 8px;">Rapor Verisi Düzenle</h3>
+    <label>İşletme Adı:</label>
+    <input type="text" id="inClient" value="Pátkai Autószerviz" oninput="renderReport()">
+    <label>İlçe / Bölge:</label>
+    <input type="text" id="inDistrict" value="Budapest XI. kerület" oninput="renderReport()">
+    <button onclick="window.print()">PDF OLARAK KAYDET (A4)</button>
+  </div>
+
+  <div class="page-a4">
+    <div>
+      <div class="header">
+        <div>
+          <div class="brand-logo">lokmira<span style="color:#0ea5e9;">.</span></div>
+          <div class="brand-tag">Helyi Ügyfélszerzés és Google Térkép Optimalizálás · Budapest</div>
+        </div>
+        <div class="report-meta">
+          <strong>Helyi Átvilágítási Jelentés</strong><br>
+          Dátum: 2026. október<br>
+          Hivatkozás: LOK-AUDIT-2026
+        </div>
+      </div>
+
+      <div class="client-box">
+        <div>
+          <div class="client-title" id="outClient">Pátkai Autószerviz</div>
+          <div class="client-sub" id="outDistrict">Budapest XI. kerület · Helyi keresési pozíció elemzése</div>
+        </div>
+        <div class="status-badge">Kieső Helyi Forgalom Észlelve</div>
+      </div>
+
+      <h2 class="section-title">3 Konkrét Technikai Hiányosság a Helyi Megjelenésben</h2>
+
+      <div class="findings-grid">
+        <div class="finding-card">
+          <div class="finding-head">
+            <div><span class="finding-num">01</span><span class="finding-title">Google Cégprofil kategóriák és szolgáltatások hiányossága</span></div>
+            <span class="finding-impact">Közvetlen rangsorolási hátrány</span>
+          </div>
+          <p class="finding-desc">A vállalkozás elsődleges kategóriája nincs pontosan összehangolva a leggyakoribb kerületi keresésekkel, valamint a másodlagos alkategóriák (pl. gyorsszerviz, fékjavítás, klímatöltés) nincsenek részletesen definiálva. Emiatt a Google Térkép algoritmusa nem jeleníti meg a profilt a TOP 3 helyi csomagban.</p>
+        </div>
+
+        <div class="finding-card">
+          <div class="finding-head">
+            <div><span class="finding-num">02</span><span class="finding-title">Friss vizuális és helyi tartalomhiány (Google Bejegyzések)</span></div>
+            <span class="finding-impact">Alacsony aktivitási pontszám</span>
+          </div>
+          <p class="finding-desc">A profilon az elmúlt 30 napban nem jelent meg új helyi bejegyzés (Google Update), és hiányoznak a frissített műhely-/munkaterületi fényképek. A Google frissességi algoritmusa az aktívan frissülő versenytársakat helyezi előtérbe.</p>
+        </div>
+
+        <div class="finding-card">
+          <div class="finding-head">
+            <div><span class="finding-num">03</span><span class="finding-title">Strukturált értékelésgyűjtési és kulcsszavas válaszfolyamat hiánya</span></div>
+            <span class="finding-impact">Bizalmi és konverziós veszteség</span>
+          </div>
+          <p class="finding-desc">Bár a vállalkozás munkája minőségi, az elégedett ügyfelek véleményei nincsenek szisztematikus folyamattal bekérve, és a meglévő értékelések nem tartalmaznak szolgáltatás- és helyszínközpontú hivatalos válaszokat, ami csökkenti a konverziós arányt.</p>
+        </div>
+      </div>
+
+      <div class="solution-box">
+        <h3>Javasolt Megoldási Terv (7 Napos Sprint)</h3>
+        <p>A Google Cégprofil teljes körű rendbetétele (kategóriák, 750 karakteres kerületi leírás, szolgáltatásmenü), a weboldal lokális jelzéseinek harmonizálása és egy automatikus pult/asztali QR értékelésgyűjtő rendszer bevezetése a helyi hívások növelése érdekében.</p>
+      </div>
+
+      <div class="cta-box">
+        <div class="cta-left">
+          <h4>Kezdjük el a javítást még a héten</h4>
+          <p>Local Starter csomag: 49.000 Ft/hó vagy 3 hónapra 135.000 Ft (ingyenes beállítással)</p>
+        </div>
+        <div class="cta-contact">
+          samigrowlab@gmail.com<br>
+          lokmira.com
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span>Lokmira Studio · Budapest · Bizalmas elemzés a célvállalkozás részére</span>
+      <span>lokmira.com · Nem minősül kötelező érvényű ajánlatnak</span>
+    </div>
+  </div>
+
+  <script>
+    function renderReport() {
+      const c = document.getElementById('inClient').value || 'Vállalkozás Neve';
+      const d = document.getElementById('inDistrict').value || 'Budapest';
+      document.getElementById('outClient').textContent = c;
+      document.getElementById('outDistrict').textContent = d + ' · Helyi keresési pozíció elemzése';
+    }
+  </script>
+</body>
+</html>

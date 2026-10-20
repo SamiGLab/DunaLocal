@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <title>Lokmira - A6 Asztali Google Értékelés Kártya Sablon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    @page {
+      size: A6 portrait;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f4f5f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .print-card {
+      width: 105mm;
+      height: 148mm;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 8mm 6mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .badge-top {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #0f766e;
+      background: #ccfbf1;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+    h1 {
+      font-size: 17px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+    .subtext {
+      font-size: 11px;
+      color: #475569;
+      line-height: 1.4;
+      max-width: 85mm;
+    }
+    .qr-container {
+      background: #f8fafc;
+      border: 2px dashed #cbd5e1;
+      border-radius: 12px;
+      width: 52mm;
+      height: 52mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 8px 0;
+      position: relative;
+    }
+    .qr-image {
+      width: 44mm;
+      height: 44mm;
+      object-fit: contain;
+    }
+    .qr-placeholder-text {
+      font-size: 10px;
+      color: #64748b;
+      line-height: 1.3;
+      padding: 8px;
+    }
+    .stars {
+      display: flex;
+      gap: 3px;
+      color: #f59e0b;
+      margin-bottom: 4px;
+    }
+    .star-icon {
+      width: 18px;
+      height: 18px;
+      fill: #f59e0b;
+    }
+    .cta-instruction {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.3;
+    }
+    .cta-hint {
+      font-size: 10px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+    .footer-brand {
+      width: 100%;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8px;
+      color: #94a3b8;
+    }
+    .business-name-display {
+      font-weight: 700;
+      color: #334155;
+    }
+    .agency-credit {
+      font-weight: 600;
+      color: #64748b;
+    }
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+      .print-card {
+        border: none;
+        box-shadow: none;
+        width: 105mm;
+        height: 148mm;
+        border-radius: 0;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+    .controls {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: #1e293b;
+      color: white;
+      padding: 16px;
+      border-radius: 8px;
+      max-width: 320px;
+      font-size: 13px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .controls input {
+      width: 100%;
+      padding: 6px 8px;
+      margin: 6px 0 12px;
+      border: 1px solid #475569;
+      border-radius: 4px;
+      background: #0f172a;
+      color: white;
+      font-size: 12px;
+    }
+    .controls button {
+      background: #0ea5e9;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 4px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+    .controls button:hover {
+      background: #0284c7;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="controls no-print">
+    <h3 style="margin-bottom: 8px; font-size: 14px;">Masa Kartı Düzenleyici</h3>
+    <label>İşletme Adı:</label>
+    <input type="text" id="bizInput" value="Budapesti Szerviz" oninput="updateCard()">
+    <label>Google Yorum QR Görsel URL / Dosya Adı:</label>
+    <input type="text" id="qrInput" placeholder="qr-sample.png veya data-url" oninput="updateCard()">
+    <button onclick="window.print()">KARTVIZITI YAZDIR (A6 PDF)</button>
+    <p style="font-size: 11px; color: #94a3b8; margin-top: 8px;">Tarayıcıdan yazdırırken 'Hedef: PDF olarak kaydet', 'Sayfa boyutu: A6' seçiniz.</p>
+  </div>
+
+  <div class="print-card">
+    <div>
+      <span class="badge-top">Vásárlói Vélemények</span>
+      <h1 id="cardTitle">Elégedett volt a kiszolgálással?</h1>
+      <p class="subtext">Az Ön véleménye és tapasztalata a legfontosabb visszajelzés csapatunk számára!</p>
+    </div>
+
+    <div class="qr-container">
+      <img id="qrImg" class="qr-image" style="display:none;" alt="QR Code">
+      <div id="qrPlaceholder" class="qr-placeholder-text">
+        <svg style="width:36px;height:36px;margin:0 auto 4px;display:block;fill:#94a3b8;" viewBox="0 0 24 24">
+          <path d="M3 3h8v8H3V3zm2 2v4h4V5H5zm8-2h8v8h-8V3zm2 2v4h4V5h-4zM3 13h8v8H3v-8zm2 2v4h4v-4H5zm13-2h3v2h-3v-2zm-5 0h2v3h-2v-3zm2 3h3v2h-3v-2zm-2 2h2v3h-2v-3zm3 0h3v3h-3v-3zm2-4h1v2h-1v-2zm-7 2h2v1h-2v-1z"/>
+        </svg>
+        QR Kód Helye<br>(Google Cégprofil Véleménylink)
+      </div>
+    </div>
+
+    <div>
+      <div class="stars">
+        <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <p class="cta-instruction">Olvassa be a telefonja kamerájával!</p>
+      <p class="cta-hint">Csak 30 másodperc a Google-ön.</p>
+    </div>
+
+    <div class="footer-brand">
+      <span class="business-name-display" id="bizDisplay">Budapesti Szerviz</span>
+      <span class="agency-credit">Lokális jelenlét: Lokmira</span>
+    </div>
+  </div>
+
+  <script>
+    function updateCard() {
+      const biz = document.getElementById('bizInput').value || 'Vállalkozás Neve';
+      const qr = document.getElementById('qrInput').value;
+      document.getElementById('bizDisplay').textContent = biz;
+      const img = document.getElementById('qrImg');
+      const placeholder = document.getElementById('qrPlaceholder');
+      if (qr && qr.trim() !== '') {
+        img.src = qr;
+        img.style.display = 'block';
+        placeholder.style.display = 'none';
+      } else {
+        img.style.display = 'none';
+        placeholder.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
