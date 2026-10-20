@@ -77,20 +77,39 @@ Measurable local visibility and customer enquiries for Budapest service business
 
 ---
 
-## 4. Macar Yerel Dizinleri (Arany Oldalak & Startlap)
+## 4. Macar Yerel Dizinleri (Cylex, Hotfrog, Startlap & Arany Oldalak)
 
-### Arany Oldalak (`aranyoldalak.hu`)
+### Cylex Magyarország (`cylex.hu`) - DR 71 (Tavsiye Edilen / Açık Kayıt)
+- **Weboldal:** `https://www.cylex.hu/`
+- **Cégnév:** `Lokmira - Helyi SEO és Digitális Marketing Budapest`
+- **Tevékenységi kör / Kategória:** `Marketingügynökség` / `Internetes szolgáltatás` / `Weboldal készítés`
+- **Település / Cím:** `Budapest` (Kiszállási / szolgáltatási területként: Budapest I-XXIII. kerület)
+- **Weboldal URL:** `https://lokmira.com/`
+- **E-mail:** `samigrowlab@gmail.com`
+- **Bemutatkozás / Leírás (Kifejezetten Cylex-re optimalizálva):**
+```text
+A Lokmira budapesti helyi vállalkozásoknak segít, hogy megtalálhatóvá váljanak a Google Keresőben és a Térképen. Fő szakterületeink: Google Cégprofil optimalizálás, helyi keresőoptimalizálás (helyi SEO), Google Ads és keresési hirdetések, gyors konverziós érkezőoldalak (landing page), valamint pontos ajánlatkövetés. Budapest kerületeiben dolgozó szakemberek, rendelők és szolgáltatók számára építünk átlátható, mérhető folyamatokat a helyi kereséstől a megrendelésig.
+```
+
+### Hotfrog Magyarország (`hotfrog.hu`) - DR 68
+- **Weboldal:** `https://www.hotfrog.hu/`
+- **Cégnév:** `Lokmira`
+- **Kategória:** `Marketing és reklám`
+- **Weboldal:** `https://lokmira.com/`
+- **Leírás:** `Helyi keresőoptimalizálás, Google Cégprofil kezelés és mérhető ügyfélszerzés Budapesten.`
+
+### Startlap (`marketing.lap.hu` / `budapest.lap.hu`) Ajánlási Szöveg
+- **Link:** `https://lokmira.com/`
+- **Cím:** Lokmira - Budapesti helyi ügyfélszerzés és SEO
+- **Leírás:** Helyi SEO, Google Cégprofil és keresési hirdetések budapesti szolgáltatóknak.
+
+### Arany Oldalak (`aranyoldalak.hu`) - (Şu an kapalı)
 - **Cégnév:** Lokmira Marketing
 - **Kulcsszavak:** helyi SEO, Google Cégprofil, Google Ads Budapest, weboldal készítés, marketing tanácsadás
 - **Rövid leírás (250 karakter):**
 ```text
 Helyi keresőoptimalizálás, Google Cégprofil kezelés és mérhető ügyfélszerzés budapesti szolgáltatóknak és vállalkozásoknak. Átlátható feladatok, követhető ajánlatkérések.
 ```
-
-### Startlap (`marketing.lap.hu` / `budapest.lap.hu`) Ajánlási Szöveg
-- **Link:** `https://lokmira.com/`
-- **Cím:** Lokmira · Budapesti helyi ügyfélszerzés és SEO
-- **Leírás:** Helyi SEO, Google Cégprofil és keresési hirdetések budapesti szolgáltatóknak.
 
 ---
 
