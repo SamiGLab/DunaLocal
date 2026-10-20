@@ -6,7 +6,7 @@ import { join } from "node:path";
 import {withStructuredData} from "./structured-data.mjs";
 
 const out = "dist";
-const assets = ["index.html", "landing.css", "landing.js", "shared-chrome.css", "styles.css", "app.js", "pages.css", "pages.js", "robots.txt", "sitemap.xml", "_headers", "404.html", "favicon.ico", "site.webmanifest"];
+const assets = ["index.html", "landing.css", "landing.js", "shared-chrome.css", "styles.css", "app.js", "pages.css", "pages.js", "robots.txt", "sitemap.xml", "_headers", "404.html", "favicon.ico", "site.webmanifest", "manifest.json"];
 const pageDirectories = [
   "hu/szolgaltatasok","en/services",
   "hu/modszer","en/approach",

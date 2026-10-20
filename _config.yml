@@ -1,6 +1,10 @@
 # GitHub Pages / Jekyll isolation safeguard
 # Prevents internal documentation, scripts, draft assets, and config files
 # from being rendered or published if GitHub Pages branch deployment is active.
+include:
+  - site.webmanifest
+  - manifest.json
+
 exclude:
   - AGENTS.md
   - README.md
@@ -15,5 +19,4 @@ exclude:
   - node_modules
   - qa-screenshots
   - qa-artifacts
-
   - home
