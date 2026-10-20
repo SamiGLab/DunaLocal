@@ -39,7 +39,14 @@ export function withStructuredData(source){
   graph.push(service);page.mainEntity={'@id':service['@id']};
  }
  if(!home){
-  const breadcrumb={'@type':'BreadcrumbList','@id':canonical+'#breadcrumb',itemListElement:[{'@type':'ListItem',position:1,name:'Lokmira',item:origin+(lang==='en'?'/en/':'/')},{'@type':'ListItem',position:2,name:text(clean.match(/<h1>([\s\S]*?)<\/h1>/)?.[1])||name,item:canonical}]};
+  const items=[{'@type':'ListItem',position:1,name:'Lokmira',item:origin+(lang==='en'?'/en/':'/')}];
+  if(serviceNames[slug]){
+   items.push({'@type':'ListItem',position:2,name:lang==='hu'?'Szolgáltatások':'Services',item:origin+(lang==='en'?'/en/services/':'/hu/szolgaltatasok/')});
+   items.push({'@type':'ListItem',position:3,name:text(clean.match(/<h1>([\s\S]*?)<\/h1>/)?.[1])||name,item:canonical});
+  } else {
+   items.push({'@type':'ListItem',position:2,name:text(clean.match(/<h1>([\s\S]*?)<\/h1>/)?.[1])||name,item:canonical});
+  }
+  const breadcrumb={'@type':'BreadcrumbList','@id':canonical+'#breadcrumb',itemListElement:items};
   graph.push(breadcrumb);page.breadcrumb={'@id':breadcrumb['@id']};
  }
  graph.push(page);
