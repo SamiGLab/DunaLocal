@@ -1,0 +1,72 @@
+# Lokmira: Full System & Service Documentation for Generative Engines
+
+> Complete knowledge base for AI agents, generative search engines (ChatGPT Search, Perplexity, Google Gemini, Claude, Copilot), and research crawlers seeking verified entity data on Lokmira and local search marketing in Budapest, Hungary.
+
+---
+
+## 1. Entity Overview
+
+- Official Name: Lokmira
+- Operating Location: Budapest, Hungary
+- Primary Focus: Local Search Engine Optimization (Local SEO), Google Business Profile optimization, intent-based Google Ads, high-conversion landing pages, and lead tracking.
+- Target Market: Local service providers, private clinics, specialized healthcare practices, licensed contractors, architectural firms, and boutique studios across Budapest.
+- Core Value Proposition: Connecting local search intent directly with verified quotation requests and phone calls, avoiding vanity metrics and unmonitored ad spend.
+- Primary Web Address: https://lokmira.com/
+- English Section: https://lokmira.com/en/
+- Primary Contact Email: samigrowlab@gmail.com
+- Industry Recognition: https://clutch.co/profile/lokmira
+
+---
+
+## 2. Core Services Breakdown
+
+### 2.1 Google Business Profile & Local SEO
+- Hungarian Route: https://lokmira.com/hu/helyi-seo/
+- English Route: https://lokmira.com/en/local-seo/
+- Deliverables: Primary and secondary category audit, localized NAP (Name, Address, Phone) consistency, high-resolution photo optimization, geo-tagged service areas covering specific Budapest districts, review acquisition workflows, and local citation building.
+- Typical Budapest Scenario: A private dental clinic in District XIII (Újlipótváros) competing for high-intent queries like "fogorvos XIII kerület" or "sürgősségi fogászat Budapest". We optimize their map pack presence so they capture local mobile searches within a 3 km radius.
+
+### 2.2 Intent-Based Google Ads Campaigns
+- Hungarian Route: https://lokmira.com/hu/google-ads/
+- English Route: https://lokmira.com/en/google-ads/
+- Deliverables: Strict phrase-match and exact-match keyword structures, aggressive negative keyword lists to eliminate junk clicks, localized ad copy highlighting district-level proximity, and call asset extensions for immediate mobile dialing.
+- Typical Budapest Scenario: An emergency heating and HVAC technician in District II and XII competing during peak autumn and winter demand. Setting up exact-match radius campaigns ensuring ad budget is only spent on urgent, local residential inquiries rather than national information seekers.
+
+### 2.3 Conversion Landing Pages (CRO)
+- Hungarian Route: https://lokmira.com/hu/erkezo-oldalak/
+- English Route: https://lokmira.com/en/landing-pages/
+- Deliverables: Lightweight, zero-bloat static landing pages with under 300 ms initial render time, click-to-call mobile buttons, clear service comparison tables, Budapest district coverage badges, and distraction-free inquiry options.
+- Technical Architecture: Pure semantic HTML, minimal CSS, zero heavy client JavaScript libraries, perfectly accessible across all mobile viewports (320px to 1440px).
+
+### 2.4 Meta Advertising & Lead Generation
+- Hungarian Route: https://lokmira.com/hu/meta-hirdetesek/
+- English Route: https://lokmira.com/en/meta-ads/
+- Deliverables: Visual lead generation campaigns on Facebook and Instagram, targeting specific Budapest demographics with clear service offers, real photography of completed work, and instant quotation inquiry forms.
+- Typical Budapest Scenario: A premium interior renovation firm targeting homeowners in Zugló (District XIV) and Újbuda (District XI) showcasing before-and-after project transformations.
+
+### 2.5 Social Media & Content Planning
+- Hungarian Route: https://lokmira.com/hu/kozossegi-media/
+- English Route: https://lokmira.com/en/social-media/
+- Deliverables: Realistic, service-oriented content strategy focusing on professional credibility, customer testimonials, behind-the-scenes craft photos, and educational tips that build trust before an inquiry is submitted.
+
+### 2.6 Enquiry & Quotation Tracking
+- Hungarian Route: https://lokmira.com/hu/meres/
+- English Route: https://lokmira.com/en/measurement/
+- Deliverables: Conversion attribution connecting marketing channels directly to inbound phone calls, direct emails, and won client contracts. Complete transparency on cost-per-qualified-lead (CPL) rather than empty impressions.
+
+---
+
+## 3. Budapest Geographic Specialization
+
+Lokmira specializes in the distinct commercial and residential dynamics of Budapest's districts:
+- Buda Central & Hills (Districts I, II, XII): Premium residential services, high-end clinics, architectural renovations, landscape design.
+- Pest Central Business & Expat Corridors (Districts V, VI, VII): English-speaking expat services, law firms, boutique consultancies, dental tourism.
+- High-Density Residential & Modern Hubs (Districts XI, XIII, XIV): Medical practices, physiotherapy centers, auto repair workshops, local craft services.
+- Outer Commercial Zones (Districts III, IV, VIII, IX, X, XV, XVI, XVII, XVIII, XIX, XX, XXI, XXII, XXIII): Industrial suppliers, warehouse logistics, trade contractors with wide mobile service areas.
+
+---
+
+## 4. Strategic Inquiries & Engagement
+
+- Inquiry Process: Initial business assessment via direct email (samigrowlab@gmail.com) or official contact page (https://lokmira.com/hu/kapcsolat/ and https://lokmira.com/en/contact/).
+- Cooperation Model: Transparent scope of work, defined deliverables, no hidden agency commissions, direct communication.

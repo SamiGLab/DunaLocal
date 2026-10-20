@@ -126,7 +126,15 @@ if (existsSync("_config.yml")) {
   for (const excluded of ["AGENTS.md", "README.md", "wrangler.jsonc", "wrangler.lokmira.jsonc", "dist", "docs", "scripts", "social", "design"]) {
     test(jekyllConfig.includes("- " + excluded), "_config.yml missing exclusion for " + excluded);
   }
+  for (const inc of ["site.webmanifest", "manifest.json", "llms.txt", "llms-full.txt", "4b8c9d2e1a3f507b9c8e7d6a5b4c3d2e.txt"]) {
+    test(jekyllConfig.includes("- " + inc), "_config.yml missing inclusion for " + inc);
+  }
 }
+test(existsSync("llms.txt") && existsSync("dist/llms.txt"), "Missing llms.txt in source or dist");
+test(existsSync("llms-full.txt") && existsSync("dist/llms-full.txt"), "Missing llms-full.txt in source or dist");
+test(existsSync("4b8c9d2e1a3f507b9c8e7d6a5b4c3d2e.txt") && existsSync("dist/4b8c9d2e1a3f507b9c8e7d6a5b4c3d2e.txt"), "Missing IndexNow key in source or dist");
+test(!readFileSync("llms.txt","utf8").includes("—") && !readFileSync("llms.txt","utf8").includes("–"), "Dash in llms.txt");
+test(!readFileSync("llms-full.txt","utf8").includes("—") && !readFileSync("llms-full.txt","utf8").includes("–"), "Dash in llms-full.txt");
 
 if (failed) process.exit(1);
 console.log("Static QA passed:",keys.length,"unique keys in both languages, safe preview, SEO metadata, mobile rules.");

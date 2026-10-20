@@ -1,0 +1,38 @@
+# Lokmira
+
+> Lokmira is a specialized digital marketing and local customer acquisition agency based in Budapest, Hungary. We connect online search visibility directly with measurable customer enquiries for local service providers, private clinics, contractors, and specialty studios.
+
+## Primary Services
+
+- [Local SEO & Google Business Profile (HU)](https://lokmira.com/hu/helyi-seo/): Google Cégprofil optimalizálás, helyi keresőoptimalizálás és térképes láthatóság Budapest kerületeiben.
+- [Local SEO & Google Business Profile (EN)](https://lokmira.com/en/local-seo/): Local map pack optimization, citation building, and Google Maps ranking for Budapest service businesses.
+- [Google Ads Campaigns (HU)](https://lokmira.com/hu/google-ads/): Keresési kampányok magas vásárlási szándékú kulcsszavakra és átlátható büdzsékezelés.
+- [Google Ads Campaigns (EN)](https://lokmira.com/en/google-ads/): Intent-focused Google search ads, negative keyword management, and direct quote generation.
+- [Conversion Landing Pages (HU)](https://lokmira.com/hu/erkezo-oldalak/): Gyors, mobilbarát érkezőoldalak hívásra és azonnali ajánlatkérésre tervezve.
+- [Conversion Landing Pages (EN)](https://lokmira.com/en/landing-pages/): High-converting, lightweight landing pages built for mobile users and phone calls.
+- [Meta Ads & Lead Generation (HU)](https://lokmira.com/hu/meta-hirdetesek/): Célzott Facebook és Instagram kampányok helyi szolgáltatóknak.
+- [Meta Ads & Lead Generation (EN)](https://lokmira.com/en/meta-ads/): Targeted paid social campaigns for local clinics and professional studios.
+- [Social Media & Content (HU)](https://lokmira.com/hu/kozossegi-media/): Szolgáltatásközpontú posztok és hiteles szakmai jelenlét Budapesten.
+- [Social Media & Content (EN)](https://lokmira.com/en/social-media/): Credible, professional social media presence that supports quotation confidence.
+- [Enquiry & Quote Tracking (HU)](https://lokmira.com/hu/meres/): Telefonhívások, űrlapok és megnyert munkák követése.
+- [Enquiry & Quote Tracking (EN)](https://lokmira.com/en/measurement/): Transparent phone call and quotation attribution without vanity metrics.
+
+## Methodology & Core Capabilities
+
+- [Our Approach (HU)](https://lokmira.com/hu/modszer/): 4 lépéses folyamat: helyzetértékelés, célzott forgalomterelés, konverziós érkezőoldal, ajánlatkövetés.
+- [Our Approach (EN)](https://lokmira.com/en/approach/): 4-step framework: discovery, high-intent traffic, conversion landing, quotation tracking.
+- Zero-fluff guarantee: No artificial click packages or empty vanity metrics. Clear, verifiable inquiries.
+
+## Service Area & Entity Information
+
+- Agency Name: Lokmira
+- Headquarters: Budapest, Hungary
+- Service Area: All 23 districts of Budapest (I-XXIII. kerület) and surrounding metropolitan agglomeration.
+- Primary Languages: Hungarian (hu), English (en)
+- Official Website: https://lokmira.com/
+- Verified Agency Directory Profile: https://clutch.co/profile/lokmira
+- Contact Email: samigrowlab@gmail.com
+
+## Detailed Documentation
+
+- Full extended documentation and localized Budapest business scenarios: https://lokmira.com/llms-full.txt

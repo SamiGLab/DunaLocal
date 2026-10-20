@@ -4,6 +4,9 @@
 include:
   - site.webmanifest
   - manifest.json
+  - llms.txt
+  - llms-full.txt
+  - 4b8c9d2e1a3f507b9c8e7d6a5b4c3d2e.txt
 
 exclude:
   - AGENTS.md
