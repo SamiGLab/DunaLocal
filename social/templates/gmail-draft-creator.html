@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <title>Lokmira - Tek Tıkla Gmail Taslak Oluşturucu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 30px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .wrap {
+      max-width: 800px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #38bdf8;
+    }
+    p.lead {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+    .mail-card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .mail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      gap: 12px;
+    }
+    .mail-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .mail-to {
+      font-size: 13px;
+      color: #38bdf8;
+      font-family: monospace;
+      margin-top: 4px;
+    }
+    .btn-create {
+      background: #0ea5e9;
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-create:hover {
+      background: #0284c7;
+      transform: translateY(-1px);
+    }
+    .mail-subject {
+      font-size: 12px;
+      color: #cbd5e1;
+      background: #0f172a;
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .mail-preview {
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.5;
+      background: #0f172a;
+      padding: 12px;
+      border-radius: 4px;
+      white-space: pre-wrap;
+      max-height: 110px;
+      overflow-y: auto;
+    }
+    .tip-box {
+      background: #134e4a;
+      border: 1px solid #14b8a6;
+      border-radius: 6px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: #ccfbf1;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="wrap">
+    <h1>Tek Tıkla Gmail Taslak Oluşturucu</h1>
+    <p class="lead">Güvenlik gereği doğrudan şifreniz olmadan Gmail hesabınıza arka plandan giremeyiz. Ancak aşağıdaki butonlara tıkladığınızda Gmail, alıcı, konu ve metin tamamen dolu olarak açılır ve Gmail bunu otomatik olarak <strong>Taslaklar</strong> klasörünüze kaydeder!</p>
+
+    <div class="tip-box">
+      <strong>Nasıl Çalışır?</strong> Aşağıdaki mavi butonlara sırayla tıklayın. Her tıkta yeni bir sekmede Gmail açılacak, metin yerleşecek ve Gmail anında 'Taslak kaydedildi' diyecektir. Sekmeyi kapatsanız bile taslaklarınızda saklanır!
+    </div>
+
+    <!-- Mail 1 -->
+    <div class="mail-card">
+      <div class="mail-header">
+        <div>
+          <div class="mail-title">1. Autó-Doki Újbuda (XI. Kerület)</div>
+          <div class="mail-to">ujbuda@auto-doki.hu</div>
+        </div>
+        <a id="btn1" class="btn-create" target="_blank" rel="noopener">GMAIL'DE TASLAK OLUŞTUR ↗</a>
+      </div>
+      <div class="mail-subject">Konu: Kérdés az Autó-Doki újbudai helyi megjelenésével kapcsolatban</div>
+      <div class="mail-preview" id="text1">Tisztelt Autó-Doki Újbuda Vezetőség!
+
+A budapesti autószervizek helyi Google Térképes megjelenéseit vizsgáltuk a XI. kerületben, és észrevettük, hogy miközben az újbudai autósok aktívan keresnek megbízható szervizt és időszakos műszaki vizsgáztatást a környéken, az Önök Hengermalom úti műhelye jelenleg nem a TOP 3 helyi térképes találat között jelenik meg.
+
+Ennek oka 2-3 konkrét beállításbeli hiányosság a profil alkategóriáiban és a helyi keresési jelzésekben, ami miatt a kerületi érdeklődők hívásai inkább a versenytársaikhoz futnak be.
+
+Összeállítottunk egy rövid, 1 oldalas, díjmentes átvilágítást a javítási pontokról. Semmilyen kötelezettséggel nem jár.
+
+Szívesen átküldjük e-mailben, amennyiben nyitottak a megtekintésére.
+
+Üdvözlettel,
+Lokmira Helyi Ügyfélszerzés
+lokmira.com · samigrowlab@gmail.com</div>
+    </div>
+
+    <!-- Mail 2 -->
+    <div class="mail-card">
+      <div class="mail-header">
+        <div>
+          <div class="mail-title">2. Kaptás Autószerviz (XI. Kerület)</div>
+          <div class="mail-to">kaptasszerviz2@gmail.com</div>
+        </div>
+        <a id="btn2" class="btn-create" target="_blank" rel="noopener">GMAIL'DE TASLAK OLUŞTUR ↗</a>
+      </div>
+      <div class="mail-subject">Konu: Kérdés a Kaptás Autószerviz XI. kerületi keresési pozíciójáról</div>
+      <div class="mail-preview" id="text2">Tisztelt Kaptás Szerviz Vezetőség!
+
+A XI. kerületi autószervizek helyi keresési jelenlétét elemeztük a Than Károly utca vonzáskörzetében. Észrevettük, hogy a műszaki vizsga, eredetiségvizsgálat és autómentés kapcsán érkező kerületi kereséseknél a Google Térkép algoritmusa jelenleg hátrébb sorolja a profiljukat a konkurensek mögé.
+
+Készítettünk egy tömör, 1 oldalas díjmentes átvilágítást arról a 3 beállításról, amellyel visszaszerezhetők ezek az azonnali telefonos megkeresések.
+
+Ha nem terheljük Önöket, szívesen átküldjük a rövid összefoglalót e-mailben.
+
+Üdvözlettel,
+Lokmira Helyi Ügyfélszerzés
+lokmira.com · samigrowlab@gmail.com</div>
+    </div>
+
+    <!-- Mail 3 -->
+    <div class="mail-card">
+      <div class="mail-header">
+        <div>
+          <div class="mail-title">3. Autó Pátkai</div>
+          <div class="mail-to">info@autopatkai.hu</div>
+        </div>
+        <a id="btn3" class="btn-create" target="_blank" rel="noopener">GMAIL'DE TASLAK OLUŞTUR ↗</a>
+      </div>
+      <div class="mail-subject">Konu: Kérdés az Autó Pátkai helyi keresési megjelenéséről</div>
+      <div class="mail-preview" id="text3">Tisztelt Autó Pátkai Vezetőség!
+
+A budapesti márkafüggetlen szervizek helyi térképes láthatóságát vizsgáltuk, és észrevettünk 2 olyan technikai finomhangolási pontot a Google Cégprofiljukban, amelyek miatt a környékbeli érdeklődők egy része jelenleg más műhelyeket ér el először.
+
+Összeállítottunk egy 1 oldalas, díjmentes szakmai elemzést a láthatóság növelésének lehetőségeiről.
+
+Átküldhetjük Önöknek megtekintésre e-mailben?
+
+Üdvözlettel,
+Lokmira Helyi Ügyfélszerzés
+lokmira.com · samigrowlab@gmail.com</div>
+    </div>
+
+    <!-- Mail 4 -->
+    <div class="mail-card">
+      <div class="mail-header">
+        <div>
+          <div class="mail-title">4. Klímatechnika Bt. (XIII. Kerület)</div>
+          <div class="mail-to">info@klimatechnika.hu</div>
+        </div>
+        <a id="btn4" class="btn-create" target="_blank" rel="noopener">GMAIL'DE TASLAK OLUŞTUR ↗</a>
+      </div>
+      <div class="mail-subject">Konu: Kérdés a Klímatechnika Bt. kerületi térképes pozíciójáról</div>
+      <div class="mail-preview" id="text4">Tisztelt Klímatechnika Bt. Vezetőség!
+
+A budapesti lakossági klímaszerelési és karbantartási kereséseket vizsgáltuk a XIII. kerületben és környékén. Észrevettük, hogy a helyi Google Térképen néhány beállítási és szolgáltatási hiányosság miatt az azonnali kerületi megkeresések egy jelentős része a versenytársak felé tájékozódik.
+
+Készítettünk egy rövid, 1 oldalas, díjmentes átvilágítást a javítási lehetőségekről.
+
+Szívesen átküldjük e-mailben, ha érdekes lehet az áttekintése.
+
+Üdvözlettel,
+Lokmira Csapata
+lokmira.com · samigrowlab@gmail.com</div>
+    </div>
+
+    <!-- Mail 5 -->
+    <div class="mail-card">
+      <div class="mail-header">
+        <div>
+          <div class="mail-title">5. Mechalux Klíma (XIII. Kerület)</div>
+          <div class="mail-to">kapcsolat@mechalux.hu</div>
+        </div>
+        <a id="btn5" class="btn-create" target="_blank" rel="noopener">GMAIL'DE TASLAK OLUŞTUR ↗</a>
+      </div>
+      <div class="mail-subject">Konu: Kérdés a Mechalux XIII. kerületi helyi megjelenésével kapcsolatban</div>
+      <div class="mail-preview" id="text5">Tisztelt Mechalux Csapata!
+
+A budapesti lakossági klímatelepítési kereséseket elemeztük a XIII. kerületben (kiemelten Angyalföld és Vizafogó térségében). Észrevettük, hogy a Google Cégprofil jelenlegi beállításaiban van 2-3 olyan pont, ami miatt a környékbeli új lakások tulajdonosai nem Önöket találják meg legelsőként a térképen.
+
+Összeállítottunk egy 1 oldalas, díjmentes összefoglalót a javasolt lépésekről és a profiloptimalizálásról.
+
+Ha nyitottak rá, örömmel átküldjük megtekintésre e-mailben.
+
+Üdvözlettel,
+Lokmira Csapata
+lokmira.com · samigrowlab@gmail.com</div>
+    </div>
+
+  </div>
+
+  <script>
+    const mails = [
+      { id: 'btn1', to: 'ujbuda@auto-doki.hu', su: 'Kérdés az Autó-Doki újbudai helyi megjelenésével kapcsolatban', textId: 'text1' },
+      { id: 'btn2', to: 'kaptasszerviz2@gmail.com', su: 'Kérdés a Kaptás Autószerviz XI. kerületi keresési pozíciójáról', textId: 'text2' },
+      { id: 'btn3', to: 'info@autopatkai.hu', su: 'Kérdés az Autó Pátkai helyi keresési megjelenéséről', textId: 'text3' },
+      { id: 'btn4', to: 'info@klimatechnika.hu', su: 'Kérdés a Klímatechnika Bt. kerületi térképes pozíciójáról', textId: 'text4' },
+      { id: 'btn5', to: 'kapcsolat@mechalux.hu', su: 'Kérdés a Mechalux XIII. kerületi helyi megjelenésével kapcsolatban', textId: 'text5' }
+    ];
+
+    mails.forEach(m => {
+      const body = document.getElementById(m.textId).innerText;
+      const url = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(m.to) + '&su=' + encodeURIComponent(m.su) + '&body=' + encodeURIComponent(body);
+      document.getElementById(m.id).href = url;
+    });
+  </script>
+</body>
+</html>
