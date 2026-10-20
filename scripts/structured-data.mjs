@@ -49,6 +49,11 @@ export function withStructuredData(source){
   const breadcrumb={'@type':'BreadcrumbList','@id':canonical+'#breadcrumb',itemListElement:items};
   graph.push(breadcrumb);page.breadcrumb={'@id':breadcrumb['@id']};
  }
+ const faqs=[...clean.matchAll(/<details\b[^>]*\bclass="faqdetails"[^>]*>[\s\S]*?<summary>([\s\S]*?)<\/summary>[\s\S]*?<p>([\s\S]*?)<\/p>[\s\S]*?<\/details>/g)];
+ if(faqs.length>0){
+  const faqPage={'@type':'FAQPage','@id':canonical+'#faq','mainEntity':faqs.map(m=>({'@type':'Question','name':text(m[1]),'acceptedAnswer':{'@type':'Answer','text':text(m[2])}}))};
+  graph.push(faqPage);
+ }
  graph.push(page);
  const json=JSON.stringify({'@context':'https://schema.org','@graph':graph}).replace(/</g,'\\u003c');
  return clean.replace('</head>',`<script type="application/ld+json" id="lokmira-structured-data">${json}</script></head>`);
