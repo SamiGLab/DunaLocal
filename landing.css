@@ -188,3 +188,14 @@ details[open] summary:after{transform:rotate(-90deg)}
 @media(max-width:440px){.text-hero .hero-notes .hero-badge{grid-template-columns:22px minmax(0,1fr);gap:6px}.hero-badge>.landing-icon{width:22px;height:22px}.hero-badge-label{font-size:10px;line-height:13px}}
 
 @media(min-width:1101px){.text-hero .hero-notes{grid-template-columns:.9fr .85fr 1.25fr}}
+
+/* Verified agency trust strip */
+.landing-icon.icon-circle-check{--landing-icon:url("/icons/circle-check.svg")}
+.trust-strip{background:#f3f7ed;border-top:1px solid #dce5d4;border-bottom:1px solid #dce5d4;padding:14px 0}
+.trust-row{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;font-size:12px;color:#526950}
+.trust-label{font-weight:700;letter-spacing:0.5px;text-transform:uppercase;font-size:10px}
+.trust-badges{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.trust-pill{display:inline-flex;align-items:center;gap:7px;padding:6px 14px;border-radius:999px;background:#fff;border:1px solid #cfdcc4;color:#183b30;font-size:11px;font-weight:600;transition:transform .2s,box-shadow .2s}
+.trust-pill:hover{transform:translateY(-1px);box-shadow:0 4px 12px #183b3012}
+.trust-pill .landing-icon{width:16px;height:16px;color:#236b50}
+@media(max-width:600px){.trust-row{flex-direction:column;gap:10px;text-align:center}.trust-badges{justify-content:center}}
