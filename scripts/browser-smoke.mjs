@@ -45,7 +45,7 @@ for(const width of widths){
   check(response.status()===200&&state.lang===lang&&state.overflow<=1&&state.h1===1&&state.cards===6&&state.pairs===4&&state.transcripts===0&&state.brokenImages.length===0&&state.heroText==='visible'&&state.robots==='index,follow', 'Homepage '+lang+' '+width+' '+JSON.stringify(state)+' '+errors);
   check(state.canonical==='https://lokmira.com/'+(lang==='en'?'en/':''),'Canonical '+lang+' '+width);
   if(width<=760){await page.locator('.menu').click();check(await page.locator('#navigation').isVisible(),'Mobile navigation '+width);await page.locator('.menu').press('Escape');check((await page.locator('.menu').getAttribute('aria-expanded'))==='false','Escape closes menu '+width)}
-  if(width===390||width===1440)await page.screenshot({path:'qa-screenshots/home-'+lang+'-'+width+'.png',fullPage:true});
+  await page.evaluate(() => window.scrollTo(0, 0)); if(width===390||width===1440)await page.screenshot({path:'qa-screenshots/home-'+lang+'-'+width+'.png',fullPage:true});
   const next=lang==='hu'?'en':'hu';await Promise.all([page.waitForURL(origin+(next==='en'?'/en/':'/')),page.locator('button[data-lang="'+next+'"]').click()]);
   check(await page.locator('html').getAttribute('lang')===next,'Language destination '+lang+' '+width);
   check(errors.length===0,'JS errors '+errors);
