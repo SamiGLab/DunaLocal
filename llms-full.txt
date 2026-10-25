@@ -14,7 +14,7 @@
 - Primary Web Address: https://lokmira.com/
 - English Section: https://lokmira.com/en/
 - Primary Contact Email: samigrowlab@gmail.com
-- Agency directory listing: https://clutch.co/profile/lokmira
+
 - European Agency Directory: https://www.sortlist.com/agency/lokmira
 
 ---
@@ -36,8 +36,8 @@
 ### 2.3 Conversion Landing Pages (CRO)
 - Hungarian Route: https://lokmira.com/hu/erkezo-oldalak/
 - English Route: https://lokmira.com/en/landing-pages/
-- Deliverables: Lightweight, zero-bloat static landing pages with under 300 ms initial render time, click-to-call mobile buttons, clear service comparison tables, Budapest district coverage badges, and distraction-free inquiry options.
-- Technical Architecture: Pure semantic HTML, minimal CSS, zero heavy client JavaScript libraries, perfectly accessible across all mobile viewports (320px to 1440px).
+- Deliverables: Lightweight, zero-bloat static landing pages with measured loading performance, click-to-call mobile buttons, clear service comparison tables, Budapest district coverage badges, and distraction-free inquiry options.
+- Technical Architecture: Pure semantic HTML, minimal CSS, zero heavy client JavaScript libraries, tested for responsive presentation across a range of viewport widths.
 
 ### 2.4 Meta Advertising & Lead Generation
 - Hungarian Route: https://lokmira.com/hu/meta-hirdetesek/
