@@ -1,0 +1,75 @@
+name: Sitespeed and Crawl4AI deep audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/deep-seo-audit.yml'
+      - 'scripts/crawl4ai-live-audit.py'
+permissions:
+  contents: read
+jobs:
+  crawl4ai:
+    name: Crawl4AI (22–25 pages)
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: '.github/workflows/deep-seo-audit.yml'
+      - name: Install crawler and browser
+        run: |
+          python -m pip install 'crawl4ai==0.9.5' beautifulsoup4
+          python -m playwright install --with-deps chromium
+      - name: Crawl all localized pages with robots respected
+        run: python scripts/crawl4ai-live-audit.py
+      - name: Upload crawl report and machine-readable evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lokmira-crawl4ai-evidence
+          path: seo-audit-output/crawl4ai/
+          if-no-files-found: warn
+          retention-days: 30
+
+  sitespeed:
+    name: Sitespeed.io 3x mobile and desktop
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare output directories
+        run: mkdir -p seo-audit-output/sitespeed-mobile seo-audit-output/sitespeed-desktop
+      - name: Sitespeed mobile (three pages, three runs each)
+        timeout-minutes: 25
+        run: |
+          docker run --rm --shm-size=2g \
+            -v "$PWD/seo-audit-output/sitespeed-mobile:/sitespeed.io" \
+            sitespeedio/sitespeed.io:42.10.0 \
+            https://lokmira.com/ \
+            https://lokmira.com/hu/helyi-seo/ \
+            https://lokmira.com/hu/kapcsolat/ \
+            -b chrome --mobile -n 3 --browsertime.headless \
+            --outputFolder /sitespeed.io/report
+      - name: Sitespeed desktop (two pages, three runs each)
+        timeout-minutes: 17
+        if: success()
+        run: |
+          docker run --rm --shm-size=2g \
+            -v "$PWD/seo-audit-output/sitespeed-desktop:/sitespeed.io" \
+            sitespeedio/sitespeed.io:42.10.0 \
+            https://lokmira.com/ \
+            https://lokmira.com/hu/helyi-seo/ \
+            -b chrome -n 3 --browsertime.headless \
+            --outputFolder /sitespeed.io/report
+      - name: Upload network waterfall and performance HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lokmira-sitespeed-evidence
+          path: seo-audit-output/sitespeed-*/
+          if-no-files-found: warn
+          retention-days: 30
