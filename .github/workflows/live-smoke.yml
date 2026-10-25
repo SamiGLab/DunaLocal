@@ -5,6 +5,8 @@ on:
   workflow_dispatch:
 jobs:
   public-preview:
+    # Worker previews are deployed independently; do not require source parity on every Pages push.
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
