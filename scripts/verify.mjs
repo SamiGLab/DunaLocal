@@ -190,7 +190,7 @@ if(failed)process.exit(1);
 // SEO regression: one coherent graph per page and no obsolete FAQ rich-result claims.
 for(const seoPath of allSourcePages){
  const html=readFileSync(seoPath,'utf8');
- const blocks=[...html.matchAll(/<script type="application\\/ld\\+json" id="lokmira-structured-data">([\\s\\S]*?)<\\/script>/g)];
+ const blocks=[...html.matchAll(/<script type="application\/ld\+json" id="lokmira-structured-data">([\s\S]*?)<\/script>/g)];
  if(blocks.length!==1){test(false,'SEO graph count: '+seoPath);continue;}
  const data=JSON.parse(blocks[0][1]);
  test(!(data['@graph']||[]).some(node=>node['@type']==='FAQPage'),'Deprecated FAQPage schema: '+seoPath);
@@ -198,8 +198,8 @@ for(const seoPath of allSourcePages){
 }
 for(const homepagePath of ['index.html','en/index.html']){
  const markup=readFileSync(homepagePath,'utf8');
- const data=JSON.parse(markup.match(/<script type="application\\/ld\\+json" id="lokmira-structured-data">([\\s\\S]*?)<\\/script>/)[1]);
- test((markup.match(/type="application\\/ld\\+json"/g)||[]).length===1,'Duplicate JSON-LD: '+homepagePath);
+ const data=JSON.parse(markup.match(/<script type="application\/ld\+json" id="lokmira-structured-data">([\s\S]*?)<\/script>/)[1]);
+ test((markup.match(/type="application\/ld\+json"/g)||[]).length===1,'Duplicate JSON-LD: '+homepagePath);
  for(const type of ['Organization','WebSite'])test(data['@graph'].filter(node=>node['@type']===type).length===1,'Duplicate entity '+type+': '+homepagePath);
 }
 if(failed)process.exit(1);
