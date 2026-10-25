@@ -7,6 +7,9 @@ on:
       - '.github/workflows/live-performance.yml'
       - 'scripts/live-performance-audit.mjs'
       - 'scripts/live-indexability-audit.mjs'
+      - 'pages.css'
+      - 'shared-chrome.css'
+      - 'landing.css'
 permissions:
   contents: read
 jobs:
