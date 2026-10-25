@@ -1,0 +1,40 @@
+name: Live SEO and mobile performance audit
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/live-performance.yml'
+      - 'scripts/live-performance-audit.mjs'
+      - 'scripts/live-indexability-audit.mjs'
+permissions:
+  contents: read
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check audit script syntax
+        run: |
+          node --check scripts/live-performance-audit.mjs
+          node --check scripts/live-indexability-audit.mjs
+      - name: Install Lighthouse
+        run: npm install --no-save --no-package-lock lighthouse@12.8.2
+      - name: Check browser version
+        run: |
+          google-chrome --version || chromium --version
+      - name: Check all 22 live URLs, canonical and redirects
+        continue-on-error: true
+        run: node scripts/live-indexability-audit.mjs
+      - name: Measure four live URLs on mobile
+        continue-on-error: true
+        run: node scripts/live-performance-audit.mjs
+      - name: Upload full audit and Lighthouse JSON
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lokmira-live-seo-performance
+          path: seo-audit-output/
+          if-no-files-found: warn
+          retention-days: 30
