@@ -88,12 +88,24 @@ for(const [url,expectedFile] of newAssets){
  if(!matched)issues.push("Premium site asset failed or did not match deploy: "+url);
  console.log("Premium asset",url,asset?.status||"unavailable","matches",matched);
 }
+// Check the privacy-related fixes from the sitespeed.io evidence.
+for(const [route,expectedType] of [["/manifest.json","json"]]){
+ try{
+  const r=await probe(route);
+  const actualType=r.headers.get("content-type")||"";
+  if(r.status!==200 || !actualType.includes(expectedType))issues.push("Manifest Content-Type not JSON on "+route+": "+r.status+" "+actualType);
+  console.log("Manifest MIME",route,r.status,actualType);
+ }catch(e){issues.push("Manifest validation failed: "+String(e));}
+}
+if(!root.body.includes('name="referrer" content="strict-origin-when-cross-origin"'))issues.push("Production homepage missing referrer policy declaration");
+if(!root.body.includes('href="/manifest.json"'))issues.push("Production homepage still references legacy manifest MIME");
 const siteRoutes=[...readFileSync('dist/sitemap.xml','utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>new URL(m[1]).pathname).filter(path=>path!=='/');
 for(const url of siteRoutes){
  try{
    const result=await probe(url);
    const file="dist"+url+"index.html";
    const expected=readFileSync(file,"utf8");
+   if(!result.body.includes('name="referrer" content="strict-origin-when-cross-origin"')||!result.body.includes('href="/manifest.json"'))issues.push("Locale privacy meta / manifest reference missing: "+url);
    if(result.status!==200||result.body!==expected||!result.body.includes('name="robots" content="index,follow"')||(!previewHost && /noindex|nofollow|none/i.test(result.headers.get('x-robots-tag')||'')))issues.push("Locale page status/content mismatch: "+url);
    console.log("Localized page",url,result.status,"repo matched",result.body===expected);
  }catch(e){issues.push("Locale page "+url+": "+String(e));}

@@ -36,7 +36,7 @@ const sharedFooters = {
 for(const [lang,path] of [["hu","index.html"],["en","home/en.html"]]){
  const original=readFileSync(path,"utf8");
  let updated=original.replace(/<footer[\s\S]*?<\/footer>/,sharedFooters[lang]);
- if(!updated.includes('rel="manifest"'))updated=updated.replace('</head>','<link rel="manifest" href="/site.webmanifest"></head>');
+ if(!updated.includes('rel="manifest"'))updated=updated.replace('</head>','<link rel="manifest" href="/manifest.json"></head>');
  if(!updated.includes('/shared-chrome.css'))updated=updated.replace('</head>','<link rel="stylesheet" href="/shared-chrome.css?v=20261020-all-pages"></head>');
  if(updated!==original)writeFileSync(path,updated,"utf8");
 }
@@ -66,7 +66,7 @@ for (const page of pageDirectories) {
   const nav=links.slice(0,3).map((href,i)=>`<a href="${href}"${href===`/${page}/`?' aria-current="page"':''}>${labels[i]}</a>`).join('');
   const head=`<header class="site-head"><div class="wrap site-head-inner"><a class="site-brand" href="${home}" aria-label="Lokmira"><img src="/brand/focus-mark.svg" width="38" height="38" alt="">lokmira<span class="chrome-dot">.</span></a><nav id="site-nav" class="site-nav" aria-label="${labels[5]}">${nav}<a class="mobile-contact" href="${links[3]}">${labels[3]}</a></nav><div class="site-nav-end"><div class="site-langs" aria-label="Language"><a href="${pairHu}"${lang==='hu'?' aria-current="page"':''}>HU</a><span>/</span><a href="${pairEn}"${lang==='en'?' aria-current="page"':''}>EN</a></div><a class="nav-cta ui-link-icon" href="${links[3]}">${labels[3]}</a><button class="site-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="${labels[4]}"><span></span><span></span></button></div></div></header>`;
   updated=updated.replace(/<header class="site-head">[\s\S]*?<\/header>/,head);
-  if(!updated.includes('rel="manifest"'))updated=updated.replace('</head>','<link rel="manifest" href="/site.webmanifest"></head>');
+  if(!updated.includes('rel="manifest"'))updated=updated.replace('</head>','<link rel="manifest" href="/manifest.json"></head>');
   if(!updated.includes('/shared-chrome.css'))updated=updated.replace('</head>','<link rel="stylesheet" href="/shared-chrome.css?v=20261020-all-pages"></head>');
   if (updated !== original) {
     writeFileSync(source, updated, "utf8");
