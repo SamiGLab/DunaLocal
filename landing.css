@@ -74,7 +74,7 @@
 .comparison-pairs{display:grid;gap:13px}
 .comparison-pair{display:grid;grid-template-columns:1fr 1fr;gap:52px;position:relative}
 .comparison-cell{display:flex;align-items:flex-start;gap:16px;padding:25px 24px;border-radius:13px;border:1px solid #e1e5da;min-width:0}
-.comparison-before{background:rgba(247,247,243,0.88);border:1px dashed #d5dacd;opacity:0.92}.comparison-before:hover{opacity:1;border-color:#b8c2af}.comparison-before .comparison-cell-icon{background:#eaebe4;color:#7e8b75;border:1px solid #dce0d5}
+.comparison-before{background:rgba(247,247,243,0.88);border:1px dashed #d5dacd;opacity:1}.comparison-before:hover{opacity:1;border-color:#b8c2af}.comparison-before .comparison-cell-icon{background:#eaebe4;color:#7e8b75;border:1px solid #dce0d5}
 .comparison-after{background:linear-gradient(145deg,rgba(238,247,232,0.9) 0%,rgba(245,251,241,0.95) 100%);border:1px solid #bad3a7;box-shadow:0 4px 18px -2px rgba(35,107,80,0.08),inset 0 1px 0 rgba(255,255,255,0.8)}.comparison-after:hover{transform:translateY(-2px);border-color:#8fb87a;box-shadow:0 10px 24px -4px rgba(35,107,80,0.14)}.comparison-after .comparison-cell-icon{background:#dbeccd;color:#236b50;border:1px solid #c2dda8;box-shadow:0 2px 6px rgba(35,107,80,0.08)}
 .comparison-cell-icon{display:grid;place-items:center;flex-shrink:0;width:34px;height:34px;border-radius:10px;background:#e9ebe3;color:#849078;font-size:21px;line-height:1}
 .comparison-after .comparison-cell-icon{background:#dbeacb;color:#37633d;font-size:16px}
