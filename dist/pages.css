@@ -521,3 +521,7 @@
   .landing-root section.hero.shell .diagram{padding:17px}
   .landing-root section.hero.shell .diagram-head{flex-wrap:wrap}
 }
+
+/* Reserve service hero art space before the image decodes to prevent layout shift. */
+body.site-page .service-hero-art{aspect-ratio:4 / 3;width:100%;}
+body.site-page .service-hero-art img{aspect-ratio:4 / 3;}
