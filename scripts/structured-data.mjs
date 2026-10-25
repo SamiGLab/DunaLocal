@@ -27,7 +27,7 @@ export function withStructuredData(source){
  const description=text(clean.match(/name="description" content="([^"]+)"/)?.[1]);
  const graph=[];
  if(home){
-  graph.push({'@type':'Organization','@id':origin+'/#organization',name:'Lokmira',url:origin+'/',logo:{'@type':'ImageObject',url:origin+'/brand/focus-logo.svg'},description,email:'samigrowlab@gmail.com',areaServed:{'@type':'City',name:'Budapest'},sameAs:['https://clutch.co/profile/lokmira','https://www.sortlist.com/agency/lokmira'],contactPoint:{'@type':'ContactPoint','contactType':'customer service','email':'samigrowlab@gmail.com','availableLanguage':['Hungarian','English']},knowsAbout:['Local SEO','Google Business Profile','Google Ads','Conversion Rate Optimization','Budapest Local Search']});
+  graph.push({'@type':'Organization','@id':origin+'/#organization',name:'Lokmira',url:origin+'/',logo:{'@type':'ImageObject',url:origin+'/brand/focus-logo.svg'},description,email:'samigrowlab@gmail.com',areaServed:{'@type':'City',name:'Budapest'},sameAs:['https://www.sortlist.com/agency/lokmira'],contactPoint:{'@type':'ContactPoint','contactType':'customer service','email':'samigrowlab@gmail.com','availableLanguage':['Hungarian','English']},knowsAbout:['Local SEO','Google Business Profile','Google Ads','Conversion Rate Optimization','Budapest Local Search']});
   graph.push({'@type':'WebSite','@id':origin+'/#website',url:origin+'/',name:'Lokmira',inLanguage:['hu','en'],publisher:{'@id':origin+'/#organization'}});
  }
  const page={'@type':slug==='about'||slug==='rolunk'?'AboutPage':slug==='contact'||slug==='kapcsolat'?'ContactPage':slug==='services'||slug==='szolgaltatasok'?'CollectionPage':'WebPage','@id':canonical+'#webpage',url:canonical,name,description,inLanguage:lang,isPartOf:{'@id':origin+'/#website'},about:{'@id':origin+'/#organization'}};
@@ -48,11 +48,6 @@ export function withStructuredData(source){
   }
   const breadcrumb={'@type':'BreadcrumbList','@id':canonical+'#breadcrumb',itemListElement:items};
   graph.push(breadcrumb);page.breadcrumb={'@id':breadcrumb['@id']};
- }
- const faqs=[...clean.matchAll(/<details\b[^>]*\bclass="faqdetails"[^>]*>[\s\S]*?<summary>([\s\S]*?)<\/summary>[\s\S]*?<p>([\s\S]*?)<\/p>[\s\S]*?<\/details>/g)];
- if(faqs.length>0){
-  const faqPage={'@type':'FAQPage','@id':canonical+'#faq','mainEntity':faqs.map(m=>({'@type':'Question','name':text(m[1]),'acceptedAnswer':{'@type':'Answer','text':text(m[2])}}))};
-  graph.push(faqPage);
  }
  graph.push(page);
  const json=JSON.stringify({'@context':'https://schema.org','@graph':graph}).replace(/</g,'\\u003c');
