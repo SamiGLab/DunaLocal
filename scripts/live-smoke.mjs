@@ -70,13 +70,23 @@ try {
   if (/^Disallow:\s*\/\s*$/m.test(robotsResponse.body)) issues.push("Production robots.txt blocks crawling");
   if (!robotsResponse.body.includes("Sitemap: https://lokmira.com/sitemap.xml")) issues.push("Robots sitemap declaration missing");
 } catch (e) { issues.push("Sitemap live check: " + String(e)); }
+// GitHub Pages publishes independently of this job; assets can briefly lag HTML.
+// Retry only production asset parity. Worker preview is intentionally checked on demand.
 const newAssets=[["/pages.css","dist/pages.css"],["/pages.js","dist/pages.js"]];
-for (const [url,expectedFile] of newAssets) {
-  try {
-    const r=await probe(url),expected=readFileSync(expectedFile,"utf8");
-    if(r.status!==200||r.body!==expected) issues.push("Premium site asset failed: "+url);
-    console.log("Premium asset",url,r.status,"matches",r.body===expected);
-  } catch(e){issues.push("Premium asset "+url+": "+String(e));}
+for(const [url,expectedFile] of newAssets){
+ const expected=readFileSync(expectedFile,"utf8");
+ let asset,matched=false;
+ for(let attempt=1;attempt<=12;attempt++){
+  try{
+   asset=await probe(url);
+   matched=asset.status===200&&asset.body===expected;
+   if(matched)break;
+   console.warn("Asset not yet published",url,"attempt",attempt,"status",asset.status);
+  }catch(e){console.warn("Asset fetch pending",url,"attempt",attempt,String(e));}
+  if(attempt<12)await wait(8000);
+ }
+ if(!matched)issues.push("Premium site asset failed or did not match deploy: "+url);
+ console.log("Premium asset",url,asset?.status||"unavailable","matches",matched);
 }
 const siteRoutes=[...readFileSync('dist/sitemap.xml','utf8').matchAll(/<loc>([^<]+)<\/loc>/g)].map(m=>new URL(m[1]).pathname).filter(path=>path!=='/');
 for(const url of siteRoutes){
