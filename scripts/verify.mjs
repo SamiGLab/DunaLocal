@@ -27,7 +27,7 @@ test(!headers.split(/\nhttps:\/\//)[0].includes('X-Robots-Tag: noindex'),'Global
 for(const host of ['lokmira.samiayten-hu.workers.dev','dunalocal.samiayten-hu.workers.dev'])test(headers.replace(/\r\n/g,'\n').includes('https://'+host+'/*\n  X-Robots-Tag: noindex'),'Preview host must stay excluded: '+host);
 test(readFileSync('404.html','utf8').includes('name="robots" content="noindex,nofollow,noarchive"'),'404 should remain excluded');
 test(headers.includes("frame-ancestors 'none'")&&headers.includes('Content-Security-Policy:'),'Security headers changed');
-test(sitemap===builtSitemap&&(sitemap.match(/<url>/g)||[]).length===22,'Sitemap changed unexpectedly');
+test(sitemap===builtSitemap&&(sitemap.match(/<url>/g)||[]).length===36,'Sitemap changed unexpectedly');
 test(!/fetch\s*\(|XMLHttpRequest|localStorage|document\.cookie|gtag\s*\(/.test(js),'Unexpected network or tracking code');
 // The approved icon library must also cover the redesigned homepage.
 for(const source of [html,readFileSync('en/index.html','utf8'),js])test(!/[◎↗↝≋✓→↓↑]/u.test(source),'Text glyph used instead of repository icon');
@@ -39,7 +39,14 @@ const pairs = {
   "hu/rolunk":"en/about", "hu/kapcsolat":"en/contact",
   "hu/helyi-seo":"en/local-seo", "hu/google-ads":"en/google-ads",
   "hu/meta-hirdetesek":"en/meta-ads", "hu/erkezo-oldalak":"en/landing-pages",
-  "hu/kozossegi-media":"en/social-media", "hu/meres":"en/measurement"
+  "hu/kozossegi-media":"en/social-media", "hu/meres":"en/measurement",
+  "hu/nemzetkozi-b2b":"en/b2b",
+  "hu/nemzetkozi-b2b/piacfelmeres":"en/b2b/market-assessment",
+  "hu/nemzetkozi-b2b/vevokapcsolatok-fejlesztese":"en/b2b/buyer-development",
+  "hu/nemzetkozi-b2b/piacra-lepes":"en/b2b/market-entry",
+  "hu/nemzetkozi-b2b/disztributori-halozat-fejlesztese":"en/b2b/distributor-development",
+  "hu/nemzetkozi-b2b/ertekesites-kiszervezese":"en/b2b/sales-outsourcing",
+  "hu/nemzetkozi-b2b/beszallitokereses":"en/b2b/supplier-matching"
 };
 for(const [huPath,enPath] of Object.entries(pairs)) {
   for(const [lang,route] of [["hu",huPath],["en",enPath]]) {
@@ -73,7 +80,7 @@ for(const [huPath,enPath] of Object.entries(pairs)) {
 }
 test(readFileSync("pages.css","utf8")===readFileSync("dist/pages.css","utf8"),"Premium CSS deploy drift");
 test(readFileSync("pages.js","utf8")===readFileSync("dist/pages.js","utf8"),"Premium JS deploy drift");
-test(readdirSync("dist/hu").length===10 && readdirSync("dist/en").length===11,"Unexpected locale directory count (expected 10 in dist/hu, 10 + index.html in dist/en)");
+test(readdirSync("dist/hu").length===11 && readdirSync("dist/en").length===12,"Unexpected locale directory count (expected 11 in dist/hu, 11 + index.html in dist/en)");
 const huFooters = new Set();
 const enFooters = new Set();
 for (const [huPath, enPath] of Object.entries(pairs)) {

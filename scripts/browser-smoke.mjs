@@ -56,8 +56,12 @@ for(const width of widths){
 const routes=[
   "/hu/szolgaltatasok/","/hu/modszer/","/hu/rolunk/","/hu/kapcsolat/",
   "/hu/helyi-seo/","/hu/google-ads/","/hu/meta-hirdetesek/","/hu/erkezo-oldalak/","/hu/kozossegi-media/","/hu/meres/",
+  "/hu/nemzetkozi-b2b/","/hu/nemzetkozi-b2b/piacfelmeres/","/hu/nemzetkozi-b2b/vevokapcsolatok-fejlesztese/","/hu/nemzetkozi-b2b/piacra-lepes/",
+  "/hu/nemzetkozi-b2b/disztributori-halozat-fejlesztese/","/hu/nemzetkozi-b2b/ertekesites-kiszervezese/","/hu/nemzetkozi-b2b/beszallitokereses/",
   "/en/services/","/en/approach/","/en/about/","/en/contact/",
-  "/en/local-seo/","/en/google-ads/","/en/meta-ads/","/en/landing-pages/","/en/social-media/","/en/measurement/"
+  "/en/local-seo/","/en/google-ads/","/en/meta-ads/","/en/landing-pages/","/en/social-media/","/en/measurement/",
+  "/en/b2b/","/en/b2b/market-assessment/","/en/b2b/buyer-development/","/en/b2b/market-entry/",
+  "/en/b2b/distributor-development/","/en/b2b/sales-outsourcing/","/en/b2b/supplier-matching/"
 ];
 for(const [index,route] of routes.entries()){
  const width=(index===0||index===10)?1440:390;

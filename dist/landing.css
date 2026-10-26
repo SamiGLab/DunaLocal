@@ -262,3 +262,20 @@ details[open] summary:after{transform:rotate(-90deg)}
   .text-hero .hero-notes{grid-template-columns:1fr}
   .text-hero .hero-notes .hero-badge{min-height:46px}
 }
+
+/* International B2B Homepage Bridge Section */
+.b2b-bridge-section{padding:40px 0 80px}
+.b2b-bridge-card{background:linear-gradient(145deg,#101820 0%,#16262e 100%);color:#ffffff;border-radius:24px;padding:52px 48px;display:grid;grid-template-columns:1.3fr .7fr;gap:48px;align-items:center;border:1px solid rgba(255,255,255,0.12);box-shadow:0 24px 50px -12px rgba(16,24,32,0.35);position:relative;overflow:hidden}
+.b2b-bridge-card::before{content:"";position:absolute;top:-80px;right:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(35,107,80,0.35) 0%,transparent 70%);pointer-events:none}
+.b2b-bridge-content .site-label{color:#b8e65b;font-size:11px;letter-spacing:1.5px;font-weight:700;display:inline-block;margin-bottom:14px}
+.b2b-bridge-content h2{font-size:clamp(26px,2.8vw,38px);line-height:1.2;letter-spacing:-1.2px;font-weight:600;color:#ffffff;margin:0 0 16px}
+.b2b-bridge-content p{font-size:14.5px;line-height:1.75;color:#c1d0c8;max-width:580px;margin:0 0 26px}
+.b2b-bridge-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.b2b-bridge-actions .button.primary{background:#236b50;color:#ffffff;box-shadow:0 6px 20px -3px rgba(35,107,80,0.5)}
+.b2b-bridge-actions .button.primary:hover{background:#194f3b}
+.b2b-bridge-note{font-size:11.5px;color:#94a89d;letter-spacing:.3px}
+.b2b-bridge-visual{display:flex;flex-direction:column;gap:12px;position:relative;z-index:1}
+.b2b-bridge-badge{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);padding:14px 18px;border-radius:14px;display:flex;align-items:center;gap:12px;font-size:13px;font-weight:600;color:#e6f0ea;backdrop-filter:blur(8px)}
+.b2b-bridge-badge .landing-icon{width:18px;height:18px;color:#b8e65b}
+@media(max-width:960px){.b2b-bridge-card{grid-template-columns:1fr;padding:36px 28px;gap:28px}}
+@media(max-width:440px){.b2b-bridge-card{padding:28px 18px}.b2b-bridge-content h2{font-size:24px}.b2b-bridge-content p{font-size:13.5px}.b2b-bridge-actions{flex-direction:column;align-items:stretch}.b2b-bridge-actions .button{justify-content:center}}
